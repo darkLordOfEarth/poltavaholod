@@ -70,6 +70,14 @@ module.exports = {
         "./assets/data/browserconfig.xml",
         "./assets/data/manifest.json",
         {
+          from: './assets/libs/owlcarousel/owl.carousel.min.js',
+          to: './js/owlcarousel/owl.carousel.min.js'
+      },
+        {
+          from: './assets/libs/owlcarousel/owl.carousel.min.css',
+          to: './js/owlcarousel/owl.carousel.min.css'
+      },
+        {
           from: './assets/images',
           to: './images'
       },
