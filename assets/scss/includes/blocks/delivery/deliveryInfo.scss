@@ -1,0 +1,49 @@
+.deliveryInfo {
+    padding: 159px 0 0;
+    @include max-lg {
+        padding: 70px 0 0;
+    }
+    @include max-md {
+        padding: 27px 0 0;
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 31px;
+        row-gap: 88px;
+        @include max-lg {
+            row-gap: 40px;
+        }
+        @include max-md {
+            grid-template-columns: 1fr;
+            row-gap: 18px;
+        }
+    }
+    &__block {
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 24px;
+        letter-spacing: -1px;
+        color: #1f1f1f;
+        @include max-md {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    &__description {
+        font-size: 18px;
+        line-height: 150%;
+        color: #1f1f1f;
+        margin-top: 18px;
+        @include max-md {
+            font-size: 14px;
+            line-height: 24px;
+            margin-top: 8px;
+        }
+        & span {
+            font-weight: 700;
+        }
+    }
+}

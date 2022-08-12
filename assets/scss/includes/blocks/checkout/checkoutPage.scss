@@ -1,0 +1,29 @@
+.checkout {
+    padding: 43px 0 100px;
+    @include max-md {
+        padding: 17px 0 51px;
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 50px;
+        @include max-xxxl {
+            column-gap: 30px;
+        }
+        @include max-xl {
+            column-gap: 15px;
+        }
+        @include max-md {
+            column-gap: 0;
+            flex-direction: column;
+        }
+    }
+    &__left {
+        width: 100%;
+        display: grid;
+        row-gap: 18px;
+        @include max-md {
+            row-gap: 14px;
+        }
+    }
+}

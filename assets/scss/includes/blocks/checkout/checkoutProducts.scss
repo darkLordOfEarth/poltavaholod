@@ -1,0 +1,349 @@
+.checkoutProducts {
+    background: #ffffff;
+    box-shadow: 0px 4px 25px rgba(79, 79, 79, 0.13);
+    border-radius: 10px;
+    padding: 30px 20px 28px;
+    &__top {
+        padding-bottom: 7px;
+        border-bottom: 1px solid #e1e1e1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include max-md {
+            padding-bottom: 11px;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 150%;
+        color: #1f1f1f;
+        position: relative;
+        @include max-lg {
+            font-size: 20px;
+        }
+        @include max-sm {
+            font-size: 15px;
+        }
+        &-count {
+            position: absolute;
+            top: 0;
+            right: -10px;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            color: #00d1bc;
+            @include max-sm {
+                font-size: 10px;
+            }
+        }
+    }
+    &__clear {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 138%;
+        color: #bdbdbd;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        @include max-lg {
+            font-size: 14px;
+        }
+        @include max-sm {
+            font-size: 10px;
+        }
+    }
+    &__clear::before {
+        content: "";
+        background-image: url(../images/trash.png);
+        width: 16px;
+        height: 16px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 10px;
+        @include max-sm {
+            margin-right: 5px;
+        }
+    }
+    &__bottom {
+    }
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        position: relative;
+        border-bottom: 1px solid #f5f3fe;
+        @include max-lg {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            align-items: flex-start;
+        }
+        @include max-md {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            justify-items: flex-start;
+            align-items: flex-start;
+        }
+        @include max-sm {
+            column-gap: 14px;
+        }
+    }
+    &__item:first-child {
+        padding-top: 30px;
+        @include max-md {
+            padding-top: 40px;
+        }
+        & .close {
+            top: 26px;
+            @include max-md {
+                top: 22px;
+            }
+        }
+    }
+    &__item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    & .close {
+        position: absolute;
+        top: 16px;
+        right: 0;
+        width: 11px;
+        height: 11px;
+        cursor: pointer;
+    }
+    &__group_img {
+    }
+    &__image {
+        border: 1px solid #f5f3fe;
+        border-radius: 10px;
+        max-width: 200px;
+        position: relative;
+        @include max-xxxl {
+            max-width: 117px;
+        }
+    }
+    &__sale {
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 16px;
+        color: #ffffff;
+        background: linear-gradient(92.59deg, #cc76ff -15.44%, #e1b2fc 139.56%);
+        border-radius: 0px 10px 10px 0px;
+        position: absolute;
+        padding: 2px 5px;
+        top: 10px;
+        left: 0;
+    }
+    &__rent {
+        margin-top: 13px;
+        background: #00d1bc;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 150%;
+        padding: 10px 22px;
+        color: #fbfbfb;
+        width: fit-content;
+        text-align: center;
+        @include max-xlmidle {
+            font-size: 10px;
+            padding: 10px 15px;
+        }
+        @include max-lg {
+            font-size: 8px;
+            padding: 10px 20px;
+        }
+        @include max-md {
+            display: none;
+        }
+        &_mobile {
+            display: none;
+            @include max-md {
+                display: block;
+                grid-row-start: 3;
+                grid-column-start: 2;
+                width: 100%;
+                font-size: 12px;
+            }
+            @include max-ip {
+                margin-top: 20px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 4;
+            }
+        }
+    }
+    &__group_text {
+        max-width: 400px;
+        margin-left: 36px;
+        // margin-right: 92px;
+        @include max-xxxl {
+            max-width: 338px;
+            margin-left: 25px;
+        }
+        @include max-xlmidle {
+            margin-left: 15px;
+            max-width: 270px;
+        }
+        @include max-xl {
+            margin-left: 10px;
+            max-width: 250px;
+        }
+        @include max-lg {
+            max-width: 200px;
+        }
+        @include max-md {
+            margin-left: 0;
+        }
+    }
+    &__item_manufacturer {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: #1f1f1f;
+        @include max-xl {
+            font-size: 12px;
+        }
+    }
+    &__item_title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        color: #1f1f1f;
+        margin-top: 3px;
+        @include max-xl {
+            font-size: 14px;
+        }
+        @include max-lg {
+            font-size: 12px;
+        }
+    }
+    &__item_description {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 138%;
+        color: #1f1f1f;
+        margin-top: 12px;
+        @include max-xl {
+            font-size: 11px;
+        }
+        @include max-xl {
+            font-size: 9px;
+        }
+        @include max-md {
+            display: none;
+        }
+    }
+    &__group_count {
+        @include max-md {
+            grid-column-start: 2;
+            margin-top: -25px;
+            display: flex;
+            align-items: flex-start;
+        }
+        @include max-ip {
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    & .product-card__group_count-price {
+        @include max-md {
+            margin-left: 12px;
+        }
+        @include max-ip {
+            margin-left: 0;
+        }
+    }
+    &__group_count .product-card__group_count {
+        display: flex;
+        @include max-md {
+            margin-top: 0;
+        }
+    }
+    & .product-card__count {
+        padding: 10px 15px;
+        margin-right: 5px;
+        @include max-lg {
+            padding: 10px;
+            font-size: 12px;
+        }
+        @include max-md {
+            padding: 3px 17px;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+    & .product-card__minus {
+        margin-right: 5px;
+    }
+    & .product-card__plus {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 22px;
+    }
+    & .product-card__group_count-price {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #bdbdbd;
+        text-align: center;
+        margin-top: 3px;
+        @include max-lg {
+            font-size: 12px;
+        }
+    }
+    &__group_price {
+        margin-left: 33px;
+        @include max-xlmidle {
+            margin-left: 10px;
+        }
+        @include max-lg {
+            grid-column-start: 3;
+            margin: -45px 0 0;
+        }
+        @include max-md {
+            grid-column-start: 1;
+            margin-top: 10px;
+        }
+        @include max-ip {
+            margin-top: -50px;
+        }
+    }
+    &__price {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 26px;
+        color: #5a37e9;
+        @include max-xlmidle {
+            font-size: 20px;
+        }
+        @include max-xl {
+            font-size: 16px;
+        }
+        @include max-lg {
+            font-size: 14px;
+        }
+    }
+    &__price_old {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        text-decoration-line: line-through;
+        color: #bdbdbd;
+        @include max-lg {
+            font-size: 12px;
+        }
+    }
+}
+
+@media(max-width: 374px) {
+    .checkoutProducts__item {
+        column-gap: 5px;
+    }
+}

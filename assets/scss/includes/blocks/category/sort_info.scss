@@ -1,0 +1,47 @@
+.sort-info {
+    padding: 50px 0;
+    @include max-md {
+        padding: 10px 0;
+    }
+    &__content {
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 150%;
+        color: #1f1f1f;
+        margin-top: 30px;
+        @include max-md {
+            font-size: 18px;
+            line-height: 26px;
+            margin-top: 20px;
+        }
+    }
+    &__list {
+        margin-top: 24px;
+        @include max-md {
+            margin-top: 0;
+        }
+        &_initial li {
+            list-style: initial;
+            padding: initial;
+            margin-left: 25px;
+        }
+    }
+    &__item {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        color: #4f4f4f;
+        margin-top: 18px;
+        @include max-md {
+            font-size: 13px;
+            line-height: 22px;
+            margin-top: 7px;
+        }
+    }
+    &__item:first-child {
+        list-style: none;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,91 @@
+.justification {
+    padding: 100px 0;
+    @include max-xl {
+        padding: 50px 0;
+    }
+    @include max-sm {
+        padding: 37px 0 44px;
+    }
+    &__content {
+    }
+    & .blockTitle {
+        font-size: 28px;
+        line-height: 38px;
+        max-width: 45%;
+        @include max-xl {
+            font-size: 24px;
+            line-height: 34px;
+        }
+        @include max-md {
+            max-width: initial;
+        }
+        @include max-sm {
+            font-size: 18px;
+            line-height: 26px;
+        }
+    }
+    &__top {
+        display: flex;
+        column-gap: 168px;
+        @include max-xxl {
+            column-gap: 150px;
+        }
+        @include max-xl {
+            column-gap: 50px;
+        }
+    }
+    &__text {
+        & p {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 28px;
+            color: #4f4f4f;
+            margin-top: 24px;
+            @include max-sm {
+                font-size: 14px;
+                line-height: 28px;
+                margin-top: 8px;
+            }
+        }
+        & p:nth-child(1) {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 28px;
+            color: #5a37e9;
+            @include max-sm {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+    }
+    &__bottom {
+        display: flex;
+        column-gap: 168px;
+        @include max-xxl {
+            column-gap: 150px;
+        }
+        @include max-xl {
+            column-gap: 50px;
+        }
+        @include max-md {
+            flex-direction: column;
+        }
+    }
+    &__bottom .justification__text p:first-child {
+        margin-top: 46px;
+        @include max-md {
+            margin-top: 20px;
+        }
+        @include max-sm {
+            margin-top: 12px;
+        }
+    }
+    &__img {
+        max-width: 331px;
+        display: flex;
+        align-items: center;
+        @include max-md {
+            display: none;
+        }
+    }
+}

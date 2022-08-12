@@ -1,0 +1,55 @@
+.deliverySimple {
+    padding: 122px 0 0;
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 30px;
+        @include max-xl {
+            column-gap: 20px;
+        }
+        @include max-xl {
+            column-gap: 10px;
+        }
+        @include max-md {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+        }
+    }
+    &__block {
+        background: #f5f3fe;
+        border-radius: 10px;
+        padding: 29px 50px;
+        min-width: 100%;
+        @include max-xl {
+            padding: 20px;
+        }
+        @include max-lg {
+            padding: 20px 10px;
+        }
+        @include max-md {
+            padding: 40px 17px;
+        }
+        &:last-child .deliverySimple__block-img {
+            width: 60px;
+        }
+    }
+    &__block-img {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+    &__block-title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        color: #5a37e9;
+        margin-top: 17px;
+        text-align: center;
+        @include max-lg {
+            font-size: 14px;
+        }
+        @include max-ip {
+            font-size: 12px;
+        }
+    }
+}

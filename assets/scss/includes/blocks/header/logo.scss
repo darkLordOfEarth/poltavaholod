@@ -1,0 +1,65 @@
+.logo {
+    @include max-md {
+        margin-left: 20px;
+        margin-right: auto;
+    }
+    & a {
+        display: flex;
+    }
+    &__img {
+        max-width: 48px;
+        min-width: 48px;
+        max-height: 60px;
+        @include max-lg {
+            max-width: 35px;
+            min-width: 35px;
+            max-height: 46px;
+        }
+        @include max-md {
+            max-width: 22px;
+            min-width: 22px;
+            max-height: 28px;
+        }
+    }
+    &__more {
+        margin-left: 18px;
+        & .logo__img {
+            min-width: 138px;
+            max-height: 18px;
+            @include max-lg {
+                max-width: 105px;
+                min-width: 105px;
+                max-height: 15px;
+            }
+            @include max-md {
+                max-width: 97px;
+                min-width: 97px;
+                max-height: 18px;
+            }
+        }
+        @include max-lg {
+            margin-left: 10px;
+        }
+        @include max-md {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+    }
+    &__text {
+        margin-top: 6px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 18px;
+        color: #1f1f1f;
+        min-width: 148px;
+        @include max-lg {
+            font-size: 10px;
+            line-height: 13px;
+            margin-top: 0;
+        }
+        @include max-md {
+            display: none;
+        }
+    }
+}

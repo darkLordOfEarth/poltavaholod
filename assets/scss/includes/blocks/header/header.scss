@@ -1,8 +1,298 @@
 .header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    &__logo {
-        max-width: 200px;
+    &__top {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    &__top_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 23px 0 19px;
+        padding: 23px 80px;
+        @include max-lg {
+            padding: 15px 50px 10px;
+        }
+        @include max-sm {
+            padding: 10px 20px;
+        }
+
+        &_mobile {
+            padding: 13px 20px 11px 0;
+            & .contact {
+                display: none;
+            }
+        }
+    }
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 17px 80px;
+        @include max-lg {
+            padding: 10px 50px;
+        }
+        @include max-sm {
+            padding: 10px 20px;
+        }
+        & .catalog__button {
+            margin: 0;
+            cursor: pointer;
+            @include max-xxl {
+                font-size: 12px;
+                padding: 7px 20px 7px 55px;
+            }
+            @include max-md {
+                padding: 7px 20px;
+                border-radius: 4px;
+            }
+            @include max-sm {
+                padding: 0 14px;
+                border-radius: 4px;
+            }
+            @include max-iph {
+                padding: 0 10px;
+                font-size: 10px;
+            }
+        }
+        & .catalog__button::before {
+            @include max-md {
+                display: none;
+            }
+        }
+        & .burger__list_category {
+            display: flex;
+            margin-top: 0;
+            padding: 0;
+            @include max-lg {
+                display: none;
+            }
+            & li:not(:first-child) {
+                margin-left: 30px;
+                @include max-xl {
+                    margin-left: 10px;
+                }
+            }
+            & a {
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 18px;
+                color: #1f1f1f;
+                @include max-xxl {
+                    font-size: 13px;
+                }
+                @include max-xl {
+                    font-size: 12px;
+                }
+                @include max-lg {
+                    font-size: 11px;
+                }
+            }
+        }
+        &_search {
+            position: relative;
+            @include max-lg {
+                width: 100%;
+                margin: 0 20px;
+            }
+            @include max-sm {
+                width: 100%;
+                margin: 0 6px;
+            }
+            @include max-iph {
+                max-width: 129px;
+                margin: 0 6px;
+            }
+            & img {
+                position: absolute;
+                width: 17px;
+                left: 25px;
+                top: 24px;
+                @include max-xxl {
+                    left: 15px;
+                    top: 15px;
+                }
+                @include max-xl {
+                    width: 15px;
+                    left: 9px;
+                    top: 13px;
+                }
+                @include max-sm {
+                    width: 10px;
+                    left: 10px;
+                    top: 11px;
+                }
+                @include max-iph {
+                    width: 10px;
+                    left: 5px;
+                    top: 10px;
+                }
+            }
+        }
+        &_search input {
+            padding: 16px 57px;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 28px;
+            color: #b09ef9;
+            background: #f5f3fe;
+            border-radius: 10px;
+            max-width: 260px;
+            border: none;
+            @include max-xxl {
+                //max-width: 200px;
+                padding: 8px 42px;
+            }
+            @include max-xlmidle {
+                max-width: 200px;
+            }
+            @include max-xl {
+                max-width: 155px;
+                padding: 8px 32px;
+                border-radius: 4px;
+                font-size: 12px;
+                line-height: 28px;
+            }
+            @include max-lg {
+                min-width: 100%;
+            }
+            @include max-sm {
+                font-size: 12px;
+                line-height: 28px;
+                padding: 2px 32px;
+                max-width: 135px;
+            }
+            @include max-iph {
+                max-width: 100px;
+                min-width: 100%;
+                font-size: 10px;
+                padding: 1px 20px;
+            }
+        }
+
+        &_search input::placeholder {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 28px;
+            color: #b09ef9;
+            @include max-md {
+                font-size: 13px;
+            }
+            @include max-iph {
+                font-size: 10px;
+            }
+        }
+        & .buttons__group {
+            display: flex;
+            &_item {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #f5f3fe;
+                @include max-xl {
+                    width: 34px;
+                    height: 34px;
+                }
+                @include max-sm {
+                    width: 30px;
+                    height: 30px;
+                }
+                & img {
+                    width: 16px;
+                    @include max-xl {
+                        width: 14px;
+                    }
+                    @include max-sm {
+                        width: 11px;
+                    }
+                }
+            }
+            &_item:not(:first-child) {
+                margin-left: 10px;
+            }
+            &_item:last-child {
+                position: relative;
+                background-color: #5a37e9;
+            }
+            &_item:last-child span {
+                position: absolute;
+                font-weight: 700;
+                font-size: 10px;
+                line-height: 10px;
+                color: #ffffff;
+                background: #00d1bc;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                top: -3px;
+                right: -3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include max-sm {
+                    width: 15px;
+                    height: 15px;
+                    font-size: 8px;
+                }
+            }
+            &_item:last-child img {
+                width: 20px;
+                @include max-sm {
+                    width: 13px;
+                }
+            }
+        }
+        & .menu__dropdown {
+            position: relative;
+            margin-right: 20px;
+            @include max-xl {
+                margin-right: 10px;
+            }
+            &_list {
+                background-color: #fff;
+                position: absolute;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.14);
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                padding: 27px 31px;
+                max-width: 299px;
+                min-width: 299px;
+                top: 40px;
+                display: none;
+                z-index: 20;
+            }
+            &_item {
+                margin-left: 0 !important;
+            }
+            &_item:not(:first-child) {
+                margin-top: 15px;
+            }
+            &_item a {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                color: #1f1f1f;
+            }
+            &_item a:hover {
+                color: #00d1bc;
+            }
+        }
+        & .menu__dropdown > a::after {
+            content: "";
+            background-image: url(../images/dropdown.png);
+            width: 11px;
+            height: 8px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            right: -20px;
+            top: 5px;
+            @include max-xl {
+                right: -15px;
+                top: 6px;
+            }
+        }
     }
 }

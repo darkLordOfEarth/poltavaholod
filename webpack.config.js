@@ -70,12 +70,28 @@ module.exports = {
         "./assets/data/browserconfig.xml",
         "./assets/data/manifest.json",
         {
+          from: './assets/libs/jquery.maskedinput.js',
+          to: './js/jquery.maskedinput.js'
+      },
+        {
+          from: './assets/libs/jqueryUiTouchPunch.js',
+          to: './js/jqueryUiTouchPunch.js'
+      },
+        {
+          from: './assets/libs/jqueryUi.js',
+          to: './js/jqueryUi.js'
+      },
+        {
           from: './assets/libs/owlcarousel/owl.carousel.min.js',
           to: './js/owlcarousel/owl.carousel.min.js'
       },
         {
           from: './assets/libs/owlcarousel/owl.carousel.min.css',
           to: './js/owlcarousel/owl.carousel.min.css'
+      },
+        {
+          from: './assets/libs/owlcarousel/owl.theme.default.min.css',
+          to: './js/owlcarousel/owl.theme.default.min.css'
       },
         {
           from: './assets/images',
@@ -92,10 +108,10 @@ module.exports = {
       ],   
     }),
     new BrowserSyncPlugin({
-      files: ["build/css/app.css", "build/index.html", "build/js/app.js" ],
+      files: ["build/css/app.css", "build/[name].html", "build/js/app.js" ],
       host: 'localhost',
       port: 3000,
-      server: { baseDir: ['./build'] }
+      server: { baseDir: ['./build'], index: "delivery.html" }
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css"

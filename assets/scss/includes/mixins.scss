@@ -1,9 +1,12 @@
+$ip: 365px;
 $iph: 375px;
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
 $xl: 1200px;
+$xlmidle: 1300px;
 $xxl: 1440px;
+$xxxl: 1570px;
 
 
 @mixin landscape {
@@ -18,6 +21,11 @@ $xxl: 1440px;
   }
 }
 
+@mixin ip {
+  @media (min-width: #{$ip}) {
+    @content;
+  }
+}
 @mixin iph {
   @media (min-width: #{$iph}) {
     @content;
@@ -48,12 +56,27 @@ $xxl: 1440px;
   }
 }
 
+@mixin xlmidle {
+  @media (min-width: #{$xlmidle}) {
+    @content;
+  }
+}
 @mixin xxl {
   @media (min-width: #{$xxl}) {
     @content;
   }
 }
+@mixin xxxl {
+  @media (min-width: #{$xxxl}) {
+    @content;
+  }
+}
 
+@mixin max-ip {
+  @media (max-width: #{$ip}) {
+    @content;
+  }
+}
 @mixin max-iph {
   @media (max-width: #{$iph}) {
     @content;
@@ -83,8 +106,18 @@ $xxl: 1440px;
     @content;
   }
 }
+@mixin max-xlmidle {
+  @media (max-width: #{$xlmidle}) {
+    @content;
+  }
+}
 @mixin max-xxl {
   @media (max-width: #{$xxl}) {
+    @content;
+  }
+}
+@mixin max-xxxl {
+  @media (max-width: #{$xxxl}) {
     @content;
   }
 }

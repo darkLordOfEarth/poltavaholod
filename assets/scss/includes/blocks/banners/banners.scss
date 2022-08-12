@@ -1,0 +1,254 @@
+.banners {
+    @include max-lg {
+        padding-top: 20px;
+    }
+    @include max-md {
+        padding-top: 10px;
+    }
+    & .owl-dots {
+        display: block !important;
+    }
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        @include max-md {
+            flex-direction: column;
+        }
+        & .owl-stage-outer {
+            border-radius: 20px;
+        }
+    }
+    &__slider {
+        border-radius: 20px;
+        flex-grow: 1;
+        margin-right: 30px;
+        @include max-md {
+            margin-right: 0;
+        }
+    }
+    &__item {
+        border-radius: 20px;
+        &_nav {
+            display: flex;
+            margin-top: 34px;
+            & li {
+                width: 50px;
+                height: 4px;
+                background-color: #fff;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+    &__slider1 {
+        background-color: #2f8b9d;
+        position: relative;
+        padding: 40px 55px 20px;
+        min-height: 407px;
+        @include max-xl {
+            padding: 40px 0 20px 55px;
+        }
+        @include max-lg {
+            padding: 30px 0 20px 40px;
+        }
+        &_bg {
+            position: absolute;
+        }
+        &_img {
+            width: calc(200px + (500 - 200) * ((100vw - 375px) / (1920 - 375)));
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            @include max-xl {
+                position: initial;
+                margin-right: 0;
+                margin-left: auto;
+            }
+        }
+        &__title {
+            font-size: calc(22px + (38 - 22) * ((100vw - 375px) / (1920 - 375)));
+            line-height: calc(32px + (48 - 32) * ((100vw - 375px) / (1920 - 375)));
+            font-weight: 700;
+            color: #fff;
+        }
+        &__text {
+            margin-top: 30px;
+            font-size: calc(14px + (20 - 14) * ((100vw - 375px) / (1920 - 375)));
+            line-height: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        &__price {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: calc(22px + (32 - 22) * ((100vw - 375px) / (1920 - 375)));
+            line-height: 18px;
+            color: #fff;
+        }
+        & .discover {
+            margin-top: 62px;
+        }
+    }
+
+    &__static {
+        max-width: 407px;
+        width: 100%;
+        padding: 20px 28px 60px 40px;
+        background-color: #f5f3fe;
+        position: relative;
+        border-radius: 20px;
+        @include xxxl {
+            max-width: 650px;
+        }
+        @include max-md {
+            margin-top: 16px;
+            max-width: initial;
+            padding: 14px 16px 30px 30px;
+        }
+        &_logo {
+            max-width: 103px;
+            margin-right: 0;
+            margin-left: auto;
+        }
+        &_title {
+            font-size: 26px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #5a37e9;
+            margin-top: 12px;
+        }
+        &_description {
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 600;
+            color: #1f1f1f;
+            margin-top: 18px;
+        }
+        &_price {
+            font-size: 22px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #1f1f1f;
+            margin-top: 22px;
+        }
+        &_sale {
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 400; 
+            margin-top: 4px;
+            opacity: 0.5;
+        }
+        & .discover {
+            margin-top: 41px;
+            @include max-xlmidle {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+        }
+        &_img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: calc(100px + (190 - 100) * ((100vw - 375px) / (1920 - 375)));
+            @include xxxl {
+                right: 20%;
+                width: calc(160px + (225 - 160) * ((100vw - 375px) / (1920 - 375)));
+            }
+            @include max-xl {
+                left: 0;
+                margin: auto;
+                width: calc(135px + (190 - 135) * ((100vw - 375px) / (1920 - 375)));
+            }
+            @include max-md {
+                left: 200px;
+                width: calc(130px + (190 - 130) * ((100vw - 375px) / (1920 - 375)));
+            }
+            @include max-iph {
+                left: 160px;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        margin-top: 30px;
+        padding-left: 55px;
+        background-color: #7e4caf;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 20px;
+        position: relative;
+        @include max-md {
+            flex-direction: column;
+            padding: 20px;
+            margin-top: 20px;
+            align-items: flex-start;
+        }
+        @include max-sm {
+            min-height: 230px;
+            justify-content: flex-start;
+        }
+        &_img {
+            max-width: 305px;
+            @include max-xl {
+                max-width: 250px;
+            }
+            @include max-lg {
+                max-width: 200px;
+            }
+            @include max-md {
+                margin-top: -60px;
+                margin-right: 0;
+                margin-left: auto;
+                max-width: 272px;
+            }
+            @include max-sm {
+                max-width: 250px;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            @include max-iph {
+                max-width: 160px;
+            }
+        }
+        &_title {
+            font-size: calc(22px + (28 - 22) * ((100vw - 375px) / (1920 - 375)));
+            line-height: calc(28px + (38 - 28) * ((100vw - 375px) / (1920 - 375)));
+            font-weight: 600;
+            color: #fff;
+            @include max-xl {
+                max-width: 300px;
+            }
+            @include max-lg {
+                max-width: 230px;
+                font-size: calc(14px + (24 - 14) * ((100vw - 375px) / (1920 - 375)));
+                line-height: calc(20px + (30 - 20) * ((100vw - 375px) / (1920 - 375)));
+            }
+            @include max-md {
+                max-width: initial;
+            }
+        }
+        & a {
+            font-size: calc(12px + (14 - 12) * ((100vw - 375px) / (1920 - 375)));
+            font-weight: 700;
+            line-height: 30px;
+            color: #1f1f1f;
+            padding: 15px 47px;
+            background-color: #f5f3fe;
+            border-radius: 60px;
+            @include max-lg {
+                padding: 10px 27px;
+            }
+            @include max-md {
+                padding: 10px 20px;
+                margin-top: 20px;
+                margin-left: 0;
+                margin-right: auto;
+            }
+            @include max-sm {
+                padding: 5px 10px;
+            }
+        }
+    }
+}

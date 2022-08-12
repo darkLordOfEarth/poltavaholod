@@ -1,12 +1,60 @@
 <header class="header">
-    <div class="header__logo">
-        <img src="https://st2.depositphotos.com/4035913/6124/i/600/depositphotos_61243677-stock-photo-real-estate-logo.jpg" alt="logo">
-    </div>
-    <div class="header__nav"></div>
-    <div class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    {{!-- <div class="container"> --}}
+            <div class="header__top">
+                <div class="header__top_content">
+                    {{> blocks / burger }}
+                    {{> blocks / logo }}
+                    {{> blocks / menu }}
+                    {{> blocks / contact_us }}
+                </div>
+            </div>
+            <div class="header__bottom">
+                <div class="catalog__button">
+                    Каталог товаров
+                </div>
+                <ul class="burger__list burger__list_category">
+                    <li><a href="#">Интеграция WMS-систем</a></li>
+                    <li class="menu__dropdown">
+                        <a href="#">Наши услуги</a>
+                        <ul class="menu__dropdown_list">
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Ремонт оборудования</a>
+                            </li>
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Настройка оборудования</a>
+                            </li>
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Диагностика оборудования</a>
+                            </li>
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Аренда оборудования</a>
+                            </li>
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Вызов специалиста</a>
+                            </li>
+                            <li class="menu__dropdown_item">
+                                <a href="#" class="menu__dropdown_link">Интеграции WMS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Cервисный центр</a></li>
+                </ul>
+                <form action="#" class="search header__bottom_search" method="get">
+                    <input type="text" name="search" placeholder="Поиск">
+                    <img src="images/search.png" alt="search">
+                </form>
+                <div class="buttons__group">
+                    <button class="buttons__group_item">
+                        <img src="images/favorite.png" alt="favorite">
+                    </button>
+                    <button class="buttons__group_item">
+                        <img src="images/filter.png" alt="filter">
+                    </button>
+                    <button class="buttons__group_item">
+                        <img src="images/basket.png" alt="basket">
+                        <span>3</span>
+                    </button>
+                </div>
+            </div>
+    {{!-- </div> --}}
 </header>

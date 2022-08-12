@@ -1,9 +1,95 @@
 @import './includes/variables.scss';
+@import './includes/mixins.scss';
 @import './includes/fonts.scss';
 @import './includes/reset.scss';
-@import './includes/mixins.scss';
+
 @import './includes/functions.scss';
-@import './includes/blocks/footer/footer.scss';
+
+//header
 @import './includes/blocks/header/header.scss';
+@import './includes/blocks/header/logo.scss';
 @import './includes/blocks/header/burger.scss';
-@import './includes/blocks/main/main.scss';
+@import './includes/blocks/header/menu.scss';
+@import './includes/blocks/header/contact.scss';
+
+//filter
+@import './includes/blocks/filter/filter.scss';
+
+//main
+@import './includes/blocks/main/proposal.scss';
+
+//footer
+@import './includes/blocks/footer/footer.scss';
+
+//banners
+@import './includes/blocks/banners/banners.scss';
+@import './includes/blocks/banners/discover.scss';
+@import './includes/blocks/banners/wmsBanner.scss';
+
+//categoryWall
+@import './includes/blocks/categoryWall/categoryWall.scss';
+
+//products
+@import './includes/blocks/product/ourProducts.scss';
+@import './includes/blocks/product/product.scss';
+
+//brands
+@import './includes/blocks/brands/brands.scss';
+
+//progress
+@import './includes/blocks/ourProgress/ourProgress.scss';
+
+//geografic
+@import './includes/blocks/geografic/geografic.scss';
+
+//ourServices
+@import './includes/blocks/ourServices/ourServices.scss';
+
+//consulting
+@import './includes/blocks/consulting/consulting.scss';
+
+//automatization
+@import './includes/blocks/automatization/automatization.scss';
+@import './includes/blocks/automatization/justification.scss';
+
+//category
+@import './includes/blocks/category/category.scss';
+@import './includes/blocks/category/sort.scss';
+@import './includes/blocks/category/polzunok.scss';
+@import './includes/blocks/category/sort_info.scss';
+
+//question
+@import './includes/blocks/question/question.scss';
+
+//stage
+@import './includes/blocks/stage/stage.scss';
+
+//modules
+@import './includes/blocks/modules/latest_view.scss';
+
+//characteristics
+@import './includes/blocks/characteristics/characteristics.scss';
+
+//files
+@import './includes/blocks/files/files.scss';
+
+//manager
+@import './includes/blocks/manager/manager.scss';
+
+//productInfo
+@import './includes/blocks/productInfo/productInfo.scss';
+@import './includes/blocks/productInfo/productDuplicates.scss';
+
+//checkout
+@import './includes/blocks/checkout/checkoutPage.scss';
+@import './includes/blocks/checkout/checkoutProducts.scss';
+@import './includes/blocks/checkout/checkoutCard.scss';
+@import './includes/blocks/checkout/checkoutDestination.scss';
+@import './includes/blocks/checkout/checkoutAddress.scss';
+@import './includes/blocks/checkout/checkoutPayMethod.scss';
+
+//delivery
+@import './includes/blocks/delivery/delivery.scss';
+@import './includes/blocks/delivery/deliveryTabs.scss';
+@import './includes/blocks/delivery/deliveryInfo.scss';
+@import './includes/blocks/delivery/deliverySimple.scss';

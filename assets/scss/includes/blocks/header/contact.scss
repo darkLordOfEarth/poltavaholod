@@ -1,0 +1,68 @@
+.contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 51px;
+    justify-items: end;
+    @include max-xxl {
+        column-gap: 20px;
+        justify-items: end;
+    }
+    @include max-xl {
+        grid-template-columns: 1fr;
+    }
+    & a {
+        font-size: 18px;
+        line-height: 24px;
+        color: #5a37e9;
+        font-weight: 700;
+        @include max-xxl {
+            font-size: 16px;
+            line-height: 18px;
+        }
+        @include max-xl {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        @include max-lg {
+            font-size: 12px;
+            line-height: 18px;
+        }
+        @include max-md {
+            font-size: 12px;
+            line-height: 14px;
+            color: #1f1f1f;
+        }
+    }
+    & span {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #333333;
+        border-bottom: 1.4px dashed #00d1bc;
+        @include max-xl {
+            font-size: 12px;
+            line-height: 16px;
+        }
+        @include max-md {
+            font-size: 10px;
+            line-height: 18px;
+            color: #00d1bc;
+        }
+    }
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: max-content;
+    }
+}
+.mail__contact {
+    font-weight: 600;
+    // margin-right: 51px;
+    @include max-md {
+        display: none !important;
+    }
+}
+.call__contact {
+    font-weight: 700;
+}

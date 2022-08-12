@@ -1,0 +1,163 @@
+.checkoutCard {
+    padding: 30px 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 25px rgba(79, 79, 79, 0.13);
+    border-radius: 10px;
+    max-width: 330px;
+    min-width: 330px;
+    @include max-xlmidle {
+        max-width: 270px;
+        min-width: 270px;
+        padding: 20px 15px;
+    }
+    @include max-xl {
+        max-width: 220px;
+        min-width: 220px;
+    }
+    @include max-md {
+        max-width: 100%;
+        min-width: 100%;
+        margin-top: 16px;
+        padding: 30px 20px;
+    }
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+    }
+    &__row:nth-child(1) {
+        margin-top: 0;
+    }
+    &__row:nth-child(2) {
+        margin-top: 14px;
+        @include max-md {
+            margin-top: 16px;
+        }
+    }
+    &__total {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 150%;
+        color: #1f1f1f;
+        @include max-xl {
+            font-size: 18px;
+        }
+        @include max-md {
+            font-size: 22px;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #4f4f4f;
+        @include max-xl {
+            font-size: 12px;
+        }
+        @include max-md {
+            font-size: 14px;
+        }
+    }
+    &__info {
+        color: #4f4f4f;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 14px;
+        @include max-xl {
+            font-size: 12px;
+        }
+        @include max-md {
+            font-size: 14px;
+        }
+        & b {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+    & .discover {
+        width: auto;
+        text-align: center;
+        margin-top: 40px;
+        @include max-xlmidle {
+            margin-top: 30px;
+        }
+        @include max-xl {
+            font-size: 12px;
+            padding: 10px 0;
+        }
+        @include max-md {
+            margin-top: 40px;
+        }
+    }
+    &__agree {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 12px;
+    }
+    &__checkbox {
+    }
+    &__agree-text {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 130%;
+        color: #bdbdbd;
+        @include max-xl {
+            font-size: 11px;
+        }
+        @include max-md {
+            font-size: 12px;
+        }
+    }
+}
+.checkoutCard__checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.checkoutCard__checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+.checkoutCard__checkbox + label::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 0.25em;
+    //margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+.checkoutCard__checkbox:checked + label::before {
+    border-color: #00d1bc;
+    background-color: #00d1bc;
+    background-image: url("../images/agree_white.png");
+}
+/* стили при наведении курсора на checkbox */
+.checkoutCard__checkbox:not(:disabled):not(:checked) + label:hover::before {
+    border-color: #00d1bc;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.checkoutCard__checkbox:not(:disabled):active + label::before {
+    background-color: #00d1bc;
+    border-color: #00d1bc;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.checkoutCard__checkbox:focus + label::before {
+    //box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.checkoutCard__checkbox:focus:not(:checked) + label::before {
+    border-color: #00d1bc;
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.checkoutCard__checkbox:disabled + label::before {
+    background-color: #e9ecef;
+}

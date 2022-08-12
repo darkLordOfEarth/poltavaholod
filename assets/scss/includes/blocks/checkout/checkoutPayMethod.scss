@@ -1,0 +1,92 @@
+.checkoutPayMethod {
+    & .checkoutDestination__form {
+        display: flex;
+        margin-top: 23px;
+        @include max-xxxl {
+            justify-content: space-between;
+        }
+    }
+    &__group {
+        display: flex;
+        align-items: center;
+        margin-right: 35px;
+        @include max-xxxl {
+            margin-right: 0;
+        }
+    }
+    &__radio {
+    }
+    &__text {
+        margin-left: 12px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #4f4f4f;
+        @include max-md {
+            font-size: 14px;
+        }
+    }
+}
+@media(max-width: 1400px) {
+    .checkoutPayMethod .checkoutDestination__form {
+        flex-direction: column;
+        row-gap: 14px;
+    }
+}
+
+.checkoutPayMethod__radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  /* для элемента label связанного с .checkoutPayMethod__radio */
+  .checkoutPayMethod__radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  .checkoutPayMethod__radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    //margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  /* стили при наведении курсора на радио */
+  .checkoutPayMethod__radio:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #00D1BC;
+  }
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  .checkoutPayMethod__radio:not(:disabled):active+label::before {
+    background-color: #fff;
+    border-color: #00D1BC;
+    border-width: 2px;
+  }
+  /* стили для радиокнопки, находящейся в фокусе */
+  .checkoutPayMethod__radio:focus+label::before {
+    //box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  .checkoutPayMethod__radio:focus:not(:checked)+label::before {
+    border-color: #00D1BC;
+  }
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  .checkoutPayMethod__radio:checked+label::before {
+    border-color: #00D1BC;
+    background-color: #fff;
+    background-image: url("../images/radio_icon.png");
+    background-position: center;
+    border-width: 2px;
+  }
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  .checkoutPayMethod__radio:disabled+label::before {
+    background-color: #fff;
+  }

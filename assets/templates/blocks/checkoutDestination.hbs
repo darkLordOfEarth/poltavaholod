@@ -1,0 +1,39 @@
+<div class="checkoutDestination">
+    <div class="checkoutDestination__title">Получатель</div>
+    <div class="checkoutDestination__content">
+    <form class="checkoutDestination__form" action="#">
+        <div class="checkoutDestination__row">
+            <div class="checkoutDestination__group">
+                <div class="checkoutDestination__label">ФИО</div>
+                <input type="text" name="name" placeholder="Фамилия Имя Отчество" required>
+            </div>
+            <div class="checkoutDestination__group">
+                <div class="checkoutDestination__label">Контактный телефон</div>
+                <input type="text" name="phone" required>
+            </div>
+        </div>
+        <div class="checkoutDestination__row">
+            <div class="checkoutDestination__group">
+                <div class="checkoutDestination__label">ИНН</div>
+                <input type="text" name="inn" required>
+            </div>
+            <div class="checkoutDestination__group">
+                <div class="checkoutDestination__label checkoutDestination__label_mail">E-mail</div>
+                <input type="email" name="mail">
+            </div>
+        </div>
+        <div class="checkoutDestination__required">поля обязательные для заполнения</div>
+    </form>
+        <div class="checkoutDestination__requisite">
+            <div class="checkoutDestination__requisite-title">Прикрепить реквизиты</div>
+            <div class="checkoutDestination__requisite-description">Современные технологии достигли такого уровня, что постоянное информационно-пропагандистское обеспечение нашей </div>
+            {{!-- <input type="file" class="checkoutDestination__attach">Прикрепить реквизты</input> --}}
+            <label class="form-control checkoutDestination__attach"> 
+                <input class="form-control" type="file" name="data[file]" placeholder="Прикрепить реквизты" style="display: none;">
+                <button class="js-labelFile"> 
+                    <span class="js-fileName">Прикрепить реквизты</span> 
+                </button> 
+            </label>
+        </div>
+    </div>
+</div>

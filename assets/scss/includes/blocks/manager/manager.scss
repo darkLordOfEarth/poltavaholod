@@ -1,0 +1,54 @@
+.manager {
+    margin-top: 20px;
+    padding: 30px 39px;
+    background: linear-gradient(91.74deg, #87b0f3 57.04%, #8bd5fb 110.68%);
+    border-radius: 10px;
+    @include max-md {
+        margin-top: 40px;
+        padding: 17px 17px 26px;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 147%;
+        color: #ffffff;
+        text-align: center;
+        @include max-md {
+            font-size: 18px;
+            line-height: 147%;
+        }
+    }
+    &__description {
+        margin-top: 12px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 138%;
+        text-align: center;
+        color: #ffffff;
+        @include max-md {
+            font-size: 13px;
+            line-height: 18px;
+        }
+    }
+    &__button {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #1f1f1f;
+        margin: 28px auto 0;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 19px 25px;
+        display: block;
+        width: fit-content;
+        @include max-lg {
+            padding: 19px 15px;
+        }
+        @include max-md {
+            font-size: 12px;
+            line-height: 30px;
+            padding: 10px 23px;
+            margin-top: 20px;
+        }
+    }
+}
