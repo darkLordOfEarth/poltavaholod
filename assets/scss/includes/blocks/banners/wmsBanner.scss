@@ -38,7 +38,7 @@
             top: auto;
             left: auto;
             right: -15px;
-            bottom: 0;
+            bottom: -3px;
             transform: rotateY(180deg);
         }
         & img {
@@ -107,6 +107,9 @@
             margin-top: 30px;
             font-size: 14px;
             padding: 15px 37px;
+        }
+        @include max-ip {
+            font-size: 12px;
         }
     }
 }
