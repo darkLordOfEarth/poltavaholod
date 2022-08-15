@@ -284,3 +284,14 @@ $(function(){
 //         }
 //     });
 // });
+
+$( window ).resize(function() {
+    if ($(window).width() < 768) {
+      $(".serviceForms .consulting__button").text("Оставить заявку");
+    } else {
+        $(".serviceForms .consulting__button").text("Заказать консультацию");
+    }
+})
+    if ($(window).width() < 768) {
+        $(".serviceForms .consulting__button").text("Оставить заявку");
+      }

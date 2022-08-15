@@ -1,0 +1,104 @@
+.serviceOurService {
+    padding: 100px 0 0;
+    @include max-md {
+        padding: 35px 0 0;
+    }
+    &__content {
+    }
+    &__list {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        column-gap: 30px;
+        @include max-xl {
+            column-gap: 15px;
+        }
+        @include max-lg {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        @include max-md {
+            margin-top: 22px;
+        }
+        @include max-sm {
+            gap: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 138%;
+        color: #1f1f1f;
+        padding: 30px 20px;
+        width: 100%;
+        min-height: 239px;
+        position: relative;
+        background: #f5f3fe;
+        border-radius: 10px;
+        @include max-md {
+            min-height: 200px;
+        }
+        @include max-md {
+            margin-top: 10px;
+        }
+        @include max-sm {
+            min-height: 220px;
+        }
+    }
+    &__img_upper {
+        position: absolute;
+        z-index: 10;
+        border-radius: 120px 0 0 120px;
+        right: 0;
+        bottom: 15px;
+        max-width: 200px;
+        max-height: 100px;
+        object-fit: cover;
+        @include max-xl {
+            max-width: 150px;
+            max-height: 65px;
+        }
+        @include max-lg {
+            max-width: 250px;
+            max-height: 100px;
+        }
+        @include max-md {
+            max-width: 200px;
+            max-height: 70px;
+        }
+        @include max-sm {
+            max-width: 170px;
+            max-height: 120px;
+        }
+        @include max-ip {
+            max-width: 150px;
+            max-height: 100px;
+        }
+    }
+    &__img {
+        position: absolute;
+        z-index: 5;
+        right: 0;
+        bottom: 15px;
+        max-width: 135px;
+        @include max-xl {
+            max-width: 90px;
+        }
+        @include max-lg {
+            max-width: 150px;
+        }
+        @include max-md {
+            max-width: 90px;
+        }
+        @include max-sm {
+            max-width: 150px;
+            bottom: 0;
+        }
+        @include max-ip {
+            max-width: 130px;
+            bottom: 0;
+        }
+    }
+}

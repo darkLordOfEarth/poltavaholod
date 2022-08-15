@@ -1,0 +1,119 @@
+.requestingForm {
+    padding: 34px 26px 42px;
+    background: linear-gradient(92.59deg, #cc76ff -15.44%, #e1b2fc 139.56%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 35%;
+    width: 100%;
+    @include max-xl {
+        padding: 25px 20px 0;
+    }
+    @include max-md {
+        padding: 29px 24px 41px;
+    }
+    @include max-md {
+        max-width: initial;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 150%;
+        color: #ffffff;
+        text-align: center;
+        @include max-xl {
+            font-size: 22px;
+        }
+        @include max-md {
+            font-size: 26px;
+            line-height: 36px;
+        }
+    }
+    &__description {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 134%;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 18px;
+        @include max-md {
+            text-align: left;
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 4px;
+        }
+    }
+    & .consulting__input_label {
+        margin-top: 32px;
+        max-width: 300px;
+        width: 100%;
+        @include max-xl {
+            margin-top: 20px;
+        }
+        @include max-md {
+            max-width: initial;
+            margin-top: 0;
+        }
+    }
+    & .consulting__input_name {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #ffffff !important;
+        @include max-md {
+            font-size: 10px;
+            margin-top: 12px;
+        }
+    }
+    & .consulting__input {
+        max-width: 300px;
+        min-width: 300px;
+        margin: 12px 0 0 !important;
+        width: 100%;
+        @include max-xl {
+            min-width: 200px;
+        }
+        @include max-md {
+            max-width: initial;
+            margin-top: 9px;
+            padding: 13px 25px;
+        }
+    }
+    &__agree {
+        display: none;
+        @include max-md {
+            display: block;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+    }
+    &__button {
+        margin-top: 56px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 30px;
+        color: #1f1f1f;
+        padding: 15px 0;
+        background: #ffffff;
+        border-radius: 60px;
+        max-width: 300px;
+        width: 100%;
+        @include max-xl {
+            margin-top: 35px;
+        }
+        @include max-md {
+            max-width: initial;
+            margin-top: 17px;
+            font-size: 12px;
+            line-height: 30px;
+            padding: 12px 0;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<section class="serviceForms">
+    <div class="container">
+        <div class="serviceForms__content">
+            <div class="consulting__content">
+                <div class="blockTitle">Закажите консультацию</div>
+                <div class="consulting__description">В своём стремлении повысить качество жизни, они забывают, что сложившаяся структура организации обеспечивает широкому кругу </div>
+                <form action="#" class="consulting__form" method="get">
+                    <label class="consulting__input_label">
+                        <div class="consulting__input_name">Имя</div>
+                        <input type="text" name="name" class="consulting__input" placeholder="Андрей">
+                    </label>
+                    <label class="consulting__input_label">
+                        <div class="consulting__input_name">Телефон</div>
+                        <input type="tel" name="tel" class="consulting__input phone" placeholder="+7 (___) ___ - __ - __">
+                    </label>
+                    <label class="consulting__input_label">
+                        <div class="consulting__input_name">Email</div>
+                        <input type="email" name="email" class="consulting__input" placeholder="andrey@yandex.ru">
+                    </label>
+                    <div class="serviceForms__agree">Отправляя данную форму даю согласие на обработку персональных данных</div>
+                    <button type="button" class="consulting__button">Заказать консультацию</button>
+                </form>
+            </div>
+            {{> blocks / requestingForm}}
+        </div>
+    </div>
+</section>

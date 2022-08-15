@@ -1,0 +1,83 @@
+.serviceGaranty {
+    padding: 100px 0 0;
+    &__content {
+        padding: 47px 0 61px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        background: linear-gradient(92.11deg, #87b0f3 40.62%, #8bd5fb 149.43%);
+        @include max-xlmidle {
+            justify-content: flex-end;
+        }
+        @include max-lg {
+            padding: 40px 20px 55px;
+            justify-content: flex-end;
+        }
+        @include max-md {
+            flex-direction: column-reverse;
+            padding-bottom: 0;
+        }
+        @include max-sm {
+            padding: 28px 29px 0;
+        }
+    }
+    &__img {
+        position: absolute;
+        left: 50px;
+        bottom: -3px;
+        max-width: 420px;
+        @include max-xxl {
+            left: 0;
+        }
+        @include max-xl {
+            max-width: 400px;
+        }
+        @include max-lg {
+            max-width: 300px;
+            left: -20px;
+        }
+        @include max-md {
+            position: initial;
+        }
+    }
+    &__text {
+        max-width: 547px;
+        @include max-lg {
+            max-width: 450px;
+        }
+        @include max-md {
+            max-width: initial;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 150%;
+        color: #ffffff;
+        @include max-lg {
+            font-size: 32px;
+        }
+        @include max-sm {
+            font-size: 22px;
+            line-height: 32px;
+        }
+    }
+    &__description {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        color: #ffffff;
+        margin-top: 30px;
+        @include max-lg {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        @include max-sm {
+            font-size: 15px;
+            line-height: 20px;
+            margin-top: 8px;
+        }
+    }
+}

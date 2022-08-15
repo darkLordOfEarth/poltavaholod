@@ -1,4 +1,10 @@
 .payment {
+    @include max-xl {
+        padding: 50px 0 0;
+    }
+    @include max-lg {
+        margin-top: 0;
+    }
     &__content {
     }
     & .banner-non-cash {
@@ -27,5 +33,11 @@
         @include max-md {
             margin-bottom: 47px;
         }
+    }
+}
+
+.payment .sort-info__title_margin {
+    @include max-lg {
+        margin-top: 0;
     }
 }
