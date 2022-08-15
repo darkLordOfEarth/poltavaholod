@@ -295,3 +295,17 @@ $( window ).resize(function() {
     if ($(window).width() < 768) {
         $(".serviceForms .consulting__button").text("Оставить заявку");
       }
+
+
+$(".serviceCategory__item").on("click", function() {
+    $(this).parent().find(".serviceCategory__item").removeClass("serviceCategory__item_active");
+    $(this).addClass("serviceCategory__item_active");
+
+    let index = $(this).index();
+    $(".serviceCategory__result").removeClass("serviceCategory__result_active");
+    $(".serviceCategory__result").eq(index).addClass("serviceCategory__result_active");
+})
+
+$(".serviceProducts .product-card__favorite").on("click", function() {
+    $(this).toggleClass(".product-card__favorite_active");
+})
