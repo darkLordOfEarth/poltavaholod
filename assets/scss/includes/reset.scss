@@ -214,18 +214,30 @@ button {
 	overflow: hidden;
 }
 .border_active {
-	border: 1px solid #00D1BC !important;
+	border: 1px solid #00d1bc !important;
 }
 ::-webkit-scrollbar {
 	width: 0px;
-	background: rgba(255, 255, 255, 0.0);
-  }
-  .m-t_100 {
+	background: rgba(255, 255, 255, 0);
+}
+.m-t_100 {
 	margin-top: 100px;
 	@include max-md {
 		margin-top: 33px;
 	}
-  }
-  .bold {
+}
+.bold {
 	font-weight: bold;
-  }
+}
+.pageTitle {
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 150%;
+	color: #1f1f1f;
+	text-align: center;
+	@include max-md {
+		font-size: 22px;
+		line-height: 32px;
+		text-align: left;
+	}
+}

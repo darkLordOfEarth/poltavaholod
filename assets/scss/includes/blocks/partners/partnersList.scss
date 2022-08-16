@@ -1,0 +1,118 @@
+.partnersList {
+    background: #f5f3fe;
+    border-radius: 40px;
+    width: 100%;
+    padding: 60px 20px;
+    @include max-lg {
+        padding: 35px 20px;
+    }
+    @include max-md {
+        padding: 24px 20px 30px;
+    }
+    &__list {
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 67px 41px 66px 61px;
+        background: #ffffff;
+        border-radius: 20px;
+        max-width: 1369px;
+        margin: 0 auto;
+        @include max-xxxl {
+            max-width: 1069px;
+        }
+        @include max-xl {
+            padding: 50px 30px;
+            justify-content: space-between;
+        }
+        @include max-md {
+            flex-direction: column;
+            padding: 27px 29px;
+            align-items: flex-start;
+        }
+    }
+    &__item:not(:first-child) {
+        margin-top: 18px;
+        @include max-md {
+            margin-top: 12px;
+        }
+    }
+    &__item-logo {
+        max-width: 238px;
+        @include max-xl {
+            max-width: 180px;
+        }
+        @include max-lg {
+            max-width: 150px;
+        }
+        @include max-md {
+            max-width: 129px;
+        }
+    }
+    &__item-text {
+        margin: 0 55px 0 31px;
+        max-width: 710px;
+        @include max-xxxl {
+            max-width: 410px;
+        }
+        @include max-xl {
+            margin: 0 30px;
+        }
+        @include max-lg {
+            margin: 0 20px;
+            max-width: calc(100% - 385px);
+        }
+        @include max-md {
+            max-width: initial;
+            margin: 18px 0 0;
+        }
+    }
+    &__item-brand {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        color: #1f1f1f;
+        @include max-md {
+            font-size: 16px;
+        }
+    }
+    &__item-description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: #1f1f1f;
+        margin-top: 8px;
+        @include max-md {
+            margin-top: 4px;
+            font-size: 13px;
+            line-height: 18px;
+        }
+    }
+    &__item-link {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 150%;
+        padding: 17px 35px;
+        background: #5a37e9;
+        border-radius: 44px;
+        color: #ffffff;
+        @include max-xl {
+            font-size: 16px;
+            padding: 13px 25px;
+        }
+        @include max-lg {
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+        @include max-md {
+            font-size: 14px;
+            line-height: 30px;
+            color: #5a37e9;
+            margin-top: 11px;
+            padding: 0;
+            background: none;
+        }
+    }
+}
