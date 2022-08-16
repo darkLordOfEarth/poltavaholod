@@ -18,6 +18,10 @@
         align-items: flex-start;
         margin-top: 10px;
     }
+    & form {
+        display: flex;
+        flex-direction: column;
+    }
     &__title {
         font-weight: 700;
         font-size: 24px;

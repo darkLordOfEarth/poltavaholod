@@ -27,6 +27,7 @@
 @import './includes/blocks/banners/wmsBanner.scss';
 @import './includes/blocks/banners/non_cash.scss';
 @import './includes/blocks/banners/banner_personal_solution.scss';
+@import './includes/blocks/banners/bannerFixedPrice.scss';
 
 //categoryWall
 @import './includes/blocks/categoryWall/categoryWall.scss';
@@ -122,6 +123,15 @@
 @import './includes/blocks/serviceCenter/serviceCategory.scss';
 @import './includes/blocks/serviceCenter/serviceProducts.scss';
 @import './includes/blocks/serviceCenter/serviceProposal.scss';
+
+//attendancePage
+@import './includes/blocks/attendancePage/attendancePage.scss';
+
+//contacts
+@import './includes/blocks/contacts/contacts.scss';
+
+//blog
+@import './includes/blocks/blog/blog.scss';
 
 
 

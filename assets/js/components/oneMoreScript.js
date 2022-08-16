@@ -309,3 +309,32 @@ $(".serviceCategory__item").on("click", function() {
 $(".serviceProducts .product-card__favorite").on("click", function() {
     $(this).toggleClass(".product-card__favorite_active");
 })
+
+
+// function initMap() {
+//     var Kiev= {lat: 50.4501, lng: 30.5234};
+//     var map = new google.maps.Map(document.getElementById('googleMap'), {
+//       zoom: 10,
+//       center: Kiev
+//     });
+//     var marker = new google.maps.Marker({
+//       position: Kiev,
+//       map: map
+//     });
+//   }
+
+  function myMap() {
+    var mapCanvas = document.getElementById("googleMap");
+    var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.2),
+        zoom: 10
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+
+$(".blog__item").on("mouseover", function() {
+    $(this).find(".blog__item-link").addClass("blog__item-link_active");
+})
+$(".blog__item").on("mouseleave", function() {
+    $(this).find(".blog__item-link").removeClass("blog__item-link_active");
+})

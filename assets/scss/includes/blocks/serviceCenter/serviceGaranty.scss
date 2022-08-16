@@ -1,5 +1,8 @@
 .serviceGaranty {
     padding: 100px 0 0;
+    @include max-md {
+        padding: 37px 0 0;
+    }
     &__content {
         padding: 47px 0 61px;
         position: relative;
