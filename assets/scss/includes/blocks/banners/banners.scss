@@ -8,6 +8,9 @@
     & .owl-dots {
         display: block !important;
     }
+    & .owl-carousel.owl-loaded {
+        display: inline-grid;
+    }
     &__top {
         display: flex;
         justify-content: space-between;
@@ -16,6 +19,30 @@
         }
         & .owl-stage-outer {
             border-radius: 20px;
+            width: 100%;
+            @include max-xl {
+                max-height: 350px;
+            }
+            @include max-lg {
+                max-height: 400px;
+            }
+            @include max-md {
+                max-height: initial;
+            }
+        }
+        & .owl-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+        }
+        & .owl-dot.active {
+            background-color: #fff;
+        }
+        & .owl-dots button {
+            width: 50px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            margin-right: 10px;
         }
     }
     &__slider {
@@ -41,10 +68,10 @@
         }
     }
     &__slider1 {
-        background-color: #2f8b9d;
+        background-image: linear-gradient(120deg, #506794 0%, #53989d 100%);
         position: relative;
         padding: 40px 55px 20px;
-        min-height: 407px;
+        min-height: 410px;
         @include max-xl {
             padding: 40px 0 20px 55px;
         }
@@ -59,10 +86,20 @@
             position: absolute;
             right: 0;
             bottom: 0;
+            z-index: 10;
             @include max-xl {
+                top: 23%;
+                width: calc(150px + (500 - 150) * ((100vw - 375px) / (1920 - 375)));
+            }
+            @include max-lg {
+                top: initial;
+                bottom: 0;
+            }
+            @include max-md {
                 position: initial;
                 margin-right: 0;
                 margin-left: auto;
+                width: calc(250px + (500 - 250) * ((100vw - 375px) / (1920 - 375)));
             }
         }
         &__title {
@@ -77,6 +114,7 @@
             line-height: 18px;
             font-weight: 600;
             color: #fff;
+            text-transform: uppercase;
         }
         &__price {
             margin-top: 18px;
@@ -84,9 +122,23 @@
             font-size: calc(22px + (32 - 22) * ((100vw - 375px) / (1920 - 375)));
             line-height: 18px;
             color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        &__price::before {
+            content: "";
+            background-image: url(../images/label.png);
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: block;
+            margin-right: 10px;
         }
         & .discover {
             margin-top: 62px;
+            position: relative;
+            z-index: 20;
         }
     }
 
@@ -97,8 +149,15 @@
         background-color: #f5f3fe;
         position: relative;
         border-radius: 20px;
+        max-height: 410px;
         @include xxxl {
             max-width: 650px;
+        }
+        @include max-xl {
+            max-height: 350px;
+        }
+        @include max-lg {
+            max-height: 400px;
         }
         @include max-md {
             margin-top: 16px;
@@ -144,6 +203,9 @@
                 padding: 10px 20px;
                 font-size: 12px;
             }
+            @include max-xl {
+                margin-top: 25px;
+            }
         }
         &_img {
             position: absolute;
@@ -154,17 +216,17 @@
                 right: 20%;
                 width: calc(160px + (225 - 160) * ((100vw - 375px) / (1920 - 375)));
             }
-            @include max-xl {
-                left: 0;
-                margin: auto;
-                width: calc(135px + (190 - 135) * ((100vw - 375px) / (1920 - 375)));
-            }
+            // @include max-xl {
+            //     left: 0;
+            //     margin: auto;
+            //     width: calc(135px + (190 - 135) * ((100vw - 375px) / (1920 - 375)));
+            // }
             @include max-md {
-                left: 200px;
+                right: 20px;
                 width: calc(130px + (190 - 130) * ((100vw - 375px) / (1920 - 375)));
             }
             @include max-iph {
-                left: 160px;
+                right: 10px;
             }
         }
     }
@@ -251,4 +313,11 @@
             }
         }
     }
+}
+.slider1_bg {
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
