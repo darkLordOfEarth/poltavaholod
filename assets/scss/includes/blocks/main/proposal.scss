@@ -26,13 +26,14 @@
                 display: flex;
                 &-outer {
                     overflow: hidden;
-                    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                    //box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
                 }
             }
             & .active {
                 margin-left: -50px;
                 border-radius: 20px;
                 box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+               
             }
             & .active .proposal__item {
                 background-color: #fff;
@@ -142,4 +143,7 @@
             }
         }
      }
+}
+.proposal__content_mobile .owl-stage-outer {
+    border-radius: 20px 0 0 20px;
 }
