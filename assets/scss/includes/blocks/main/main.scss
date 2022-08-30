@@ -1,0 +1,164 @@
+.main {
+    background-image: url(../images/main_bg.png);
+    position: relative;
+    background-size: cover;
+    @include max-md {
+        background-position: center;
+    }
+    &__bg_grey {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        width: 100%;
+        height: 100.5%;
+        pointer-events: none;
+        z-index: 0;
+    }
+    &__content {
+        padding: 148px 0 233px;
+        position: relative;
+        z-index: 5;
+        @include max-xxl {
+            padding: 130px 0 200px;
+        }
+        @include max-lg {
+            padding: 70px 0 100px;
+        }
+    }
+    &__logo_mobile {
+        max-width: 289px;
+        margin: 17px auto 0;
+        display: none;
+        @include max-md {
+            display: block;
+        }
+        @include max-sm {
+            max-width: 230px;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 96px;
+        line-height: 128px;
+        color: #ffffff;
+        @include max-xxl {
+            font-size: 70px;
+            line-height: 60px;
+        }
+        @include max-lg {
+            font-size: 50px;
+            line-height: 40px;
+        }
+        @include max-md {
+            display: none;
+        }
+        & span {
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 64px;
+            color: #ffffff;
+            border-bottom: 4px solid #ff9900;
+            @include max-xxl {
+                font-size: 30px;
+            }
+            @include max-lg {
+                font-size: 20px;
+            }
+        }
+    }
+    &__description {
+        margin-top: 15px;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 182.9%;
+        letter-spacing: 0.105em;
+        color: #ffffff;
+        text-transform: uppercase;
+        @include max-xxl {
+            font-size: 18px;
+            line-height: 30px;
+        }
+        @include max-lg {
+            font-size: 14px;
+            line-height: 22px;
+            margin-top: 0;
+        }
+        @include max-md {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 14px;
+            width: fit-content;
+            margin: 23px auto 0;
+            text-transform: initial;
+        }
+        @include max-sm {
+            font-size: 20px;
+            padding-bottom: 7px;
+            margin-top: 15px;
+        }
+        @include max-iph {
+            font-size: 18px;
+            padding-bottom: 4px;
+        }
+    }
+    &__button {
+        font-weight: 500;
+        font-size: 29px;
+        line-height: 140.9%;
+        text-align: center;
+        color: #ffffff;
+        background: #f0821b;
+        border-radius: 30px;
+        padding: 10px 50px;
+        margin-top: 66px;
+        @include max-xxl {
+            font-size: 25px;
+            line-height: 35px;
+        }
+        @include max-lg {
+            font-size: 20px;
+            line-height: 30px;
+            padding: 8px 40px;
+            margin-top: 35px;
+        }
+        @include max-md {
+            background: #02bb4c;
+            margin: 25px auto 0;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 140.9%;
+            color: #ffffff;
+            display: block;
+            max-width: 220px;
+            width: 100%;
+            padding: 10px 0;
+            box-shadow: #02bb4c -1px 1px 7px 7px;
+        }
+        @include max-sm {
+            font-size: 16px;
+        }
+    }
+    &__button_phone {
+        display: none;
+        @include max-md {
+            display: block;
+            margin-top: 72px;
+        }
+        @include max-sm {
+            margin-top: 42px;
+
+        }
+    }
+    &__button_text {
+        @include max-md {
+            display: block;
+            margin-top: 40px;
+        }
+        @include max-sm {
+            margin-top: 30px;
+        }
+    }
+}

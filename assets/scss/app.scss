@@ -7,138 +7,19 @@
 
 //header
 @import './includes/blocks/header/header.scss';
-@import './includes/blocks/header/logo.scss';
-@import './includes/blocks/header/burger.scss';
-@import './includes/blocks/header/menu.scss';
-@import './includes/blocks/header/contact.scss';
-
-//filter
-@import './includes/blocks/filter/filter.scss';
 
 //main
-@import './includes/blocks/main/proposal.scss';
+@import './includes/blocks/main/main.scss';
 
 //footer
 @import './includes/blocks/footer/footer.scss';
 
-//banners
-@import './includes/blocks/banners/banners.scss';
-@import './includes/blocks/banners/discover.scss';
-@import './includes/blocks/banners/wmsBanner.scss';
-@import './includes/blocks/banners/non_cash.scss';
-@import './includes/blocks/banners/banner_personal_solution.scss';
-@import './includes/blocks/banners/bannerFixedPrice.scss';
+//experience
+@import './includes/blocks/experience/experience.scss';
 
-//categoryWall
-@import './includes/blocks/categoryWall/categoryWall.scss';
+//whyUs
+@import './includes/blocks/whyUs/whyUs.scss';
 
-//products
-@import './includes/blocks/product/ourProducts.scss';
-@import './includes/blocks/product/product.scss';
-
-//brands
-@import './includes/blocks/brands/brands.scss';
-
-//progress
-@import './includes/blocks/ourProgress/ourProgress.scss';
-
-//geografic
-@import './includes/blocks/geografic/geografic.scss';
-
-//ourServices
-@import './includes/blocks/ourServices/ourServices.scss';
-
-//consulting
-@import './includes/blocks/consulting/consulting.scss';
-
-//automatization
-@import './includes/blocks/automatization/automatization.scss';
-@import './includes/blocks/automatization/justification.scss';
-
-//category
-@import './includes/blocks/category/category.scss';
-@import './includes/blocks/category/sort.scss';
-@import './includes/blocks/category/polzunok.scss';
-@import './includes/blocks/category/sort_info.scss';
-
-//question
-@import './includes/blocks/question/question.scss';
-
-//stage
-@import './includes/blocks/stage/stage.scss';
-
-//modules
-@import './includes/blocks/modules/latest_view.scss';
-
-//characteristics
-@import './includes/blocks/characteristics/characteristics.scss';
-
-//files
-@import './includes/blocks/files/files.scss';
-
-//manager
-@import './includes/blocks/manager/manager.scss';
-
-//productInfo
-@import './includes/blocks/productInfo/productInfo.scss';
-@import './includes/blocks/productInfo/productDuplicates.scss';
-
-//checkout
-@import './includes/blocks/checkout/checkoutPage.scss';
-@import './includes/blocks/checkout/checkoutProducts.scss';
-@import './includes/blocks/checkout/checkoutCard.scss';
-@import './includes/blocks/checkout/checkoutDestination.scss';
-@import './includes/blocks/checkout/checkoutAddress.scss';
-@import './includes/blocks/checkout/checkoutPayMethod.scss';
-
-//delivery
-@import './includes/blocks/delivery/delivery.scss';
-@import './includes/blocks/delivery/deliveryTabs.scss';
-@import './includes/blocks/delivery/deliveryInfo.scss';
-@import './includes/blocks/delivery/deliverySimple.scss';
-
-
-//payment
-@import './includes/blocks/payment/payment.scss';
-
-//favorites
-@import './includes/blocks/favorites/favorites.scss';
-
-//compare
-@import './includes/blocks/compare/compare.scss';
-
-//wmsSystem
-@import './includes/blocks/wmsSystem/wmsSystem.scss';
-
-//wmsSystem
-@import './includes/blocks/requestingForm/requestingForm.scss';
-
-//ourServiceCenter
-@import './includes/blocks/serviceCenter/ourServiceCenter.scss';
-@import './includes/blocks/serviceCenter/serviceOurService.scss';
-@import './includes/blocks/serviceCenter/servicePlus.scss';
-@import './includes/blocks/serviceCenter/serviceGaranty.scss';
-@import './includes/blocks/serviceCenter/serviceForms.scss';
-@import './includes/blocks/serviceCenter/serviceNews.scss';
-@import './includes/blocks/serviceCenter/serviceCategory.scss';
-@import './includes/blocks/serviceCenter/serviceProducts.scss';
-@import './includes/blocks/serviceCenter/serviceProposal.scss';
-
-//attendancePage
-@import './includes/blocks/attendancePage/attendancePage.scss';
-
-//contacts
-@import './includes/blocks/contacts/contacts.scss';
-
-//blog
-@import './includes/blocks/blog/blog.scss';
-
-//partners
-@import './includes/blocks/partners/partners.scss';
-@import './includes/blocks/partners/partnersList.scss';
-
-//policy
-@import './includes/blocks/policy/policy.scss';
 
 
 

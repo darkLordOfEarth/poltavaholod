@@ -102,8 +102,8 @@ section {
 	display: block;
 }
 body {
-	line-height: 1;
-	font-family: "Montserrat";
+	
+	font-family: 'Exo', sans-serif;
 }
 ol,
 ul {
@@ -134,6 +134,7 @@ a {
 button {
 	border: none;
 	padding: 0;
+	background: none;
 }
 .form-control {
 	padding: 0;
@@ -158,35 +159,35 @@ button {
 }
 .container {
 	max-width: initial;
-	padding: 0 80px;
+	padding: 0 80px 0 120px;
 	@include max-xxl {
 		max-width: 1440px;
 		width: 100%;
 		margin: 0 auto;
-		padding: 0 80px;
+		padding: 0 40px;
 	}
 	@include max-lg {
-		padding: 0 50px;
-	}
-	@include max-sm {
 		padding: 0 20px;
 	}
+	// @include max-sm {
+	// 	padding: 0 20px;
+	// }
 }
-.owl-carousel .owl-stage-outer {
-	max-width: calc(300px + (1080 - 300) * ((100vw - 375px) / (1920 - 375)));
-	@include max-xxl {
-		max-width: calc(300px + (1088 - 300) * ((100vw - 375px) / (1920 - 375)));
-	}
-	@include max-xl {
-		max-width: calc(135px + (1080 - 135) * ((100vw - 375px) / (1920 - 375)));
-	}
-	@include max-lg {
-		max-width: calc(80px + (1080 - 80) * ((100vw - 375px) / (1920 - 375)));
-	}
-	@include max-md {
-		max-width: 100%;
-	}
-}
+// .owl-carousel .owl-stage-outer {
+// 	max-width: calc(300px + (1080 - 300) * ((100vw - 375px) / (1920 - 375)));
+// 	@include max-xxl {
+// 		max-width: calc(300px + (1088 - 300) * ((100vw - 375px) / (1920 - 375)));
+// 	}
+// 	@include max-xl {
+// 		max-width: calc(135px + (1080 - 135) * ((100vw - 375px) / (1920 - 375)));
+// 	}
+// 	@include max-lg {
+// 		max-width: calc(80px + (1080 - 80) * ((100vw - 375px) / (1920 - 375)));
+// 	}
+// 	@include max-md {
+// 		max-width: 100%;
+// 	}
+// }
 .blockTitle {
 	font-weight: 700;
 	font-size: 38px;
@@ -240,4 +241,12 @@ button {
 		line-height: 32px;
 		text-align: left;
 	}
+}
+.btn__next {
+	width: 13px;
+	position: absolute;
+	right: 30px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
 }
