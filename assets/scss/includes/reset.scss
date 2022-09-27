@@ -102,8 +102,7 @@ section {
 	display: block;
 }
 body {
-	
-	font-family: 'Exo', sans-serif;
+	font-family: "Raleway", sans-serif;
 }
 ol,
 ul {
@@ -158,36 +157,32 @@ button {
 	transform: rotateZ(180deg);
 }
 .container {
-	max-width: initial;
-	padding: 0 80px 0 120px;
-	@include max-xxl {
-		max-width: 1440px;
-		width: 100%;
-		margin: 0 auto;
-		padding: 0 40px;
+	max-width: 1440px;
+	margin: auto;
+	padding: 0 133px 0 135px;
+	// @include max-xxl {
+	// 	max-width: 1440px;
+	// 	width: 100%;
+	// 	margin: 0 auto;
+	// 	padding: 0 40px;
+	// }
+	@include max-xl {
+		padding: 0 35px;
 	}
-	@include max-lg {
-		padding: 0 20px;
+	@include max-md {
+		padding: 0 15px;
 	}
 	// @include max-sm {
 	// 	padding: 0 20px;
 	// }
 }
-// .owl-carousel .owl-stage-outer {
-// 	max-width: calc(300px + (1080 - 300) * ((100vw - 375px) / (1920 - 375)));
-// 	@include max-xxl {
-// 		max-width: calc(300px + (1088 - 300) * ((100vw - 375px) / (1920 - 375)));
-// 	}
-// 	@include max-xl {
-// 		max-width: calc(135px + (1080 - 135) * ((100vw - 375px) / (1920 - 375)));
-// 	}
-// 	@include max-lg {
-// 		max-width: calc(80px + (1080 - 80) * ((100vw - 375px) / (1920 - 375)));
-// 	}
-// 	@include max-md {
-// 		max-width: 100%;
-// 	}
-// }
+.owl-stage-outer {
+	overflow: hidden;
+}
+.owl-stage {
+	display: flex;
+	align-items: center;
+}
 .blockTitle {
 	font-weight: 700;
 	font-size: 38px;
@@ -212,10 +207,24 @@ button {
 	position: absolute;
 }
 .active {
-	overflow: hidden;
+	// overflow: hidden;
 }
 .border_active {
 	border: 1px solid #00d1bc !important;
+}
+.custom-button {
+	background: #c17465;
+	border-radius: 5px;
+	color: #fff;
+}
+.row-rewerse {
+	flex-direction: row-reverse;
+}
+.opacity0 {
+	opacity: 0;
+}
+.catalog__active {
+	margin-top: 11px !important;
 }
 ::-webkit-scrollbar {
 	width: 0px;

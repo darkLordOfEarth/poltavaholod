@@ -1,7 +1,34 @@
-$('.whyUs__wrapper-slider').owlCarousel({
+$('.header-bottom__category').owlCarousel({
+    loop:true,
+    nav:true,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:3
+        },
+        576:{
+            items:5
+        },
+        1400:{
+            items:7
+        }
+    }
+});
+$(".header-bottom__category-button").on("click", ()=> {
+    $(".header-bottom__category .owl-next").click();
+});
+
+
+$('.banners__slider').owlCarousel({
     loop:true,
     margin:10,
-    nav:true,
+    nav:false,
     mouseDrag:true,
     touchDrag: true,
     pullDrag:false,
@@ -21,5 +48,3 @@ $('.whyUs__wrapper-slider').owlCarousel({
         }
     }
 })
-
-
