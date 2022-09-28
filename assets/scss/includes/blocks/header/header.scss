@@ -133,7 +133,7 @@
     &__count {
         position: absolute;
         top: 0;
-        right: -7px;
+        right: -2px;
         font-weight: 400;
         font-size: 7px;
         line-height: 8px;
@@ -385,6 +385,9 @@
             &-button {
                 text-align: center;
                 cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 & img {
                     width: 13px;
                 }

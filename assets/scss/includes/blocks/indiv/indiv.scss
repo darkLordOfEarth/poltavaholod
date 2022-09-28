@@ -1,0 +1,124 @@
+.indiv {
+    padding: 80px 0 0;
+    &__content {
+        padding: 21px 0 46px 29px;
+        background: #f7f8fa;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        @include max-md {
+            flex-direction: column-reverse;
+            padding: 18px 10px 28px;
+        }
+    }
+    &__info {
+    }
+    & .sectionTitle {
+        
+        @include max-lg {
+            width: 150%;
+            font-size: 28px;
+        }
+        @include max-md {
+            display: none;
+            width: 100%;
+        }
+        &_mobile {
+            display: none;
+            @include max-md {
+                display: block;
+                margin-top: 62px;
+                font-size: 24px;
+            }
+        }
+    }
+    &__description {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        margin-top: 21px;
+        color: #555555;
+        max-width: 64%;
+        @include max-lg {
+            max-width: 100%;
+        }
+        @include max-md {
+            margin-top: 14px;
+            display: none;
+        }
+        &_mobile {
+            display: none;
+            @include max-md {
+                display: block;
+            }
+        }
+    }
+    &__form {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        column-gap: 31px;
+        @include max-lg {
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: 15px;
+        }
+        @include max-md {
+            row-gap: 11px;
+        }
+    }
+    &__input {
+        background: #ffffff;
+        border: 1px solid #d8d8d8;
+        border-radius: 5px;
+        padding: 15px 20px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        @include max-lg {
+            width: 100%;
+        }
+        @include max-md {
+            padding-left: 29px;
+        }
+        &::placeholder {
+            color: #cccccc;
+        }
+    }
+    & .custom-button {
+        padding: 15px 28px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        @include max-lg {
+            width: 100%;
+        }
+        @include max-md {
+            display: none;
+        }
+        &_mobile {
+            display: none;
+            @include max-md {
+                display: block;
+                background: #ED8774;
+            }
+        }
+    }
+    &__agree {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #000000;
+        margin-top: 15px;
+    }
+    &__image {
+        max-width: 584px;
+        @include max-xxl {
+            max-width: 530px;
+        }
+        @include max-xlmidle {
+            max-width: 400px;
+        }
+    }
+}

@@ -18,20 +18,51 @@ $(".header-bottom__custom-button").click(function() {
     $(".main__example").toggleClass("hide");
     $(".banners__slider ").toggleClass("active");
     $(".banners__slider .owl-item.active").toggleClass("full");
+    $(".service").toggleClass("active");
 });
 
+$(".popular__aside-link").click(function() {
+    $(this).parent().parent().find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+    let index = $(this).parent().index();
+    $(".popular__aside-nav").find(".active").removeClass("active");
+    $(".popular__aside-nav span").eq(index).addClass("active");
+})
+$(".popular__aside-nav span").click(function() {
+    $(this).parent().find(".active").removeClass("active");
+    $(this).addClass("active");
+    let index = $(this).index();
+    $(".popular__aside-list").find(".active").removeClass("active");
+    $(".popular__aside-item").eq(index).addClass("active");
+})
 
 
+//  $(".product__icon_refresh").click( function() {
+//     $(this).find("img").css("transform", "rotateZ(3600deg)");
+//     $(this).find("img").css("transition", "1s");
+//     setTimeout('$(".product__icon_refresh img").css("transform", "rotateZ(0deg)")', 300)
+    
+//  })
 
-if ($(window).width() < 768) {
-    $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
-}
-$( window ).resize(function() {
-    if ($(window).width() < 768) {
-        $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
-    }
-    else {
 
-        $(".whyUs__wrapper").removeClass("whyUs__wrapper-slider");
-    }
-  });
+// $(".product").mouseenter( function() {
+    
+//     $(this).find(".product__bottom").slideToggle();
+// })
+// $(".product").mouseleave( function() {
+    
+//     $(this).find(".product__bottom").slideToggle();
+// })
+
+// if ($(window).width() < 768) {
+//     $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
+// }
+// $( window ).resize(function() {
+//     if ($(window).width() < 768) {
+//         $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
+//     }
+//     else {
+
+//         $(".whyUs__wrapper").removeClass("whyUs__wrapper-slider");
+//     }
+//   });

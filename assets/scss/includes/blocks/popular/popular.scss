@@ -1,0 +1,91 @@
+.popular {
+    padding: 75px 0 0;
+    @include max-md {
+        padding: 46px 0 0;
+    }
+    &__content {
+        padding: 66px 0 0;
+        display: flex;
+        justify-content: space-between;
+        @include max-md {
+            padding: 37px 0 0;
+            flex-direction: column;
+        }
+    }
+    &__aside {
+        margin-right: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        @include max-lg {
+            margin-right: 50px;
+        }
+        @include max-md {
+            margin-right: 0;
+        }
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+            @include max-md {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        &-item {
+            &.active .popular__aside-link {
+                color: #C17465;
+            }
+        }
+        &-link {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 28px;
+            color: #c2c2c2;
+            @include max-lg {
+                font-size: 21px;
+            }
+            &:hover {
+                color: #C17465;
+            }
+        }
+        &-nav {
+            display: flex;
+            align-items: center;
+            column-gap: 14px;
+            @include max-md {
+                display: none;
+            }
+            & span {
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                border: 4px solid #CCCCCC;
+                background: #fff;
+                display: block;
+                position: relative;
+                &.active {
+                    border: 4px solid #C17465;
+                }
+            }
+            & span::after {
+                content: "";
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #CCCCCC;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            & span.active::after {
+                background: #C17465;
+            }
+        }
+    }
+    
+}

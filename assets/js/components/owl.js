@@ -47,4 +47,28 @@ $('.banners__slider').owlCarousel({
             items:1
         }
     }
+});
+
+$('.products').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:false,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        450:{
+            items:2
+        },
+        576:{
+            items:3
+        }
+    }
 })
