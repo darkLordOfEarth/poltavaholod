@@ -27,14 +27,25 @@ $(".popular__aside-link").click(function() {
     let index = $(this).parent().index();
     $(".popular__aside-nav").find(".active").removeClass("active");
     $(".popular__aside-nav span").eq(index).addClass("active");
-})
+});
 $(".popular__aside-nav span").click(function() {
     $(this).parent().find(".active").removeClass("active");
     $(this).addClass("active");
     let index = $(this).index();
     $(".popular__aside-list").find(".active").removeClass("active");
     $(".popular__aside-item").eq(index).addClass("active");
-})
+});
+
+
+    $(".news__next").click(function() {
+        $(".news__content .owl-next").click();
+    });
+    $(".reviews__nav_prev").click(function() {
+        $(".reviews__list  .owl-prev").click();
+    });
+    $(".reviews__nav_next").click(function() {
+        $(".reviews__list  .owl-next").click();
+    });
 
 
 //  $(".product__icon_refresh").click( function() {

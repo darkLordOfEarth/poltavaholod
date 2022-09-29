@@ -71,4 +71,75 @@ $('.products').owlCarousel({
             items:3
         }
     }
-})
+});
+
+$('.news__content').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:true,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:false,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        450:{
+            items:1
+        },
+        768:{
+            items:1
+        }
+    }
+});
+$('.news__list_mobile').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:true,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        450:{
+            items:1
+        },
+        768:{
+            items:1
+        }
+    }
+});
+$('.reviews__list').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:true,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        768:{
+            items:2,
+            margin:30
+        },
+        992:{
+            items:3
+        }
+    }
+});
