@@ -21,12 +21,13 @@ $(".header-bottom__custom-button").click(function() {
     $(".service").toggleClass("active");
 });
 
-$(".popular__aside-link").click(function() {
+$(".popular__aside-link").click(function(e) {
     $(this).parent().parent().find(".active").removeClass("active");
     $(this).parent().addClass("active");
     let index = $(this).parent().index();
     $(".popular__aside-nav").find(".active").removeClass("active");
     $(".popular__aside-nav span").eq(index).addClass("active");
+    e.preventDefault();
 });
 $(".popular__aside-nav span").click(function() {
     $(this).parent().find(".active").removeClass("active");

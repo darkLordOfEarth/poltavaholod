@@ -70,7 +70,7 @@
             }
         }
         & .owl-dots {
-            @include max-md {
+            // @include max-md {
                 display: flex;
                 column-gap: 14px;
                 margin-top: 39px;
@@ -107,7 +107,7 @@
                 & .owl-dot.active span {
                         border: 4px solid #C17465;
                 }
-            }
+            //}
         }
     }
     &__item {

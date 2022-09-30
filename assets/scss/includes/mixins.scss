@@ -1,7 +1,9 @@
 $ip: 365px;
 $iph: 375px;
 $sm: 576px;
+$col: 610px;
 $md: 768px;
+$tab: 850px;
 $lg: 992px;
 $xl: 1200px;
 $xlmidle: 1300px;
@@ -38,8 +40,20 @@ $xxxl: 1570px;
   }
 }
 
+@mixin col {
+  @media (min-width: #{$col}) {
+    @content;
+  }
+}
+
 @mixin md {
   @media (min-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (min-width: #{$tab}) {
     @content;
   }
 }
@@ -89,8 +103,20 @@ $xxxl: 1570px;
   }
 }
 
+@mixin max-col {
+  @media (max-width: #{$col}) {
+    @content;
+  }
+}
+
 @mixin max-md {
   @media (max-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin max-tab {
+  @media (max-width: #{$tab}) {
     @content;
   }
 }

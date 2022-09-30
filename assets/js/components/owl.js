@@ -122,6 +122,7 @@ $('.news__list_mobile').owlCarousel({
 $('.reviews__list').owlCarousel({
     loop:true,
     margin:15,
+    items:3,
     nav:true,
     mouseDrag:true,
     touchDrag: true,
