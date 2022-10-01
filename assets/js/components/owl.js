@@ -144,3 +144,20 @@ $('.reviews__list').owlCarousel({
         }
     }
 });
+
+$('.slider-category').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: false,
+    asNavFor: '.slider-category-nav'
+  });
+  $('.slider-category-nav').slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    asNavFor: '.slider-category',
+    dots: true,
+    centerMode: true,
+    centerPadding: '0',
+    focusOnSelect: true
+  });

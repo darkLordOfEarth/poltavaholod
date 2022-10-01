@@ -1,0 +1,84 @@
+.categorySlider {
+    padding: 37px 0 0;
+    &__content {
+    }
+    &__top {
+        position: relative;
+        &-text {
+            position: absolute;
+            top: 43px;
+            left: 49px;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 25px;
+            color: #ffffff;
+            z-index: 20;
+            @include max-md {
+                font-size: 14px;
+                line-height: 14px;
+            }
+        }
+    }
+    & .slider-category {
+        width: 100%;
+        max-height: 382px;
+        & img {
+            object-fit: cover;
+        }
+        & .slick-slide {
+            position: relative;
+        }
+    }
+    &__bottom {
+        margin-top: 20px;
+        position: relative;
+        &-btns {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -35px;
+            right: -35px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            & img {
+                width: 13px;
+                height: 22px;
+                cursor: pointer;
+            }
+            & img:first-child {
+                transform: rotateZ(180deg);
+            }
+        }
+    }
+    & .slider-category-nav {
+        display: flex;
+        column-gap: 20px;
+        &-group {
+            display: flex;
+            flex-direction: column;
+            margin: 0 30px 0 0;
+            & img {
+                background: #ffffff;
+                border: 1px solid #eaeaea;
+                border-radius: 5px;
+                max-width: 196px;
+                max-height: 94px;
+                object-fit: contain;
+                padding: 10px;
+            }
+            & span {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 19px;
+                text-align: center;
+                color: #555555;
+                margin-top: 11px;
+            }
+        }
+        // & .slick-center {
+        //     border: 1px solid #c17465;
+        // }
+    }
+}

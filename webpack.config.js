@@ -70,28 +70,28 @@ module.exports = {
         "./assets/data/browserconfig.xml",
         "./assets/data/manifest.json",
         {
-          from: './assets/libs/jquery.maskedinput.js',
-          to: './js/jquery.maskedinput.js'
+          from: './assets/libs/slick/*.js',
+          to: './js/slick/[name].js'
       },
         {
-          from: './assets/libs/jqueryUiTouchPunch.js',
-          to: './js/jqueryUiTouchPunch.js'
+          from: './assets/libs/slick/*.css',
+          to: './css/slick/[name].css'
       },
         {
-          from: './assets/libs/jqueryUi.js',
-          to: './js/jqueryUi.js'
+          from: './assets/libs/slick/*.gif',
+          to: './css/slick/[name].gif'
       },
         {
-          from: './assets/libs/owlcarousel/owl.carousel.min.js',
-          to: './js/owlcarousel/owl.carousel.min.js'
+          from: './assets/libs/*.js',
+          to: './js/[name].js'
       },
         {
-          from: './assets/libs/owlcarousel/owl.carousel.min.css',
-          to: './js/owlcarousel/owl.carousel.min.css'
+          from: './assets/libs/owlcarousel/*.js',
+          to: './js/owlcarousel/[name].js'
       },
         {
-          from: './assets/libs/owlcarousel/owl.theme.default.min.css',
-          to: './js/owlcarousel/owl.theme.default.min.css'
+          from: './assets/libs/owlcarousel/*.css',
+          to: './css/owlcarousel/[name].css'
       },
         {
           from: './assets/images',

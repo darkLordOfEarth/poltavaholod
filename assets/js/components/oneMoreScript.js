@@ -49,6 +49,14 @@ $(".popular__aside-nav span").click(function() {
     });
 
 
+    $(".categorySlider__bottom-btns img:first-child").click(function() {
+        $(".slick-prev").click();
+    });
+    $(".categorySlider__bottom-btns img:last-child").click(function() {
+        $(".slick-next").click();
+    });
+
+
 //  $(".product__icon_refresh").click( function() {
 //     $(this).find("img").css("transform", "rotateZ(3600deg)");
 //     $(this).find("img").css("transition", "1s");
