@@ -6,8 +6,8 @@
         position: relative;
         &-text {
             position: absolute;
-            top: 43px;
-            left: 49px;
+            top: 15%;
+            left: 5%;
             font-weight: 600;
             font-size: 25px;
             line-height: 25px;
@@ -32,9 +32,12 @@
     &__bottom {
         margin-top: 20px;
         position: relative;
+        @include max-md {
+            margin-top: 15px;
+        }
         &-btns {
             position: absolute;
-            top: 0;
+            top: -30px;
             bottom: 0;
             left: -35px;
             right: -35px;
@@ -42,6 +45,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            @include max-xl {
+                left: -25px;
+                right: -25px;
+            }
+            @include max-md {
+                left: 0;
+                right: 0;
+                justify-content: center;
+                top: unset;
+                bottom: -40px;
+                column-gap: 14px;
+            }
             & img {
                 width: 13px;
                 height: 22px;
@@ -49,24 +64,36 @@
             }
             & img:first-child {
                 transform: rotateZ(180deg);
+                @include max-md {
+                    margin-top: 2px;
+                }
             }
         }
     }
     & .slider-category-nav {
         display: flex;
-        column-gap: 20px;
+        //column-gap: 30px;
         &-group {
             display: flex;
             flex-direction: column;
-            margin: 0 30px 0 0;
+            //margin: 0 30px 0 0;
+            margin: 0 auto;
             & img {
                 background: #ffffff;
                 border: 1px solid #eaeaea;
                 border-radius: 5px;
-                max-width: 196px;
-                max-height: 94px;
+                //max-width: 196px;
+                max-width: 170px;
+                min-height: 127px;
+                max-height: 127px;
                 object-fit: contain;
                 padding: 10px;
+                @include max-md {
+                    max-width: initial;
+                    max-height: 85px;
+                    min-height: 85px;
+                    margin: auto;
+                }
             }
             & span {
                 font-weight: 700;
@@ -75,10 +102,31 @@
                 text-align: center;
                 color: #555555;
                 margin-top: 11px;
+                @include max-lg {
+                    font-size: 14px;
+                }
             }
         }
-        // & .slick-center {
-        //     border: 1px solid #c17465;
+        // & .slick-track {
+        //     display: flex;
+        //     column-gap: 30px;
         // }
+        & .slick-slide {
+            // max-width: 170px;
+            // width: 100%;
+            margin: 0 15px;
+            @include max-lg {
+                margin: 0 5px;
+            }
+        }
+        & .slick-list {
+            margin-left: -15px;
+            margin-right: -15px;
+            @include max-lg {
+                margin-left: -5px;
+                margin-right: -5px;
+            }
+        }
+
     }
 }

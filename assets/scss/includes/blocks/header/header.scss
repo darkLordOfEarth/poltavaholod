@@ -123,12 +123,18 @@
             align-items: center;
             column-gap: 20px;
         }
+        & input {
+            display: none;
+            position: absolute;
+            right: 33%;
+        }
     }
     &__item {
         width: 24px;
         position: relative;
     }
     &__link {
+        
     }
     &__count {
         position: absolute;

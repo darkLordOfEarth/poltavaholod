@@ -149,6 +149,7 @@ $('.slider-category').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    infinite: true,
     fade: false,
     asNavFor: '.slider-category-nav'
   });
@@ -158,6 +159,18 @@ $('.slider-category').slick({
     asNavFor: '.slider-category',
     dots: true,
     centerMode: true,
+    infinite: true,
     centerPadding: '0',
-    focusOnSelect: true
+    focusOnSelect: true,
+    responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+    ]
   });

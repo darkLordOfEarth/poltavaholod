@@ -57,32 +57,47 @@ $(".popular__aside-nav span").click(function() {
     });
 
 
-//  $(".product__icon_refresh").click( function() {
-//     $(this).find("img").css("transform", "rotateZ(3600deg)");
-//     $(this).find("img").css("transition", "1s");
-//     setTimeout('$(".product__icon_refresh img").css("transform", "rotateZ(0deg)")', 300)
+$(".categoryFilter__view").on("click", function() {
+    $(this).parent().find(".active").removeClass("active");
+    $(this).addClass("active");
     
-//  })
+})
+$(".categoryFilter__view:first-child").on("click", function() {
+    $(".categoryFilter__result-bottom").addClass("active");
+})
+$(".categoryFilter__view:last-child").on("click", function() {
+    $(".categoryFilter__result-bottom").removeClass("active");
+})
 
 
-// $(".product").mouseenter( function() {
-    
-//     $(this).find(".product__bottom").slideToggle();
-// })
-// $(".product").mouseleave( function() {
-    
-//     $(this).find(".product__bottom").slideToggle();
-// })
+$(".filter__btn_mobile").on("click", function() {
+    $(".categoryFilter__aside").addClass("active");
+    let filter__bg = document.createElement("div");
+    $(filter__bg).addClass("filter__bg");
+    $("body").append(filter__bg);
+    $("body").addClass("filter__active");
+})
+$(".filter__title img").on("click", function() {
+    $(".categoryFilter__aside").removeClass("active");
+    $(".filter__bg").remove();
+    $("body").removeClass("filter__active");
+})
 
-// if ($(window).width() < 768) {
-//     $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
-// }
-// $( window ).resize(function() {
-//     if ($(window).width() < 768) {
-//         $(".whyUs__wrapper").addClass("whyUs__wrapper-slider");
-//     }
-//     else {
-
-//         $(".whyUs__wrapper").removeClass("whyUs__wrapper-slider");
-//     }
-//   });
+$(".categoryFilter__result-nav__item").on("click", function(e) {
+    e.preventDefault();
+    $(this).parent().find(".active").removeClass("active");
+    $(this).addClass("active");
+})
+$(".categoryFilter__result-nav__prev").on("click", function() {
+    let item = $(".categoryFilter__result-nav__list").find(".active");
+    $(item).removeClass("active")
+    $(item).prev().addClass("active")
+})
+$(".categoryFilter__result-nav__next").on("click", function() {
+    let item = $(".categoryFilter__result-nav__list").find(".active");
+    $(item).removeClass("active")
+    $(item).next().addClass("active")
+})
+$(".header__link:first-child").on("click", function() {
+     $(".header__icons input").slideToggle();
+})

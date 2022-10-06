@@ -185,7 +185,10 @@ button {
 	display: none;
 }
 .slick-arrow {
-	display: none;
+	display: none !important;
+}
+.slick-dots {
+	display: none !important;
 }
 .custom-button {
 	background: #c17465;
