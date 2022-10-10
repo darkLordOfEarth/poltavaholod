@@ -1,0 +1,128 @@
+.productPage {
+    padding: 40px 0 0;
+    @include max-md {
+        padding: 24px 0 0;
+    }
+    &__content {
+        display: flex;
+    }
+    &__info {
+        max-width: 50%;
+        min-width: 50%;
+    }
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+    & .sectionTitle {
+        margin-top: 20px;
+    }
+    &__articul {
+        & span:last-child {
+            font-weight: 500;
+        }
+        & span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: #555555;
+        }
+    }
+
+    &__status {
+        & img {
+            width: 13px;
+        }
+        & span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #555555;
+            margin-left: 9px;
+        }
+    }
+
+    &__size {
+        margin-top: 9px;
+        width: 100%;
+        padding: 0 0 27px;
+        border-bottom: 1px solid #eaeaea;
+        & span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #7d7d7d;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: baseline;
+        column-gap: 25px;
+        margin-top: 26px;
+    }
+    &__icons-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & img {
+            width: 46px;
+        }
+        & span {
+            margin-top: 9px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #000000;
+        }
+    }
+
+    &__icons-group:not(:first-child) img {
+        padding: 8px;
+        box-shadow: 0px 2px 33px rgba(155, 155, 155, 0.09);
+        border-radius: 50%;
+    }
+    &__icons-group:nth-child(2) img {
+        filter: invert(1);
+        opacity: 0.5;
+    }
+    &__buy {
+        margin-top: 23px;
+    }
+    &__buy-group {
+    }
+    &__buy-price {
+    }
+    &__buy-text {
+    }
+    & .custom-button {
+    }
+    & .custom-button-byClick {
+    }
+    &__options {
+    }
+    & .checkselect {
+    }
+    & label {
+    }
+    &__option {
+    }
+    & span {
+    }
+    &__option-tkan {
+    }
+    &__option-item {
+    }
+    & input {
+    }
+    &__option-angle {
+    }
+    & label {
+    }
+    & input {
+    }
+    & img {
+    }
+    & span {
+    }
+}
