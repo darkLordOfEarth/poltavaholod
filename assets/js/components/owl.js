@@ -174,3 +174,30 @@ $('.slider-category').slick({
         },
     ]
   });
+  
+$('.productPage__slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    infinite: false,
+    fade: false,
+    asNavFor: '.productPage__slider-nav'
+  });
+  $('.productPage__slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.productPage__slider',
+    dots: false,
+    centerMode: true,
+    centerPadding: '30',
+    focusOnSelect: true,
+    responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },
+    ]
+  });
