@@ -115,4 +115,8 @@ $(".productPage__nav-btns img:last-child").on("click", function() {
 
 
 
-///////select options
+///////product tabs
+$(".productTabs__item").on("click", function() {
+    $(this).parent().find(".active").removeClass("active");
+    $(this).addClass("active");
+})

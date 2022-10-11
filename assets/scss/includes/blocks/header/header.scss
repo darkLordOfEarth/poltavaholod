@@ -118,6 +118,7 @@
     }
     &__icons {
         display: none;
+        position: relative;
         @include max-md {
             display: flex;
             align-items: center;
@@ -126,7 +127,18 @@
         & input {
             display: none;
             position: absolute;
-            right: 33%;
+            left: -130%;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            @include max-sm {
+                max-width: 120px;
+                left: -85%;
+            }
+            @include max-ip {
+                max-width: 100px;
+                left: -67%;
+            }
         }
     }
     &__item {

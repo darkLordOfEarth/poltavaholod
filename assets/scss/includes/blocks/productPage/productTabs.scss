@@ -1,0 +1,128 @@
+.productTabs {
+    padding: 50px 0 0;
+    &__content {
+    }
+    &__tabs {
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+        padding: 3px;
+    }
+    &__list {
+        display: flex;
+        align-items: center;
+        // column-gap: 25px;
+    }
+    &__item {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 134.77%;
+        color: #555555;
+        cursor: pointer;
+        padding: 0 25px;
+        @include max-md {
+            font-size: 14px;
+            line-height: 134.77%;
+            padding: 0 17px;
+        }
+        &.active {
+            color: #fff;
+            padding: 11px 25px;
+            background: #c17465;
+            border-radius: 5px;
+            @include max-md {
+                padding: 12px 17px;
+            }
+        }
+    }
+    &__wrapper {
+        margin-top: 50px;
+        display: flex;
+        column-gap: 32px;
+        @include max-lg {
+            column-gap: 15px;
+        }
+        @include max-md {
+            flex-direction: column;
+            margin-top: 39px;
+        }
+        &-img {
+            max-width: 570px;
+            @include max-md {
+                margin-top: 14px;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__text {
+        max-width: 48%;
+        @include max-md {
+            max-width: 100%;
+        }
+        & p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 25px;
+            color: #555555;
+            margin-top: 14px;
+            @include max-lg {
+                font-size: 14px;
+            }
+            @include max-md {
+                margin-top: 8px;
+            }
+        }
+    }
+    &__iframe {
+        max-width: 570px;
+        @include max-md {
+            max-width: 100%;
+        }
+    }
+    &__wrapper:last-child {
+        @include max-md {
+            flex-direction: column-reverse;
+            margin-top: 20px;
+        }
+    }
+    &__wrapper:last-child .productTabs__text p:first-child {
+        margin-top: 0;
+    }
+
+    &-video {
+    }
+}
+.video-container {
+    overflow: hidden;
+    position: relative;
+    min-height: 339px;
+    width: 80%;
+    margin: 0 auto;
+    @include max-md {
+        margin: 21px 0 0;
+    }
+}
+
+.video-container video,
+.video-container iframe {
+    position: absolute;
+    border: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 65.9375em) {
+    .video-container {
+        min-height: 339px;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .video-container {
+        min-height: 350px;
+        width: 100%;
+    }
+}
