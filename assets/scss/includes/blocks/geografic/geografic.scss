@@ -1,5 +1,8 @@
 .geografic {
     padding: 63px 0 0;
+    @include max-md {
+        padding: 36px 0 0;
+    }
     &__content {
         padding: 41px 0 0;
         display: flex;

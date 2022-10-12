@@ -1,16 +1,21 @@
 .productTabs {
     padding: 50px 0 0;
+    overflow-x: hidden;
     &__content {
     }
     &__tabs {
         border: 1px solid #eaeaea;
         border-radius: 5px;
         padding: 3px;
+        @include max-md {
+            width: 106%;
+            border-radius: 5px 0 0 5px;
+        }
     }
     &__list {
         display: flex;
         align-items: center;
-        // column-gap: 25px;
+        overflow: overlay;
     }
     &__item {
         font-weight: 500;

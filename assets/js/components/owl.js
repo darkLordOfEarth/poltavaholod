@@ -72,6 +72,32 @@ $('.products').owlCarousel({
         }
     }
 });
+$('.recommended__slider').owlCarousel({
+    loop:true,
+    margin:30,
+    nav:false,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        450:{
+            items:2
+        },
+        670:{
+            items:3
+        },
+        992:{
+            items:4
+        }
+    }
+});
 
 $('.news__content').owlCarousel({
     loop:true,
