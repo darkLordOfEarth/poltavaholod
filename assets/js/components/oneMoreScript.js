@@ -3,12 +3,16 @@ $(".header__lang .button").click(function() {
     $(this).addClass("button__active");
 });
 
+
+
 $(".header__burger").click(function() {
     $(".burger__menu").addClass("active");
 });
 $(".burger__close").click(function() {
     $(".burger__menu").removeClass("active");
 });
+
+    
 
 $(".header-bottom__custom-button").click(function() {
     $(".header-bottom__catalog").slideToggle();
@@ -19,6 +23,7 @@ $(".header-bottom__custom-button").click(function() {
     $(".banners__slider ").toggleClass("active");
     $(".banners__slider .owl-item.active").toggleClass("full");
     $(".service").toggleClass("active");
+    
 });
 
 $(".popular__aside-link").click(function(e) {
@@ -234,4 +239,44 @@ $(document).ready(function() {
                 direction: 'vertical', // вертикальная прокрутка
             }
         }
+    });
+
+
+
+    // select
+    $(".js-select2").select2({
+        closeOnSelect : false,
+        placeholder : "Оббивка",
+        allowHtml: true,
+        allowClear: true
+    });
+    $(".js-select3").select2({
+        closeOnSelect : false,
+        placeholder : "Ножки",
+        allowHtml: true,
+        allowClear: true
+    });
+    $(".js-select4").select2({
+        closeOnSelect : false,
+        placeholder : "Каркас",
+        allowHtml: true,
+        allowClear: true
+    });
+    $(".js-select5").select2({
+        closeOnSelect : false,
+        placeholder : "Размер",
+        allowHtml: true,
+        allowClear: true
+    });
+    $(".js-select6").select2({
+        closeOnSelect : false,
+        placeholder : "Пружинный блок",
+        allowHtml: true,
+        allowClear: true
+    });
+    $(".js-select7").select2({
+        closeOnSelect : false,
+        placeholder : "Механизм",
+        allowHtml: true,
+        allowClear: true
     });
