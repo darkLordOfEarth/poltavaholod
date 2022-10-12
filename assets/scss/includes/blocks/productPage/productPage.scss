@@ -205,7 +205,7 @@
 
     &__icons {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         column-gap: 25px;
         margin-top: 26px;
         @include max-md {
@@ -230,15 +230,21 @@
             color: #000000;
         }
     }
-
-    &__icons-group:not(:first-child) img {
-        padding: 8px;
-        box-shadow: 0px 2px 33px rgba(155, 155, 155, 0.09);
-        border-radius: 50%;
+    &__icons-group:nth-child(2) .product__icon img{
+            filter: invert(1);
+            opacity: .5;
     }
-    &__icons-group:nth-child(2) img {
-        filter: invert(1);
-        opacity: 0.5;
+    &__icons-group:nth-child(3) .product__icon img{
+            filter: invert(0);
+            opacity: 1;
+    }
+    &__icons-group .product__icon  {
+        width: 46px !important;
+        height: 46px;
+        box-shadow: 0px 2px 33px rgba(155, 155, 155, 0.09);
+    }
+    &__icons-group .product__icon img {
+        width: 22px !important;
     }
     &__buy {
         margin-top: 23px;
