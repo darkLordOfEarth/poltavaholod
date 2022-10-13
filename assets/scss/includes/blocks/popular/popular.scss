@@ -3,10 +3,15 @@
     @include max-md {
         padding: 46px 0 0;
     }
+    &__tab-item {
+        display: flex;
+        column-gap: 16px;
+    }
     &__content {
         padding: 66px 0 0;
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
         @include max-md {
             padding: 37px 0 0;
             flex-direction: column;
@@ -88,4 +93,17 @@
         }
     }
     
+}
+.products__popular {
+    max-width: 810px;
+    margin: 0 -10px;
+    @include max-md {
+        margin: 25px 0 0;
+    }
+    & .slick-slide {
+        padding: 0 10px;
+    }
+    & .slick-track {
+        display: flex;
+    }
 }

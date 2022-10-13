@@ -434,6 +434,9 @@
             text-align: left;
             background: #F7F8FA;
             z-index: 30;
+            &.active {
+                display: block;
+            }
             &-item {
                 padding: 10px 0 12px 30px;
                 &:hover {

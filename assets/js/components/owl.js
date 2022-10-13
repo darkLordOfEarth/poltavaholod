@@ -72,6 +72,47 @@ $('.products').owlCarousel({
         }
     }
 });
+
+$('.popular__tab-item').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:false,
+    mouseDrag:true,
+    touchDrag: true,
+    pullDrag:false,
+    freeDrag:false,
+    URLhashListener:false,
+    dots:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        450:{
+            items:2
+        },
+        576:{
+            items:3
+        }
+    }
+});
+// $('.popular__tab-item').slick({
+//     infinite: true,
+//     slidesToShow: 3,
+//     slidesToScroll: 3,
+//     variableWidth: true,
+//     responsive: [
+//     {
+//       breakpoint: 450,
+//       settings: {
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         infinite: true,
+//         dots: true
+//       }
+//     }
+//   ]
+//   });
 $('.recommended__slider').owlCarousel({
     loop:true,
     margin:30,
