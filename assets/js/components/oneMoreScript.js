@@ -14,36 +14,28 @@ $(".burger__close").click(function() {
 
     
 ///catalog open
-let catalog = document.querySelector('.header-bottom__custom-button');
-let menu = document.querySelector('.header-bottom__catalog');
+// let catalog = document.querySelector('.header-bottom__custom-button');
+// let menu = document.querySelector('.header-bottom__catalog');
 
-const toggleMenu = () => {
-    menu.classList.toggle('active');
-    $(".banners__top").toggleClass("row-rewerse");
-    $(".banners__static").toggleClass("opacity0");
-    $(".main").toggleClass("catalog__active");
-    $(".main__example").toggleClass("hide");
-    $(".banners__slider ").toggleClass("active");
-    $(".banners__slider .owl-item.active").toggleClass("full");
-    $(".service").toggleClass("active");
-}
+// const toggleMenu = () => {
+//     menu.classList.toggle('active');
+// }
 
-catalog.addEventListener('click', e => {
-  e.stopPropagation();
+// catalog.addEventListener('click', e => {
+//   e.stopPropagation();
+//   toggleMenu();
+// });
 
-  toggleMenu();
-});
-
-document.addEventListener('click', e => {
-  let target = e.target;
-  let its_menu = target == menu || menu.contains(target);
-  let its_catalog = target == catalog;
-  let menu_is_active = menu.classList.contains('active');
+// document.addEventListener('click', e => {
+//   let target = e.target;
+//   let its_menu = target == menu || menu.contains(target);
+//   let its_catalog = target == catalog;
+//   let menu_is_active = menu.classList.contains('active');
   
-  if (!its_menu && !its_catalog && menu_is_active) {
-    toggleMenu();
-  }
-});
+//   if (!its_menu && !its_catalog && menu_is_active) {
+//     toggleMenu();
+//   }
+// });
 
 
 $(".popular__aside-link").click(function(e) {
@@ -133,13 +125,19 @@ $(".header__item-search").on("click", function() {
 
 
 
-//productPage slider nav
-$(".productPage__nav-btns img:first-child").on("click", function() {
+//slider nav
+$("").on("click", function() {
      $(".slick-prev").click();
 })
-$(".productPage__nav-btns img:last-child").on("click", function() {
+$("").on("click", function() {
      $(".slick-next").click();
 })
+$("").click(function() {
+    $(".owl-next").click();
+});
+$("").click(function() {
+    $(".owl-prev").click();
+});
 
 
 
@@ -172,9 +170,9 @@ $(document).ready(function() {
     $(".ocf-close-mobile").addClass("fltrclose");
   
   
-    $("#popup-delivery").mask("+7 (999) 999-99-99");
-    $("#popup-manager").mask("+7 (999) 999-99-99");
-    $("#popup-byClick").mask("+7 (999) 999-99-99");
+    $("#popup-delivery").mask("+38 (999) 999-99-99");
+    $("#popup-manager").mask("+38 (999) 999-99-99");
+    $("#popup-byClick").mask("+38 (999) 999-99-99");
 
 
     $(".popup__button_delivery").on("click", function() {
@@ -268,39 +266,39 @@ $(document).ready(function() {
 
 
     // select
-    $(".js-select2").select2({
-        closeOnSelect : false,
-        placeholder : "Оббивка",
-        allowHtml: true,
-        allowClear: true
-    });
-    $(".js-select3").select2({
-        closeOnSelect : false,
-        placeholder : "Ножки",
-        allowHtml: true,
-        allowClear: true
-    });
-    $(".js-select4").select2({
-        closeOnSelect : false,
-        placeholder : "Каркас",
-        allowHtml: true,
-        allowClear: true
-    });
-    $(".js-select5").select2({
-        closeOnSelect : false,
-        placeholder : "Размер",
-        allowHtml: true,
-        allowClear: true
-    });
-    $(".js-select6").select2({
-        closeOnSelect : false,
-        placeholder : "Пружинный блок",
-        allowHtml: true,
-        allowClear: true
-    });
-    $(".js-select7").select2({
-        closeOnSelect : false,
-        placeholder : "Механизм",
-        allowHtml: true,
-        allowClear: true
-    });
+    // $(".js-select2").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Оббивка",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });
+    // $(".js-select3").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Ножки",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });
+    // $(".js-select4").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Каркас",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });
+    // $(".js-select5").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Размер",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });
+    // $(".js-select6").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Пружинный блок",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });
+    // $(".js-select7").select2({
+    //     closeOnSelect : false,
+    //     placeholder : "Механизм",
+    //     allowHtml: true,
+    //     allowClear: true
+    // });

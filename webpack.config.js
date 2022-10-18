@@ -70,6 +70,14 @@ module.exports = {
         "./assets/data/browserconfig.xml",
         "./assets/data/manifest.json",
         {
+          from: './assets/libs/bootstrap/*.js',
+          to: './js/bootstrap/[name].js'
+      },
+        {
+          from: './assets/libs/bootstrap/*.css',
+          to: './css/bootstrap/[name].css'
+      },
+        {
           from: './assets/libs/slick/*.js',
           to: './js/slick/[name].js'
       },
