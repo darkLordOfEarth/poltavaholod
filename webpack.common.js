@@ -1,7 +1,7 @@
-// webpack.common.js
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -11,13 +11,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [], // loader для scss укажем в dev/prod
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.hbs$/,
@@ -33,22 +33,89 @@ module.exports = {
   },
 
   plugins: [
+    new MiniCssExtractPlugin({ filename: 'css/app.min.css' }),
+
     new CopyPlugin({
       patterns: [
-        { from: 'assets/images', to: 'images' },
-        { from: 'assets/libs/jquery.min.js', to: 'js/jquery.min.js' },
-        { from: 'assets/libs/owlcarousel/*.js', to: 'js/owlcarousel/[name][ext]' },
-        { from: 'assets/libs/owlcarousel/*.css', to: 'css/owlcarousel/[name][ext]' },
-        { from: 'assets/libs/slick/*.js', to: 'js/slick/[name][ext]' },
-        { from: 'assets/libs/slick/*.css', to: 'css/slick/[name][ext]' },
+        { from: 'assets/images', to: 'images', noErrorOnMissing: true },
+        { from: 'assets/libs/jquery.min.js', to: 'js/jquery.min.js', noErrorOnMissing: true },
+        {
+          from: 'assets/libs/owlcarousel/*.js',
+          to: 'js/owlcarousel/[name][ext]',
+          noErrorOnMissing: true,
+        },
+        {
+          from: 'assets/libs/owlcarousel/*.css',
+          to: 'css/owlcarousel/[name][ext]',
+          noErrorOnMissing: true,
+        },
+        { from: 'assets/libs/slick/*.js', to: 'js/slick/[name][ext]', noErrorOnMissing: true },
+        { from: 'assets/libs/slick/*.css', to: 'css/slick/[name][ext]', noErrorOnMissing: true },
       ],
     }),
+
     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
     new HtmlWebpackPlugin({ template: './assets/templates/about.hbs', filename: 'about.html' }),
   ],
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].min.js',
+    filename: 'js/app.min.js',
+    clean: true, // удаляем старые файлы
   },
 };
+
+// // webpack.common.js
+// const path = require('path');
+// const CopyPlugin = require('copy-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// module.exports = {
+//   entry: {
+//     app: ['./assets/js/index.js', './assets/scss/app.scss'],
+//   },
+
+//   module: {
+//     rules: [
+//       {
+//         test: /\.scss$/,
+//         use: [], // loader для scss укажем в dev/prod
+//       },
+//       {
+//         test: /\.js$/,
+//         loader: 'babel-loader',
+//         exclude: /node_modules/,
+//       },
+//       {
+//         test: /\.hbs$/,
+//         loader: 'handlebars-loader',
+//         exclude: /node_modules/,
+//       },
+//       {
+//         test: /\.(png|jpg|jpeg|gif|svg)$/i,
+//         type: 'asset/resource',
+//         generator: { filename: 'images/[name][ext]' },
+//       },
+//     ],
+//   },
+
+//   plugins: [
+//     new CopyPlugin({
+//       patterns: [
+//         { from: 'assets/images', to: 'images' },
+//         { from: 'assets/libs/jquery.min.js', to: 'js/jquery.min.js' },
+//         { from: 'assets/libs/owlcarousel/*.js', to: 'js/owlcarousel/[name][ext]' },
+//         { from: 'assets/libs/owlcarousel/*.css', to: 'css/owlcarousel/[name][ext]' },
+//         { from: 'assets/libs/slick/*.js', to: 'js/slick/[name][ext]' },
+//         { from: 'assets/libs/slick/*.css', to: 'css/slick/[name][ext]' },
+//       ],
+//     }),
+//     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
+//     new HtmlWebpackPlugin({ template: './assets/templates/about.hbs', filename: 'about.html' }),
+//   ],
+
+//   output: {
+//     path: path.resolve(__dirname, 'dist'),
+//     filename: 'js/[name].min.js',
+//   },
+// };

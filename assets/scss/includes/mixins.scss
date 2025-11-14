@@ -9,7 +9,7 @@ $xl: 1200px;
 $xlmidle: 1300px;
 $xxl: 1440px;
 $xxxl: 1570px;
-
+$fullhd: 1920px;
 
 @mixin landscape {
   @media (orientation: landscape) {
@@ -85,6 +85,11 @@ $xxxl: 1570px;
     @content;
   }
 }
+@mixin fullhd {
+  @media (min-width: #{$fullhd}) {
+    @content;
+  }
+}
 
 @mixin max-ip {
   @media (max-width: #{$ip}) {
@@ -147,9 +152,20 @@ $xxxl: 1570px;
     @content;
   }
 }
+@mixin max-fullhd {
+  @media (max-width: #{$fullhd}) {
+    @content;
+  }
+}
 
 @mixin hover {
-  &:hover, &:focus, &:active, &:focus:active, &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled):active:focus, &.hover {
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus:active,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):active:focus,
+  &.hover {
     @content;
   }
 }
