@@ -106,6 +106,7 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: 'wdth' 100;
+  font-size: 1rem;
 }
 ol,
 ul {
@@ -164,14 +165,18 @@ button {
   transform: rotateZ(180deg);
 }
 .container {
-  max-width: 1440px;
+  max-width: 2640px;
   margin: auto;
-  padding: 0 133px 0 135px;
-  @include max-xl {
-    padding: 0 35px;
+  padding: 0 120px;
+
+  @include max-fullhd {
+    padding: 0 80px;
+  }
+  @include max-xxl {
+    padding: 0 40px;
   }
   @include max-md {
-    padding: 0 15px;
+    padding: 0 20px;
   }
 }
 .owl-stage-outer {

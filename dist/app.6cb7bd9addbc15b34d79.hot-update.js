@@ -11,7 +11,7 @@ self["webpackHotUpdatestarterkit"]("app",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ (() => {
-/******/ 	__webpack_require__.h = () => ("5c33ed9331f469ae3558")
+/******/ 	__webpack_require__.h = () => ("ba51b9c58a025c4c8e67")
 /******/ })();
 /******/ 
 /******/ }
