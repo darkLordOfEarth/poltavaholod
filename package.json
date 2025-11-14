@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server",
-    "watch": "webpack --watch"
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,8 +20,8 @@
     "copy-webpack-plugin": "^13.0.1",
     "cross-env": "^10.1.0",
     "css-loader": "^6.11.0",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "handlebars-loader": "^1.7.3",
-    "handlebars-webpack-plugin": "^2.2.1",
     "html-webpack-plugin": "^5.6.4",
     "mini-css-extract-plugin": "^2.9.4",
     "sass": "^1.94.0",
@@ -32,6 +30,8 @@
     "scss-loader": "^0.0.1",
     "string-width": "^4.2.2",
     "strip-ansi": "^3.0.1",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
     "trim-newlines": "^3.0.1",
     "webpack": "^5.102.1",
     "webpack-cli": "^4.10.0",

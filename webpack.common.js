@@ -39,10 +39,14 @@ module.exports = {
 
     new CopyPlugin({
       patterns: [
-        { from: 'assets/images', to: 'images' },
-        { from: 'assets/data/manifest.json', to: 'manifest.json' },
-        { from: 'assets/data/browserconfig.xml', to: 'browserconfig.xml' },
-        { from: 'assets/libs', to: 'libs' },
+        { from: 'assets/images', to: 'images' }, // картинки
+        { from: 'assets/libs/bootstrap/*.js', to: 'js/bootstrap/[name][ext]' },
+        { from: 'assets/libs/bootstrap/*.css', to: 'css/bootstrap/[name][ext]' },
+        { from: 'assets/libs/owlcarousel/*.js', to: 'js/owlcarousel/[name][ext]' },
+        { from: 'assets/libs/owlcarousel/*.css', to: 'css/owlcarousel/[name][ext]' },
+        { from: 'assets/libs/slick/*.js', to: 'js/slick/[name][ext]' },
+        { from: 'assets/libs/slick/*.css', to: 'css/slick/[name][ext]' },
+        { from: 'assets/libs/jquery.min.js', to: 'js/jquery.min.js' }, // jQuery отдельно
       ],
     }),
 
