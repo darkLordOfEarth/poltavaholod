@@ -1,36 +1,32 @@
-const path = require('path')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HandlebarsPlugin = require("handlebars-webpack-plugin")
+const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HandlebarsPlugin = require('handlebars-webpack-plugin');
 // const Handlebars = require("handlebars")
-const CopyPlugin = require("copy-webpack-plugin")
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ['./assets/js/index.js', './assets/scss/app.scss' ]
+    app: ['./assets/js/index.js', './assets/scss/app.scss'],
   },
   module: {
     rules: [
-      { 
-        test: /\.scss$/, 
-        use: [ 
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],   
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
-      { 
+      {
         test: /\.(js)$/,
-        use: 'babel-loader' 
+        use: 'babel-loader',
       },
       {
         test: /\.hbs/,
         loader: 'handlebars-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
       },
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.woff$/,
@@ -48,90 +44,88 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg)$/,
         type: 'asset',
       },
-    ]
+    ],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
   },
   devServer: {
     historyApiFallback: true,
     static: {
-        directory: path.join(__dirname, 'app'),
-      },
+      directory: path.join(__dirname, 'app'),
+    },
     open: true,
     compress: true,
     hot: true,
     port: 3000,
-},
+  },
   plugins: [
     new CopyPlugin({
       patterns: [
-        "./assets/data/browserconfig.xml",
-        "./assets/data/manifest.json",
+        './assets/data/browserconfig.xml',
+        './assets/data/manifest.json',
         {
           from: './assets/libs/bootstrap/*.js',
-          to: './js/bootstrap/[name].js'
-      },
+          to: './js/bootstrap/[name].js',
+        },
         {
           from: './assets/libs/bootstrap/*.css',
-          to: './css/bootstrap/[name].css'
-      },
+          to: './css/bootstrap/[name].css',
+        },
         {
           from: './assets/libs/slick/*.js',
-          to: './js/slick/[name].js'
-      },
+          to: './js/slick/[name].js',
+        },
         {
           from: './assets/libs/slick/*.css',
-          to: './css/slick/[name].css'
-      },
+          to: './css/slick/[name].css',
+        },
         {
           from: './assets/libs/slick/*.gif',
-          to: './css/slick/[name].gif'
-      },
+          to: './css/slick/[name].gif',
+        },
         {
           from: './assets/libs/*.js',
-          to: './js/[name].js'
-      },
+          to: './js/[name].js',
+        },
         {
           from: './assets/libs/owlcarousel/*.js',
-          to: './js/owlcarousel/[name].js'
-      },
+          to: './js/owlcarousel/[name].js',
+        },
         {
           from: './assets/libs/owlcarousel/*.css',
-          to: './css/owlcarousel/[name].css'
-      },
+          to: './css/owlcarousel/[name].css',
+        },
         {
           from: './assets/images',
-          to: './images'
-      },
-        { 
+          to: './images',
+        },
+        {
           from: './assets/data/browserconfig.xml',
-          to: "browserconfig.xml"
+          to: 'browserconfig.xml',
         },
-        { 
+        {
           from: './assets/data/manifest.json',
-          to: "manifest.json"
+          to: 'manifest.json',
         },
-      ],   
+      ],
     }),
     new BrowserSyncPlugin({
-      files: ["build/css/app.css", "build/[name].html", "build/js/app.js" ],
+      files: ['build/css/app.css', 'build/[name].html', 'build/js/app.js'],
       host: 'localhost',
       port: 3000,
-      server: { baseDir: ['./build'], index: "index.html" }
+      server: { baseDir: ['./build'], index: 'index.html' },
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css"
+      filename: 'css/[name].css',
     }),
     new HandlebarsPlugin({
-      entry: path.join(process.cwd(), "assets", "templates", "*.hbs"),
-      output: path.join(process.cwd(), "build", "[name].html"),
-      data: require("./assets/data/project.json"),
-      partials: [
-        path.join(process.cwd(), "assets", "templates", "*", "*.hbs")
-      ],
+      entry: path.join(process.cwd(), 'assets', 'templates', '*.hbs'),
+      output: path.join(process.cwd(), 'dist', '[name].html'),
+      data: require('./assets/data/project.json'),
+      partials: [path.join(process.cwd(), 'assets', 'templates', '*', '*.hbs')],
     }),
   ],
   mode: 'development',
-}
+};
