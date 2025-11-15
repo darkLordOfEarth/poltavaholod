@@ -10,6 +10,7 @@ $xlmidle: 1300px;
 $xxl: 1440px;
 $xxxl: 1570px;
 $fullhd: 1920px;
+$bigScreen: 2600px;
 
 @mixin landscape {
   @media (orientation: landscape) {
@@ -90,6 +91,11 @@ $fullhd: 1920px;
     @content;
   }
 }
+@mixin bigScreen {
+  @media (min-width: #{$bigScreen}) {
+    @content;
+  }
+}
 
 @mixin max-ip {
   @media (max-width: #{$ip}) {
@@ -154,6 +160,11 @@ $fullhd: 1920px;
 }
 @mixin max-fullhd {
   @media (max-width: #{$fullhd}) {
+    @content;
+  }
+}
+@mixin max-bigScreen {
+  @media (max-width: #{$bigScreen}) {
     @content;
   }
 }

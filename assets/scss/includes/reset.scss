@@ -165,11 +165,11 @@ button {
   transform: rotateZ(180deg);
 }
 .container {
-  max-width: 2640px;
+  width: 100%;
   margin: auto;
   padding: 0 120px;
 
-  @include max-fullhd {
+  @include max-bigScreen {
     padding: 0 80px;
   }
   @include max-xxl {
