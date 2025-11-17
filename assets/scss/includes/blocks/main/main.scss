@@ -3,6 +3,7 @@
   background-size: cover;
   display: flex;
   align-items: center;
+  background-position-x: 40%;
   &::after {
     content: '';
     position: absolute;
@@ -14,7 +15,7 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
   @include max-lg {
-    background-position: center;
+    background-position-x: 55%;
   }
   &__content {
     display: flex;

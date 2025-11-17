@@ -598,6 +598,7 @@ select::-ms-expand {
   background-size: cover;
   display: flex;
   align-items: center;
+  background-position-x: 40%;
 }
 .main::after {
   content: "";
@@ -611,7 +612,7 @@ select::-ms-expand {
 }
 @media (max-width: 992px) {
   .main {
-    background-position: center;
+    background-position-x: 55%;
   }
 }
 .main__content {
