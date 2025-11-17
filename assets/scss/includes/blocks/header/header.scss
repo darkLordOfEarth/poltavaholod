@@ -1,15 +1,31 @@
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 2;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  &.scrolled {
+    background: #F0F0EF;
+    & .menu__list-link {
+      color: #0d0d0d;
+    }
+    & .header__logo img {
+      filter: invert(1);
+    }
+    & .header__tracking {
+      border: 1px solid #F46D06;
+      background-color: #F0F0EF;
+      &-text {
+        color: #0d0d0d;
+      }
+    }
+  }
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 10px 0;
   }
   &__logo {
     & img {

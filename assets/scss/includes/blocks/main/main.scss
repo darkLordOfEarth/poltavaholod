@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   background-position-x: 40%;
+  position: relative;
   &::after {
     content: '';
     position: absolute;
@@ -87,6 +88,8 @@
         width: max-content;
         min-width: max-content;
         font-family: 'Open Sans', sans-serif;
+        color: #0D0D0D;
+        font-weight: 600;
         @include max-bigScreen {
           font-size: 16px;
           line-height: 22px;

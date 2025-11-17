@@ -1,0 +1,237 @@
+.footer {
+  background-color: #0d0d0d;
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__top {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 120px 0 60px;
+    border-bottom: solid 1px #4d4d4d;
+    gap: 7%;
+    @include max-xl {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 40px 0 30px;
+    }
+    @include max-xl {
+      grid-template-columns: 1fr;
+      padding: 40px 0 30px;
+    }
+    @include max-lg {
+      gap: 40px;
+    }
+  }
+  &__video {
+    max-width: 924px;
+    position: relative;
+    @include max-xl {
+      grid-row-start: 1;
+    }
+    & .play__btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 50px;
+      height: 50px;
+      @include max-bigScreen {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    & video {
+      max-width: 924px;
+      height: 100%;
+      @include max-bigScreen {
+        max-width: 615px;
+      }
+      @include max-xxxl {
+        max-width: 382px;
+      }
+      @include max-xl {
+        max-width: 487px;
+      }
+      @include max-lg {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include max-bigScreen {
+      gap: 20px;
+    }
+    @include max-xl {
+      grid-row-start: 2;
+    }
+    @include max-lg {
+      grid-row-start: 3;
+      margin-top: 20px;
+    }
+    & a {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      color: #ffffff;
+      @include max-bigScreen {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include max-bigScreen {
+      gap: 20px;
+    }
+    @include max-xl {
+      grid-row-start: 2;
+      grid-column-start: 2;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include max-lg {
+      grid-row-start: 4;
+      grid-column-start: 1;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include max-md {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 20px;
+    }
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      @include max-bigScreen {
+        gap: 20px;
+      }
+    }
+    &-title {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      color: #ffffff;
+      @include max-bigScreen {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+    &-text {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #a3a3a3;
+      @include max-bigScreen {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    @include max-bigScreen {
+      gap: 40px;
+    }
+    @include max-lg {
+      grid-row-start: 2;
+      gap: 20px;
+    }
+  }
+  &__logo {
+    max-width: 440px;
+    @include max-bigScreen {
+      max-width: 300px;
+    }
+    @include max-xl {
+      max-width: 220px;
+      margin: auto;
+    }
+  }
+  &__desc {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #a3a3a3;
+    @include max-bigScreen {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    &-icon {
+      & img {
+        width: 42px;
+        height: 42px;
+        @include max-bigScreen {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px 0;
+    @include max-xl {
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px 0;
+    }
+    @include max-md {
+      align-items: flex-start;
+    }
+    & .text {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 30px;
+      color: #4d4d4d;
+      @include max-bigScreen {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      @include max-md {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      &__item {
+      }
+      &__link {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: #4d4d4d;
+        @include max-bigScreen {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
