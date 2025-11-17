@@ -88,6 +88,21 @@
             left: auto;
           }
         }
+        &:has(.submenu) .menu__list-link:hover {
+          @include max-xl {
+            padding-bottom: 0;
+            border-radius: 10px 10px 0 0;
+            color: red;
+          }
+        }
+
+        &:hover .menu__list-link {
+          @include max-xl {
+            // padding-bottom: 0;
+            // border-radius: 10px 10px 0 0;
+            // color: red;
+          }
+        }
         &:hover .submenu {
           display: flex;
           @include max-xl {
@@ -95,7 +110,7 @@
             opacity: 1;
             height: auto;
             visibility: visible;
-            transition: 0.3s;
+            transition: 0.5s;
             padding: 10px;
           }
         }
@@ -122,7 +137,7 @@
           font-size: 16px;
         }
         &:hover {
-          border-radius: 10px 10px 0 0;
+          // border-radius: 10px 10px 0 0;
         }
       }
     }
@@ -143,7 +158,7 @@
       opacity: 0;
       height: 0;
       visibility: hidden;
-      transition: 0.3s;
+      transition: 0.5s;
       top: 0;
       width: 100%;
       border-radius: 0 0 10px 10px;
