@@ -33,6 +33,7 @@
       &-close {
         width: 48px;
         height: 48px;
+        cursor: pointer;
       }
       &-logo {
         width: 143px;
@@ -40,13 +41,19 @@
     }
     @include max-xl {
       position: fixed;
-      right: 0;
+      right: -100%;
       top: 0;
       height: 100vh;
       background-color: #f0f0ef;
       padding: 6px 15px;
       width: 50%;
       overflow: auto;
+      transition: 0.5s;
+      z-index: 10;
+    }
+    &.open {
+      right: 0;
+      transition: 0.5s;
     }
     @include max-lg {
       width: 100%;
@@ -87,14 +94,18 @@
             background-repeat: no-repeat;
             right: 15px;
             left: auto;
+            display: none;
           }
         }
         &:has(.submenu):hover .menu__list-link {
           @include max-xl {
             padding-bottom: 0;
             border-radius: 10px 10px 0 0;
-            color: red;
+            color: #f46d06;
           }
+        }
+        &:has(.submenu)::after {
+          display: block;
         }
         &:hover .submenu {
           display: flex;
@@ -231,12 +242,13 @@
   }
   & .burger {
     display: none;
-    @include max-xxl {
+    @include max-xl {
       display: block;
       width: max-content;
+      cursor: pointer;
     }
     & img {
-      @include max-xxl {
+      @include max-xl {
         width: 48px;
         height: 48px;
       }

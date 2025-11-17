@@ -21,6 +21,11 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    @include max-lg {
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+    }
   }
   &__group {
     & h1 {
@@ -37,6 +42,10 @@
         font-size: 50px;
         line-height: 56px;
       }
+      @include max-lg {
+        font-size: 28px;
+        line-height: 34px;
+      }
     }
     &-btns {
       height: 100vh;
@@ -49,6 +58,11 @@
       max-width: 420px;
       @include max-bigScreen {
         gap: 20px;
+      }
+      @include max-lg {
+        height: auto;
+        position: absolute;
+        bottom: 0;
       }
     }
     &-btn {
@@ -82,6 +96,10 @@
         @include max-bigScreen {
           width: 60px;
           height: 60px;
+        }
+        @include max-lg {
+          width: 48px;
+          height: 48px;
         }
       }
     }
