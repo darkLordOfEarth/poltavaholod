@@ -616,6 +616,11 @@ select::-ms-expand {
   z-index: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+@media (max-width: 992px) {
+  .main {
+    background-position: center;
+  }
+}
 .main__content {
   display: flex;
   align-items: center;
