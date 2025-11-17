@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   &__content {
     display: flex;
@@ -17,9 +17,39 @@
       @include max-bigScreen {
         max-width: 240px;
       }
+      @include max-xxxl {
+        max-width: 182px;
+      }
     }
   }
   & .menu {
+    &__heading {
+      display: none;
+      @include max-xl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      &-close {
+        width: 48px;
+        height: 48px;
+      }
+      &-logo {
+        width: 143px;
+      }
+    }
+    @include max-xl {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      background-color: #f0f0ef;
+      padding: 6px 15px;
+      width: 50%;
+    }
+    @include max-lg {
+      width: 100%;
+    }
     &__list {
       display: flex;
       align-items: center;
@@ -27,7 +57,50 @@
       @include max-bigScreen {
         gap: 40px;
       }
+      @include max-xxxl {
+        gap: 30px;
+      }
+      @include max-xlmidle {
+        gap: 20px;
+      }
+      @include max-xl {
+        flex-direction: column;
+        margin-top: 110px;
+        gap: 10px;
+      }
       &-item {
+        position: relative;
+        &::after {
+          content: '';
+          left: 0;
+          top: 27px;
+          width: 100%;
+          height: 25px;
+          position: absolute;
+          z-index: 1;
+          @include max-xl {
+            width: 14px;
+            height: 8px;
+            background-image: url(../images/arrow.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            right: 15px;
+            left: auto;
+          }
+        }
+        &:hover .submenu {
+          display: flex;
+          @include max-xl {
+            display: flex;
+            opacity: 1;
+            height: auto;
+            visibility: visible;
+            transition: 0.3s;
+          }
+        }
+        @include max-xl {
+          width: 100%;
+        }
       }
       &-link {
         font-size: 24px;
@@ -36,6 +109,58 @@
         @include max-bigScreen {
           font-size: 16px;
         }
+        @include max-xxxl {
+          font-size: 14px;
+        }
+        @include max-xl {
+          background-color: #fff;
+          border-radius: 10px;
+          color: #0d0d0d;
+          padding: 14px 10px;
+          display: block;
+          font-size: 16px;
+        }
+        &:hover {
+          border-radius: 10px 10px 0 0;
+        }
+      }
+    }
+  }
+  & .submenu {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    width: max-content;
+    @include max-xl {
+      position: relative;
+      display: flex;
+      opacity: 0;
+      height: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      top: 0;
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+    }
+    &__item {
+    }
+    &__link {
+      padding: 10px;
+      font-size: 24px;
+      transition: 0.5s;
+      display: block;
+      border-radius: 6px;
+      @include max-bigScreen {
+        font-size: 16px;
+      }
+      &:hover {
+        background-color: #ddd;
+        transition: 0.5s;
       }
     }
   }
@@ -46,12 +171,38 @@
     background-color: #0d0d0d;
     border-radius: 55px;
     cursor: pointer;
+    &:hover {
+      transform: scale(1.03);
+      transition: 0.1s;
+    }
+    @include max-xl {
+      border: 1px solid #f46d06;
+      background-color: transparent;
+      max-width: 265px;
+      justify-content: space-between;
+      margin: 40px auto 0;
+    }
+    &_mobile {
+      display: none;
+      @include max-xl {
+        display: flex;
+      }
+    }
+    &_desktop {
+      @include max-xl {
+        display: none;
+      }
+    }
     & img {
       width: 75px;
       height: 75px;
       @include max-bigScreen {
         width: 50px;
         height: 50px;
+      }
+      @include max-xxl {
+        width: 45px;
+        height: 45px;
       }
     }
     &-text {
@@ -61,6 +212,13 @@
         padding: 0 34px;
         font-size: 16px;
         line-height: 22px;
+      }
+      @include max-xxl {
+        padding: 0 12px;
+      }
+      @include max-xl {
+        color: #0d0d0d;
+        padding: 0 45px 0 0px;
       }
     }
   }

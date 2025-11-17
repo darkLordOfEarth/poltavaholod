@@ -26,10 +26,17 @@
     & h1 {
       color: #fff;
       font-weight: 700;
-      font-size: 7.5rem;
+      font-size: 120px;
       line-height: 132px;
       text-transform: uppercase;
-      max-width: 60%;
+      @include max-bigScreen {
+        font-size: 80px;
+        line-height: 88px;
+      }
+      @include max-xxxl {
+        font-size: 50px;
+        line-height: 56px;
+      }
     }
     &-btns {
       height: 100vh;
@@ -39,6 +46,10 @@
       align-items: flex-end;
       justify-content: flex-end;
       padding-bottom: 60px;
+      max-width: 420px;
+      @include max-bigScreen {
+        gap: 20px;
+      }
     }
     &-btn {
       display: flex;
@@ -46,19 +57,49 @@
       background-color: #fff;
       border-radius: 75px;
       max-width: 420px;
+      width: 100%;
+      &:hover {
+        transform: scale(1.01);
+        transition: 0.1s;
+      }
       & span {
         font-size: 24px;
         line-height: 33px;
-        padding: 0 45px;
+        padding: 0 20px 0 30px;
         width: max-content;
         min-width: max-content;
+        font-family: 'Open Sans', sans-serif;
+        @include max-bigScreen {
+          font-size: 16px;
+          line-height: 22px;
+        }
       }
       & img {
         width: 90px;
         height: 90px;
+        margin-right: 0;
+        margin-left: auto;
+        @include max-bigScreen {
+          width: 60px;
+          height: 60px;
+        }
       }
     }
   }
   &__text {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 42px;
+    color: #fff;
+    margin-top: 30px;
+    @include max-bigScreen {
+      font-size: 20px;
+      line-height: 28px;
+      margin-top: 20px;
+    }
+    @include max-lg {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 }

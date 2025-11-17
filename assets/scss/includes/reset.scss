@@ -172,10 +172,10 @@ button {
   @include max-bigScreen {
     padding: 0 80px;
   }
-  @include max-xxl {
+  @include max-xxxl {
     padding: 0 40px;
   }
-  @include max-md {
+  @include max-xlmidle {
     padding: 0 20px;
   }
 }
