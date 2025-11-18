@@ -10,6 +10,19 @@
     & img {
       height: 100%;
       object-fit: cover;
+      max-height: 315px;
+      @include max-bigScreen {
+      max-height: 210px;
+    }
+      @include max-xxxl {
+      max-height: 165px;
+    }
+      @include max-xl {
+      max-height: 273px;
+    }
+      @include max-sm {
+      max-height: 94px;
+    }
     }
   }
 }
