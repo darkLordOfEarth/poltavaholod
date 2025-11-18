@@ -62,9 +62,7 @@
     }
   }
   &__list {
-    counter-reset: step;
     &-item {
-      counter-increment: step;
       position: relative;
       font-weight: 400;
       padding: 35px 0;
@@ -81,9 +79,7 @@
       @include max-lg {
         gap: 10px;
       }
-      &:not(:first-child) {
-        border-top: 1px solid #cbcbcb;
-      }
+      
       &::before {
         content: counter(step) '.';
         font-weight: 700;
@@ -104,6 +100,38 @@
         }
       }
     }
+
+  }
+  & ol.template1__list {
+    counter-reset: step;
+    & .template1__list-item {
+      counter-increment: step;
+      &:not(:first-child) {
+        border-top: 1px solid #cbcbcb;
+      }
+    }
+  }
+  & ul.template1__list {
+    list-style: disc;
+    list-style-type: disc;
+    
+    counter-reset: none;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+     & .template1__list-item {
+      border-top: none;
+      list-style: disc;
+      list-style-type: disc;
+      display: inline;
+      &::before {
+        display: none;
+     }
+     }
+     &::before {
+        display: none;
+     }
+
   }
   & .custom-button {
     margin: 75px auto 0;

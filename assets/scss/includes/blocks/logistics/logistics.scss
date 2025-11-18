@@ -1,0 +1,11 @@
+.logistics {
+  & .play__btn {
+    width: 150px;
+    @include max-bigScreen {
+      width: 100px;
+    }
+    @include max-lg {
+      width: 50px;
+    }
+  }
+}
