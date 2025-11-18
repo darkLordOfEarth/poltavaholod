@@ -110,6 +110,7 @@
             background-repeat: no-repeat;
             right: 15px;
             left: auto;
+            transition: 0.5s;
           }
         }
         &:has(.submenu):hover .submenu {
@@ -122,6 +123,12 @@
             padding-bottom: 0;
             border-radius: 10px 10px 0 0;
             color: #f46d06;
+          }
+        }
+        &.open::after {
+          @include max-xl {
+            transform: rotate(-180deg);
+            transition: 0.5s;
           }
         }
         &.open .submenu {
