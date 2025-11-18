@@ -108,6 +108,7 @@ body {
   font-variation-settings: 'wdth' 100;
   font-size: 1rem;
   position: relative;
+  background-color: #f0f0ef;
 }
 ol,
 ul {
@@ -138,6 +139,9 @@ a {
   &:focus {
     color: #c17465;
   }
+}
+b {
+  font-weight: 700;
 }
 button {
   border: none;
@@ -219,12 +223,25 @@ button {
 }
 .sectionTitle {
   font-weight: 700;
-  font-size: 36px;
-  line-height: 42px;
-  color: #555555;
-  @include max-md {
-    font-size: 24px;
-    line-height: 28px;
+  font-size: 72px;
+  line-height: 84px;
+  color: #0d0d0d;
+  @include max-bigScreen {
+    font-size: 48px;
+    line-height: 56px;
+  }
+  @include max-xxxl {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+section {
+  padding: 150px 0;
+  @include max-bigScreen {
+    padding: 100px 0;
+  }
+  @include max-lg {
+    padding: 50px 0;
   }
 }
 .btn__next {
@@ -244,6 +261,21 @@ select::-ms-expand {
 }
 .text {
   font-size: 24px;
+}
+.text_simple {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 42px;
+  letter-spacing: 0%;
+  color: #0d0d0d;
+  @include max-bigScreen {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  @include max-xxxl {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 .overlay {
   position: fixed;

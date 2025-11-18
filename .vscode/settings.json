@@ -1,0 +1,8 @@
+{
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "editor.suggest.selectionMode": "never",
+    "emmet.useInlineCompletions": false,
+    "editor.quickSuggestionsDelay": 10
+}

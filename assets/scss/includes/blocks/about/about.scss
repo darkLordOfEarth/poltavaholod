@@ -1,0 +1,94 @@
+.about {
+  &__content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 75px;
+    margin-top: 75px;
+    @include max-bigScreen {
+      margin-top: 50px;
+    }
+    @include max-xxxl {
+      margin-top: 20px;
+    }
+  }
+  &__info {
+    & p:first-child {
+      padding-bottom: 75px;
+      border-bottom: 1px solid #CBCBCB;
+      @include max-bigScreen {
+        padding-bottom: 50px;
+      }
+      @include max-xxxl {
+        padding-bottom: 20px;
+      }
+    }
+    & p:not(:first-child) {
+      padding-top: 75px;
+      @include max-bigScreen {
+        padding-top: 50px;
+      }
+      @include max-xxxl {
+        padding-top: 20px;
+      }
+    }
+  }
+  &__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & img {
+      max-width: 1080px;
+      height: auto;
+    }
+  }
+  &__nums {
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @include max-bigScreen {
+      margin-top: 100px;
+    }
+    @include max-lg {
+      margin-top: 55px;
+    }
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0 10px;
+      &:not(:first-child) {
+        border-left: 1px solid #CBCBCB;
+      }
+      &__val {
+        color: #0d0d0d;
+        font-weight: 700;
+        font-size: 72px;
+        line-height: 84px;
+        text-align: center;
+        @include max-bigScreen {
+          font-size: 48px;
+          line-height: 56px;
+        }
+        @include max-xxxl {
+          font-size: 32px;
+          line-height: 40px;
+        }
+      }
+      &__text {
+        font-weight: 400;
+        font-size: 27px;
+        line-height: 45px;
+        text-align: center;
+        color: #4d4d4d;
+        @include max-bigScreen {
+          font-size: 18px;
+          line-height: 30px;
+        }
+        @include max-xxxl {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
