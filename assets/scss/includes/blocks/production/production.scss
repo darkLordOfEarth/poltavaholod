@@ -1,0 +1,15 @@
+.production {
+  & .template1__image {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 15px;
+    @include max-bigScreen {
+      gap: 10px;
+    }
+    & img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
