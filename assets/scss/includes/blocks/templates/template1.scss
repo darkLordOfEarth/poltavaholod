@@ -1,4 +1,4 @@
-.about {
+.template1 {
   &__content {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -14,8 +14,24 @@
     @include max-xl {
       grid-template-columns: 1fr;
     }
+    @include max-lg {
+      gap: 20px;
+    }
+    &-reverse {
+      grid-template-columns: 1fr 1.3fr;
+      @include max-xl {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
   }
   &__info {
+    &-texts {
+      margin-top: 30px;
+      @include max-bigScreen {
+        margin-top: 20px;
+      }
+    }
     & p:first-child {
       padding-bottom: 75px;
       border-bottom: 1px solid #cbcbcb;
@@ -45,6 +61,61 @@
       height: auto;
     }
   }
+  &__list {
+    counter-reset: step;
+    &-item {
+      counter-increment: step;
+      position: relative;
+      font-weight: 400;
+      padding: 35px 0;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      @include max-bigScreen {
+        gap: 20px;
+        padding: 30px 0;
+      }
+      @include max-xxxl {
+        padding: 20px 0;
+      }
+      @include max-lg {
+        gap: 10px;
+      }
+      &:not(:first-child) {
+        border-top: 1px solid #cbcbcb;
+      }
+      &::before {
+        content: counter(step) '.';
+        font-weight: 700;
+        font-size: 63px;
+        line-height: 50px;
+        color: #ff7d00;
+        @include max-bigScreen {
+          font-size: 42px;
+          line-height: 33px;
+        }
+        @include max-xxxl {
+          font-size: 32px;
+          line-height: 40px;
+        }
+        @include max-lg {
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+  & .custom-button {
+    margin: 75px auto 0;
+    @include max-bigScreen {
+      margin: 50px auto 0;
+    }
+    @include max-lg {
+      margin: 20px auto 0;
+    }
+  }
+}
+.about {
   &__nums {
     margin-top: 150px;
     display: grid;

@@ -214,6 +214,9 @@ button {
   max-width: 525px;
   width: 100%;
   padding: 27px 0;
+  display: block;
+  cursor: pointer;
+  transition: 0.1s;
   @include max-bigScreen {
     max-width: 350px;
     font-size: 18px;
@@ -222,6 +225,10 @@ button {
   }
   @include max-xxxl {
     padding: 13px 20px;
+  }
+  &:hover {
+    transform: scale(1.03);
+      transition: 0.1s;
   }
 }
 .row-rewerse {
@@ -252,6 +259,7 @@ button {
   }
 }
 section {
+  border-top: 1px solid #CBCBCB;
   padding: 150px 0;
   @include max-bigScreen {
     padding: 100px 0;
@@ -282,7 +290,6 @@ select::-ms-expand {
   font-weight: 400;
   font-size: 30px;
   line-height: 42px;
-  letter-spacing: 0%;
   color: #0d0d0d;
   @include max-bigScreen {
     font-size: 20px;
@@ -291,6 +298,10 @@ select::-ms-expand {
   @include max-xxxl {
     font-size: 18px;
     line-height: 26px;
+  }
+  @include max-lg {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 .overlay {
