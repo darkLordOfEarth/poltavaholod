@@ -2,6 +2,15 @@
   height: 100vh;
   padding: 105px 40px;
   position: relative;
+  @include max-bigScreen {
+    padding: 74px 40px;
+  }
+  @include max-xxxl {
+    padding: 70px 40px;
+  }
+  @include max-md {
+    padding: 70px 20px;
+  }
   &__video {
     position: absolute;
     left: 0;
@@ -16,6 +25,15 @@
     }
     & .play__btn {
       max-width: 270px;
+      @include max-bigScreen {
+        max-width: 180px;
+      }
+      @include max-xxxl {
+        max-width: 100px;
+      }
+      @include max-lg {
+        max-width: 50px;
+      }
     }
   }
   &__content {
@@ -35,6 +53,9 @@
     display: flex;
     align-items: center;
     pointer-events: all;
+    @include max-bigScreen {
+      padding: 4px;
+    }
     &-btn {
       color: #fff;
       font-weight: 600;
@@ -43,8 +64,28 @@
       padding: 21px 24px;
       border-radius: 55px;
       cursor: pointer;
+      @include max-bigScreen {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 14px 16px;
+      }
+      @include max-xxxl {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 9px 16px;
+      }
+      @include max-xxxl {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 9px 16px;
+      }
+      @include max-sm {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 9px 10px;
+      }
       &.active {
-        color: #0D0D0D;
+        color: #0d0d0d;
         background-color: #fff;
       }
     }

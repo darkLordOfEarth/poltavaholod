@@ -214,6 +214,15 @@ button {
   max-width: 525px;
   width: 100%;
   padding: 27px 0;
+  @include max-bigScreen {
+    max-width: 350px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 18px 20px;
+  }
+  @include max-xxxl {
+    padding: 13px 20px;
+  }
 }
 .row-rewerse {
   flex-direction: row-reverse;
@@ -298,11 +307,11 @@ select::-ms-expand {
   position: relative;
 }
 .play__btn {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      cursor: pointer;
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+}
