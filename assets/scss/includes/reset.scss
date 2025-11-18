@@ -204,9 +204,16 @@ button {
   display: none !important;
 }
 .custom-button {
-  background: #c17465;
-  border-radius: 5px;
+  background: #f46d06;
+  border-radius: 75px;
   color: #fff;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 36px;
+  text-align: center;
+  max-width: 525px;
+  width: 100%;
+  padding: 27px 0;
 }
 .row-rewerse {
   flex-direction: row-reverse;
@@ -287,3 +294,15 @@ select::-ms-expand {
   display: none;
   z-index: 5;
 }
+.videoBlock {
+  position: relative;
+}
+.play__btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      cursor: pointer;
+    }

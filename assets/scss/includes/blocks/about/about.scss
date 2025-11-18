@@ -6,15 +6,19 @@
     margin-top: 75px;
     @include max-bigScreen {
       margin-top: 50px;
+      gap: 50px;
     }
     @include max-xxxl {
       margin-top: 20px;
+    }
+    @include max-xl {
+      grid-template-columns: 1fr;
     }
   }
   &__info {
     & p:first-child {
       padding-bottom: 75px;
-      border-bottom: 1px solid #CBCBCB;
+      border-bottom: 1px solid #cbcbcb;
       @include max-bigScreen {
         padding-bottom: 50px;
       }
@@ -45,11 +49,39 @@
     margin-top: 150px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    position: relative;
     @include max-bigScreen {
       margin-top: 100px;
     }
     @include max-lg {
       margin-top: 55px;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 70px;
+    }
+    &::after,
+    &::before {
+      @include max-lg {
+        content: '';
+        background-color: #cbcbcb;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+    &::after {
+      @include max-lg {
+        width: 100%;
+        height: 2px;
+      }
+    }
+    &::before {
+      @include max-lg {
+        width: 2px;
+        height: 100%;
+      }
     }
     &-item {
       display: flex;
@@ -57,7 +89,25 @@
       gap: 5px;
       padding: 0 10px;
       &:not(:first-child) {
-        border-left: 1px solid #CBCBCB;
+        border-left: 2px solid #cbcbcb;
+        @include max-lg {
+          border: none;
+        }
+      }
+      &:first-child::after {
+        @include max-lg {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          width: 10px;
+          height: 22px;
+          background-color: #f0f0ef;
+          z-index: 1;
+        }
       }
       &__val {
         color: #0d0d0d;
