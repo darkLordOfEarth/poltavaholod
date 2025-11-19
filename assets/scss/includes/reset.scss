@@ -191,10 +191,59 @@ button {
 }
 .owl-stage {
   display: flex;
-  // align-items: center;
+  
+}
+.owl-loaded {
+  position: relative;
 }
 .owl-nav {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  height: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @include max-xl {
+        left: auto;
+        bottom: auto;
+        right: 0;
+        top: -93px;
+        justify-content: center;
+        width: max-content;
+        gap: 10px;
+    }
+  @include max-lg {
+        top: -84px;
+    }
+}
+.owl-nav button {
+  background-image: url(../images/slider_btn_right.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  @include max-bigScreen {
+    width: 60px;
+    height: 60px;
+  }
+  @include max-xxxl {
+    width: 50px;
+    height: 50px;
+  }
+  @include max-xl {
+    width: 48px;
+    height: 48px;
+  }
+  & span {
+    display: none;
+  }
+}
+.owl-prev {
+  transform: rotate(180deg);
 }
 .owl-dots {
   display: none;
@@ -236,7 +285,7 @@ button {
   }
   &:hover {
     transform: scale(1.03);
-      transition: 0.1s;
+    transition: 0.1s;
   }
 }
 .row-rewerse {
@@ -270,13 +319,13 @@ button {
   @include max-xl {
     margin-bottom: 20px;
   }
-  @include max-lg {
+  @include max-sm {
     font-size: 20px;
     line-height: 24px;
   }
 }
 section {
-  border-top: 1px solid #CBCBCB;
+  border-top: 1px solid #cbcbcb;
   padding: 150px 0;
   @include max-bigScreen {
     padding: 100px 0;

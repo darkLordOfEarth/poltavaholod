@@ -129,6 +129,17 @@
       &::before {
         display: none;
       }
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 4px;
+        height: 4px;
+        background-color: red;
+      }
     }
     &::before {
       display: none;

@@ -1,0 +1,48 @@
+.partners {
+  &__list {
+    margin-top: 150px;
+    @include max-bigScreen {
+      margin-top: 100px;
+    }
+    @include max-xl {
+      margin-top: 50px;
+    }
+    & .owl-item:not(:first-child) {
+      border-left: 3px solid #cbcbcb;
+    }
+    &.owl-loaded {
+      padding: 0 100px;
+      @include max-xl {
+        padding: 0;
+      }
+    }
+    & .owl-stage {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+      @include max-xl {
+        padding-left: 0px !important;
+      }
+    }
+    & .owl-item {
+      padding: 0 50px;
+      @include max-bigScreen {
+        padding: 0 35px;
+      }
+      @include max-xxxl {
+        padding: 0 20px;
+      }
+      @include max-md {
+        padding: 0 10px;
+      }
+    }
+  }
+  &__desc {
+    margin-top: 150px;
+    @include max-bigScreen {
+      margin-top: 100px;
+    }
+    @include max-xl {
+      margin-top: 50px;
+    }
+  }
+}
