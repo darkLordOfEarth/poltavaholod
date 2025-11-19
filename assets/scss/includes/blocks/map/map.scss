@@ -1,0 +1,49 @@
+.map {
+  & svg {
+    width: 100%;
+    height: 100%;
+    & .oblast:hover {
+    }
+  }
+  &-wrapper {
+    position: relative;
+    display: inline-block;
+    & svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  &-points .point {
+    position: absolute;
+    width: 35px;
+    height: 50px;
+    background-image: url(../images/point.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%); 
+    cursor: pointer;
+    @include max-bigScreen {
+      width: 24px;
+      height: 35px;
+    }
+    @include max-xxxl {
+      width: 17px;
+      height: 25px;
+    }
+    @include max-xl {
+      width: 13px;
+      height: 19px;
+    }
+    @include max-lg {
+      width: 7px;
+      height: 9px;
+    }
+    &:hover {
+
+    }
+  }
+}
+.points-list {
+  display: none;
+}

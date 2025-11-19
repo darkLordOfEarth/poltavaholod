@@ -10,11 +10,15 @@
 
 //about
 @import './includes/blocks/templates/template1.scss';
+@import './includes/blocks/templates/template2.scss';
 
 //virtualTour
+@import './includes/blocks/about/about.scss';
 @import './includes/blocks/virtualTour/virtualTour.scss';
 @import './includes/blocks/production/production.scss';
 @import './includes/blocks/logistics/logistics.scss';
+@import './includes/blocks/tracking/tracking.scss';
+@import './includes/blocks/map/map.scss';
 
 
 

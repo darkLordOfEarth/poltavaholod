@@ -8,4 +8,35 @@
       width: 50px;
     }
   }
+  & .text-36 {
+    font-size: 36px;
+    line-height: normal;
+    @include max-bigScreen {
+      font-size: 24px;
+    }
+    @include max-lg {
+      font-size: 20px;
+    }
+  }
+  & .template1__content {
+    margin-bottom: 75px;
+     @include max-bigScreen {
+       margin-bottom: 50px;
+    }
+    @include max-lg {
+       margin-bottom: 20px;
+    }
+  }
+  & .template1__list {
+    margin-top: 45px;
+    @include max-bigScreen {
+      margin-top: 30px;
+    }
+    @include max-lg {
+      margin-top: 0;
+    }
+    &-item {
+        padding-bottom: 0;
+    }
+  }
 }
