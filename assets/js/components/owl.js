@@ -1,6 +1,10 @@
 $('.partners__list').owlCarousel({
   loop: true,
   nav: true,
+  navText: [
+    '<span class="sr-only">Наступний слайд</span>',
+    '<span class="sr-only">Попередній слайд</span>'
+  ],
   mouseDrag: true,
   touchDrag: true,
   pullDrag: false,
