@@ -121,24 +121,43 @@
       gap: 0;
       column-gap: 20px;
     }
+    @include max-md {
+      grid-template-columns:  1fr;
+    }
     & .template1__list-item {
       border-top: none;
       list-style: disc;
       list-style-type: disc;
       display: inline;
+      padding-left: 54px;
+      @include max-bigScreen {
+        padding-left: 36px;
+      }
+      @include max-xxl {
+        padding-left: 20px;
+      }
       &::before {
         display: none;
       }
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: 0;
         bottom: 0;
         margin: auto;
-        width: 4px;
-        height: 4px;
-        background-color: red;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #f46d06ed;
+        @include max-bigScreen {
+          width: 16px;
+          height: 16px;
+        }
+        @include max-xxl {
+          width: 10px;
+          height: 10px;
+        }
       }
     }
     &::before {
@@ -155,4 +174,3 @@
     }
   }
 }
-

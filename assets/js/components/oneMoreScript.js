@@ -1,11 +1,15 @@
 $(document).ready(function() {
-  $(window).on('scroll', function() {
-    if ($(this).scrollTop() > 0) { 
-      $('header').addClass('scrolled');
-    } else { 
-      $('header').removeClass('scrolled');
-    }
-  });
+  function checkHeaderScroll() {
+  if ($(window).scrollTop() > 0) {
+    $('header').addClass('scrolled');
+  } else {
+    $('header').removeClass('scrolled');
+  }
+}
+
+$(window).on('scroll', checkHeaderScroll);
+$(window).on('load', checkHeaderScroll);
+
 
 
 
