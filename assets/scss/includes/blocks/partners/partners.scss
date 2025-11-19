@@ -17,8 +17,8 @@
       }
     }
     & .owl-stage {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
       @include max-xl {
         padding-left: 0px !important;
       }
@@ -35,7 +35,10 @@
         padding: 0 10px;
       }
     }
+    &-item {
+    }
   }
+
   &__desc {
     margin-top: 150px;
     @include max-bigScreen {
