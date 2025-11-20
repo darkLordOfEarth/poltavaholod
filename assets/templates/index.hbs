@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="preload" href="/owlcarousel/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/owlcarousel/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     {{!-- <link rel="stylesheet" href="css/slick/slick.min.css"> --}}
 
@@ -29,22 +29,20 @@
     {{> blocks / partners}}
     {{> blocks / footer}}
     
-    <!-- jQuery через CDN с fallback -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-      if (typeof jQuery === 'undefined') {
-        document.write('<script src="js/jquery.min.js" defer><\/script>');
+      if (!window.jQuery) {
+        document.write('<script src="/js/jquery.min.js"><\/script>');
       }
     </script>
 
-    <!-- Остальные локальные библиотеки -->
+
+    <!-- Остальные локальные библиотеки --> 
     <script src="js/owlcarousel/owl.carousel.min.js" defer></script>
     {{!-- <script src="js/slick/slick.min.js"></script> --}}
     {{!-- <script src="js/jquery.maskedinput.js"></script> --}}
 
     <!-- Кастомный JS -->
-    <script src="js/app.min.js" defer></script>
+    <script src="/js/app.min.js" defer></script>
 </body>
 </html>

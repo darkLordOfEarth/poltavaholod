@@ -1,33 +1,35 @@
-$('.partners__list').owlCarousel({
-  loop: true,
-  nav: true,
-  navText: [
-    '<span class="sr-only">Наступний слайд</span>',
-    '<span class="sr-only">Попередній слайд</span>'
-  ],
-  mouseDrag: true,
-  touchDrag: true,
-  pullDrag: false,
-  freeDrag: false,
-  URLhashListener: false,
-  autoplay: false,
-  stagePadding: 50,
-  responsive: {
-    0: {
-      items: 2,
-      stagePadding: 50,
+$(function () {
+  $('.partners__list').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>'
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    stagePadding: 50,
+    responsive: {
+      0: {
+        items: 2,
+        stagePadding: 50,
+      },
+      768: {
+        items: 3,
+        stagePadding: 50,
+      },
+      1280: {
+        items: 4,
+        stagePadding: 100,
+      },
+      1650: {
+        items: 5,
+        stagePadding: 100,
+      },
     },
-    768: {
-      items: 3,
-      stagePadding: 50,
-    },
-    1280: {
-      items: 4,
-      stagePadding: 100,
-    },
-    1650: {
-      items: 5,
-      stagePadding: 100,
-    },
-  },
+  });
 });
