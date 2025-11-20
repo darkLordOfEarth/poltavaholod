@@ -9,19 +9,26 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
+  overflow: auto;
+  display: none;
+  &[style*='display: block'] {
+    display: flex !important;
+  }
   &__inner {
     background-color: #f0f0ef;
     border-radius: 30px;
     padding: 75px 60px 60px;
     position: relative;
     max-width: 975px;
+    overflow: auto;
+    max-height: 95vh;
     @include max-bigScreen {
       border-radius: 20px;
       max-width: 650px;
       padding: 50px 40px 40px;
     }
     @include max-md {
-      max-width: 95%;
+      max-width: 94%;
       margin: auto;
     }
     @include max-sm {
@@ -64,7 +71,7 @@
       line-height: 28px;
     }
   }
-    
+
   &__button {
     max-width: 525px;
     margin: 60px auto 0;

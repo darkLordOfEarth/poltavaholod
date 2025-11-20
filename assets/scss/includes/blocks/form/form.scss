@@ -67,6 +67,15 @@
       &::placeholder {
         color: #a3a3a3;
       }
+      &.error {
+        border: 1px solid #e53935 !important;
+      }
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px #ffffff inset;
+        background-clip: text;
+        -webkit-text-fill-color: #0D0D0D;
+        caret-color: white;
+      }
     }
     &-file__field {
       color: #0d0d0d;
@@ -76,8 +85,13 @@
       align-items: center;
       gap: 12px;
       cursor: pointer;
+      border: 1px dashed #a3a3a3;
       @include max-bigScreen {
         gap: 8px;
+      }
+      &.dragover {
+        border-color: #4a8ef0;
+        background: #eef5ff;
       }
       & img {
         width: 36px;
@@ -88,7 +102,7 @@
         }
       }
     }
-    &-file__text {
+    &-file__text_default {
       font-size: 21px;
       line-height: 30px;
       @include max-bigScreen {
