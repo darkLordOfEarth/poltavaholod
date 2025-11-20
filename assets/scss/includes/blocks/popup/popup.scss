@@ -53,6 +53,18 @@
       right: 15px;
     }
   }
+  &-lang .popup__title {
+    font-size: 36px;
+    line-height: 48px;
+    @include max-bigScreen {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    @include max-sm {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
   &__title {
     font-weight: 600;
     font-size: 48px;
@@ -71,7 +83,23 @@
       line-height: 28px;
     }
   }
-
+  & .text_simple {
+    color: #4d4d4d;
+    text-align: center;
+    @include max-sm {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  &__socials {
+    margin-top: 30px;
+    justify-content: center;
+    gap: 60px;
+    @include max-bigScreen {
+      margin-top: 20px;
+      gap: 40px;
+    }
+  }
   &__button {
     max-width: 525px;
     margin: 60px auto 0;
@@ -82,6 +110,15 @@
     @include max-sm {
       max-width: 290px;
       margin: 20px auto 0;
+    }
+  }
+  & .custom-button_white {
+    margin-top: 30px;
+    @include max-bigScreen {
+      margin-top: 20px;
+    }
+    @include max-sm {
+      margin-top: 10px;
     }
   }
   &__notation {

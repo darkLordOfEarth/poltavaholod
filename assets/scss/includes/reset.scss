@@ -299,6 +299,11 @@ button {
     transform: scale(1.03);
     transition: 0.1s;
   }
+  &_white {
+    background-color: #fff;
+    color: #0D0D0D;
+    border: 1px solid #CBCBCB;
+  }
 }
 .row-rewerse {
   flex-direction: row-reverse;

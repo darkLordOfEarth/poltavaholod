@@ -1,0 +1,16 @@
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    &__icon {
+      & img {
+        width: 42px;
+        height: 42px;
+        @include max-bigScreen {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+}

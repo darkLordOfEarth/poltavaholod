@@ -1,5 +1,5 @@
 $(function () {
-  $('.popup__close').on('click', function () {
+  $('.popup__close, .btn-for-close-popup').on('click', function () {
     $(this).parents(".popup").hide();
   });
   $('.popup').on('click', function () {
@@ -36,7 +36,7 @@ $(function () {
     }
   });
 
-  $('.popup__button').on('click', function () {
+  $('.btn-form').on('click', function () {
     let form = $('.form');
     let hasError = false;
 
@@ -71,7 +71,9 @@ $(function () {
 
     // Если всё ок — отправляй
     console.log('Форма готова к отправке!');
-    form.submit(); // если нужен реальный submit
+    // form.submit(); // если нужен реальный submit
+    $("#popup-rozrahunok").hide();
+    $("#popup-spasibi").show();
   });
 
   // Убираем ошибку при вводе

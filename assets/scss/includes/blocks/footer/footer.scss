@@ -186,22 +186,6 @@
       line-height: 18px;
     }
   }
-  &__social {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-    &-icon {
-      & img {
-        width: 42px;
-        height: 42px;
-        @include max-bigScreen {
-          width: 28px;
-          height: 28px;
-        }
-      }
-    }
-  }
 
   &__bottom {
     display: flex;
