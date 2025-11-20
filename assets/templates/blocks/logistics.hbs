@@ -30,11 +30,14 @@
       </div>
       <div class='template1__image'>
         <div class='videoBlock'>
-          <video class='video-element' width='640' height='360' playsinline muted>
-            <source src='/images/logistics.mp4' type='video/mp4' />
-            Ваш браузер не підтримує відео.
-          </video>
-          <img loading="lazy" src='/images/play_btn.svg' alt='play' class='play__btn' />
+          <div class='videoBlockWrapper'>
+            <img src="/images/close_white.svg" class="videoBlock__close">
+            <video class='video-element' width='640' height='360' playsinline muted>
+              <source src='/images/logistics.mp4' type='video/mp4' />
+              Ваш браузер не підтримує відео.
+            </video>
+            <img loading="lazy" src='/images/play_btn.svg' alt='play' class='play__btn' />
+          </div>
         </div>
       </div>
     </div>

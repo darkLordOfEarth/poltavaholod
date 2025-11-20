@@ -69,7 +69,27 @@
         position: absolute;
         bottom: 0;
       }
+      &.scrolled {
+        position: fixed;
+        right: 120px;
+        bottom: 60px;
+        @include max-bigScreen {
+          right: 80px;
+          bottom: 40px;
+        }
+        @include max-xxxl {
+          right: 40px;
+          bottom: 30px;
+        }
+        @include max-xlmidle {
+          right: 20px;
+        }
+        & span {
+          display: none;
+        }
+      }
     }
+
     &-btn {
       display: flex;
       align-items: center;
@@ -89,7 +109,7 @@
         width: max-content;
         min-width: max-content;
         font-family: 'Open Sans', sans-serif;
-        color: #0D0D0D;
+        color: #0d0d0d;
         font-weight: 600;
         @include max-bigScreen {
           font-size: 16px;
