@@ -1,6 +1,6 @@
 
 
-const modal = require('./components/modal.js');
+const popup = require('./components/popup.js');
 const owl = require('./components/owl.js');
 const burger = require('./components/burger.js');
 const map = require('./components/map.js');
