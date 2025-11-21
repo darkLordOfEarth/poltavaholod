@@ -7,21 +7,24 @@
     @include max-bigScreen {
       gap: 10px;
     }
+    & a {
+      height: 100%;
+    }
     & img {
       height: 100%;
       object-fit: cover;
-      max-height: 315px;
+      // max-height: 315px;
       @include max-bigScreen {
-      max-height: 210px;
+      // max-height: 210px;
     }
       @include max-xxxl {
-      max-height: 165px;
+      // max-height: 165px;
     }
       @include max-xl {
-      max-height: 273px;
+      // max-height: 273px;
     }
       @include max-sm {
-      max-height: 94px;
+      // max-height: 94px;
     }
     }
   }

@@ -301,8 +301,8 @@ button {
   }
   &_white {
     background-color: #fff;
-    color: #0D0D0D;
-    border: 1px solid #CBCBCB;
+    color: #0d0d0d;
+    border: 1px solid #cbcbcb;
   }
 }
 .row-rewerse {
@@ -408,4 +408,70 @@ select::-ms-expand {
   bottom: 0;
   margin: auto;
   cursor: pointer;
+}
+.fancybox__button--zoom,
+.fancybox__button--slideshow,
+.fancybox__button--fullscreen,
+.fancybox__button--thumbs,
+.fancybox__counter {
+  display: none;
+}
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+  border-color: #f46d06;
+  border-width: 3px;
+}
+.fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='12' viewBox='0 0 21 12' fill='none'%3E%3Cpath d='M19.125 10.125L10.125 1.125L1.125 10.125' stroke='%23F46D06' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  width: 18px;
+  height: 9px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -25px;
+  margin: auto;
+  @include max-bigScreen {
+    top: -17px;
+    width: 12px;
+    height: 6px;
+  }
+}
+.fancybox__thumbs {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  right: 0;
+  left: 0;
+}
+.fancybox__thumbs .carousel__slide {
+  padding: 45px 0;
+  width: 270px;
+  @include max-bigScreen {
+    padding: 30px 0;
+    width: 180px;
+  }
+  @include max-xxxl {
+    padding: 45px 0;
+  }
+  @include max-lg {
+    padding: 45px 0;
+  }
+}
+.fancybox__slide {
+  padding: 0;
+}
+.fancybox__content {
+  width: 100%;
+  height: 100%;
+}
+.fancybox__nav .carousel__button {
+  border-radius: 50%;
+  background-color: #0000004d;
+}
+.fancybox__backdrop {
+background: rgba(0, 0, 0, 0.9);
 }

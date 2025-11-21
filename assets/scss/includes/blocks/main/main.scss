@@ -73,6 +73,7 @@
         position: fixed;
         right: 120px;
         bottom: 60px;
+        height: auto;
         @include max-bigScreen {
           right: 80px;
           bottom: 40px;

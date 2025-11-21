@@ -26,6 +26,7 @@
     align-items: center;
     & video {
       width: 90%;
+      height: max-content;
       left: 0;
       right: 0;
       top: 0;
@@ -33,7 +34,11 @@
       margin: auto;
       display: block;
       @include max-bigScreen {
-        padding-top: 50px;
+        // padding-top: 50px;
+      }
+      @include max-xxl {
+        padding-top: 0;
+        width: 75%;
       }
 
       @include max-xl {
