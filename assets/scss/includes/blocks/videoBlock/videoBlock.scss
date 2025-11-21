@@ -1,0 +1,65 @@
+.videoBlockWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.videoBlock {
+  &__close {
+    width: 32px;
+    height: 32px;
+    display: none;
+  }
+  &.open {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & video {
+      width: 90%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: block;
+      @include max-bigScreen {
+        padding-top: 50px;
+      }
+
+      @include max-xl {
+        width: 100%;
+        height: auto;
+      }
+      @include max-lg {
+        @include landscape {
+          width: 80%;
+        }
+        padding-top: 0;
+      }
+    }
+    & .videoBlock__close {
+      display: block;
+      position: absolute;
+      top: 45px;
+      right: 45px;
+      cursor: pointer;
+      z-index: 11;
+      @include max-xl {
+        width: 21px;
+        height: 21px;
+        top: 25px;
+        right: 25px;
+      }
+    }
+  }
+}

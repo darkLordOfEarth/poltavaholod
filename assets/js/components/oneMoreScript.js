@@ -16,52 +16,61 @@ $(function () {
   $(window).on('scroll', checkHeaderScroll);
   $(window).on('load', checkHeaderScroll);
 
-  $(function () {
-    const $videos = $('video');
+$(function () {
+    const $videoBlocks = $('.videoBlock');
 
-    if ($videos.length === 0) return;
+    if ($videoBlocks.length === 0) return;
 
-    $videos.each(function () {
-      const $video = $(this);
-      const $wrap = $video.closest('.videoBlock');
-      const $playBtn = $wrap.find('.play__btn');
+    $videoBlocks.each(function () {
+        const $block = $(this);
+        const $video = $block.find('video');
+        const $playBtn = $block.find('.play__btn');
+        const $closeBtn = $block.find('.videoBlock__close');
 
-      $playBtn.off('click');
-      $video.off('click');
+        if (!$video.length) return;
 
-      $playBtn.on('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(".videoBlock").addClass("open")
-        const vid = $video.get(0);
-        if (!vid) return;
+        // Клик на кнопку Play
+        $playBtn.off('click').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
-        vid.play();
-        $playBtn.fadeOut(150);
-      });
+            // Закрываем другие видео
+            $('.videoBlock').removeClass('open').find('video').each(function () {
+                this.pause();
+            });
 
-      $video.on('click', function () {
-        const vid = this;
-        $(".videoBlock").addClass("open")
-        if (vid.paused) {
-          vid.play();
-          $playBtn.fadeOut(150);
-        } else {
-          vid.pause();
-          $playBtn.fadeIn(150);
-        }
-      });
+            $block.addClass('open');
+            $video[0].play();
+            $playBtn.fadeOut(150);
+        });
 
-      $video.on('ended', function () {
-        $playBtn.fadeIn(150);
-      });
+        // Клик на само видео
+        $video.off('click').on('click', function () {
+            $block.addClass('open');
+            if (this.paused) {
+                this.play();
+                $playBtn.fadeOut(150);
+            } else {
+                this.pause();
+                $playBtn.fadeIn(150);
+            }
+        });
+
+        // Когда видео закончилось
+        $video.off('ended').on('ended', function () {
+            $playBtn.fadeIn(150);
+        });
+
+        // Закрытие видео блока
+        $closeBtn.off('click').on('click', function () {
+            $video[0].pause();
+            $block.removeClass('open');
+            $playBtn.fadeIn(150);
+        });
     });
-  });
+});
 
-  $('.videoBlock__close').on('click', function () {
-    $(this).closest('.videoBlock').find('video');
-    $(this).parents(".videoBlock").removeClass("open");
-  });
+
 
 
   $('.virtualTour__toggle-btn').on('click', function () {
