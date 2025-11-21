@@ -23,6 +23,9 @@
       object-fit: cover;
       height: 100%;
     }
+    &.open video {
+      object-fit: contain;
+    }
     & .play__btn {
       max-width: 270px;
       @include max-bigScreen {

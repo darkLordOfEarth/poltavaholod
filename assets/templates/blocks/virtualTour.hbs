@@ -1,10 +1,20 @@
 <section class="virtualTourBlock" style="border: none;">
     <div class="virtualTour">
-        <div class="videoBlock virtualTour__video">
+        {{!-- <div class="videoBlock virtualTour__video">
             <video class="video-element" playsinline muted >
                 <source src="/images/virtualTour_1.mp4" type="video/mp4">
             </video>
             <img loading="lazy" src="/images/play_btn.svg" alt="play" class="play__btn">
+        </div> --}}
+        <div class='videoBlock virtualTour__video'>
+          <div class='videoBlockWrapper'>
+            <img src="/images/close_white.svg" class="videoBlock__close">
+            <video class='video-element' width='640' height='360' playsinline muted>
+              <source src='/images/virtualTour_1.mp4' type='video/mp4' />
+              Ваш браузер не підтримує відео.
+            </video>
+            <img loading="lazy" src='/images/play_btn.svg' alt='play' class='play__btn' />
+          </div>
         </div>
         <div class="virtualTour__content">
             <div class="virtualTour__toggle">
