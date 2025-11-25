@@ -14,7 +14,8 @@
 
 
 
-    {{!-- <link rel="stylesheet" href="css/slick/slick.min.css"> --}}
+    <link rel="stylesheet" href="css/slick/slick.min.css">
+    
 
     <!-- Кастомные стили -->
     <link rel="stylesheet" href="/css/app.min.css" media="print" onload="this.media='all'">
@@ -47,10 +48,20 @@
     <script src="https://cdn.jsdelivr.net/npm/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 
-    {{!-- <script src="js/slick/slick.min.js"></script> --}}
+    <script src="js/slick/slick.min.js"></script>
     {{!-- <script src="js/jquery.maskedinput.js"></script> --}}
 
     <!-- Кастомный JS -->
     <script src="/js/app.min.js" defer></script>
+
+
+    
+    <script>
+      //Скрипт чисто для главной страницы
+      if($(window).width() <= 1280) {
+        $(".header__logo").css("display", "block");
+        $(".header__content").css("justify-content", "space-between");
+      }
+    </script>
 </body>
 </html>

@@ -1,0 +1,223 @@
+
+
+/* $. Classes
+\*----------------------------------------------------------------*/
+
+.animate {
+  transform: translate3d(0, 0, 0);
+  perspective: 1000;
+  filter: blur(0);
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  transform-origin: center left;
+  display: inline-block;
+  position: relative;
+}
+
+.animate--shrink {
+  animation-duration: 1s;
+  animation-name: shrink;
+  animation-timing-function: 'linear';
+  animation: shrink 1s forwards;
+}
+
+.animate--grow {
+  animation-duration: 1s;
+  animation-timing-function: 'linear';
+  animation-name: grow;
+  animation: grow 1s forwards;
+}
+
+/* Slider */
+
+.slick-slider {
+  // box-sizing: border-box;
+  // touch-callout: none;
+  // user-select: none;
+  // touch-action: pan-y;
+  // tap-highlight-color: transparent;
+}
+.slick-list {
+  // position: relative;
+  // overflow: hidden;
+  // display: block;
+  // margin: 0;
+  // padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  // transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  // position: relative;
+  // left: 0;
+  // top: 0;
+  // display: block;
+
+  &:before,
+  &:after {
+    // content: '';
+    // display: table;
+  }
+
+  &:after {
+    // clear: both;
+  } 
+
+  .slick-loading & {
+    // visibility: hidden;
+  }
+}
+.slick-slide {
+  // float: left;
+  // height: 100%;
+  // min-height: 1px;
+  // [dir='rtl'] & {
+  //   float: right;
+  // }
+  // img {
+  //   display: block;
+  // }
+  // &.slick-loading img {
+  //   display: none;
+  // }
+
+  // display: none;
+
+  // &.dragging img {
+  //   pointer-events: none;
+  // }
+
+  // .slick-initialized & {
+  //   display: block;
+  // }
+
+  // .slick-loading & {
+  //   visibility: hidden;
+  // }
+
+  .slick-vertical & {
+    // display: block;
+    // height: auto;
+    // border: 0;
+    // outline: none;
+
+    &:focus,
+    &:active,
+    &::selection {
+      outline: none !important;
+      border: 0 !important;
+      box-shadow: none;
+    }
+  }
+}
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+.slick-current {
+  // position: relative;
+}
+
+.hero__title .slick-slide {
+  // overflow: hidden;
+  // padding: 20px 0;
+}
+
+.hero__title [aria-hidden] {
+  // transition: 1s;
+}
+/* 
+.hero__title [aria-hidden="false"]{
+    opacity: 1;
+}
+
+.hero__title [aria-hidden="true"] {
+    opacity: 0;
+}
+ */
+.hero__title .slick-current > span {
+  // box-sizing: border-box;
+  // display: block;
+  @extend .animate--shrink;
+}
+
+.hero__title .slick-current + .slick-slide > span {
+  @extend .animate--grow;
+}
+
+.no-js .hero__title .slick-dupe:nth-child(2) > span {
+  // padding: 1em;
+  @extend .animate--grow;
+}
+
+.hero__title-misc {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: grey;
+}
+.slick-arrow {
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.slick-prev {
+  left: 30px;
+  transform: rotate(180deg);
+}
+.slick-next {
+  right: 30px;
+}
+
+.slick-arrow {
+  // display: none !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: max-content;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90' fill='none'%3E%3CforeignObject x='-45' y='-45' width='180' height='180'%3E%3Cdiv xmlns='http://www.w3.org/1999/xhtml' style='backdrop-filter:blur(22.5px);clip-path:url(%23bgblur_0_2979_34843_clip_path);height:100%25;width:100%25'%3E%3C/div%3E%3C/foreignObject%3E%3Cg data-figma-bg-blur-radius='45'%3E%3Crect width='90' height='90' rx='45' fill='black' fill-opacity='0.3'/%3E%3Cpath d='M38.6 59.4L53 45L38.6 30.6' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='bgblur_0_2979_34843_clip_path' transform='translate(45 45)'%3E%3Crect width='90' height='90' rx='45'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  width: 90px;
+  height: 90px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+.slick-dots {
+  display: none !important;
+}
+@keyframes shrink {
+  0% {
+    color: green;
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+    color: grey;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+    color: grey;
+  }
+
+  100% {
+    transform: scale(2);
+    color: green;
+  }
+}

@@ -1,0 +1,424 @@
+.hero {
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  background-position-x: 40%;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  @include max-lg {
+    background-position-x: 55%;
+  }
+  & h1.hero__main-slider {
+    position: relative;
+    & .slick-arrow {
+      display: none !important;
+    }
+  }
+  &__title-slider {
+    position: relative;
+    height: 100px;
+    // width: 100vw;
+  }
+  &__title-slider .slick-slide {
+    transform-origin: center center;
+    display: inline-block;
+  }
+  &__title-slider .slick-slide {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 800ms ease;
+    height: 100% !important;
+    width: max-content !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease-in-out;
+    will-change: transform;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  &__title-slider .slick-active {
+    opacity: 1;
+  }
+  &__title-slider .slick-track {
+    width: 100% !important;
+    position: relative;
+    height: auto !important;
+  }
+  &__title-slider .slick-list {
+    height: auto !important;
+  }
+  &__main-slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    & .slick-arrow {
+      width: 90px;
+      height: 90px;
+      @include max-bigScreen {
+        width: 60px;
+        height: 60px;
+      }
+      @include max-xxl {
+        width: 50px;
+        height: 50px;
+      }
+      @include max-xl {
+        display: none;
+      }
+    }
+    // & .owl-nav button {
+    //   z-index: 5;
+    // }
+    // & .owl-nav button {
+    //   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90' fill='none'%3E%3CforeignObject x='-45' y='-45' width='180' height='180'%3E%3Cdiv xmlns='http://www.w3.org/1999/xhtml' style='backdrop-filter:blur(22.5px);clip-path:url(%23bgblur_0_2979_34843_clip_path);height:100%25;width:100%25'%3E%3C/div%3E%3C/foreignObject%3E%3Cg data-figma-bg-blur-radius='45'%3E%3Crect width='90' height='90' rx='45' fill='black' fill-opacity='0.3'/%3E%3Cpath d='M38.6 59.4L53 45L38.6 30.6' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='bgblur_0_2979_34843_clip_path' transform='translate(45 45)'%3E%3Crect width='90' height='90' rx='45'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    //   width: 90px;
+    //   height: 90px;
+    //   backdrop-filter: blur(10px);
+    //   border-radius: 50%;
+    //   overflow: hidden;
+    //   @include max-bigScreen {
+    //     width: 60px;
+    //     height: 60px;
+    //   }
+    //   @include max-xxl {
+    //     width: 50px;
+    //     height: 50px;
+    //   }
+    //   @include max-xl {
+    //     display: none;
+    //   }
+    // }
+    // & .owl-nav .owl-prev {
+    //   margin-left: 30px;
+    //   @include max-bigScreen {
+    //     margin-left: 20px;
+    //   }
+    // }
+    // & .owl-nav .owl-next {
+    //   margin-right: 30px;
+    //   @include max-bigScreen {
+    //     margin-right: 20px;
+    //   }
+    // }
+    // & .owl-dots {
+    //   @include max-md {
+    //     display: flex;
+    //     gap: 10px;
+    //     margin: -24px auto 0;
+    //     width: max-content;
+    //     z-index: 5;
+    //     position: relative;
+    //   }
+    //   & button {
+    //     background-color: #a3a3a3;
+    //     border-radius: 23px;
+    //     width: 20px;
+    //     height: 4px;
+    //     cursor: pointer;
+    //     &.active {
+    //       background-color: #fff;
+    //     }
+    //   }
+    // }
+    &-nav-additional {
+      position: absolute;
+      left: 240px;
+      bottom: 90px;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      height: 160px;
+      overflow: hidden;
+      @include max-bigScreen {
+        left: 160px;
+      }
+      @include max-xxxl {
+        left: 100px;
+      }
+      @include max-xl {
+        left: 20px;
+      }
+      & .hero__title-misc {
+        font-size: 24px;
+        line-height: 33px;
+        color: #cbcbcb;
+        padding-left: 36px;
+        @include max-bigScreen {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+      & .slick-list {
+        height: 160px;
+        overflow: hidden;
+      }
+      & .slick-slide {
+        position: relative;
+        overflow: visible;
+        height: auto !important;
+        &:not(.slick-active) {
+          visibility: hidden;
+        }
+        &.slick-active {
+          visibility: visible;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0; /* регулируй */
+        width: 4px;
+        height: 20px;
+        background: #a3a3a3;
+        z-index: 10;
+        border-radius: 23px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 70px;
+        width: 4px;
+        height: 20px;
+        background: #fff;
+        z-index: 11;
+        animation: none;
+      }
+
+      &.do-progress::after {
+        animation: slideProgressFill 30s linear forwards;
+        top: 70px;
+        border-radius: 23px;
+        max-height: 20px;
+      }
+
+      & .slick-center .hero__title-misc {
+        font-size: 30px;
+        line-height: 42px;
+        color: #fff;
+        @include max-bigScreen {
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
+      & .slick-list {
+        padding: 0;
+        // padding-top: 10px;
+        // height: 100% !important;
+        // max-height: 180px;
+      }
+      & .slick-slide {
+        margin: 10px 0;
+        cursor: pointer;
+      }
+    }
+    & img {
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    margin-top: 150px;
+    @include max-lg {
+      margin-top: 130px;
+    }
+  }
+  &__group {
+    & h1 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 84px;
+      text-align: center;
+      @include max-bigScreen {
+        font-size: 48px;
+        line-height: 58px;
+      }
+      @include max-xxxl {
+        font-size: 32px;
+        line-height: 40px;
+      }
+      @include max-sm {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+
+    &-btns {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: 60px;
+      max-width: 420px;
+      @include max-bigScreen {
+        gap: 20px;
+      }
+      @include max-lg {
+        height: auto;
+        position: absolute;
+        bottom: 0;
+      }
+      & {
+        position: fixed;
+        right: 120px;
+        bottom: 60px;
+        height: auto;
+        @include max-bigScreen {
+          right: 80px;
+          bottom: 40px;
+        }
+        @include max-xxxl {
+          right: 40px;
+          bottom: 30px;
+        }
+        @include max-xlmidle {
+          right: 20px;
+        }
+        & span {
+          display: none;
+        }
+      }
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 75px;
+      max-width: 420px;
+      width: 100%;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.01);
+        transition: 0.1s;
+      }
+      & span {
+        font-size: 24px;
+        line-height: 33px;
+        padding: 0 20px 0 30px;
+        width: max-content;
+        min-width: max-content;
+        font-family: 'Open Sans', sans-serif;
+        color: #0d0d0d;
+        font-weight: 600;
+        @include max-bigScreen {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+      & img {
+        width: 90px;
+        height: 90px;
+        margin-right: 0;
+        margin-left: auto;
+        @include max-bigScreen {
+          width: 60px;
+          height: 60px;
+        }
+        @include max-lg {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 30px;
+    margin-top: 36px;
+    @include max-bigScreen {
+      margin-top: 24px;
+      gap: 20px;
+    }
+    @include max-sm {
+      margin-top: 10px;
+      gap: 10px;
+    }
+    &-btn {
+      font-size: 24px;
+      line-height: 33px;
+      border-radius: 50px;
+      padding: 14px 75px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      @include max-bigScreen {
+        font-size: 16px;
+        line-height: 22px;
+        padding: 9px 50px;
+      }
+      @include max-sm {
+        font-size: 14px;
+        line-height: 18px;
+        padding: 11px 25px;
+      }
+    }
+    & a {
+      background-color: #00000033;
+      backdrop-filter: blur(10px);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+    & button {
+      background-color: #fff;
+      color: #0d0d0d;
+      border: 1px solid #cbcbcb;
+    }
+  }
+  &__desc {
+    font-weight: 600;
+    color: #cbcbcb;
+    margin-bottom: 30px;
+    text-align: center;
+    @include max-bigScreen {
+      margin-bottom: 20px;
+    }
+    @include max-sm {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+@keyframes slideProgressFill {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}

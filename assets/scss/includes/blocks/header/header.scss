@@ -26,6 +26,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+    @include max-xl {
+        justify-content: flex-end;
+      }
   }
   &__logo {
     & img {
@@ -37,6 +40,9 @@
         max-width: 182px;
       }
     }
+    @include max-xl {
+        display: none;
+      }
   }
   & .menu {
     &__heading {

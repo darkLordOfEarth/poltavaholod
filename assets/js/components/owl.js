@@ -32,4 +32,33 @@ $(function () {
       },
     },
   });
+  if($(window).width() < 1280){
+    $('.pageInfo__product-list').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>'
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    stagePadding: 50,
+    margin: 10,
+    responsive: {
+      0: {
+        items: 2,
+        stagePadding: 10,
+      },
+      768: {
+        items: 3,
+        stagePadding: 30,
+      }
+    },
+  });
+  }
+  
 });

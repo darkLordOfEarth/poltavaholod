@@ -55,7 +55,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
-    // new HtmlWebpackPlugin({ template: './assets/templates/about.hbs', filename: 'about.html' }),
+    new HtmlWebpackPlugin({ template: './assets/templates/product.hbs', filename: 'product.html' }),
   ],
 
   output: {
