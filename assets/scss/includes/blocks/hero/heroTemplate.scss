@@ -1,0 +1,11 @@
+.heroTemplate {
+  h1 {
+    margin-bottom: 30px;
+    @include max-bigScreen {
+      margin-bottom: 20px;
+    }
+    @include max-sm {
+      margin-bottom: 10px;
+    }
+  }
+}

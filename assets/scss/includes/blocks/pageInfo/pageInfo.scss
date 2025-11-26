@@ -1,4 +1,5 @@
 .pageInfo {
+  border: none;
   padding: 150px 0;
   @include max-bigScreen {
     padding: 100px 0;
@@ -173,5 +174,8 @@
         }
       }
     }
+  }
+  & .custom-button {
+    margin: auto;
   }
 }

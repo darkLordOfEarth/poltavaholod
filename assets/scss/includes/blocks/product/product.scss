@@ -1,0 +1,108 @@
+.product {
+  &__slider {
+    @include max-sm {
+      display: none;
+    }
+    &_mobile {
+      display: none;
+      @include max-sm {
+        display: block;
+        width: calc(100vw);
+        left: 50%;
+        margin-left: -50vw;
+        position: relative;
+      }
+      & .owl-nav {
+      top: -65px;
+      @include max-sm {
+        top: -60px !important;
+      }
+    }
+      & .play__btn {
+      width: 50px;
+      height: 50px;
+    }
+    }
+    &-item {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 15px;
+      @include max-bigScreen {
+        gap: 10px;
+      }
+    }
+    &-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      @include max-bigScreen {
+        gap: 10px;
+      }
+    }
+    &-video {
+      & video {
+        object-fit: cover;
+      }
+
+      & .play__btn {
+        width: 150px;
+        height: 150px;
+        @include max-bigScreen {
+          width: 100px;
+          height: 100px;
+        }
+        @include max-xl {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+    & .owl-nav {
+      top: -65px;
+      @include max-sm {
+        top: -60px !important;
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 75px;
+    display: flex;
+    gap: 75px;
+    @include max-bigScreen {
+      margin-top: 50px;
+      gap: 50px;
+    }
+    @include max-xl {
+      margin-top: 20px;
+      gap: 20px;
+    }
+    @include max-lg {
+      flex-direction: column-reverse;
+    }
+    & .line {
+      &_vertical {
+        @include max-lg {
+          height: 1px;
+          width: 100%;
+          background-color: #cbcbcb;
+        }
+      }
+    }
+  }
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    &-val {
+      margin-top: 5px;
+    }
+  }
+  &__location {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4d4d4d;
+  }
+}

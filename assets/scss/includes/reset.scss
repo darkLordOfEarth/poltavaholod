@@ -192,6 +192,10 @@ button {
   height: 1px;
   width: 100%;
   background-color: #CBCBCB;
+  &_vertical {
+    height: -webkit-fill-available;
+    width: 1px;
+  }
 }
 .custom-button {
   font-family: 'Open Sans', sans-serif;

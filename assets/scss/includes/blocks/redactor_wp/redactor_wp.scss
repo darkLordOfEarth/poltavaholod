@@ -1,0 +1,42 @@
+.redactor_wp {
+  p {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 42px;
+    color: #0d0d0d;
+    margin-bottom: 30px;
+    @include max-bigScreen {
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 20px;
+    }
+    @include max-xxxl {
+      font-size: 18px;
+      line-height: 26px;
+    }
+    @include max-lg {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  strong {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    @include max-bigScreen {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    @include max-xxxl {
+      line-height: 28px;
+    }
+    @include max-sm {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  ul, ol {
+    padding-left: 30px;
+    list-style-type: disc;
+  }
+}
