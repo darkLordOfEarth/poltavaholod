@@ -46,6 +46,20 @@ $(function () {
     void bar.offsetWidth;
     bar.classList.add('do-progress');
   }
+  function startVerticalProgress(slick) {
+  if (!$slider_nav.length) return;
+
+  const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+
+  // подставляем время анимации
+  $slider_nav[0].style.setProperty('--slide-progress-time', autoplaySpeed);
+
+  // сброс анимации
+  $slider_nav[0].classList.remove('do-progress');
+  void $slider_nav[0].offsetWidth; // reflow
+  $slider_nav[0].classList.add('do-progress');
+}
+
 
   /* -----------------------------------------------------
    * Вертикальная навигация
@@ -106,7 +120,7 @@ $(function () {
   // МГНОВЕННОЕ обновление заголовка и описания
   $slider.on('init', function (event, slick) {
     updateTexts(0);
-
+startVerticalProgress(slick);
     // устанавливаем переменную сразу для первого dot
     const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
     document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
@@ -118,7 +132,7 @@ $(function () {
 
   $slider.on('beforeChange', function (event, slick, current, next) {
     updateTexts(next);
-
+startVerticalProgress(slick);
     // подставляем время анимации прогресса
     const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
     document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
