@@ -1,0 +1,47 @@
+.departments {
+  &__content {
+  }
+  &__items {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 75px;
+    @include max-bigScreen {
+      gap: 50px;
+      margin-top: 50px;
+    }
+    @include max-xxxl {
+      gap: 20px;
+    }
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    @include max-xl {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      @include max-bigScreen {
+        gap: 10px;
+      }
+    }
+    &-title {
+      font-weight: 700;
+    }
+    &-desc {
+      color: #0d0d0d;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      @include max-bigScreen {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+}
