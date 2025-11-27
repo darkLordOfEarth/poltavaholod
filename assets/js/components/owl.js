@@ -109,4 +109,56 @@ $(function () {
     margin: 10,
     items: 1,
   });
+
+
+
+
+  $('.related__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    center: true,
+    responsive: {
+      0: {
+        margin: 5,
+        stagePadding: 50,
+        items: 1,
+      },
+      576: {
+        margin: 10,
+        stagePadding: 150,
+        items: 1,
+      },
+      992: {
+        margin: 10,
+        stagePadding: 200,
+        items: 1,
+      },
+      1280: {
+        margin: 10,
+        stagePadding: 0,
+        items: 3,
+      },
+      1920: {
+        margin: 10,
+        stagePadding: 0,
+        items: 3,
+      },
+      2800: {
+        margin: 15,
+        stagePadding: 0,
+        items: 3,
+      },
+    },
+  });
 });
+

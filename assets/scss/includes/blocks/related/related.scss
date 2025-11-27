@@ -1,0 +1,71 @@
+.related {
+  &__content {
+  }
+  &__slider {
+    padding: 0 50px;
+    @include max-xl {
+      width: calc(100vw);
+      left: 50%;
+      margin-left: -50vw;
+      position: relative;
+      padding: 0;
+      padding-top: 20px;
+    }
+    @include max-sm {
+      padding-top: 10px;
+    }
+    &-item {
+      position: relative;
+      & img {
+      }
+      & span {
+        position: absolute;
+        // top: 0;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 36px;
+        color: #fff;
+        @include max-bigScreen {
+          font-size: 20px;
+          line-height: 24px;
+        }
+        @include max-xxxl {
+          font-size: 18px;
+          line-height: 24px;
+        }
+        @include max-sm {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+    & .owl-stage {
+      align-items: center;
+    }
+    & .owl-item {
+      transform: scale(0.9);
+      transition: 0.3s;
+    }
+    & .owl-item.center.active {
+      transform: scale(1.1);
+      transition: 0.3s;
+      & span {
+        bottom: 30px;
+      }
+    }
+    & .owl-nav {
+      @include max-xl {
+        top: -65px;
+      }
+      @include max-md {
+        top: -55px;
+      }
+    }
+  }
+}
