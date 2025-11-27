@@ -145,7 +145,7 @@ if ($footerVideo.length) {
 
 
 
-
+// ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ ОДИНОЧНЫХ ВИДЕО
 $(function () {
     const $videoBlocks = $('.videoBlockSimple');
 

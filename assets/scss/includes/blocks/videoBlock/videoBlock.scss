@@ -59,7 +59,7 @@
       right: 45px;
       cursor: pointer;
       z-index: 11;
-      @include max-xl {
+      @include max-bigScreen {
         width: 21px;
         height: 21px;
         top: 25px;

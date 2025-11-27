@@ -194,7 +194,7 @@ button {
 .line {
   height: 1px;
   width: 100%;
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   &_vertical {
     height: -webkit-fill-available;
     width: 1px;
@@ -409,7 +409,7 @@ select::-ms-expand {
   background-color: #0000004d;
 }
 .fancybox__backdrop {
-background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.9);
 }
 .fancybox__slide.has-video .fancybox__content {
   width: 100% !important;
@@ -422,4 +422,21 @@ background: rgba(0, 0, 0, 0.9);
 .fancybox__iframe {
   width: 100vw !important;
   height: 100vh !important;
+}
+.fancybox__button--close {
+  background-image: url(../images/close_white.svg);
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 45px;
+  right: 45px;
+  position: relative;
+  @include max-bigScreen {
+    width: 21px;
+    height: 21px;
+  }
+}
+.fancybox__button--close svg {
+  display: none;
 }

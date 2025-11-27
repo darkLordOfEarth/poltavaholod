@@ -1,53 +1,62 @@
 $(function () {
   const $slider = $('.hero__main-slider');
-  const $slider_title = $('.hero__title-slider');
   const $slider_nav = $('.hero__main-slider-nav-additional');
+  const $title = $('.hero__title');
   const $productLink = $('.hero__nav-btn');
   const $desc = $('.hero__desc');
 
-  /** ------------------------------
-   **  Обновление ссылки под кнопкой
-   ** ------------------------------ */
+  /* -----------------------------
+   * Обновление текста и ссылки
+   * ----------------------------- */
   function updateProductLink(currentSlide) {
-    const $active = $slider_nav.find('.slick-active.slick-center');
-    const link = $active.attr('data-link') || '#';
-    const desc = $active.attr('data-desc');
+    const $current = $slider.find('.slick-slide[data-slick-index="' + currentSlide + '"]');
+
+    const link = $current.attr('data-link') || '#';
+    const desc = $current.attr('data-desc') || '';
+    const title =
+      $current.attr('data-title') || $slider_nav.find('.slick-current.slick-center span').text();
+
     $productLink.attr('href', link);
-    $desc.stop(true, true).fadeOut(200, function () {
-      $desc.text(desc).fadeIn(200);
-    });
+
+    $desc.stop(true, true).css('opacity', 0).text(desc).animate({ opacity: 1 }, 200);
+    $title.stop(true, true).css('opacity', 0).text(title).animate({ opacity: 1 }, 200);
   }
 
-  /** ------------------------------
-   ** 1) Слайдер заголовков
-   ** ------------------------------ */
+  /* -----------------------------
+   * Progress bar
+   * ----------------------------- */
+  function startProgress(slick) {
+    if (!$slider_nav.length) return;
 
-  $slider_title.slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    speed: 800,
-    draggable: false,
-    swipe: false,
-    infinite: true,
-    adaptiveHeight: true,
-    asNavFor: '.hero__main-slider',
-  });
+    const bar = $slider_nav[0];
+    const autoplaySpeed = slick?.options?.autoplaySpeed;
 
-  /** ------------------------------
-   ** 2) Вертикальный навигационный
-   ** ------------------------------ */
+    if (!autoplaySpeed) return;
 
+    bar.style.setProperty('--slide-progress-time', autoplaySpeed + 'ms');
+
+    bar.classList.remove('do-progress');
+    void bar.offsetWidth; // reflow
+    bar.classList.add('do-progress');
+  }
+
+  /* -----------------------------
+   * Инициализация вертикального меню
+   * ----------------------------- */
   if ($slider_nav.length) {
+    $slider_nav.on('init', function (e, slick) {
+      updateProductLink();
+      startProgress(slick);
+    });
+
     $slider_nav.slick({
       slidesToShow: 3,
       slidesToScroll: 1,
-      arrows: false,
-      dots: false,
       vertical: true,
       centerMode: true,
       centerPadding: '10px',
+      arrows: false,
+      dots: false,
       infinite: true,
       draggable: false,
       swipe: false,
@@ -55,27 +64,19 @@ $(function () {
       cssEase: 'ease',
       asNavFor: '.hero__main-slider',
     });
-
-    $slider_nav.on('init', function (e, slick) {
-      setTimeout(() => slick.setPosition(), 300);
-      updateProductLink(0);
-      startProgress(slick, 0);
-    });
-
-    setTimeout(() => $slider_nav.slick('setPosition'), 500);
   }
 
-  /** ------------------------------
-   ** 3) Главный слайдер
-   ** ------------------------------ */
-  $slider
-    .slick({
+  /* -----------------------------
+   * Главный слайдер
+   * ----------------------------- */
+  if ($slider.length) {
+    $slider.slick({
       slidesToShow: 1,
       slidesToScroll: 1,
+      fade: true,
       arrows: true,
       dots: true,
       infinite: true,
-      fade: true,
       speed: 800,
       autoplay: true,
       autoplaySpeed: 3000,
@@ -84,38 +85,18 @@ $(function () {
       swipe: true,
       prevArrow: '<button type="button" class="slick-prev slick-arrow"></button>',
       nextArrow: '<button type="button" class="slick-next slick-arrow"></button>',
-      asNavFor: '.hero__title-slider', // ← только один, как и должно быть!
-    })
-
-    /** Обновляем ссылку */
-    .on('afterChange', function (event, slick, currentSlide) {
-      updateProductLink(currentSlide);
-      // Прокручиваем вертикальный вручную (корректная тройная связка)
-      $slider_nav.slick('slickGoTo', currentSlide);
-    })
-
-    /** Прогресс при смене */
-    .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-      startProgress(slick, nextSlide);
+      asNavFor: '.hero__main-slider-nav-additional',
     });
 
-  /** ------------------------------
-   ** Progress-bar для вертикального меню
-   ** ------------------------------ */
-  function startProgress(slick, index) {
-    if (!$slider_nav.length) return;
+    // Обновление ссылок
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      updateProductLink(currentSlide);
+      $slider_nav.slick('slickGoTo', currentSlide);
+    });
 
-    const progressBar = $slider_nav[0];
-    const autoplaySpeed = slick.options.autoplaySpeed;
-
-    progressBar.style.setProperty('--slide-progress-time', autoplaySpeed + 'ms');
-
-    progressBar.classList.remove('do-progress');
-    void progressBar.offsetWidth; // reflow hack
-    progressBar.classList.add('do-progress');
+    // Прогресс
+    $slider.on('beforeChange', function (event, slick, current, next) {
+      startProgress(slick);
+    });
   }
-
-  $slider_nav.on('beforeChange', function (e, slick, current, next) {
-    startProgress(slick, next);
-  });
 });
