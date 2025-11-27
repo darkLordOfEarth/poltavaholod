@@ -14,7 +14,7 @@ $(function () {
     slidesData.push({
       title: $(this).attr('data-title') || '',
       desc: $(this).attr('data-desc') || '',
-      link: $(this).attr('data-link') || '#'
+      link: $(this).attr('data-link') || '#',
     });
   });
 
@@ -68,6 +68,16 @@ $(function () {
       speed: 800,
       cssEase: 'ease',
       asNavFor: '.hero__main-slider',
+      // responsive: [
+      //   {
+      //     breakpoint: 576,
+      //     settings: {
+      //       slidesToShow: 1,
+      //       slidesToScroll: 1,
+      //       vertical: false,
+      //     },
+      //   },
+      // ],
     });
   }
 
@@ -94,9 +104,23 @@ $(function () {
    * ----------------------------------------------------- */
 
   // МГНОВЕННОЕ обновление заголовка и описания
-  $slider.on('beforeChange', function (event, slick, current, next) {
-    updateTexts(next);
-    startProgress(slick);
+  $slider.on('init', function (event, slick) {
+    updateTexts(0);
+
+    // устанавливаем переменную сразу для первого dot
+    const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+    document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
+
+    // сбрасываем ширину ::after для первого dot
+    $('.slick-dots li').removeClass('slick-active'); // сброс класса
+    $($('.slick-dots li')[0]).addClass('slick-active'); // заново
   });
 
+  $slider.on('beforeChange', function (event, slick, current, next) {
+    updateTexts(next);
+
+    // подставляем время анимации прогресса
+    const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+    document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
+  });
 });
