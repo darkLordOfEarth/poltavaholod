@@ -279,6 +279,7 @@ button {
 section {
   border-top: 1px solid #cbcbcb;
   padding: 150px 0;
+  background-color: #fff;
   @include max-bigScreen {
     padding: 100px 0;
   }
