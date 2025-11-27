@@ -13,7 +13,6 @@
         position: relative;
       }
       & .owl-nav {
-      top: -65px;
       @include max-sm {
         top: -60px !important;
       }
@@ -58,7 +57,6 @@
       }
     }
     & .owl-nav {
-      top: -65px;
       @include max-sm {
         top: -60px !important;
       }

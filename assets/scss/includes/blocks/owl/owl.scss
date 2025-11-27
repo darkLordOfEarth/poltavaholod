@@ -17,6 +17,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  pointer-events: none;
   @include max-xl {
     left: auto;
     bottom: auto;
@@ -37,6 +38,7 @@
   width: 90px;
   height: 90px;
   cursor: pointer;
+  pointer-events: all;
   @include max-bigScreen {
     width: 60px;
     height: 60px;

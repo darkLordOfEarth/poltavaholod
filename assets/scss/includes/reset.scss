@@ -135,6 +135,9 @@ video {
   width: 100%;
   height: 100%;
 }
+video {
+  cursor: pointer;
+}
 a {
   text-decoration: none;
   text-transform: initial;
@@ -331,6 +334,7 @@ select::-ms-expand {
 }
 .videoBlock {
   position: relative;
+  height: 100%;
 }
 .play__btn {
   position: absolute;
@@ -406,4 +410,16 @@ select::-ms-expand {
 }
 .fancybox__backdrop {
 background: rgba(0, 0, 0, 0.9);
+}
+.fancybox__slide.has-video .fancybox__content {
+  width: 100% !important;
+  height: 100% !important;
+  width: 100vw !important;
+  height: 100vh !important; /* 16:9 */
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.fancybox__iframe {
+  width: 100vw !important;
+  height: 100vh !important;
 }

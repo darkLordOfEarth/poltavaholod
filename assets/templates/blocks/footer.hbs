@@ -2,21 +2,19 @@
     <div class="container">
         <div class="footer__content">
             <div class="footer__top">
-                {{!-- <div class="videoBlock footer__video">
-                    <video class="video-element footer-video-element" width="640" height="360" playsinline muted>
-                        <source src="/images/footer_video.mp4" type="video/mp4">
-                        Ваш браузер не підтримує відео.
-                    </video>
-                    <img loading="lazy" src="/images/play_btn.svg" alt="play" class="play__btn">
-                </div> --}}
-                <div class='videoBlock footer__video'>
-                    <div class='videoBlockWrapper'>
+                <div class="videoBlock footer__video videoBlockSimple">
+                    <a href="/images/footer_video.mp4"
+                    class="video-fancybox-trigger gallery-item"
+                    data-type="video"></a>
+                    <div class="videoBlockWrapper">
                         <img src="/images/close_white.svg" class="videoBlock__close">
-                        <video class='video-element footer-video-element' width='640' height='360' playsinline muted>
-                        <source src='/images/footer_video.mp4' type='video/mp4' />
-                        Ваш браузер не підтримує відео.
+                        <video class="video-element footer-video-element" playsinline muted>
+                            <source src="/images/footer_video.mp4" type="video/mp4">
                         </video>
-                        <img loading="lazy" src='/images/play_btn.svg' alt='play' class='play__btn' />
+                        <img loading="lazy"
+                            src="/images/play_btn.svg"
+                            alt="play"
+                            class="play__btn">
                     </div>
                 </div>
                 <ul class="footer__menu">
