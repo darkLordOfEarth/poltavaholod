@@ -13,15 +13,41 @@
     @include max-xxxl {
       gap: 20px;
     }
+    @include max-xl {
+      margin-top: 90px;
+      grid-template-columns: 1fr;
+      // width: calc(100vw);
+      // left: 50%;
+      // margin-left: -50vw;
+      // position: relative;
+      // padding-left: 20px;
+    }
+    @include max-xl {
+      margin-left: -100px;
+    }
+    @include max-lg {
+      margin-left: -20px;
+    }
+    @include max-sm {
+      margin-left: -35px;
+    }
+    & .owl-stage-outer {
+      overflow-x: visible;
+      overflow-y: clip;
+    }
+    & .owl-nav {
+      top: -65px;
+      // right: 20px;
+    }
   }
   &__item {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     @include max-xl {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
     &-text {
       display: flex;
       flex-direction: column;

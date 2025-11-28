@@ -10,6 +10,18 @@
     font-size: 26px;
     line-height: 44px;
     color: #4d4d4d;
+    @include max-bigScreen {
+      font-size: 18px;
+      line-height: 30px;
+    }
+    @include max-xxxl {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    @include max-sm {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
   &__box {
     display: grid;
@@ -21,7 +33,7 @@
       gap: 50px;
     }
     @include max-xxxl {
-     grid-template-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
     }
     @include max-xl {
       margin-top: 30px;
@@ -39,10 +51,10 @@
     gap: 50px;
     list-style-type: initial;
     list-style: initial;
-     @include max-bigScreen {
+    @include max-bigScreen {
       gap: 35px;
     }
-     @include max-xxxl {
+    @include max-xxxl {
       gap: 25px;
     }
     &-item {
@@ -79,7 +91,7 @@
       &__title {
         margin-left: 50px;
         font-weight: 600;
-        color: #0D0D0D;
+        color: #0d0d0d;
         @include max-xxxl {
           margin-left: 35px;
         }

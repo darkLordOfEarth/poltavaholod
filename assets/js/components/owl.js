@@ -175,38 +175,32 @@ $(function () {
       freeDrag: false,
       URLhashListener: false,
       autoplay: false,
-      center: true,
       responsive: {
         0: {
-          margin: 5,
-          stagePadding: 50,
+          margin: 15,
+          stagePadding: 30,
           items: 1,
         },
         576: {
-          margin: 10,
-          stagePadding: 150,
-          items: 1,
+          margin: 20,
+          stagePadding: 20,
+          items: 2,
         },
         992: {
-          margin: 10,
-          stagePadding: 200,
-          items: 1,
+          margin: 20,
+          stagePadding: 100,
+          items: 2,
         },
-        1280: {
-          margin: 10,
-          stagePadding: 0,
-          items: 3,
-        },
-        1920: {
-          margin: 10,
-          stagePadding: 0,
-          items: 3,
-        },
-        2800: {
-          margin: 15,
-          stagePadding: 0,
-          items: 3,
-        },
+        // 1920: {
+        //   margin: 10,
+        //   stagePadding: 200,
+        //   items: 3,
+        // },
+        // 2800: {
+        //   margin: 15,
+        //   stagePadding: 0,
+        //   items: 3,
+        // },
       },
     });
   }
