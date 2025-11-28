@@ -58,6 +58,7 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './assets/templates/products.hbs', filename: 'products.html' }),
     new HtmlWebpackPlugin({ template: './assets/templates/product.hbs', filename: 'product.html' }),
     new HtmlWebpackPlugin({ template: './assets/templates/manufacturings.hbs', filename: 'manufacturings.html' }),
+    new HtmlWebpackPlugin({ template: './assets/templates/manufacturing.hbs', filename: 'manufacturing.html' }),
   ],
 
   output: {
