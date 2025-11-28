@@ -9,14 +9,15 @@ $(function () {
    * 1) Собираем данные из главных слайдов в массив
    * ----------------------------------------------------- */
   const slidesData = [];
-
-  $slider.find('img').each(function () {
-    slidesData.push({
-      title: $(this).attr('data-title') || '',
-      desc: $(this).attr('data-desc') || '',
-      link: $(this).attr('data-link') || '#',
+  if ($slider.length) {
+    $slider.find('img').each(function () {
+      slidesData.push({
+        title: $(this).attr('data-title') || '',
+        desc: $(this).attr('data-desc') || '',
+        link: $(this).attr('data-link') || '#',
+      });
     });
-  });
+  }
 
   /* -----------------------------------------------------
    * 2) Обновление текста без DOM-лагов
@@ -47,19 +48,18 @@ $(function () {
     bar.classList.add('do-progress');
   }
   function startVerticalProgress(slick) {
-  if (!$slider_nav.length) return;
+    if (!$slider_nav.length) return;
 
-  const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+    const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
 
-  // подставляем время анимации
-  $slider_nav[0].style.setProperty('--slide-progress-time', autoplaySpeed);
+    // подставляем время анимации
+    $slider_nav[0].style.setProperty('--slide-progress-time', autoplaySpeed);
 
-  // сброс анимации
-  $slider_nav[0].classList.remove('do-progress');
-  void $slider_nav[0].offsetWidth; // reflow
-  $slider_nav[0].classList.add('do-progress');
-}
-
+    // сброс анимации
+    $slider_nav[0].classList.remove('do-progress');
+    void $slider_nav[0].offsetWidth; // reflow
+    $slider_nav[0].classList.add('do-progress');
+  }
 
   /* -----------------------------------------------------
    * Вертикальная навигация
@@ -98,43 +98,45 @@ $(function () {
   /* -----------------------------------------------------
    * Главный слайдер
    * ----------------------------------------------------- */
-  $slider.slick({
-    slidesToShow: 1,
-    fade: true,
-    arrows: true,
-    dots: true,
-    infinite: true,
-    speed: 800,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: 'ease',
-    prevArrow: '<button type="button" class="slick-prev slick-arrow"></button>',
-    nextArrow: '<button type="button" class="slick-next slick-arrow"></button>',
-    asNavFor: '.hero__main-slider-nav-additional',
-  });
+  if ($slider.length) {
+    $slider.slick({
+      slidesToShow: 1,
+      fade: true,
+      arrows: true,
+      dots: true,
+      infinite: true,
+      speed: 800,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      cssEase: 'ease',
+      prevArrow: '<button type="button" class="slick-prev slick-arrow"></button>',
+      nextArrow: '<button type="button" class="slick-next slick-arrow"></button>',
+      asNavFor: '.hero__main-slider-nav-additional',
+    });
 
-  /* -----------------------------------------------------
-   * События слайдера
-   * ----------------------------------------------------- */
+    /* -----------------------------------------------------
+     * События слайдера
+     * ----------------------------------------------------- */
 
-  // МГНОВЕННОЕ обновление заголовка и описания
-  $slider.on('init', function (event, slick) {
-    updateTexts(0);
-startVerticalProgress(slick);
-    // устанавливаем переменную сразу для первого dot
-    const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
-    document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
+    // МГНОВЕННОЕ обновление заголовка и описания
+    $slider.on('init', function (event, slick) {
+      updateTexts(0);
+      startVerticalProgress(slick);
+      // устанавливаем переменную сразу для первого dot
+      const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+      document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
 
-    // сбрасываем ширину ::after для первого dot
-    $('.slick-dots li').removeClass('slick-active'); // сброс класса
-    $($('.slick-dots li')[0]).addClass('slick-active'); // заново
-  });
+      // сбрасываем ширину ::after для первого dot
+      $('.slick-dots li').removeClass('slick-active'); // сброс класса
+      $($('.slick-dots li')[0]).addClass('slick-active'); // заново
+    });
 
-  $slider.on('beforeChange', function (event, slick, current, next) {
-    updateTexts(next);
-startVerticalProgress(slick);
-    // подставляем время анимации прогресса
-    const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
-    document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
-  });
+    $slider.on('beforeChange', function (event, slick, current, next) {
+      updateTexts(next);
+      startVerticalProgress(slick);
+      // подставляем время анимации прогресса
+      const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
+      document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
+    });
+  }
 });

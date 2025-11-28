@@ -5,10 +5,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    @include max-bigScreen {
+    @include max-fullhd {
       gap: 10px;
     }
-    @include max-xl {
+    @include max-l {
       grid-template-columns: repeat(2, 1fr);
     }
     @include max-sm {
@@ -29,7 +29,7 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-        @include max-bigScreen {
+        @include max-fullhd {
           gap: 5px;
           padding: 0 20px;
         }
@@ -48,11 +48,11 @@
         font-size: 24px;
         line-height: 33px;
         color: #ffffff !important;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
         }
-        @include max-xl  {
+        @include max-l  {
           font-size: 12px;
           line-height: 18px;
         }
@@ -83,7 +83,7 @@
         display: none;
         width: 32px;
         height: 32px;
-        @include max-xl  {
+        @include max-l  {
           display: block;
           z-index: 10;
         }
@@ -92,7 +92,7 @@
   }
   & .custom-button {
     margin: 50px auto 0;
-    @include max-xl {
+    @include max-l {
           margin: 20px auto 0;
         }
   }

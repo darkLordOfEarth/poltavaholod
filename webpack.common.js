@@ -22,6 +22,13 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
+        options: {
+          partialDirs: [
+            path.resolve(__dirname, 'src/hbs/blocks'),
+            path.resolve(__dirname, 'src/hbs/components'),
+            path.resolve(__dirname, 'src/hbs/sections'),
+          ],
+        },
         exclude: /node_modules/,
       },
       {
@@ -55,10 +62,19 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
-    new HtmlWebpackPlugin({ template: './assets/templates/products.hbs', filename: 'products.html' }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/products.hbs',
+      filename: 'products.html',
+    }),
     new HtmlWebpackPlugin({ template: './assets/templates/product.hbs', filename: 'product.html' }),
-    new HtmlWebpackPlugin({ template: './assets/templates/manufacturings.hbs', filename: 'manufacturings.html' }),
-    new HtmlWebpackPlugin({ template: './assets/templates/manufacturing.hbs', filename: 'manufacturing.html' }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/manufacturings.hbs',
+      filename: 'manufacturings.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/manufacturing.hbs',
+      filename: 'manufacturing.html',
+    }),
   ],
 
   output: {

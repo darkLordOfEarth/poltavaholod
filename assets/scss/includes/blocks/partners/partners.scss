@@ -1,10 +1,10 @@
 .partners {
   &__list {
     margin-top: 150px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 100px;
     }
-    @include max-xl {
+    @include max-l {
       margin-top: 50px;
     }
     & .owl-item:not(:first-child) {
@@ -12,23 +12,23 @@
     }
     &.owl-loaded {
       padding: 0 100px;
-      @include max-xl {
+      @include max-l {
         padding: 0;
       }
     }
     & .owl-stage {
       padding-left: 0px !important;
       padding-right: 0px !important;
-      @include max-xl {
+      @include max-l {
         padding-left: 0px !important;
       }
     }
     & .owl-item {
       padding: 0 50px;
-      @include max-bigScreen {
+      @include max-fullhd {
         padding: 0 35px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         padding: 0 20px;
       }
       @include max-md {
@@ -41,10 +41,10 @@
 
   &__desc {
     margin-top: 150px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 100px;
     }
-    @include max-xl {
+    @include max-l {
       margin-top: 50px;
     }
   }

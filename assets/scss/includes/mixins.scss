@@ -5,6 +5,7 @@ $col: 610px;
 $md: 768px;
 $tab: 850px;
 $lg: 992px;
+$l: 1024px;
 $xl: 1280px;
 $xlmidle: 1350px;
 $xxl: 1440px;
@@ -61,6 +62,11 @@ $bigScreen: 2600px;
 
 @mixin lg {
   @media (min-width: #{$lg}) {
+    @content;
+  }
+}
+@mixin l {
+  @media (min-width: #{$l}) {
     @content;
   }
 }
@@ -134,6 +140,11 @@ $bigScreen: 2600px;
 
 @mixin max-lg {
   @media (max-width: #{$lg}) {
+    @content;
+  }
+}
+@mixin max-l {
+  @media (max-width: #{$l}) {
     @content;
   }
 }

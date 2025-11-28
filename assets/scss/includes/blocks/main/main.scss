@@ -40,11 +40,11 @@
       font-size: 120px;
       line-height: 132px;
       text-transform: uppercase;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 80px;
         line-height: 88px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 50px;
         line-height: 56px;
       }
@@ -62,7 +62,7 @@
       justify-content: flex-end;
       padding-bottom: 60px;
       max-width: 420px;
-      @include max-bigScreen {
+      @include max-fullhd {
         gap: 20px;
       }
       @include max-lg {
@@ -75,11 +75,11 @@
         right: 120px;
         bottom: 60px;
         height: auto;
-        @include max-bigScreen {
+        @include max-fullhd {
           right: 80px;
           bottom: 40px;
         }
-        @include max-xxxl {
+        @include max-xxl {
           right: 40px;
           bottom: 30px;
         }
@@ -113,7 +113,7 @@
         font-family: 'Open Sans', sans-serif;
         color: #0d0d0d;
         font-weight: 600;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
         }
@@ -123,7 +123,7 @@
         height: 90px;
         margin-right: 0;
         margin-left: auto;
-        @include max-bigScreen {
+        @include max-fullhd {
           width: 60px;
           height: 60px;
         }
@@ -140,7 +140,7 @@
     line-height: 42px;
     color: #fff;
     margin-top: 30px;
-    @include max-bigScreen {
+    @include max-fullhd {
       font-size: 20px;
       line-height: 28px;
       margin-top: 20px;

@@ -3,7 +3,7 @@
   }
   &__slider {
     padding: 0 50px;
-    @include max-xl {
+    @include max-l {
       width: calc(100vw);
       left: 50%;
       margin-left: -50vw;
@@ -32,11 +32,11 @@
         font-size: 30px;
         line-height: 36px;
         color: #fff;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 20px;
           line-height: 24px;
         }
-        @include max-xxxl {
+        @include max-xxl {
           font-size: 18px;
           line-height: 24px;
         }
@@ -61,7 +61,7 @@
       }
     }
     & .owl-nav {
-      @include max-xl {
+      @include max-l {
         top: -65px;
       }
       @include max-md {

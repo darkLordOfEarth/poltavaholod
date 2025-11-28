@@ -23,15 +23,15 @@
     background-repeat: no-repeat;
     transform: translate(-50%, -50%); 
     cursor: pointer;
-    @include max-bigScreen {
+    @include max-fullhd {
       width: 24px;
       height: 35px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       width: 17px;
       height: 25px;
     }
-    @include max-xl {
+    @include max-l {
       width: 13px;
       height: 19px;
     }

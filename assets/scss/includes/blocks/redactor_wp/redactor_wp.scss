@@ -5,12 +5,12 @@
     line-height: 42px;
     color: #0d0d0d;
     margin-bottom: 30px;
-    @include max-bigScreen {
+    @include max-fullhd {
       font-size: 20px;
       line-height: 28px;
       margin-bottom: 20px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       font-size: 18px;
       line-height: 26px;
     }
@@ -23,11 +23,11 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    @include max-bigScreen {
+    @include max-fullhd {
       font-size: 20px;
       line-height: 24px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       line-height: 28px;
     }
     @include max-sm {

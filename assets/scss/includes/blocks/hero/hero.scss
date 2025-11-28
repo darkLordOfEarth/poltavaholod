@@ -66,7 +66,7 @@
     & .slick-arrow {
       width: 90px;
       height: 90px;
-      @include max-bigScreen {
+      @include max-fullhd {
         width: 60px;
         height: 60px;
       }
@@ -74,7 +74,7 @@
         width: 50px;
         height: 50px;
       }
-      @include max-xl {
+      @include max-l {
         display: none;
       }
     }
@@ -87,7 +87,7 @@
       right: 0;
       margin: auto;
       width: max-content;
-      @include max-bigScreen {
+      @include max-fullhd {
       }
       @include max-xxl {
       }
@@ -134,7 +134,7 @@
     //   backdrop-filter: blur(10px);
     //   border-radius: 50%;
     //   overflow: hidden;
-    //   @include max-bigScreen {
+    //   @include max-fullhd {
     //     width: 60px;
     //     height: 60px;
     //   }
@@ -142,19 +142,19 @@
     //     width: 50px;
     //     height: 50px;
     //   }
-    //   @include max-xl {
+    //   @include max-l {
     //     display: none;
     //   }
     // }
     // & .owl-nav .owl-prev {
     //   margin-left: 30px;
-    //   @include max-bigScreen {
+    //   @include max-fullhd {
     //     margin-left: 20px;
     //   }
     // }
     // & .owl-nav .owl-next {
     //   margin-right: 30px;
-    //   @include max-bigScreen {
+    //   @include max-fullhd {
     //     margin-right: 20px;
     //   }
     // }
@@ -188,13 +188,13 @@
       color: #fff;
       height: 160px;
       overflow: hidden;
-      @include max-bigScreen {
+      @include max-fullhd {
         left: 160px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         left: 100px;
       }
-      @include max-xl {
+      @include max-l {
         left: 20px;
       }
       @include max-sm {
@@ -205,7 +205,7 @@
         line-height: 33px;
         color: #cbcbcb;
         padding-left: 36px;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
         }
@@ -267,7 +267,7 @@
         font-size: 30px;
         line-height: 42px;
         color: #fff;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 20px;
           line-height: 28px;
         }
@@ -308,11 +308,11 @@
       font-size: 72px;
       line-height: 84px;
       text-align: center;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 48px;
         line-height: 58px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 32px;
         line-height: 40px;
       }
@@ -331,7 +331,7 @@
       justify-content: flex-end;
       padding-bottom: 60px;
       max-width: 420px;
-      @include max-bigScreen {
+      @include max-fullhd {
         gap: 20px;
       }
       @include max-lg {
@@ -344,11 +344,11 @@
         right: 120px;
         bottom: 60px;
         height: auto;
-        @include max-bigScreen {
+        @include max-fullhd {
           right: 80px;
           bottom: 40px;
         }
-        @include max-xxxl {
+        @include max-xxl {
           right: 40px;
           bottom: 30px;
         }
@@ -382,7 +382,7 @@
         font-family: 'Open Sans', sans-serif;
         color: #0d0d0d;
         font-weight: 600;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
         }
@@ -392,7 +392,7 @@
         height: 90px;
         margin-right: 0;
         margin-left: auto;
-        @include max-bigScreen {
+        @include max-fullhd {
           width: 60px;
           height: 60px;
         }
@@ -410,7 +410,7 @@
     align-items: center;
     gap: 30px;
     margin-top: 36px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 24px;
       gap: 20px;
     }
@@ -426,7 +426,7 @@
       font-family: 'Open Sans', sans-serif;
       font-weight: 600;
       cursor: pointer;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 16px;
         line-height: 22px;
         padding: 9px 50px;
@@ -454,7 +454,7 @@
     color: #cbcbcb;
     margin-bottom: 30px;
     text-align: center;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-bottom: 20px;
     }
     @include max-sm {

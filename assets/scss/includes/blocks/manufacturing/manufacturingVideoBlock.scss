@@ -1,0 +1,12 @@
+.manufacturingVideoBlock {
+  & .videoBlock {
+    padding: 0 120px;
+
+    @include max-fullhd {
+      padding: 0 80px;
+    }
+    @include max-xxl {
+      padding: 0;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 .heroTemplate {
   h1 {
     margin-bottom: 30px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-bottom: 20px;
     }
     @include max-sm {

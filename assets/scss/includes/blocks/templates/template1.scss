@@ -4,14 +4,14 @@
     grid-template-columns: 1.5fr 1fr;
     gap: 75px;
     margin-top: 75px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 50px;
       gap: 50px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       margin-top: 20px;
     }
-    @include max-xl {
+    @include max-l {
       grid-template-columns: 1fr;
     }
     @include max-lg {
@@ -19,7 +19,7 @@
     }
     &-reverse {
       grid-template-columns: 1fr 1.3fr;
-      @include max-xl {
+      @include max-l {
         display: flex;
         flex-direction: column-reverse;
       }
@@ -28,26 +28,26 @@
   &__info {
     &-texts {
       margin-top: 30px;
-      @include max-bigScreen {
+      @include max-fullhd {
         margin-top: 20px;
       }
     }
     & p:first-child {
       padding-bottom: 75px;
       border-bottom: 1px solid #cbcbcb;
-      @include max-bigScreen {
+      @include max-fullhd {
         padding-bottom: 50px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         padding-bottom: 20px;
       }
     }
     & p:not(:first-child) {
       padding-top: 75px;
-      @include max-bigScreen {
+      @include max-fullhd {
         padding-top: 50px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         padding-top: 20px;
       }
     }
@@ -59,7 +59,8 @@
     position: relative;
     & img {
       max-width: 1080px;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
   }
   &__list {
@@ -70,11 +71,11 @@
       display: flex;
       align-items: center;
       gap: 30px;
-      @include max-bigScreen {
+      @include max-fullhd {
         gap: 20px;
         padding: 30px 0;
       }
-      @include max-xxxl {
+      @include max-xxl {
         padding: 20px 0;
       }
       @include max-lg {
@@ -87,11 +88,11 @@
         font-size: 63px;
         line-height: 50px;
         color: #ff7d00;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 42px;
           line-height: 33px;
         }
-        @include max-xxxl {
+        @include max-xxl {
           font-size: 32px;
           line-height: 40px;
         }
@@ -118,7 +119,7 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(2, 1fr);
-    @include max-xl {
+    @include max-l {
       gap: 0;
       column-gap: 20px;
     }
@@ -131,7 +132,7 @@
       list-style-type: disc;
       display: inline;
       padding-left: 54px;
-      @include max-bigScreen {
+      @include max-fullhd {
         padding-left: 36px;
       }
       @include max-xxl {
@@ -151,7 +152,7 @@
         height: 24px;
         border-radius: 50%;
         background-color: #f46d06ed;
-        @include max-bigScreen {
+        @include max-fullhd {
           width: 16px;
           height: 16px;
         }
@@ -167,7 +168,7 @@
   }
   & .custom-button {
     margin: 75px auto 0;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin: 50px auto 0;
     }
     @include max-lg {

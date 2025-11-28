@@ -10,11 +10,11 @@
     font-size: 26px;
     line-height: 44px;
     color: #4d4d4d;
-    @include max-bigScreen {
+    @include max-fullhd {
       font-size: 18px;
       line-height: 30px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       font-size: 16px;
       line-height: 22px;
     }
@@ -28,14 +28,14 @@
     grid-template-columns: 3fr 1fr;
     margin-top: 75px;
     gap: 75px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 50px;
       gap: 50px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       grid-template-columns: 2fr 1fr;
     }
-    @include max-xl {
+    @include max-l {
       margin-top: 30px;
       grid-template-columns: 1fr;
       gap: 60px;
@@ -51,10 +51,10 @@
     gap: 50px;
     list-style-type: initial;
     list-style: initial;
-    @include max-bigScreen {
+    @include max-fullhd {
       gap: 35px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       gap: 25px;
     }
     &-item {
@@ -72,11 +72,11 @@
         position: absolute;
         top: -5px;
         height: max-content;
-        @include max-bigScreen {
+        @include max-fullhd {
           font-size: 42px;
           line-height: 33px;
         }
-        @include max-xxxl {
+        @include max-xxl {
           font-size: 32px;
           line-height: 40px;
         }
@@ -92,7 +92,7 @@
         margin-left: 50px;
         font-weight: 600;
         color: #0d0d0d;
-        @include max-xxxl {
+        @include max-xxl {
           margin-left: 35px;
         }
         @include max-lg {

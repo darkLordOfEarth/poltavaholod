@@ -1,0 +1,22 @@
+.manufacturingImagesSlider {
+  & .product__slider {
+    @include max-l {
+      display: none;
+    }
+    &_mobile {
+      display: none;
+      @include max-l {
+        display: block;
+        width: calc(100vw);
+        left: 50%;
+        margin-left: -50vw;
+        position: relative;
+      }
+    }
+  }
+  & .owl-nav {
+    @include max-l {
+      display: none;
+    }
+  }
+}

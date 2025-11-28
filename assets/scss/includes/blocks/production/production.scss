@@ -4,7 +4,7 @@
     grid-template-columns: repeat(2, 1fr);
     row-gap: 10px;
     column-gap: 15px;
-    @include max-bigScreen {
+    @include max-fullhd {
       gap: 10px;
     }
     & a {
@@ -14,13 +14,13 @@
       height: 100%;
       object-fit: cover;
       // max-height: 315px;
-      @include max-bigScreen {
+      @include max-fullhd {
       // max-height: 210px;
     }
-      @include max-xxxl {
+      @include max-xxl {
       // max-height: 165px;
     }
-      @include max-xl {
+      @include max-l {
       // max-height: 273px;
     }
       @include max-sm {

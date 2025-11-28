@@ -2,10 +2,10 @@
   height: 100vh;
   padding: 105px 40px;
   position: relative;
-  @include max-bigScreen {
+  @include max-fullhd {
     padding: 74px 40px;
   }
-  @include max-xxxl {
+  @include max-xxl {
     padding: 70px 40px;
   }
   @include max-md {
@@ -28,10 +28,10 @@
     }
     & .play__btn {
       max-width: 270px;
-      @include max-bigScreen {
+      @include max-fullhd {
         max-width: 180px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         max-width: 100px;
       }
       @include max-lg {
@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     pointer-events: all;
-    @include max-bigScreen {
+    @include max-fullhd {
       padding: 4px;
     }
     &-btn {
@@ -67,17 +67,17 @@
       padding: 21px 24px;
       border-radius: 55px;
       cursor: pointer;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 18px;
         line-height: 24px;
         padding: 14px 16px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 18px;
         line-height: 24px;
         padding: 9px 16px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 18px;
         line-height: 24px;
         padding: 9px 16px;

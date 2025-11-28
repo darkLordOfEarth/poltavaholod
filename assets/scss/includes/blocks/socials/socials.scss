@@ -7,7 +7,7 @@
       & img {
         width: 42px;
         height: 42px;
-        @include max-bigScreen {
+        @include max-fullhd {
           width: 28px;
           height: 28px;
         }

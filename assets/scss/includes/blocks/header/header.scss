@@ -6,7 +6,10 @@
   z-index: 2;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   &.scrolled {
-    background: #F0F0EF;
+    background: #f0f0ef;
+    @include max-xl {
+      background: transparent;
+    }
     & .menu__list-link {
       color: #0d0d0d;
     }
@@ -14,8 +17,8 @@
       filter: invert(1);
     }
     & .header__tracking {
-      border: 1px solid #F46D06;
-      background-color: #F0F0EF;
+      border: 1px solid #f46d06;
+      background-color: #f0f0ef;
       &-text {
         color: #0d0d0d;
       }
@@ -27,8 +30,8 @@
     align-items: center;
     padding: 10px 0;
     @include max-xl {
-        justify-content: flex-end;
-      }
+      justify-content: flex-end;
+    }
   }
   &__logo {
     & img {
@@ -41,8 +44,8 @@
       }
     }
     @include max-xl {
-        display: none;
-      }
+      display: none;
+    }
   }
   & .menu {
     &__heading {
@@ -120,9 +123,9 @@
           }
         }
         &:has(.submenu):hover .submenu {
-            @media (min-width: 1280px) {
-              display: flex;
-            }
+          @media (min-width: 1280px) {
+            display: flex;
+          }
         }
         &.open .menu__list-link {
           @include max-xl {

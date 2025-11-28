@@ -62,6 +62,72 @@ $(function () {
     });
   }
 
+   $('.manufacturingImagesSlider .product__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+
+    items: 1,
+    responsive: {
+      0: {
+        stagePadding: 10,
+        margin: 10,
+      },
+      576: {
+        stagePadding: 20,
+        margin: 10,
+      },
+      768: {
+        stagePadding: 100,
+        margin: 10,
+      },
+      1280: {
+        stagePadding: 75,
+        margin: 75,
+      },
+      1920: {
+        stagePadding: 100,
+        margin: 100,
+      },
+    },
+  });
+  $('.manufacturingImagesSlider .product__slider_mobile').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    margin: 10,
+    items: 1,
+    responsive: {
+      0: {
+        stagePadding: 20,
+      },
+      576: {
+        stagePadding: 30,
+      },
+      768: {
+        stagePadding: 100,
+      }
+    },
+  });
+
   $('.product__slider').owlCarousel({
     loop: true,
     nav: true,
@@ -89,6 +155,10 @@ $(function () {
       1280: {
         stagePadding: 75,
         margin: 75,
+      },
+      1920: {
+        stagePadding: 100,
+        margin: 100,
       },
     },
   });
@@ -204,5 +274,13 @@ $(function () {
       },
     });
   }
+
+
+
+ 
+
+
+
+
 });
 

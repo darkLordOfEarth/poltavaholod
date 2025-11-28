@@ -1,7 +1,7 @@
 .logistics {
   & .play__btn {
     width: 150px;
-    @include max-bigScreen {
+    @include max-fullhd {
       width: 100px;
     }
     @include max-lg {
@@ -11,7 +11,7 @@
   & .text-36 {
     font-size: 36px;
     line-height: normal;
-    @include max-bigScreen {
+    @include max-fullhd {
       font-size: 24px;
     }
     @include max-lg {
@@ -20,7 +20,7 @@
   }
   & .template1__content {
     margin-bottom: 75px;
-     @include max-bigScreen {
+     @include max-fullhd {
        margin-bottom: 50px;
     }
     @include max-lg {
@@ -29,7 +29,7 @@
   }
   & .template1__list {
     margin-top: 45px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-top: 30px;
     }
     @include max-lg {

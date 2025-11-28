@@ -6,14 +6,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 75px;
-    @include max-bigScreen {
+    @include max-fullhd {
       gap: 50px;
       margin-top: 50px;
     }
-    @include max-xxxl {
+    @include max-xxl {
       gap: 20px;
     }
-    @include max-xl {
+    @include max-l {
       margin-top: 90px;
       grid-template-columns: 1fr;
       // width: calc(100vw);
@@ -22,7 +22,7 @@
       // position: relative;
       // padding-left: 20px;
     }
-    @include max-xl {
+    @include max-l {
       margin-left: -100px;
     }
     @include max-lg {
@@ -44,7 +44,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    @include max-xl {
+    @include max-l {
       grid-template-columns: 1fr;
       gap: 20px;
     }
@@ -52,7 +52,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      @include max-bigScreen {
+      @include max-fullhd {
         gap: 10px;
       }
     }
@@ -64,7 +64,7 @@
       font-weight: 400;
       font-size: 24px;
       line-height: 32px;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 16px;
         line-height: 22px;
       }

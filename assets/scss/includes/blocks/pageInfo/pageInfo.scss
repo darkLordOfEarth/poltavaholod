@@ -1,10 +1,10 @@
 .pageInfo {
   border: none;
   padding: 150px 0;
-  @include max-bigScreen {
+  @include max-fullhd {
     padding: 100px 0;
   }
-  @include max-xl {
+  @include max-l {
     padding: 50px 0;
   }
   &__top-text {
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-    @include max-bigScreen {
+    @include max-fullhd {
       margin-bottom: 50px;
       gap: 20px;
     }
@@ -20,10 +20,10 @@
   &__content {
     & h2 {
       margin-bottom: 75px;
-      @include max-bigScreen {
+      @include max-fullhd {
         margin-bottom: 50px;
       }
-      @include max-xl {
+      @include max-l {
         margin-bottom: 20px;
       }
     }
@@ -34,17 +34,17 @@
       line-height: 60px;
       color: #0d0d0d;
       margin-bottom: 75px;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 32px;
         line-height: 40px;
         margin-bottom: 50px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 24px;
         line-height: 32px;
         margin-bottom: 50px;
       }
-      @include max-xl {
+      @include max-l {
         margin-bottom: 36px;
       }
       @include max-sm {
@@ -61,18 +61,18 @@
       color: #cbcbcb;
       margin: 150px auto 0;
       max-width: 1200px;
-      @include max-bigScreen {
+      @include max-fullhd {
         font-size: 48px;
         line-height: 56px;
         margin: 100px auto 0;
         max-width: 802px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         font-size: 32px;
         line-height: 40px;
         max-width: 535px;
       }
-      @include max-xl {
+      @include max-l {
         font-size: 24px;
         line-height: 32px;
         margin: 50px auto 0;
@@ -88,15 +88,15 @@
     display: flex;
     flex-direction: column;
     gap: 75px;
-    @include max-bigScreen {
+    @include max-fullhd {
       gap: 50px;
     }
-    @include max-xl {
+    @include max-l {
       flex-direction: row;
       gap: 10px;
     }
     & .owl-stage-outer {
-      @include max-xl {
+      @include max-l {
         width: calc(100vw);
         left: 50%;
         margin-left: -51vw;
@@ -116,16 +116,16 @@
       gap: 30px;
       border: 1px solid #cbcbcb;
       border-radius: 15px;
-      @include max-bigScreen {
+      @include max-fullhd {
         gap: 20px;
         padding: 20px;
         border-radius: 10px;
       }
-      @include max-xxxl {
+      @include max-xxl {
         padding: 10px;
         border-radius: 10px;
       }
-      @include max-xl {
+      @include max-l {
         grid-template-columns: 1fr;
       }
       & img {
@@ -134,7 +134,7 @@
       &-group {
         display: flex;
         flex-direction: column;
-        @include max-xl {
+        @include max-l {
           gap: 20px;
         }
         &-text {
@@ -143,10 +143,10 @@
           flex-direction: column;
           justify-content: center;
           gap: 30px;
-          @include max-bigScreen {
+          @include max-fullhd {
             gap: 20px;
           }
-          @include max-xl {
+          @include max-l {
             justify-content: flex-start;
           }
           & h4 {
@@ -154,15 +154,15 @@
             font-size: 30px;
             line-height: 36px;
             color: #0d0d0d;
-            @include max-bigScreen {
+            @include max-fullhd {
               font-size: 20px;
               line-height: 24px;
             }
-            @include max-xxxl {
+            @include max-xxl {
               font-size: 18px;
               line-height: 26px;
             }
-            @include max-xxxl {
+            @include max-xxl {
               font-size: 16px;
               line-height: 22px;
             }
