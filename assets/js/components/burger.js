@@ -19,7 +19,7 @@ $('.menu__heading-close, .overlay').on('click', function () {
 });
 
   $('.submenu__link').off('click').on('click', function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     e.stopPropagation();
   });
 
