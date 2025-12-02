@@ -164,6 +164,7 @@
   }
   &__logo {
     max-width: 440px;
+    cursor: pointer;
     @include max-bigScreen {
       max-width: 300px;
     }

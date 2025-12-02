@@ -35,6 +35,7 @@
     & p:first-child {
       padding-bottom: 75px;
       border-bottom: 1px solid #cbcbcb;
+      margin-bottom: 0;
       @include max-fullhd {
         padding-bottom: 50px;
       }

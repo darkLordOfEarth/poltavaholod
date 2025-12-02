@@ -8,16 +8,6 @@
       width: 50px;
     }
   }
-  & .text-36 {
-    font-size: 36px;
-    line-height: normal;
-    @include max-fullhd {
-      font-size: 24px;
-    }
-    @include max-lg {
-      font-size: 20px;
-    }
-  }
   & .template1__content {
     margin-bottom: 75px;
      @include max-fullhd {

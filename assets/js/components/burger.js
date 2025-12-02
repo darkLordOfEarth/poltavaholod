@@ -6,7 +6,7 @@ $('.menu__heading-close, .overlay').on('click', function () {
   $('.menu').removeClass('open');
   $('.overlay').hide();
 });
-  $('.menu__list-link').off('click').on('click', function (e) {
+  $('.menu__list-link, .header .menu a').off('click').on('click', function (e) {
     if ($(window).width() < 1280) {
         const submenu = $(this).parent().find('.submenu');
         if (submenu.length > 0) { 
@@ -18,7 +18,7 @@ $('.menu__heading-close, .overlay').on('click', function () {
     }
 });
 
-  $('.submenu__link').off('click').on('click', function (e) {
+  $('.submenu__link, .header .sub-menu a').off('click').on('click', function (e) {
     // e.preventDefault();
     e.stopPropagation();
   });

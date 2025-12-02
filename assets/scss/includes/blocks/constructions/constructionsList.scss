@@ -1,0 +1,89 @@
+.constructionsList {
+  &__content {
+  }
+  &__item {
+    &-row {
+      display: flex;
+      flex-direction: column;
+      @include max-l {
+        gap: 90px;
+      }
+      &__top {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 75px;
+        @include max-fullhd {
+          gap: 50px;
+        }
+        @include max-xxl {
+          grid-template-columns: 1.5fr 1fr;
+        }
+        @include max-l {
+          gap: 20px;
+        }
+        @include max-md {
+          grid-template-columns: 1fr;
+        }
+        & video {
+          object-fit: cover;
+          //   max-height: 720px;
+          //   @include max-fullhd {
+          //     max-height: 480px;
+          //   }
+          //   @include max-xxl {
+          //     max-height: 420px;
+          //   }
+          //   @include max-l {
+          //     max-height: 317px;
+          //   }
+          //   @include max-md {
+          //     max-height: 200px;
+          //   }
+        }
+        & .custom-button {
+          margin: 75px auto 0;
+          @include max-fullhd {
+            margin: 50px auto 0;
+          }
+          @include max-xxl {
+            margin: 40px auto 0;
+          }
+          @include max-l {
+            margin: 20px auto 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+      &__bottom {
+        .product__info-desc {
+          height: 0;
+          overflow: hidden;
+          transition: height 0.3s ease;
+
+          &.open {
+            // height: auto;
+          }
+        }
+      }
+    }
+  }
+  & .text-slogan {
+    margin-top: 150px;
+    max-width: 1550px;
+    @include max-fullhd {
+      margin-top: 100px;
+      max-width: 1024px;
+    }
+    @include max-xxl {
+      max-width: 683px;
+    }
+    @include max-md {
+      max-width: 100%;
+    }
+    @include max-sm {
+      margin-top: 50px;
+    }
+  }
+}

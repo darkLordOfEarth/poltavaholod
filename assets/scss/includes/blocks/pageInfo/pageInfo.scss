@@ -54,33 +54,18 @@
       }
     }
     & .text-slogan {
-      font-weight: 700;
-      font-size: 72px;
-      line-height: 84px;
-      text-align: center;
-      color: #cbcbcb;
       margin: 150px auto 0;
       max-width: 1200px;
       @include max-fullhd {
-        font-size: 48px;
-        line-height: 56px;
         margin: 100px auto 0;
         max-width: 802px;
       }
       @include max-xxl {
-        font-size: 32px;
-        line-height: 40px;
         max-width: 535px;
       }
       @include max-l {
-        font-size: 24px;
-        line-height: 32px;
         margin: 50px auto 0;
         max-width: 420px;
-      }
-      @include max-sm {
-        font-size: 20px;
-        line-height: 24px;
       }
     }
   }

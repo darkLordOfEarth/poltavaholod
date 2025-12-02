@@ -277,7 +277,6 @@ button {
   }
 }
 section {
-  
   padding: 150px 0;
   // background-color: #fff;
   @include max-fullhd {
@@ -445,4 +444,58 @@ select::-ms-expand {
 }
 .fancybox__button--close svg {
   display: none;
+}
+.text-36 {
+  font-size: 36px;
+  line-height: normal;
+  @include max-fullhd {
+    font-size: 24px;
+  }
+  @include max-lg {
+    font-size: 20px;
+  }
+}
+.text-slogan {
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 84px;
+  text-align: center;
+  color: #cbcbcb;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include max-fullhd {
+  }
+  @include max-fullhd {
+    font-size: 48px;
+    line-height: 56px;
+    max-width: 802px;
+  }
+  @include max-xxl {
+    font-size: 32px;
+    line-height: 40px;
+    max-width: 535px;
+  }
+  @include max-l {
+    font-size: 24px;
+    line-height: 32px;
+    max-width: 420px;
+  }
+  @include max-sm {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+.product__info-desc__btn {
+  display: none;
+  width: max-content;
+  margin-right: 0;
+  margin-left: auto;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #f46d06;
+  cursor: pointer;
+  @include max-l {
+    display: block;
+  }
 }

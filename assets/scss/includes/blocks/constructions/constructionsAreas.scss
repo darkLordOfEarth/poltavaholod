@@ -1,0 +1,11 @@
+.constructionsAreas {
+  & .areas__grid {
+    margin-top: 75px;
+    @include max-fullhd {
+      margin-top: 50px;
+    }
+    @include max-l {
+      margin-top: 20px;
+    }
+  }
+}

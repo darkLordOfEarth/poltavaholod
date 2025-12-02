@@ -30,6 +30,7 @@
     @include max-lg {
       flex-direction: column;
       justify-content: center;
+      align-items: flex-start;
       height: 100vh;
     }
   }
@@ -69,6 +70,16 @@
         height: auto;
         position: absolute;
         bottom: 0;
+        right: 0;
+      }
+      @include max-sm {
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        max-width: 280px;
       }
       &.scrolled {
         position: fixed;

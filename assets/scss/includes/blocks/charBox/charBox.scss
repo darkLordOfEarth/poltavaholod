@@ -1,0 +1,29 @@
+.charBox {
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    @include max-fullhd {
+      gap: 15px;
+    }
+    @include max-l {
+      gap: 10px;
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    & span:first-child {
+      color: #4d4d4d;
+    }
+    & span:last-child {
+      color: #0d0d0d;
+    }
+  }
+}

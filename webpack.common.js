@@ -75,6 +75,10 @@ module.exports = {
       template: './assets/templates/manufacturing.hbs',
       filename: 'manufacturing.html',
     }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/constructions.hbs',
+      filename: 'constructions.html',
+    }),
   ],
 
   output: {

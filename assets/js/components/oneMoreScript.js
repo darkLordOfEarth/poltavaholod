@@ -3,7 +3,6 @@ $(function () {
   // var windowHeight = window.innerHeight;
   // alert('width:' + windowWidth + ' ' + 'height:' + windowHeight);
 
-  
   function checkHeaderScroll() {
     if ($(window).scrollTop() > 0) {
       $('header').addClass('scrolled');
@@ -33,4 +32,33 @@ $(function () {
     let $play = $(this).parents('.virtualTour').find('.play__btn');
     $play.fadeIn(150);
   });
+
+  $('.product__info-desc__btn').on('click', function (e) {
+    e.preventDefault();
+
+    const $wrap = $(this).closest('.product__info');
+    const $desc = $wrap.find('.product__info-desc');
+    const isOpen = $desc.hasClass('open');
+
+    if (isOpen) {
+        // Закрытие
+        $desc.css('height', $desc[0].scrollHeight + 'px'); // фиксируем текущую высоту
+        requestAnimationFrame(() => {
+            $desc.css('height', '0px');
+        });
+
+        $(this).text('Читати опис');
+        $desc.removeClass('open');
+
+    } else {
+        // Открытие
+        const fullHeight = $desc[0].scrollHeight;
+        $desc.css('height', fullHeight + 'px');
+        $desc.addClass('open');
+
+        $(this).text('Сховати опис');
+    }
+});
+
+
 });
