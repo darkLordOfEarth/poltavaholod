@@ -25,5 +25,10 @@
     & span:last-child {
       color: #0d0d0d;
     }
+    & svg {
+      @include max-fullhd {
+        width: 17px;
+      }
+    }
   }
 }

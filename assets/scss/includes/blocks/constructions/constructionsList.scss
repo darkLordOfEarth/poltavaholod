@@ -1,5 +1,14 @@
 .constructionsList {
   &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 300px;
+    @include max-fullhd {
+      gap: 200px;
+    }
+    @include max-l {
+      gap: 100px;
+    }
   }
   &__item {
     &-row {
@@ -11,6 +20,7 @@
       &__top {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 'video char';
         gap: 75px;
         @include max-fullhd {
           gap: 50px;
@@ -23,9 +33,19 @@
         }
         @include max-md {
           grid-template-columns: 1fr;
+          grid-template-areas:
+          "video"
+          "char";
+        }
+        & .videoBlock {
+          grid-area: video;
+        }
+        & .charBox {
+          grid-area: char;
         }
         & video {
           object-fit: cover;
+
           //   max-height: 720px;
           //   @include max-fullhd {
           //     max-height: 480px;
@@ -58,16 +78,23 @@
       }
       &__bottom {
         .product__info-desc {
+          @include max-l {
             display: none;
-        //   height: 0;
-        //   overflow: hidden;
-        //   transition: .5s ;
-
-        //   &.open {
-        //     height: 400px;
-        //     transition: .5s ;
-        //   }
+          }
         }
+      }
+    }
+
+    &:nth-child(even) .constructionsList__item-row__top {
+      grid-template-areas: 'char video';
+      @include max-xxl {
+        grid-template-columns: 1fr 1.5fr;
+      }
+      @include max-md {
+        grid-template-areas:
+          "video"
+          "char";
+        grid-template-columns: 1fr;
       }
     }
   }
