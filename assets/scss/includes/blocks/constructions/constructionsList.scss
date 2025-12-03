@@ -58,13 +58,15 @@
       }
       &__bottom {
         .product__info-desc {
-          height: 0;
-          overflow: hidden;
-          transition: height 0.3s ease;
+            display: none;
+        //   height: 0;
+        //   overflow: hidden;
+        //   transition: .5s ;
 
-          &.open {
-            // height: auto;
-          }
+        //   &.open {
+        //     height: 400px;
+        //     transition: .5s ;
+        //   }
         }
       }
     }

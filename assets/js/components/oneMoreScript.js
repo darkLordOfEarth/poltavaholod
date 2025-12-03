@@ -33,32 +33,18 @@ $(function () {
     $play.fadeIn(150);
   });
 
-  $('.product__info-desc__btn').on('click', function (e) {
-    e.preventDefault();
 
-    const $wrap = $(this).closest('.product__info');
-    const $desc = $wrap.find('.product__info-desc');
+$('.product__info-desc__btn').off('click').on('click', function () {
+    const $desc = $(this).parent().find('.product__info-desc');
+    $desc.slideToggle();
     const isOpen = $desc.hasClass('open');
-
     if (isOpen) {
-        // Закрытие
-        $desc.css('height', $desc[0].scrollHeight + 'px'); // фиксируем текущую высоту
-        requestAnimationFrame(() => {
-            $desc.css('height', '0px');
-        });
-
-        $(this).text('Читати опис');
-        $desc.removeClass('open');
-
-    } else {
-        // Открытие
-        const fullHeight = $desc[0].scrollHeight;
-        $desc.css('height', fullHeight + 'px');
-        $desc.addClass('open');
-
-        $(this).text('Сховати опис');
-    }
-});
-
-
+          $(this).text('Читати опис');
+          $desc.removeClass('open');
+      } else {
+          $desc.addClass('open');
+          $(this).text('Сховати опис');
+      }
+  });
+  
 });
