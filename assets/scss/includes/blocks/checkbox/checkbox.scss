@@ -1,0 +1,91 @@
+.form__group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  cursor: pointer;
+  @include max-fullhd {
+    gap: 10px;
+  }
+}
+
+.checkbox-input {
+  appearance: none;
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border: 1px solid #a3a3a3;
+  border-radius: 8px;
+  background-color: #f0f0ef;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 0;
+  @include max-fullhd {
+    min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+    border-radius: 5px;
+  }
+}
+.checkbox-input + span {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #4d4d4d;
+  width: 100%;
+  @include max-fullhd {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  @include max-sm {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+.dropdown-box .checkbox-input:checked,
+.checkbox-input:checked {
+  background-color: #f46d06;
+  border-color: #f46d06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 13 9' fill='none'%3E%3Cpath d='M11.95 0.75L4.48333 8.21667L0.75 4.48333' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.checkbox-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-input:disabled + span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.dropdown-box {
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    top: calc(100% + 8px);
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    & .checkbox-input {
+        background-color: #fff;
+    }
+}
+.dropdown-box[style*="display: block"] {
+  display: flex !important;
+}
+.dropdown-box label {
+    width: max-content;
+}

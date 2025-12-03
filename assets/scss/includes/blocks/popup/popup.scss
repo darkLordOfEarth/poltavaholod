@@ -83,6 +83,30 @@
       line-height: 28px;
     }
   }
+  &Partners {
+    & .popup__title {
+      font-size: 36px;
+      line-height: 48px;
+      @include max-fullhd {
+        font-size: 24px;
+        line-height: 32px;
+      }
+      @include max-sm {
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+    & .form {
+      height: 60vh;
+      overflow: auto;
+    }
+    & .videoBlock {
+      height: auto;
+    }
+    & .popup__button {
+      margin-top: 0;
+    }
+  }
   & .text_simple {
     color: #4d4d4d;
     text-align: center;

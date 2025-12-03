@@ -1,6 +1,6 @@
 $(function () {
   $('.popup__close, .btn-for-close-popup').on('click', function () {
-    $(this).parents(".popup").hide();
+    $(this).parents('.popup').hide();
   });
   $('.popup').on('click', function () {
     $(this).hide();
@@ -8,12 +8,39 @@ $(function () {
   $('.popup__inner').on('click', function (e) {
     e.stopPropagation();
   });
-  $('.btn-for-popup-rozrahunok').on('click', function () {
-    $("#popup-rozrahunok").show();
-  });
+  $('.btn-for-popup')
+    .off('click')
+    .on('click', function (e) {
+      e.stopPropagation();
+      let popupId = $(this).attr('data-popup');
+      let targetPopup = $('#' + popupId);
+      console.log(targetPopup);
+      targetPopup.show();
+    });
 
+  $('.select-wrapper')
+    .off('click')
+    .on('click', function (e) {
+      e.stopPropagation();
+      $(this).toggleClass('open');
+      $(this).parents('.form__group').find('.dropdown-box').slideToggle();
+    });
+  $('.dropdown-box .checkbox-input')
+    .off('click')
+    .on('click', function (e) {
+      e.stopPropagation();
 
-
+      let $group = $(this).closest('.form__group');
+      let $wrapper = $group.closest('.form__group');
+      let $input = $wrapper.find('.form__group-input'); 
+      let selected = $wrapper
+        .find('.dropdown-box .checkbox-input:checked')
+        .map(function () {
+          return $(this).val();
+        })
+        .get();
+      $input.val(selected.join(', '));
+    });
 
   const $fileInput = $('#input-file');
   const $defaultText = $('.form__group-file__text_default');
@@ -72,8 +99,8 @@ $(function () {
     // Если всё ок — отправляй
     console.log('Форма готова к отправке!');
     // form.submit(); // если нужен реальный submit
-    $("#popup-rozrahunok").hide();
-    $("#popup-spasibi").show();
+    $('#popup-rozrahunok').hide();
+    $('#popup-spasibi').show();
   });
 
   // Убираем ошибку при вводе

@@ -1,0 +1,29 @@
+.partnershipAdvantages {
+  &__content {
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 150px;
+    row-gap: 50px;
+    margin-top: 75px;
+    @include max-fullhd {
+      column-gap: 100px;
+      margin-top: 50px;
+    }
+    @include max-l {
+      column-gap: 20px;
+      margin-top: 20px;
+    }
+    @include max-md {
+      grid-template-columns: 1fr;
+      row-gap: 20px;
+    }
+    &-item {
+      &__title {
+      }
+      &__desc {
+      }
+    }
+  }
+}

@@ -119,6 +119,9 @@ blockquote,
 q {
   quotes: none;
 }
+input {
+  margin: 0;
+}
 blockquote:before,
 blockquote:after,
 q:before,
@@ -497,5 +500,36 @@ select::-ms-expand {
   cursor: pointer;
   @include max-l {
     display: block;
+  }
+}
+.select-wrapper {
+  position: relative;
+  cursor: pointer;
+  &.open::after {
+    transform: rotate(-180deg);
+    transition: all ease-in-out 0.3s;
+  }
+  &::after {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14' fill='none'%3E%3Cpath d='M1.12461 1.12505L11.9246 11.925L22.7246 1.12505' stroke='%230D0D0D' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    width: 36px;
+    height: 36px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 24px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all ease-in-out 0.3s;
+    @include max-fullhd {
+      width: 24px;
+      height: 24px;
+      right: 18px;
+    }
+  }
+  & input {
+    cursor: pointer;
+    pointer-events: none;
   }
 }

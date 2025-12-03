@@ -1,0 +1,126 @@
+<div class='popup popupPartners' id='popup-partners'>
+  <div class='popup__inner'>
+    <img src='images/popup_close.svg' alt='close' class='popup__close' />
+    <div class='popup__title'>Партнерство з проєктними компаніями</div>
+
+    <form action='#' name='form' method='post' class='form'>
+      <div class='videoBlock videoBlockSimple'>
+        <a
+          href='/images/footer_video.mp4'
+          class='video-fancybox-trigger gallery-item'
+          data-type='video'
+        ></a>
+        <div class='videoBlockWrapper'>
+          <img src='/images/close_white.svg' class='videoBlock__close' />
+          <video class='video-element footer-video-element' playsinline muted>
+            <source src='/images/footer_video.mp4' type='video/mp4' />
+          </video>
+          <img loading='lazy' src='/images/play_btn.svg' alt='play' class='play__btn' />
+        </div>
+      </div>
+      <div class='form__group'>
+        <label>
+          <input type='checkbox' class='checkbox-input' name='check' />
+          <span>Погоджуючись з цим пунктом, я дозволяю Організатору обробляти мої персональні дані
+            та інші зазначені в анкеті відомості, відповідно до чинного законодавства України у
+            сфері захисту персональних даних і згоден(-на) з дотриманням вимог, вказаних у Кодексі
+            взаємодії з партнерами.</span>
+        </label>
+      </div>
+      <div class='form__group'>
+        <label for='company' class='form__group-label'>Назва підтриємства*</label>
+        <input
+          type='text'
+          class='form__group-input'
+          name='company'
+          placeholder='Введіть назву вашої компанії'
+        />
+      </div>
+      <div class='form__group'>
+        <label for='industry' class='form__group-label'>Галузь проєктування*</label>
+        <div class='select-wrapper'>
+          <input
+            type='text'
+            class='form__group-input'
+            name='industry'
+            placeholder='Напрям роботи вашої компанії'
+            value=''
+            disabled
+          />
+        </div>
+        <div class='dropdown-box'>
+          <label>
+            <input type='checkbox' class='checkbox-input' name='check' value='111' />
+            <span>111</span>
+          </label>
+          <label>
+            <input type='checkbox' class='checkbox-input' name='check' value='222' />
+            <span>222</span>
+          </label>
+        </div>
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Чи є ви одночасно постачальником обладнання?*</label>
+        <div class='radio__grid'>
+          <label>
+            <input type='radio' class='radio-input' name='supplier' value='1' />
+            <span>Так</span>
+          </label>
+          <label>
+            <input type='radio' class='radio-input' name='supplier' value='0' />
+            <span>Ні</span>
+          </label>
+        </div>
+      </div>
+      <div class='form__group'>
+        <label for='link' class='form__group-label'>Посилання на сайт, якщо є</label>
+        <input
+          type='text'
+          class='form__group-input'
+          name='link'
+          placeholder='Вкажіть URL вашого сайту'
+        />
+      </div>
+      <div class='form__group'>
+        <label for='tel' class='form__group-label'>Номер телефону*</label>
+        <input type='tel' class='form__group-input' name='tel' placeholder='+ 380 12 345 67 89' />
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Ваше повне ім’я (ПІБ)*</label>
+        <input
+          type='text'
+          class='form__group-input'
+          name='name'
+          placeholder='Введіть своє повне ім’я'
+        />
+      </div>
+      
+
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Завантажте файли*</label>
+        <span class='form__group-label-desc'>Додайте файли вашого проєкту (Doc, Xls, Odt, Pdf, Jpeg,
+          Zip) для швидшого розрахунку. Розмір до 15 МБ.</span>
+        <div class='form__group-file__box'>
+          <div class='form__group-file__field'>
+            <img src='images/file_arrow.svg' alt='upload' />
+            <div class='form__group-file__text_default'>Перетягніть файл сюди або натисніть, щоб
+              <span>завантажити</span></div>
+            <div class='form__group-file__text'></div>
+          </div>
+          <input type='file' id='input-file' multiple />
+        </div>
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Коментар</label>
+        <textarea
+          type='text'
+          class='form__group-input form__group-textarea'
+          name='coment'
+          placeholder='Коментар або уточнення щодо проєкту'
+        ></textarea>
+      </div>
+      <button class='custom-button popup__button btn-form' type='button'>Надіслати заявку</button>
+    </form>
+    
+  </div>
+</div>

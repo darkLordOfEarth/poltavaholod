@@ -1,0 +1,45 @@
+
+
+.radio-input {
+  appearance: none;
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border: 1px solid #a3a3a3;
+  border-radius: 50%;
+  background-color: #f0f0ef;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  @include max-fullhd {
+    min-width: 20px;
+    max-width: 20px;
+    min-height: 20px;
+    max-height: 20px;
+  }
+}
+
+.radio-input:checked {
+  background-color: #f46d06;
+  border-color: #f46d06;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.radio-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radio-input:disabled + span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.radio__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.radio__grid label {
+  width: max-content;
+}
