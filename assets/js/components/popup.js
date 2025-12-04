@@ -20,10 +20,16 @@ $(function () {
 
   $('[data-group]').on('click', function (e) {
     e.preventDefault();
-
+     const $videoLink = $(this).attr('data-video');
+    const $videoPopup = $('.popupPartners video');
+    const $title = $(this).parents(".partnershipTypes__list-item").find('.partnershipTypes__list-item__title b').text().toLowerCase();
     const groupId = $(this).attr('data-group');
+    const $popupTitle = $('.popupPartners .popup__title span');
     const $dynamicGroup = $('#dynamic-form-group');
     const $allGroups = $('.popupPartners__hidden-group');
+
+    $popupTitle.text($title)
+    $videoPopup.attr("src", $videoLink)
 
     if (!$dynamicGroup.length) {
       console.warn('#dynamic-form-group не найден в DOM');
