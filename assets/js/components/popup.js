@@ -17,50 +17,59 @@ $(function () {
       targetPopup.show();
     });
 
+
   $('[data-group]').on('click', function (e) {
     e.preventDefault();
-    const group = $(this).attr('data-group');
-    const dynamicGroup = $('#dynamic-form-group');
-    dynamicGroup.html('');
-    const allGroups = $('.popupPartners__hidden-group');
-    let targetGroup = allGroups.find(`#${group}`).html();
-    dynamicGroup.html(targetGroup);
+
+    const groupId = $(this).attr('data-group');
+    const $dynamicGroup = $('#dynamic-form-group');
+    const $allGroups = $('.popupPartners__hidden-group');
+
+    if (!$dynamicGroup.length) {
+      console.warn('#dynamic-form-group не найден в DOM');
+      return;
+    }
+
+    const $targetGroup = $allGroups.find(`#${groupId}`);
+    if (!$targetGroup.length) {
+      console.warn(`Группа с id="${groupId}" не найдена`);
+      $dynamicGroup.empty();
+      return;
+    }
+
+    $dynamicGroup.html($targetGroup.html());
   });
 
-  // $('.select-wrapper')
-  //   .off('click')
-  //   .on('click', function (e) {
-  //     e.stopPropagation();
-  //     $(this).toggleClass('open');
-  //     $(this).parents('.form__group').find('.dropdown-box').slideToggle();
-  //   });
-  $(document).off('click.selectWrapper').on('click.selectWrapper', '.select-wrapper', function (e) {
-  e.stopPropagation();
+  $('.form')
+    .off('click.selectWrapper')
+    .on('click.selectWrapper', '.select-wrapper', function (e) {
+      e.stopPropagation();
+      console.log('CLICK SELECT-WRAPPER');
 
-  const $wrapper = $(this);
-  const $box = $wrapper.closest('.form__group').find('.dropdown-box');
+      const $wrapper = $(this);
+      const $box = $wrapper.closest('.form__group').find('.dropdown-box');
 
-  $wrapper.toggleClass('open');
-  $box.stop(true, true).slideToggle(200);
-});
+      $wrapper.toggleClass('open');
+      $box.stop(true, true).slideToggle(200);
+    });
 
-
-
-  $('.dropdown-box .checkbox-input')
-    .off('click')
-    .on('click', function (e) {
+  $('.form')
+    .off('click.dropdownCheckbox')
+    .on('click.dropdownCheckbox', '.dropdown-box .checkbox-input', function (e) {
       e.stopPropagation();
 
-      let $group = $(this).closest('.form__group');
-      let $wrapper = $group.closest('.form__group');
-      let $input = $wrapper.find('.form__group-input');
-      let selected = $wrapper
+      const $group = $(this).closest('.form__group');
+      const $input = $group.find('.form__group-input');
+
+      const selected = $group
         .find('.dropdown-box .checkbox-input:checked')
         .map(function () {
           return $(this).val();
         })
-        .get();
-      $input.val(selected.join(', '));
+        .get()
+        .join(', ');
+
+      $input.val(selected);
     });
 
   const $fileInput = $('#input-file');

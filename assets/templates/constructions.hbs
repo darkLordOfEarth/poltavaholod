@@ -30,12 +30,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
-      if (!window.jQuery) {
-        document.write('<script src="/js/jquery.min.js"><\/script>');
-      }
-    </script>
-
 
     <!-- Остальные локальные библиотеки --> 
     <script src="js/owlcarousel/owl.carousel.min.js" defer></script>
@@ -46,6 +40,8 @@
     {{!-- <script src="js/jquery.maskedinput.js"></script> --}}
 
     <!-- Кастомный JS -->
+    {{#if @root.isProd}}
     <script src="/js/app.min.js" defer></script>
+    {{/if}}
 </body>
 </html>
