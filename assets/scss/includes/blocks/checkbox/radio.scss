@@ -39,6 +39,7 @@
 .radio__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 .radio__grid label {
   width: max-content;

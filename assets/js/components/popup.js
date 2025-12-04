@@ -14,17 +14,38 @@ $(function () {
       e.stopPropagation();
       let popupId = $(this).attr('data-popup');
       let targetPopup = $('#' + popupId);
-      console.log(targetPopup);
       targetPopup.show();
     });
 
-  $('.select-wrapper')
-    .off('click')
-    .on('click', function (e) {
-      e.stopPropagation();
-      $(this).toggleClass('open');
-      $(this).parents('.form__group').find('.dropdown-box').slideToggle();
-    });
+  $('[data-group]').on('click', function (e) {
+    e.preventDefault();
+    const group = $(this).attr('data-group');
+    const dynamicGroup = $('#dynamic-form-group');
+    dynamicGroup.html('');
+    const allGroups = $('.popupPartners__hidden-group');
+    let targetGroup = allGroups.find(`#${group}`).html();
+    dynamicGroup.html(targetGroup);
+  });
+
+  // $('.select-wrapper')
+  //   .off('click')
+  //   .on('click', function (e) {
+  //     e.stopPropagation();
+  //     $(this).toggleClass('open');
+  //     $(this).parents('.form__group').find('.dropdown-box').slideToggle();
+  //   });
+  $(document).off('click.selectWrapper').on('click.selectWrapper', '.select-wrapper', function (e) {
+  e.stopPropagation();
+
+  const $wrapper = $(this);
+  const $box = $wrapper.closest('.form__group').find('.dropdown-box');
+
+  $wrapper.toggleClass('open');
+  $box.stop(true, true).slideToggle(200);
+});
+
+
+
   $('.dropdown-box .checkbox-input')
     .off('click')
     .on('click', function (e) {
@@ -32,7 +53,7 @@ $(function () {
 
       let $group = $(this).closest('.form__group');
       let $wrapper = $group.closest('.form__group');
-      let $input = $wrapper.find('.form__group-input'); 
+      let $input = $wrapper.find('.form__group-input');
       let selected = $wrapper
         .find('.dropdown-box .checkbox-input:checked')
         .map(function () {

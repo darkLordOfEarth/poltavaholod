@@ -13,6 +13,14 @@
     @include max-fullhd {
       gap: 8px;
     }
+    &-dynamic {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      @include max-fullhd {
+        gap: 20px;
+      }
+    }
     &-label {
       font-weight: 600;
       font-size: 24px;
@@ -74,7 +82,7 @@
       &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0 50px #ffffff inset;
         background-clip: text;
-        -webkit-text-fill-color: #0D0D0D;
+        -webkit-text-fill-color: #0d0d0d;
         caret-color: white;
       }
     }
