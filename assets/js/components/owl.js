@@ -62,7 +62,7 @@ $(function () {
     });
   }
 
-   $('.manufacturingImagesSlider .product__slider').owlCarousel({
+  $('.manufacturingImagesSlider .product__slider').owlCarousel({
     loop: true,
     nav: true,
     navText: [
@@ -124,7 +124,7 @@ $(function () {
       },
       768: {
         stagePadding: 100,
-      }
+      },
     },
   });
 
@@ -179,9 +179,6 @@ $(function () {
     margin: 10,
     items: 1,
   });
-
-
-
 
   $('.related__slider').owlCarousel({
     loop: true,
@@ -275,12 +272,51 @@ $(function () {
     });
   }
 
+  $('.aboutSlider__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    responsive: {
+      0: {
+        items: 1,
+        stagePadding: 20,
+        margin: 10,
+      },
+      375: {
+        items: 2,
+        stagePadding: 30,
+        margin: 10,
+      },
+      1024: {
+        items: 3,
+        stagePadding: 75,
+        margin: 10,
+      },
+      1440: {
+        items: 4,
+        stagePadding: 0,
+        margin: 10,
+      },
+      1920: {
+        items: 4,
+        stagePadding: 0,
+        margin: 15,
+      },
+    },
+  });
 
 
- 
 
 
 
 
 });
-

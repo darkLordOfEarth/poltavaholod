@@ -1,0 +1,27 @@
+.aboutSlider {
+  &__slider {
+    padding: 0 105px;
+    @include max-fullhd {
+      padding: 0 70px;
+    }
+    @include max-l {
+      padding: 0;
+    }
+    & .owl-stage {
+      @include max-xxl {
+        margin-left: -75px;
+      }
+      @include max-l {
+        margin-left: -30px;
+      }
+      @include max-sm {
+        margin-left: -20px;
+      }
+    }
+    .owl-nav {
+      @include max-l {
+        top: -60px;
+      }
+    }
+  }
+}

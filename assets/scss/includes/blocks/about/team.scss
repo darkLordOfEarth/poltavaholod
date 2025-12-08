@@ -1,0 +1,18 @@
+.team {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    @include max-fullhd {
+      gap: 50px;
+    }
+    @include max-l {
+      gap: 20px;
+    }
+  }
+  &__desc {
+  }
+  &__btn {
+    margin: auto;
+  }
+}
