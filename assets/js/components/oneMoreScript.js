@@ -35,16 +35,25 @@ $(function () {
 
 
 $('.product__info-desc__btn').off('click').on('click', function () {
-    const $desc = $(this).parent().find('.product__info-desc');
-    $desc.slideToggle();
-    const isOpen = $desc.hasClass('open');
-    if (isOpen) {
-          $(this).text('Читати опис');
-          $desc.removeClass('open');
-      } else {
-          $desc.addClass('open');
-          $(this).text('Сховати опис');
-      }
-  });
+    const $btn = $(this);
+    const $desc = $btn.parent().find('.product__info-desc');
+
+    $desc.slideToggle(300, function () {
+        // По окончании анимации
+        const isOpen = $desc.hasClass('open');
+
+        if (isOpen) {
+            $btn.text('Читати опис');
+            $desc.removeClass('open');
+        } else {
+            $desc.addClass('open');
+            $btn.text('Сховати опис');
+        }
+
+        // ❗ Пересчитать высоту после изменения
+        $(".projectAuditExpertise__slider").trigger("refresh.owl.carousel");
+    });
+});
+
   
 });

@@ -316,6 +316,25 @@ $(function () {
 
 
 
+  $('.projectAuditExpertise__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    autoHeight:true,
+    items: 1,
+  });
+
+
+
 
 
 

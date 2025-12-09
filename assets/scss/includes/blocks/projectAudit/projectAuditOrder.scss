@@ -1,0 +1,24 @@
+.projectAuditOrder {
+  & .steps__list {
+    @include max-l {
+      gap: 50px;
+    }
+    @include max-md {
+      gap: 20px;
+    }
+    @include max-sm {
+      gap: 30px;
+    }
+  }
+  & .steps__list-item {
+    @include max-md {
+      gap: 10px;
+    }
+  }
+  & .steps__list-item::before {
+    display: none;
+  }
+  & .steps__list-item__title {
+    margin-left: 0;
+  }
+}

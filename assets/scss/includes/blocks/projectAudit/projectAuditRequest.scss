@@ -1,0 +1,38 @@
+.projectAuditRequest {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    @include max-l {
+      grid-template-columns:  1fr;
+      gap: 20px;
+    }
+  }
+  & .sectionTitle {
+    margin-bottom: 0;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include max-fullhd {
+      gap: 20px;
+    }
+  }
+  &__desc {
+    text-align: center;
+  }
+  & button {
+    margin: auto;
+    max-width: 525px;
+    @include max-fullhd {
+      max-width: 350px;
+    }
+    @include max-md {
+      max-width: 300px;
+    }
+    & span {
+        padding: 0 10px 0 20px;
+    }
+  }
+}
