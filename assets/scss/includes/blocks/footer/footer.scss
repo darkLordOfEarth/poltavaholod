@@ -29,6 +29,7 @@
   }
   &__video {
     position: relative;
+    height: auto;
     @include max-xl {
       grid-row-start: 1;
     }

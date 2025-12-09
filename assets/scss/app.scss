@@ -49,6 +49,9 @@
 @import './includes/blocks/about/nums.scss';
 @import './includes/blocks/about/slider.scss';
 @import './includes/blocks/about/team.scss';
+@import './includes/blocks/projectAudit/projectAuditWhy.scss';
+@import './includes/blocks/projectAudit/projectAuditHow.scss';
+@import './includes/blocks/projectAudit/projectAuditExpertise.scss';
 
 
 
@@ -57,3 +60,5 @@
 //footer
 @import './includes/blocks/footer/footer.scss';
 @import './includes/blocks/redactor_wp/redactor_wp.scss';
+
+@import './includes/softLaunch.scss';

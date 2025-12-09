@@ -215,7 +215,7 @@
     border-radius: 55px;
     cursor: pointer;
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
       transition: 0.1s;
     }
     @include max-xl {

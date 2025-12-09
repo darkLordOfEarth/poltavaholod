@@ -106,7 +106,6 @@ $(function () {
     // Проверка обычных input и textarea
     form.find('.form__group-input').each(function () {
       const $field = $(this);
-
       if ($field.val().trim() === '') {
         $field.addClass('error');
         hasError = true;
@@ -126,18 +125,98 @@ $(function () {
       fileField.removeClass('error');
     }
 
-    // Если есть ошибки — не отправляем форму
     if (hasError) {
       console.log('Форма не отправлена — ошибки.');
       return;
     }
 
-    // Если всё ок — отправляй
-    console.log('Форма готова к отправке!');
-    // form.submit(); // если нужен реальный submit
-    $('#popup-rozrahunok').hide();
-    $('#popup-spasibi').show();
+    // Блокируем кнопку на время отправки
+    const $btn = $(this);
+    $btn.prop('disabled', true).text('Відправка...');
+
+    // Отправка формы через AJAX
+    let formData = new FormData();
+    formData.append('action', 'submit_form');
+    formData.append('nonce', $('#form_nonce').val());
+    formData.append('name', $('input[name="name"]').val());
+    formData.append('tel', $('input[name="tel"]').val());
+    formData.append('company', $('input[name="company"]').val());
+    formData.append('coment', $('textarea[name="coment"]').val());
+
+    // Добавляем файлы правильно
+    const files = fileInput.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files[]', files[i]);
+    }
+
+    $.ajax({
+      url: ajaxurl,
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log('Ответ сервера:', response);
+        
+        if (response.success) {
+          $('#popup-rozrahunok').hide();
+          $('#popup-spasibi').show();
+          form[0].reset();
+          $('.form__group-file__text').hide().text('');
+          $('.form__group-file__text_default').show();
+        } else {
+          alert('Помилка: ' + response.data);
+        }
+        
+        $btn.prop('disabled', false).text('Надіслати заявку');
+      },
+      error: function (xhr, status, error) {
+        console.error('Ошибка AJAX:', error);
+        alert('Помилка відправки форми. Спробуйте ще раз.');
+        $btn.prop('disabled', false).text('Надіслати заявку');
+      }
+    });
   });
+
+  // $('.btn-form').on('click', function () {
+  //   let form = $('.form');
+  //   let hasError = false;
+
+  //   // Проверка обычных input и textarea
+  //   form.find('.form__group-input').each(function () {
+  //     const $field = $(this);
+
+  //     if ($field.val().trim() === '') {
+  //       $field.addClass('error');
+  //       hasError = true;
+  //     } else {
+  //       $field.removeClass('error');
+  //     }
+  //   });
+
+  //   // Проверка input type="file"
+  //   const fileInput = $('#input-file')[0];
+  //   const fileField = $('.form__group-file__field');
+
+  //   if (!fileInput.files || fileInput.files.length === 0) {
+  //     fileField.addClass('error');
+  //     hasError = true;
+  //   } else {
+  //     fileField.removeClass('error');
+  //   }
+
+  //   // Если есть ошибки — не отправляем форму
+  //   if (hasError) {
+  //     console.log('Форма не отправлена — ошибки.');
+  //     return;
+  //   }
+
+  //   // Если всё ок — отправляй
+  //   console.log('Форма готова к отправке!');
+  //   // form.submit(); // если нужен реальный submit
+  //   $('#popup-rozrahunok').hide();
+  //   $('#popup-spasibi').show();
+  // });
 
   // Убираем ошибку при вводе
   $('.form__group-input').on('input', function () {

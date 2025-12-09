@@ -89,9 +89,12 @@
         }
       }
       &__title {
-        margin-left: 50px;
+        margin-left: 65px;
         font-weight: 600;
         color: #0d0d0d;
+        @include max-fullhd {
+          margin-left: 50px;
+        }
         @include max-xxl {
           margin-left: 35px;
         }
