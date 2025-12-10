@@ -166,7 +166,7 @@ $(function () {
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();
         } else {
-          alert('Помилка: ' + response.data);
+          alert('Помилка: ' + ( response.data || 'Невідома помилка'));
         }
         
         $btn.prop('disabled', false).text('Надіслати заявку');

@@ -33,7 +33,7 @@
     }
     @include max-sm {
       padding: 40px 10px 20px;
-      max-width: 345px;
+      max-width: calc(100% - 30px);
     }
   }
   &__close {

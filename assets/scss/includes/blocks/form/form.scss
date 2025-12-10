@@ -177,6 +177,9 @@
       @include max-xxl {
         height: 150px;
       }
+      @include max-sm {
+        height: 96px;
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ $(function () {
   // alert('width:' + windowWidth + ' ' + 'height:' + windowHeight);
 
   function checkHeaderScroll() {
-    if ($(window).scrollTop() > 0) {
+    if ($(window).scrollTop() > 50) {
       $('header').addClass('scrolled');
     } else {
       $('header').removeClass('scrolled');

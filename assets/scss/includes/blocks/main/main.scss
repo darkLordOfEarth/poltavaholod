@@ -63,6 +63,8 @@
       justify-content: flex-end;
       padding-bottom: 60px;
       max-width: 420px;
+      position: absolute;
+      right: 0;
       @include max-fullhd {
         gap: 20px;
       }
@@ -98,14 +100,14 @@
         @include max-xlmidle {
           right: 20px;
         }
+        @include max-sm {
+          left: auto;
+        }
         & span {
-          visibility: hidden;
           width: 0;
           padding: 0;
-          transition: .5s;
-          min-width: auto;
+          transition: 0.5s;
           white-space: nowrap;
-          // position: absolute;
         }
         & .main__group-btn:hover {
           transform: scale(1.1);
@@ -113,10 +115,22 @@
         & .main__group-btn {
           max-width: 90px;
           position: relative;
-          transition: .5s;
+          transition: 0.5s;
           @include max-fullhd {
-          max-width: 60px;
+            max-width: 60px;
+          }
+          @include max-xxl {
+            max-width: 50px;
+          }
+          @include max-l {
+            max-width:50px;
+          }
+          @include max-sm {
+            max-width: 48px;
+          }
         }
+        & .main__group-btn:first-child img {
+          margin-left: 0;
         }
       }
     }
@@ -128,17 +142,49 @@
       border-radius: 75px;
       max-width: 420px;
       width: 100%;
-      transition: .5s;
-      overflow: hidden;
+      transition: 0.5s;
+      width: 420px;
+      height: 90px;
+      overflow-x: hidden;
+      position: relative;
       cursor: pointer;
+      @include max-fullhd {
+        width: 280px;
+        height: 60px;
+      }
+      @include max-xxl {
+        width: 255px;
+        height: 50px;
+      }
+      @include max-sm {
+        width: 280px;
+        height: 48px;
+      }
       &:hover {
         transform: scale(1.05);
         transition: 0.1s;
       }
+      &:first-child span {
+        padding: 0 25px 0 35px;
+        @include max-fullhd {
+          padding: 0 25px 0 25px;
+        }
+        @include max-xxl {
+          padding: 0 25px 0 15px;
+        }
+        @include max-sm {
+          padding: 0 25px 0 35px;
+        }
+      }
+      &:first-child img {
+        @include max-sm {
+          margin-left: -8px;
+        }
+      }
       & span {
         font-size: 24px;
         line-height: 33px;
-        padding: 0 25px 0 35px;
+        padding: 0 25px 0 45px;
         width: max-content;
         min-width: max-content;
         font-family: 'Open Sans', sans-serif;
@@ -147,6 +193,13 @@
         @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
+          padding: 0 20px 0 30px;
+        }
+        @include max-xxl {
+          padding: 0 25px 0 20px;
+        }
+        @include max-sm {
+          padding: 0 25px 0 35px;
         }
       }
       & img {
@@ -156,11 +209,17 @@
         margin-left: auto;
         position: relative;
         z-index: 5;
+        position: absolute;
+        right: 0;
         @include max-fullhd {
           width: 60px;
           height: 60px;
         }
-        @include max-lg {
+        @include max-xxl {
+          width: 50px;
+          height: 50px;
+        }
+        @include max-sm {
           width: 48px;
           height: 48px;
         }

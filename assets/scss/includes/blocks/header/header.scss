@@ -9,12 +9,27 @@
     background: #f0f0ef;
     @include max-xl {
       background: transparent;
+      position: relative;
     }
     & .menu__list-link {
       color: #0d0d0d;
     }
+    & .header__content {
+      @include max-xl {
+        justify-content: flex-end !important;
+      }
+    }
+    & .header__logo {
+      @include max-xl {
+        transform: translateY(-100%);
+        transition: 0.5s;
+      }
+    }
     & .header__logo img {
       filter: invert(1);
+      @include max-xl {
+        filter: none;
+      }
     }
     & .header__tracking {
       border: 1px solid #f46d06;
@@ -36,7 +51,7 @@
   &__logo {
     & img {
       max-width: 360px;
-      @include max-bigScreen {
+      @include max-fullhd {
         max-width: 240px;
       }
       @include max-xxxl {
@@ -44,7 +59,7 @@
       }
     }
     @include max-xl {
-      display: none;
+      // display: none;
     }
   }
   & .menu {
@@ -169,6 +184,9 @@
           display: block;
           font-size: 16px;
         }
+        &:hover {
+          color: #F46D06;
+        }
       }
     }
   }
@@ -271,6 +289,14 @@
       display: block;
       width: max-content;
       cursor: pointer;
+      position: fixed;
+      right: 20px;
+      top: 6px;
+      width: 48px;
+      height: 48px;
+    }
+    @include max-sm {
+      right: 15px;
     }
     & img {
       @include max-xl {
