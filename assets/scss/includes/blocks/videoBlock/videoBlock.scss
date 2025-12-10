@@ -5,6 +5,7 @@
   height: 100%;
   &.temporary-img {
     position: relative;
+    z-index: 0;
   }
   &.temporary-img::before {
     content: "";
