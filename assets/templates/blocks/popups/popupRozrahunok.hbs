@@ -1,39 +1,59 @@
-<div class="popup" id="popup-rozrahunok">
-    <div class="popup__inner">
-        <img src="images/popup_close.svg" alt="close" class="popup__close">
-        <div class="popup__title">Отримати розрахунок</div>
-        <form action="#" name="form" method="post" class="form">
-            <div class="form__group">
-                <label for="name" class="form__group-label">Ваше повне ім’я (ПІБ)*</label>
-                <input type="text" class="form__group-input" name="name" placeholder="Введіть своє повне ім’я">
-            </div>
-            <div class="form__group">
-                <label for="name" class="form__group-label">Номер телефону*</label>
-                <input type="tel" class="form__group-input" name="tel" placeholder="+ 380 12 345 67 89">
-            </div>
-            <div class="form__group">
-                <label for="name" class="form__group-label">Назва підприємства*</label>
-                <input type="text" class="form__group-input" name="company" placeholder="Введіть назву підприємства">
-            </div>
-            <div class="form__group">
-                <label for="name" class="form__group-label">Завантажте файли*</label>
-                <span class="form__group-label-desc">Додайте файли вашого проєкту для швидшого розрахунку. Розмір до 15 МБ.</span>
-                <div class="form__group-file__box">
-                    <div class="form__group-file__field">
-                        <img src="images/file_arrow.svg" alt="upload">
-                        <div class="form__group-file__text_default">Перетягніть файл сюди або натисніть, щоб <span>завантажити</span></div>
-                        <div class="form__group-file__text"></div>
-                    </div>
-                    <input type="file" id="input-file" multiple>
-                </div>
-            </div>
-            <div class="form__group">
-                <label for="name" class="form__group-label">Коментар</label>
-                <textarea type="text" class="form__group-input form__group-textarea" name="coment" placeholder="Коментар або уточнення щодо проєкту"></textarea>
-            </div>
-            <button class="custom-button popup__button btn-form" type="button">Надіслати заявку</button>
-        <div class="popup__notation">*Вартість проєкту залежить від технічних особливостей споруди. Для формування коректної пропозиції Вам зателефонує менеджер ТОВ "Каркас Груп"</div>
-        </form>
-        
-    </div>
+<div class='popup' id='popup-rozrahunok'>
+  <div class='popup__inner'>
+    <img src='images/popup_close.svg' alt='close' class='popup__close' />
+    <div class='popup__title'>Отримати розрахунок</div>
+    <form action='#' name='form' method='post' class='form'>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Ваше повне ім’я (ПІБ)*</label>
+        <input
+          type='text'
+          class='form__group-input'
+          name='name'
+          placeholder='Введіть своє повне ім’я'
+        />
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Номер телефону*</label>
+        <input type='tel' class='form__group-input' name='tel' placeholder='+ 380 12 345 67 89' />
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Назва підприємства*</label>
+        <input
+          type='text'
+          class='form__group-input'
+          name='company'
+          placeholder='Введіть назву підприємства'
+        />
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Завантажте файли*</label>
+        <span class='form__group-label-desc'>Додайте файли вашого проєкту для швидшого розрахунку.
+          Розмір до 15 МБ.</span>
+        <div class='form__group-file__box'>
+          <div class='form__group-file__field'>
+            <img src='images/file_arrow.svg' alt='upload' />
+            <div class='form__group-file__text_default'>Перетягніть файл сюди або натисніть, щоб
+              <span>завантажити</span></div>
+            <div class='form__group-file__text'></div>
+          </div>
+          <input type='file' id='input-file' multiple />
+        </div>
+      </div>
+      <div class='form__group'>
+        <label for='name' class='form__group-label'>Коментар</label>
+        <textarea
+          type='text'
+          class='form__group-input form__group-textarea'
+          name='coment'
+          placeholder='Коментар або уточнення щодо проєкту'
+        ></textarea>
+      </div>
+      <div class='popup__btn-group'>
+        <button class='custom-button popup__button btn-form' type='button'>Надіслати заявку</button>
+        <div class='popup__notation'>*Вартість проєкту залежить від технічних особливостей споруди.
+          Для формування коректної пропозиції Вам зателефонує менеджер ТОВ "Каркас Груп"</div>
+      </div>
+    </form>
+
+  </div>
 </div>

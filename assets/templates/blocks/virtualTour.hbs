@@ -9,8 +9,12 @@
         <div class='videoBlock virtualTour__video videoBlockSimple'>
           <div class='videoBlockWrapper'>
             {{!-- <img src="/images/close_white.svg" class="videoBlock__close"> --}}
-            <video class='video-element' width='640' height='360' playsinline muted  poster="/images/virt_tour_poster.png">
-              <source src='/images/virtualTour_1.mp4' type='video/mp4' />
+            <video class='video-element virtualTour__video-desktop' width='640' height='360' playsinline muted  poster="/images/video_zavod_landscape_poster.png">
+              <source src='/images/video_zavod_landscape.mp4' type='video/mp4' />
+              Ваш браузер не підтримує відео.
+            </video>
+            <video class='video-element virtualTour__video-mobile' width='640' height='360' playsinline muted  poster="/images/video_zavod_portrait_poster.png">
+              <source src='/images/video_zavod_portrait.mp4' type='video/mp4' />
               Ваш браузер не підтримує відео.
             </video>
             <img loading="lazy" src='/images/play_btn.svg' alt='play' class='play__btn' />
@@ -18,7 +22,7 @@
         </div>
         <div class="virtualTour__content">
             <div class="virtualTour__toggle">
-                <div class="virtualTour__toggle-btn temporary-btn-clear active" data-video="/images/virtualTour_1.mp4" data-link="https://zskua.com/3dtour/index2.html">Завод в Запоріжжі</div>
+                <div class="virtualTour__toggle-btn temporary-btn-clear active" data-video="/images/video_zavod_landscape.mp4" data-link="https://zskua.com/3dtour/index2.html">Завод в Запоріжжі</div>
                 <div class="virtualTour__toggle-btn temporary-btn" data-video="/images/departments.jpg" data-link="https://zskua.com/3dtour/index3.html">Завод в Києві</div>
             </div>
             <a class="custom-button virtualTour__link" href="https://zskua.com/3dtour/index2.html">Віртуальний тур заводом</a>

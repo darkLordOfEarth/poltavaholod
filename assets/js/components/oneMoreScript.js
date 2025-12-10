@@ -90,7 +90,9 @@ $(function () {
   }
 
   // Проверить при загрузке
-  checkScrollbar();
+  $(".btn-for-popup").on("click", function() {
+    checkScrollbar();
+  })
 
   // Проверить при ресайзе (меняется высота)
   $(window).on('resize', checkScrollbar);

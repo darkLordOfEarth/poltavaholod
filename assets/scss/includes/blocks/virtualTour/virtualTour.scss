@@ -23,7 +23,17 @@
       width: 100%;
       object-fit: cover;
       height: 100%;
-      
+      &.virtualTour__video-desktop {
+        @include max-l {
+          display: none !important;
+        }
+      }
+      &.virtualTour__video-mobile {
+        display: none !important;
+        @include max-l {
+          display: block !important;
+        }
+      }
     }
     &.open video {
       object-fit: contain;
