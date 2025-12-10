@@ -1,6 +1,7 @@
 .virtualTour {
   height: 100vh;
   padding: 105px 40px;
+  padding: 0 !important;
   position: relative;
   @include max-fullhd {
     padding: 74px 40px;
@@ -22,9 +23,12 @@
       width: 100%;
       object-fit: cover;
       height: 100%;
+      
     }
     &.open video {
       object-fit: contain;
+      height: 100vh !important;
+      object-fit: cover;
     }
     & .play__btn {
       max-width: 270px;
@@ -45,9 +49,17 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    height: calc(100vh - 175px);
     position: relative;
     z-index: 1;
     pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 5;
   }
   &__toggle {
     border-radius: 75px;
@@ -64,23 +76,19 @@
       font-weight: 600;
       font-size: 26px;
       line-height: 36px;
-      padding: 21px 24px;
+      padding: 21px 40px;
       border-radius: 55px;
+      position: relative;
       cursor: pointer;
       @include max-fullhd {
         font-size: 18px;
         line-height: 24px;
-        padding: 14px 16px;
+        padding: 14px 25px;
       }
       @include max-xxl {
         font-size: 18px;
         line-height: 24px;
-        padding: 9px 16px;
-      }
-      @include max-xxl {
-        font-size: 18px;
-        line-height: 24px;
-        padding: 9px 16px;
+        padding: 9px 25px;
       }
       @include max-sm {
         font-size: 16px;
@@ -91,6 +99,16 @@
         color: #0d0d0d;
         background-color: #fff;
       }
+      // &:nth-child(2).active::after {
+      //   content: "";
+      //   background-image: url(../images/departments.jpg);
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      //   z-index: 6;
+      // }
     }
   }
   &__link {

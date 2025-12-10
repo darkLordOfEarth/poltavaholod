@@ -1,7 +1,7 @@
 .template1 {
   &__content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 75px;
     margin-top: 75px;
     @include max-fullhd {
@@ -18,7 +18,7 @@
       gap: 20px;
     }
     &-reverse {
-      grid-template-columns: 1fr 1.3fr;
+      grid-template-columns: 1fr 1.2fr;
       @include max-l {
         display: flex;
         flex-direction: column-reverse;
@@ -60,7 +60,7 @@
     position: relative;
     & img {
       max-width: 1080px;
-      height: 100%;
+      height: auto;
       object-fit: cover;
     }
   }

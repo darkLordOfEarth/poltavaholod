@@ -10,7 +10,7 @@ $(function () {
       $('header').removeClass('scrolled');
     }
     let mainHeight = $('.main').outerHeight();
-    if ($(window).scrollTop() > mainHeight / 2) {
+    if ($(window).scrollTop() > 0) {
       $('.main__group-btns').addClass('scrolled');
     } else {
       $('.main__group-btns').removeClass('scrolled');
@@ -32,7 +32,12 @@ $(function () {
     let $play = $(this).parents('.virtualTour').find('.play__btn');
     $play.fadeIn(150);
   });
-
+$(".temporary-btn").on("click", function() {
+  $(this).parents(".virtualTour").find(".videoBlockWrapper").addClass("temporary-img")
+})
+$(".temporary-btn-clear").on("click", function() {
+  $(this).parents(".virtualTour").find(".videoBlockWrapper").removeClass("temporary-img")
+})
 
 $('.product__info-desc__btn').off('click').on('click', function () {
     const $btn = $(this);
@@ -54,6 +59,45 @@ $('.product__info-desc__btn').off('click').on('click', function () {
         $(".projectAuditExpertise__slider").trigger("refresh.owl.carousel");
     });
 });
+
+
+const headerHeight = $('.header').outerHeight();
+
+$('a[href^="#"]').on('click', function (e) {
+    e.preventDefault();
+
+    const target = $($.attr(this, 'href'));
+
+    if (target.length) {
+        $('html, body').animate({
+            scrollTop: target.offset().top - headerHeight
+        }, 500);
+    }
+});
+
+
+
+$(function () {
+  function checkScrollbar() {
+    const $form = $('.form');
+    const hasScroll = $form[0].scrollHeight > $form[0].clientHeight;
+
+    if (hasScroll) {
+      $form.addClass('has-scroll');
+    } else {
+      $form.removeClass('has-scroll');
+    }
+  }
+
+  // Проверить при загрузке
+  checkScrollbar();
+
+  // Проверить при ресайзе (меняется высота)
+  $(window).on('resize', checkScrollbar);
+});
+
+
+
 
   
 });

@@ -150,7 +150,8 @@ $(function () {
     }
 
     $.ajax({
-      url: ajaxurl,
+      // url: ajaxurl,
+      url: '/wp-content/themes/carcass/send.php',
       type: 'POST',
       data: formData,
       processData: false,
@@ -178,45 +179,7 @@ $(function () {
     });
   });
 
-  // $('.btn-form').on('click', function () {
-  //   let form = $('.form');
-  //   let hasError = false;
 
-  //   // Проверка обычных input и textarea
-  //   form.find('.form__group-input').each(function () {
-  //     const $field = $(this);
-
-  //     if ($field.val().trim() === '') {
-  //       $field.addClass('error');
-  //       hasError = true;
-  //     } else {
-  //       $field.removeClass('error');
-  //     }
-  //   });
-
-  //   // Проверка input type="file"
-  //   const fileInput = $('#input-file')[0];
-  //   const fileField = $('.form__group-file__field');
-
-  //   if (!fileInput.files || fileInput.files.length === 0) {
-  //     fileField.addClass('error');
-  //     hasError = true;
-  //   } else {
-  //     fileField.removeClass('error');
-  //   }
-
-  //   // Если есть ошибки — не отправляем форму
-  //   if (hasError) {
-  //     console.log('Форма не отправлена — ошибки.');
-  //     return;
-  //   }
-
-  //   // Если всё ок — отправляй
-  //   console.log('Форма готова к отправке!');
-  //   // form.submit(); // если нужен реальный submit
-  //   $('#popup-rozrahunok').hide();
-  //   $('#popup-spasibi').show();
-  // });
 
   // Убираем ошибку при вводе
   $('.form__group-input').on('input', function () {

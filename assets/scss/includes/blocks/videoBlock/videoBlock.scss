@@ -3,6 +3,37 @@
   display: flex;
   width: 100%;
   height: 100%;
+  &.temporary-img {
+    position: relative;
+  }
+  &.temporary-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.5)
+  }
+  &.temporary-img::after {
+    content: 'Незабаром відкриття';
+    background-image: url(../images/temporary_img.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 200%;
+    font-weight: 700;
+  }
 }
 .videoBlock {
   &__close {
@@ -24,6 +55,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &.videoBlockSimple {
+      position: relative;
+      height: auto;
+      margin: 0;
+      background-color: transparent;
+      z-index: 0;
+      & video {
+        width: 100%;
+        // object-fit: cover;
+        // height: 100vh;
+      }
+    }
     & video {
       width: 90%;
       height: max-content;

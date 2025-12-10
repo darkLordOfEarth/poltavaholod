@@ -86,6 +86,7 @@
         right: 120px;
         bottom: 60px;
         height: auto;
+        padding: 0;
         @include max-fullhd {
           right: 80px;
           bottom: 40px;
@@ -98,10 +99,24 @@
           right: 20px;
         }
         & span {
-          display: none;
+          visibility: hidden;
+          width: 0;
+          padding: 0;
+          transition: .5s;
+          min-width: auto;
+          white-space: nowrap;
+          // position: absolute;
         }
         & .main__group-btn:hover {
           transform: scale(1.1);
+        }
+        & .main__group-btn {
+          max-width: 90px;
+          position: relative;
+          transition: .5s;
+          @include max-fullhd {
+          max-width: 60px;
+        }
         }
       }
     }
@@ -113,6 +128,8 @@
       border-radius: 75px;
       max-width: 420px;
       width: 100%;
+      transition: .5s;
+      overflow: hidden;
       cursor: pointer;
       &:hover {
         transform: scale(1.05);
@@ -121,7 +138,7 @@
       & span {
         font-size: 24px;
         line-height: 33px;
-        padding: 0 20px 0 30px;
+        padding: 0 25px 0 35px;
         width: max-content;
         min-width: max-content;
         font-family: 'Open Sans', sans-serif;
@@ -137,6 +154,8 @@
         height: 90px;
         margin-right: 0;
         margin-left: auto;
+        position: relative;
+        z-index: 5;
         @include max-fullhd {
           width: 60px;
           height: 60px;
