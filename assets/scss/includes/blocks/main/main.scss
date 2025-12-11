@@ -184,7 +184,7 @@
       & span {
         font-size: 24px;
         line-height: 33px;
-        padding: 0 25px 0 45px;
+        padding: 0 25px 0 55px;
         width: max-content;
         min-width: max-content;
         font-family: 'Open Sans', sans-serif;
@@ -193,13 +193,13 @@
         @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
-          padding: 0 20px 0 30px;
+          padding: 0 20px 0 40px;
         }
         @include max-xxl {
-          padding: 0 25px 0 20px;
+          padding: 0 25px 0 30px;
         }
         @include max-sm {
-          padding: 0 25px 0 35px;
+          padding: 0 25px 0 50px;
         }
       }
       & img {

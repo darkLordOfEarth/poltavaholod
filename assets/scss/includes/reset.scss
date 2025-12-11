@@ -368,25 +368,6 @@ select::-ms-expand {
   border-color: #f46d06;
   border-width: 3px;
 }
-.fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb::before {
-  content: '';
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='12' viewBox='0 0 21 12' fill='none'%3E%3Cpath d='M19.125 10.125L10.125 1.125L1.125 10.125' stroke='%23F46D06' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  width: 18px;
-  height: 9px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -25px;
-  margin: auto;
-  @include max-fullhd {
-    top: -17px;
-    width: 12px;
-    height: 6px;
-  }
-}
 .fancybox__thumbs {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -394,19 +375,21 @@ select::-ms-expand {
   z-index: 10;
   right: 0;
   left: 0;
-}
-.fancybox__thumbs .carousel__slide {
   padding: 45px 0;
-  width: 270px;
+  transition: height .3s ease, opacity .3s ease;
+  overflow: hidden;
+  pointer-events: none;
   @include max-fullhd {
     padding: 30px 0;
-    width: 180px;
   }
-  @include max-xxl {
-    padding: 45px 0;
-  }
-  @include max-lg {
-    padding: 45px 0;
+   &.is-collapsed {
+    height: 50px !important;
+    padding: 10px 0;
+    
+    .carousel__viewport .carousel__slide{
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 .fancybox__slide {
@@ -447,6 +430,10 @@ select::-ms-expand {
   @include max-fullhd {
     width: 21px;
     height: 21px;
+  }
+  &:hover {
+    transform: scale(1.3);
+    transition: 0.3s;
   }
 }
 .fancybox__button--close svg {
@@ -587,4 +574,105 @@ select::-ms-expand {
     height: initial !important;
     object-fit: contain !important;
   }
+}
+
+.fancybox__nav button {
+  &:hover {
+        transform: scale(1.1) translateY(-22px);
+    transition: .5s;
+  }
+}
+.owl-nav button {
+   &:hover {
+        transform: scale(1.1);
+    transition: .5s;
+  }
+}
+.owl-nav .owl-prev {
+   &:hover {
+        transform: scale(1.1) rotate(180deg);
+    transition: .5s;
+  }
+}
+
+.fancybox__thumbs.is-hidden {
+  height: 0 !important;
+  opacity: 0;
+}
+.fancyThumbBtn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin: auto;
+  z-index: 5;
+  width: 30px;
+  height: 10px;
+  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='12' viewBox='0 0 21 12' fill='none'%3E%3Cpath d='M19.125 10.125L10.125 1.125L1.125 10.125' stroke='%23F46D06' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 11px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15px;
+  margin: auto;
+  @include max-fullhd {
+    top: 10px;
+  }
+}
+
+
+.fancybox__thumb {
+  background-size: contain;
+  background-color: transparent;
+  padding-top: 56.25%;
+}
+
+.fancybox__thumbs .carousel__slide {
+  width: 270px;
+  pointer-events: all;
+  padding: 0;
+  @include max-fullhd {
+    width: 180px;
+  }
+}
+
+.fancyThumbBtn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 220px;
+  margin: auto;
+  z-index: 1050;
+  width: 40px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+   pointer-events: all;
+  @include max-fullhd {
+    bottom: 140px;
+  }
+  &.opened {
+    bottom: 30px;
+  }
+  svg {
+    transition: transform .3s ease;
+  }
+  
+  &:hover svg {
+    opacity: 0.7;
+    transform: scale(1.5)
+  }
+}
+.fancybox__container {
+  pointer-events: none;
+}
+.fancybox__image {
+  transform: scale(1) !important; 
 }
