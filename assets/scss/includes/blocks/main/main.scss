@@ -127,9 +127,70 @@
           padding: 0;
           transition: 0.5s;
           white-space: nowrap;
+          @include max-xxl {
+          transition: none;
+        }
+        }
+        & .main__group-btn:first-child:hover {
+          transform: scale(1.1);
+          width: 420px;
+          max-width: 420px;
+          @include max-fullhd {
+            width: 280px;
+            height: 60px;
+          }
+          @include max-xxl {
+            width: 50px;
+            height: 50px;
+          }
+          @include max-xl {
+            width: 48px;
+            height: 48px;
+          }
+          & span {
+            width: auto;
+            padding: 0 25px 0 35px;
+            @include max-fullhd {
+              padding: 0 25px 0 25px;
+            }
+            @include max-xxl {
+              padding: 0 25px 0 15px;
+              transition: none;
+            }
+            @include max-sm {
+              padding: 0 25px 0 35px;
+            }
+          }
         }
         & .main__group-btn:hover {
           transform: scale(1.1);
+          width: 420px;
+          max-width: 420px;
+          @include max-fullhd {
+            width: 280px;
+            height: 60px;
+          }
+          @include max-xxl {
+            height: 50px !important;
+            width: 50px !important;
+            transition: none;
+          }
+          @include max-sm {
+            width: 48px;
+            height: 48px;
+          }
+          & span {
+            width: auto;
+            padding: 0 25px 0 55px;
+            @include max-fullhd {
+              padding: 0 25px 0 45px;
+            }
+            @include max-xxl {
+              padding: 0;
+              width: 0;
+              transition: none;
+            }
+          }
         }
         & .main__group-btn {
           max-width: 90px;
@@ -140,6 +201,7 @@
           }
           @include max-xxl {
             max-width: 50px;
+            transition: none;
           }
           @include max-l {
             max-width: 50px;

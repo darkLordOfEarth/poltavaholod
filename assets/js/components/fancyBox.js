@@ -1,57 +1,55 @@
 $(function () {
   function setFancyThumbsBtn() {
-    $(".fancyThumbBtn").remove();
+    $('.fancyThumbBtn').remove();
 
-    if (!$(".fancybox__container").length) return;
+    if (!$('.fancybox__container').length) return;
 
     let btn = `
       <button class="fancyThumbBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8">
-          <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="#F46D06" fill="none"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+<path d="M0.75 0.75L6.75 6.75L12.75 0.75" stroke="#F46D06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
       </button>`;
 
-    $("body").append(btn);
+    $('body').append(btn);
   }
-$(".gallery-item").on("click", function() {
-  setTimeout(setFancyThumbsBtn, 50);
-})
+  $('.gallery-item').on('click', function () {
+    setTimeout(setFancyThumbsBtn, 50);
+  });
   // Кнопка вставится всегда
-  document.addEventListener("fancybox:init", () => {
+  document.addEventListener('fancybox:init', () => {
     setTimeout(setFancyThumbsBtn, 350);
   });
-  document.addEventListener("fancybox:ready", () => {
+  document.addEventListener('fancybox:ready', () => {
     setTimeout(setFancyThumbsBtn, 350);
   });
 
   // Обработчик клика на кнопку сворачивания миниатюр
-  $(document).on("click", ".fancyThumbBtn", function(e) {
+  $(document).on('click', '.fancyThumbBtn', function (e) {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
-    $(this).toggleClass("opened")
-    const $thumbs = $(".fancybox__thumbs");
-    const $svg = $(this).find("svg");
-    
-    $thumbs.toggleClass("is-collapsed");
-    
+    $(this).toggleClass('opened');
+    const $thumbs = $('.fancybox__thumbs');
+    const $svg = $(this).find('svg');
+
+    $thumbs.toggleClass('is-collapsed');
+
     // Поворачиваем стрелку
-    if ($thumbs.hasClass("is-collapsed")) {
-      $svg.css("transform", "rotate(180deg)");
+    if ($thumbs.hasClass('is-collapsed')) {
+      $svg.css('transform', 'rotate(180deg)');
     } else {
-      $svg.css("transform", "rotate(0deg)");
+      $svg.css('transform', 'rotate(0deg)');
     }
-    
   });
 
   // Предотвращаем закрытие Fancybox при клике на панель миниатюр
-  $(document).on("click", ".fancybox__thumbs", function(e) {
+  $(document).on('click', '.fancybox__thumbs', function (e) {
     e.stopPropagation();
   });
 
   // Предотвращаем закрытие при клике на миниатюру
-  $(document).on("click", ".fancybox__thumbs .carousel__slide", function(e) {
+  $(document).on('click', '.fancybox__thumbs .carousel__slide', function (e) {
     e.stopPropagation();
   });
 
@@ -257,18 +255,11 @@ $(".gallery-item").on("click", function() {
     });
   });
 
-
-  Fancybox.bind("[data-fancybox]", {
+  Fancybox.bind('[data-fancybox]', {
     on: {
-        destroy: (fancybox, slide) => {
-            $(".fancyThumbBtn").remove();
-        }
-    }
+      destroy: (fancybox, slide) => {
+        $('.fancyThumbBtn').remove();
+      },
+    },
+  });
 });
-
-
-});
-
-
-
-

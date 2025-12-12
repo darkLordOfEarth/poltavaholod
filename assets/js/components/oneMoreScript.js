@@ -79,48 +79,6 @@ $('a[href^="#"]').on('click', function (e) {
 
 
 
-
-
-
-// $(function () {
-//   const $formWrapper = $('.form__wrapper');
-//   const $form = $('.form');
-//   let hideTimeout;
-
-//   $form.on('scroll', function () {
-//     $formWrapper.addClass('scrolling');
-
-//     const scrollEl = this;                // форма
-//     const wrapperEl = $formWrapper[0];    // обёртка
-
-//     const scrollHeight  = scrollEl.scrollHeight;
-//     const clientHeight  = scrollEl.clientHeight;
-//     const scrollTop     = scrollEl.scrollTop;
-
-//     // Высота ползунка
-//     const thumbHeight = (clientHeight / scrollHeight) * clientHeight;
-
-//     // Максимумы
-//     const maxScroll = scrollHeight - clientHeight;
-//     const maxThumb  = clientHeight - thumbHeight;
-
-//     // Правильная позиция
-//     const thumbTop = (scrollTop / maxScroll) * maxThumb;
-
-//     wrapperEl.style.setProperty('--thumb-height', thumbHeight + 'px');
-//     wrapperEl.style.setProperty('--thumb-top', thumbTop + 'px');
-
-//     clearTimeout(hideTimeout);
-//     hideTimeout = setTimeout(() => {
-//       $formWrapper.removeClass('scrolling');
-//     }, 1000);
-//   });
-// });
-
-
-
-
-
 $(function () {
   const $form = $('.form');
   const $popupInner = $('.popup__inner');
