@@ -8,6 +8,8 @@ $('.menu__heading-close, .overlay').on('click', function () {
 });
   $('.menu__list-link, .header .menu a').off('click').on('click', function (e) {
     if ($(window).width() < 1280) {
+      $('.menu').removeClass('open');
+      $('.overlay').hide();
         const submenu = $(this).parent().find('.submenu');
         if (submenu.length > 0) { 
             e.preventDefault();
@@ -15,6 +17,7 @@ $('.menu__heading-close, .overlay').on('click', function () {
             $(this).parent().toggleClass('open');
             submenu.toggleClass('open');
         }
+
     }
 });
 

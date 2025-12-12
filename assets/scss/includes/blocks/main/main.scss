@@ -19,6 +19,25 @@
   @include max-lg {
     background-position-x: 55%;
   }
+  &__logo {
+    height: auto;
+    display: none;
+    @include max-xl {
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: 0;
+    }
+    & img {
+      max-width: 360px;
+      @include max-fullhd {
+        max-width: 240px;
+      }
+      @include max-xxxl {
+        max-width: 182px;
+      }
+    }
+  }
   &__content {
     display: flex;
     align-items: center;
@@ -123,7 +142,7 @@
             max-width: 50px;
           }
           @include max-l {
-            max-width:50px;
+            max-width: 50px;
           }
           @include max-sm {
             max-width: 48px;

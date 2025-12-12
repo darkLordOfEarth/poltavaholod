@@ -3,38 +3,105 @@
   flex-direction: column;
   gap: 30px;
   height: 100%;
-  max-height: 75vh;
-  overflow: auto;
+  position: relative;
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  padding-right: 20px;
+  
   @include max-fullhd {
     gap: 20px;
   }
+  
+  // Скрываем стандартный скроллбар
+  scrollbar-width: none; // Firefox
   &::-webkit-scrollbar {
-    width: 16px;
-    background-color: #fff;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    @include max-fullhd {
-      width: 14px;
-      border-radius: 10px;
-    }
+    display: none; // Chrome, Safari
   }
-  &::-webkit-scrollbar-thumb {
-    background-color: #cbcbcb;
-    border-radius: 10px;
-    cursor: grab;
-    border: 2px solid #fff;
-    @include max-fullhd {
-      border-radius: 8px;
-    }
-  }
-  &.has-scroll {
-    padding-right: 10px;
+  
+  // Трек скроллбара (фон)
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   right: 3px; // Отступ от края
+  //   top: 0;
+  //   width: 8px;
+  //   background: rgba(203, 203, 203, 0.3);
+  //   border-radius: 4px;
+  //   height: 100%;
+  //   opacity: 0;
+  //   transition: opacity 0.3s;
+  //   pointer-events: none;
+  // }
+  
+  // // Ползунок скроллбара
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   right: 3px; // Тот же отступ, что и у трека
+  //   top: 0;
+  //   width: 8px;
+  //   background: #cbcbcb;
+  //   border-radius: 4px;
+  //   opacity: 0;
+  //   transition: opacity 0.3s;
+  //   pointer-events: none;
+  //   height: var(--thumb-height, 0);
+  //   transform: translateY(var(--thumb-top, 0));
+  // }
+  
+  // // Показываем скроллбар при прокрутке
+  // &.scrolling::before,
+  // &.scrolling::after {
+  //   opacity: 1;
+  // }
+  
+  // // Опционально: показываем при наведении на форму
+  // &:hover::before,
+  // &:hover::after {
+  //   opacity: 1;
+  // }
 
-    @include max-fullhd {
-      padding-right: 8px;
-    }
-  }
+
+
+
+  
+  // &__wrapper {
+  //   height: 100%;
+  //   overflow-y: hidden;
+  //   overflow-x: visible;
+  //   position: relative;
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   right: -20px;
+    //   top: 0;
+    //   width: 14px;
+    //   background: #fff;
+    //   border-radius: 6px;
+    //   height: 100%;
+    //   padding-top: 2px;
+    //   opacity: 1;
+    // }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   right: 0px;
+    //   top: 0;
+    //   width: 8px;
+    //   background: #cbcbcb;
+    //   border-radius: 6px;
+    //   opacity: 1;
+    //   transition: opacity 0.3s;
+    //   pointer-events: none;
+
+    //   height: var(--thumb-height, 0);
+    //   transform: translateY(var(--thumb-top, 0));
+    // }
+    // &.scrolling::before,
+    // &.scrolling::after {
+    //   opacity: 1;
+    // }
+  // }
   &__group {
     display: flex;
     flex-direction: column;

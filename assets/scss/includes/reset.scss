@@ -196,6 +196,9 @@ button {
   @include max-xlmidle {
     padding: 0 20px;
   }
+  @include max-sm {
+    padding: 0 15px;
+  }
 }
 
 .line {

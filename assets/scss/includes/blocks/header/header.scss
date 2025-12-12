@@ -46,9 +46,14 @@
     padding: 10px 0;
     @include max-xl {
       justify-content: flex-end;
+      padding: 15px 0;
     }
   }
   &__logo {
+        height: -webkit-fill-available;
+        @include max-xl {
+        display: none !important;
+      }
     & img {
       max-width: 360px;
       @include max-fullhd {

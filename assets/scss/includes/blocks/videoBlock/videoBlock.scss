@@ -118,6 +118,7 @@
   & .play__btn {
     width: 150px;
     height: 150px;
+    pointer-events: none;
     @include max-fullhd {
       width: 100px;
       height: 100px;

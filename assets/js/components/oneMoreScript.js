@@ -70,36 +70,139 @@ $('a[href^="#"]').on('click', function (e) {
 
     if (target.length) {
         $('html, body').animate({
-            scrollTop: target.offset().top - headerHeight
+            scrollTop: target.offset().top - headerHeight + 50
         }, 500);
     }
 });
 
 
 
-$(function () {
-  function checkScrollbar() {
-    const $form = $('.form');
-    const hasScroll = $form[0].scrollHeight > $form[0].clientHeight;
 
-    if (hasScroll) {
-      $form.addClass('has-scroll');
-    } else {
-      $form.removeClass('has-scroll');
+
+
+
+
+// $(function () {
+//   const $formWrapper = $('.form__wrapper');
+//   const $form = $('.form');
+//   let hideTimeout;
+
+//   $form.on('scroll', function () {
+//     $formWrapper.addClass('scrolling');
+
+//     const scrollEl = this;                // форма
+//     const wrapperEl = $formWrapper[0];    // обёртка
+
+//     const scrollHeight  = scrollEl.scrollHeight;
+//     const clientHeight  = scrollEl.clientHeight;
+//     const scrollTop     = scrollEl.scrollTop;
+
+//     // Высота ползунка
+//     const thumbHeight = (clientHeight / scrollHeight) * clientHeight;
+
+//     // Максимумы
+//     const maxScroll = scrollHeight - clientHeight;
+//     const maxThumb  = clientHeight - thumbHeight;
+
+//     // Правильная позиция
+//     const thumbTop = (scrollTop / maxScroll) * maxThumb;
+
+//     wrapperEl.style.setProperty('--thumb-height', thumbHeight + 'px');
+//     wrapperEl.style.setProperty('--thumb-top', thumbTop + 'px');
+
+//     clearTimeout(hideTimeout);
+//     hideTimeout = setTimeout(() => {
+//       $formWrapper.removeClass('scrolling');
+//     }, 1000);
+//   });
+// });
+
+
+
+
+
+$(function () {
+  const $form = $('.form');
+  const $popupInner = $('.popup__inner');
+  let hideTimeout;
+
+  function updateScrollbar() {
+    const el = $form[0];
+    const popupInnerEl = $popupInner[0];
+    
+    if (!el || !popupInnerEl) return;
+
+    const scrollHeight = el.scrollHeight;
+    const clientHeight = el.clientHeight; // Высота видимой части формы
+    const scrollTop = el.scrollTop;
+
+    // Устанавливаем высоту трека = высоте видимой части формы
+    popupInnerEl.style.setProperty('--track-height', `${clientHeight}px`);
+
+    // Проверяем, нужен ли скроллбар
+    if (scrollHeight <= clientHeight) {
+      $form.removeClass('scrolling');
+      popupInnerEl.style.setProperty('--thumb-height', '0px');
+      return;
     }
+
+    // Высота ползунка (пропорционально видимой области)
+    const thumbHeight = Math.max((clientHeight / scrollHeight) * clientHeight, 30);
+
+    // Максимальная позиция для ползунка
+    const maxScrollTop = scrollHeight - clientHeight;
+    const maxThumbTop = clientHeight - thumbHeight;
+    
+    // Позиция ползунка (от низа, поэтому инвертируем)
+    const thumbTop = maxScrollTop > 0 ? (scrollTop / maxScrollTop) * maxThumbTop : 0;
+
+    // Применяем CSS переменные
+    popupInnerEl.style.setProperty('--thumb-height', `${thumbHeight}px`);
+    popupInnerEl.style.setProperty('--thumb-top', `${thumbTop}px`);
   }
 
-  // Проверить при загрузке
-  $(".btn-for-popup").on("click", function() {
-    checkScrollbar();
-  })
+  // Обработчик прокрутки
+  $form.on('scroll', function () {
+    $form.addClass('scrolling');
+    updateScrollbar();
 
-  // Проверить при ресайзе (меняется высота)
-  $(window).on('resize', checkScrollbar);
+    // Скрываем скроллбар через 1 секунду
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      $form.removeClass('scrolling');
+    }, 1000);
+  });
+
+  // Инициализация
+  updateScrollbar();
+  
+  // Обновление при ресайзе
+  $(window).on('resize', updateScrollbar);
+  
+  // Обновление при изменении DOM
+  const observer = new MutationObserver(updateScrollbar);
+  if ($form[0]) {
+    observer.observe($form[0], { childList: true, subtree: true });
+  }
+  
+  // Обновление при открытии попапа
+  const popupObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'style') {
+        const popup = mutation.target;
+        if (popup.style.display === 'block') {
+          // Небольшая задержка для корректного расчета после открытия
+          setTimeout(updateScrollbar, 50);
+        }
+      }
+    });
+  });
+  
+  const popup = document.getElementById('popup-rozrahunok');
+  if (popup) {
+    popupObserver.observe(popup, { attributes: true });
+  }
 });
-
-
-
 
   
 });

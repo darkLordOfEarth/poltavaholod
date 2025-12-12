@@ -9,10 +9,19 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
   display: none;
   &[style*='display: block'] {
     display: flex !important;
+  }
+  &__box {
+    padding: 50px 0;
+    height: calc(100% - 0.5rem);
+    transform: none;
+    position: relative;
+    pointer-events: none;
   }
   &__inner {
     background-color: #f0f0ef;
@@ -20,13 +29,18 @@
     padding: 75px 60px 60px;
     position: relative;
     max-width: 975px;
+    max-height: 100%;
     overflow: hidden;
-    max-height: 95vh;
+    pointer-events: auto;
+    background-clip: padding-box;
+    display: flex;
+    flex-direction: column;
     @include max-fullhd {
       border-radius: 20px;
       max-width: 650px;
       padding: 50px 40px 40px;
     }
+
     @include max-md {
       max-width: 87%;
       margin: auto;
@@ -35,6 +49,82 @@
       padding: 40px 10px 20px;
       max-width: calc(100% - 30px);
     }
+    &:has(.form) {
+      padding: 75px 40px 60px 60px;
+      @include max-fullhd {
+        padding: 50px 20px 40px 40px;
+      }
+      @include max-sm {
+        padding: 40px 0 20px 10px;
+      }
+    }
+     &::before {
+    content: '';
+    position: absolute;
+    right: 43px;
+    top: 135px; // Отступ сверху (75px padding + 60px title с margin)
+    width: 14px;
+    background: #fff;
+    border-radius: 5px;
+    height: var(--track-height, 0);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 10;
+    
+    @include max-fullhd {
+      right: 23px;
+      top: 130px; // 50px padding + 40px title с margin
+    }
+    
+    @include max-sm {
+      right: 13px;
+      top: 60px; // 40px padding + 20px title с margin
+    }
+  }
+  
+  // Ползунок скроллбара
+  &::after {
+    content: '';
+    position: absolute;
+    right: 46px;
+    top: 135px; // Такой же отступ как у трека
+    width: 8px;
+    background: #cbcbcb;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    height: var(--thumb-height, 0);
+    transform: translateY(var(--thumb-top, 0)); // Обычное направление сверху вниз
+    z-index: 11;
+    
+    @include max-fullhd {
+      right: 26px;
+      top: 130px;
+    }
+    
+    @include max-sm {
+      right: 13px;
+      top: 60px;
+    }
+  }
+  
+  &:has(.form.scrolling)::before,
+  &:has(.form.scrolling)::after {
+    opacity: 1;
+  }
+  
+  &:has(.form:hover)::before,
+  &:has(.form:hover)::after {
+    opacity: 1;
+  }
+  }
+  &__header {
+    display: flex;
+    flex-shrink: 0;
+    pointer-events: auto;
+    justify-content: center;
   }
   &__close {
     width: 32px;
@@ -55,7 +145,7 @@
     }
     &:hover {
       transform: scale(1.3);
-      transition: .3s;
+      transition: 0.3s;
     }
   }
   &-lang .popup__title {
@@ -108,7 +198,6 @@
       @include max-fullhd {
         padding-right: 12px;
       }
-      
     }
     &__hidden-group {
       display: none;
