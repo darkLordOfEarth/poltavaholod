@@ -2,7 +2,7 @@ $(function () {
   function setFancyThumbsBtn() {
     $('.fancyThumbBtn').remove();
 
-    if (!$('.fancybox__container').length) return;
+    if (!$('.fancybox__thumbs').length) return;
 
     let btn = `
       <button class="fancyThumbBtn">

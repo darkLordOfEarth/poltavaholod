@@ -12,23 +12,23 @@ $(function () {
     freeDrag: false,
     URLhashListener: false,
     autoplay: false,
-    stagePadding: 50,
+    stagePadding: 0,
     responsive: {
       0: {
         items: 2,
-        stagePadding: 50,
+        stagePadding: 0,
       },
       768: {
         items: 3,
-        stagePadding: 50,
+        stagePadding: 0,
       },
       1280: {
         items: 4,
-        stagePadding: 100,
+        stagePadding: 0,
       },
       1650: {
         items: 5,
-        stagePadding: 100,
+        stagePadding: 0,
       },
     },
   });

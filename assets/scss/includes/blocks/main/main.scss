@@ -46,7 +46,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    @include max-lg {
+    @include max-xl {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
@@ -171,8 +171,8 @@
             height: 60px;
           }
           @include max-xxl {
-            height: 50px !important;
-            width: 50px !important;
+            height: 50px ;
+            width: 50px ;
             transition: none;
           }
           @include max-sm {

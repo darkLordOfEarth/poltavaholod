@@ -563,6 +563,9 @@ select::-ms-expand {
   z-index: 4;
   pointer-events: none;
   cursor: pointer;
+  @include max-xl {
+    display: none;
+  }
 }
 .fancybox__image {
   position: absolute;

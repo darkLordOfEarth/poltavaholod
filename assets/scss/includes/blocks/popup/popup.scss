@@ -75,11 +75,13 @@
     @include max-fullhd {
       right: 23px;
       top: 130px; // 50px padding + 40px title с margin
+      width: 12px;
     }
     
     @include max-sm {
-      right: 13px;
-      top: 60px; // 40px padding + 20px title с margin
+      width: 10px;
+      right: 8px;
+      top: 90px; // 40px padding + 20px title с margin
     }
   }
   
@@ -100,13 +102,14 @@
     z-index: 11;
     
     @include max-fullhd {
+      width: 6px;
       right: 26px;
       top: 130px;
     }
     
     @include max-sm {
-      right: 13px;
-      top: 60px;
+      right: 10px;
+      top: 90px;
     }
   }
   

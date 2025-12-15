@@ -75,50 +75,55 @@
     border-radius: 75px;
     padding: 6px 11px;
     backdrop-filter: blur(35px);
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     pointer-events: all;
+    width: 100%;
+    max-width: 604px;
+    height: 90px;
     @include max-fullhd {
       padding: 4px;
+      max-width: 402px;
+      height: 60px;
+    }
+    @include max-xxl {
+      height: 50px;
+    }
+    @include max-sm {
+      max-width: 290px;
+      height: 52px;
+      padding: 4px 5px;
+      grid-template-columns: 1.2fr 1fr;
     }
     &-btn {
       color: #fff;
       font-weight: 600;
       font-size: 26px;
       line-height: 36px;
-      padding: 21px 40px;
       border-radius: 55px;
       position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
       cursor: pointer;
       @include max-fullhd {
         font-size: 18px;
         line-height: 24px;
-        padding: 14px 25px;
       }
       @include max-xxl {
         font-size: 18px;
         line-height: 24px;
-        padding: 9px 25px;
       }
       @include max-sm {
-        font-size: 16px;
-        line-height: 20px;
-        padding: 9px 10px;
+        font-size: 14px;
+        line-height: 18px;
       }
       &.active {
         color: #0d0d0d;
         background-color: #fff;
       }
-      // &:nth-child(2).active::after {
-      //   content: "";
-      //   background-image: url(../images/departments.jpg);
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   width: 100%;
-      //   height: 100%;
-      //   z-index: 6;
-      // }
     }
   }
   &__link {

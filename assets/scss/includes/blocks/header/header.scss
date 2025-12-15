@@ -43,17 +43,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+     padding: 22px 0;
+    @include max-fullhd {
+      padding: 10px 0;
+    }
     @include max-xl {
       justify-content: flex-end;
-      padding: 15px 0;
     }
   }
   &__logo {
-        height: -webkit-fill-available;
-        @include max-xl {
-        display: none !important;
-      }
+    height: 60px;
+    @include max-fullhd {
+     height: 40px;
+    }
+    @include max-xxl {
+     height: 30px;
+    }
+    @include max-l {
+     height: 24px;
+    }
+    @include max-xl {
+      display: none !important;
+    }
     & img {
       max-width: 360px;
       @include max-fullhd {
@@ -190,7 +201,7 @@
           font-size: 16px;
         }
         &:hover {
-          color: #F46D06;
+          color: #f46d06;
         }
       }
     }
