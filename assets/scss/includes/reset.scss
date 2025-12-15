@@ -379,17 +379,17 @@ select::-ms-expand {
   right: 0;
   left: 0;
   padding: 45px 0;
-  transition: height .3s ease, opacity .3s ease;
+  transition: height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
   pointer-events: none;
   @include max-fullhd {
     padding: 30px 0;
   }
-   &.is-collapsed {
+  &.is-collapsed {
     height: 50px !important;
     padding: 10px 0;
-    
-    .carousel__viewport .carousel__slide{
+
+    .carousel__viewport .carousel__slide {
       opacity: 0;
       pointer-events: none;
     }
@@ -402,9 +402,66 @@ select::-ms-expand {
   width: 100%;
   height: 100%;
 }
+.fancybox__nav .carousel__button.is-prev {
+  left: 30px;
+  @include max-fullhd {
+    left: 20px;
+  }
+  @include max-l {
+    left: 15px;
+  }
+}
+.fancybox__nav .carousel__button.is-next {
+  right: 30px;
+  @include max-fullhd {
+    right: 20px;
+  }
+  @include max-l {
+    right: 15px;
+  }
+}
 .fancybox__nav .carousel__button {
   border-radius: 50%;
   background-color: #0000004d;
+  width: 90px;
+  height: 90px;
+  @include max-fullhd {
+    width: 60px;
+    height: 60px;
+  }
+  @include max-xxl {
+    width: 50px;
+    height: 50px;
+  }
+  @include max-l {
+    width: 48px;
+    height: 48px;
+  }
+  & svg {
+    height: 35px;
+    width: 35px;
+    @include max-fullhd {
+      width: 30px;
+      height: 30px;
+    }
+    @include max-xxl {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  &:hover {
+    transform: scale(1.1) translateY(-40px);
+    transition: 0.5s;
+    @include max-fullhd {
+      transform: scale(1.1) translateY(-28px);
+    }
+    @include max-xxl {
+      transform: scale(1.1) translateY(-22px);
+    }
+    @include max-l {
+      transform: scale(1.1) translateY(-21px);
+    }
+  }
 }
 .fancybox__backdrop {
   background: rgba(0, 0, 0, 0.9);
@@ -427,12 +484,18 @@ select::-ms-expand {
   height: 32px;
   background-repeat: no-repeat;
   background-size: cover;
-  top: 45px;
-  right: 45px;
+  top: 53px;
+  right: 53px;
   position: relative;
   @include max-fullhd {
     width: 21px;
     height: 21px;
+    top: 35px;
+    right: 35px;
+  }
+  @include max-l {
+    top: 25px;
+    right: 25px;
   }
   &:hover {
     transform: scale(1.3);
@@ -534,7 +597,7 @@ select::-ms-expand {
   height: 100%;
 }
 .imgBox:hover::after {
-  content: "";
+  content: '';
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 100%;
@@ -549,7 +612,7 @@ select::-ms-expand {
   cursor: pointer;
 }
 .imgBox:hover::before {
-  content: "";
+  content: '';
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'%3E%3Crect x='0.5' y='0.5' width='47' height='47' rx='23.5' fill='white'/%3E%3Crect x='0.5' y='0.5' width='47' height='47' rx='23.5' stroke='%23CBCBCB'/%3E%3Cpath d='M23.9987 15.833V32.1663M15.832 23.9997H32.1654' stroke='%230D0D0D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   position: absolute;
   width: 48px;
@@ -582,22 +645,16 @@ select::-ms-expand {
   }
 }
 
-.fancybox__nav button {
-  &:hover {
-        transform: scale(1.1) translateY(-22px);
-    transition: .5s;
-  }
-}
 .owl-nav button {
-   &:hover {
-        transform: scale(1.1);
-    transition: .5s;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
   }
 }
 .owl-nav .owl-prev {
-   &:hover {
-        transform: scale(1.1) rotate(180deg);
-    transition: .5s;
+  &:hover {
+    transform: scale(1.1) rotate(180deg);
+    transition: 0.5s;
   }
 }
 
@@ -630,7 +687,6 @@ select::-ms-expand {
   }
 }
 
-
 .fancybox__thumb {
   background-size: contain;
   background-color: transparent;
@@ -660,7 +716,7 @@ select::-ms-expand {
   border: none;
   cursor: pointer;
   padding: 0;
-   pointer-events: all;
+  pointer-events: all;
   @include max-fullhd {
     bottom: 140px;
   }
@@ -668,17 +724,17 @@ select::-ms-expand {
     bottom: 30px;
   }
   svg {
-    transition: transform .3s ease;
+    transition: transform 0.3s ease;
   }
-  
+
   &:hover svg {
     opacity: 0.7;
-    transform: scale(1.5)
+    transform: scale(1.5);
   }
 }
 .fancybox__container {
   pointer-events: none;
 }
 .fancybox__image {
-  transform: scale(1) !important; 
+  transform: scale(1) !important;
 }

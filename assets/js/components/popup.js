@@ -17,19 +17,22 @@ $(function () {
       targetPopup.show();
     });
 
-
   $('[data-group]').on('click', function (e) {
     e.preventDefault();
-     const $videoLink = $(this).attr('data-video');
+    const $videoLink = $(this).attr('data-video');
     const $videoPopup = $('.popupPartners video');
-    const $title = $(this).parents(".partnershipTypes__list-item").find('.partnershipTypes__list-item__title b').text().toLowerCase();
+    const $title = $(this)
+      .parents('.partnershipTypes__list-item')
+      .find('.partnershipTypes__list-item__title b')
+      .text()
+      .toLowerCase();
     const groupId = $(this).attr('data-group');
     const $popupTitle = $('.popupPartners .popup__title span');
     const $dynamicGroup = $('#dynamic-form-group');
     const $allGroups = $('.popupPartners__hidden-group');
 
-    $popupTitle.text($title)
-    $videoPopup.attr("src", $videoLink)
+    $popupTitle.text($title);
+    $videoPopup.attr('src', $videoLink);
 
     if (!$dynamicGroup.length) {
       console.warn('#dynamic-form-group не найден в DOM');
@@ -137,15 +140,27 @@ $(function () {
     // Отправка формы через AJAX
     let formData = new FormData();
     formData.append('action', 'submit_form');
-    formData.append('nonce', $('#form_nonce').val());
+    formData.append('form_nonce', $('#form_nonce').val());
     formData.append('name', $('input[name="name"]').val());
     formData.append('tel', $('input[name="tel"]').val());
     formData.append('company', $('input[name="company"]').val());
     formData.append('coment', $('textarea[name="coment"]').val());
 
     // Добавляем файлы правильно
+    const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
+    let totalSize = 0;
+
     const files = fileInput.files;
+
     for (let i = 0; i < files.length; i++) {
+      totalSize += files[i].size;
+
+      if (totalSize > MAX_TOTAL_SIZE) {
+        alert('Загальний розмір файлів не повинен перевищувати 50 МБ');
+         $btn.prop('disabled', false).text('Надіслати заявку');
+        return;
+      }
+
       formData.append('files[]', files[i]);
     }
 
@@ -158,7 +173,7 @@ $(function () {
       contentType: false,
       success: function (response) {
         console.log('Ответ сервера:', response);
-        
+
         if (response.success) {
           $('#popup-rozrahunok').hide();
           $('#popup-spasibi').show();
@@ -166,20 +181,18 @@ $(function () {
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();
         } else {
-          alert('Помилка: ' + ( response.data || 'Невідома помилка'));
+          alert('Помилка: ' + (response.data || 'Невідома помилка'));
         }
-        
+
         $btn.prop('disabled', false).text('Надіслати заявку');
       },
       error: function (xhr, status, error) {
         console.error('Ошибка AJAX:', error);
         alert('Помилка відправки форми. Спробуйте ще раз.');
         $btn.prop('disabled', false).text('Надіслати заявку');
-      }
+      },
     });
   });
-
-
 
   // Убираем ошибку при вводе
   $('.form__group-input').on('input', function () {

@@ -111,14 +111,14 @@
       }
     }
   }
-  &:hover .play__btn {
+  & .play__btn:hover {
     transform: scale(1.1);
     transition: 0.5s;
   }
   & .play__btn {
     width: 150px;
     height: 150px;
-    pointer-events: none;
+    // pointer-events: none;
     @include max-fullhd {
       width: 100px;
       height: 100px;

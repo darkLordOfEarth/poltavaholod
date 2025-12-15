@@ -7,8 +7,8 @@ $(function () {
     let btn = `
       <button class="fancyThumbBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
-<path d="M0.75 0.75L6.75 6.75L12.75 0.75" stroke="#F46D06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+  <path d="M0.75 0.75L6.75 6.75L12.75 0.75" stroke="#F46D06" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
       </button>`;
 
     $('body').append(btn);
@@ -262,4 +262,42 @@ $(function () {
       },
     },
   });
+
+  /* -------------------------------------------------------
+    АВТО-ПАУЗА ВИДЕО ПРИ ВЫХОДЕ ИЗ ОБЛАСТИ ВИДИМОСТИ
+------------------------------------------------------- */
+
+function initVideoVisibilityObserver() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) return;
+
+        const video = entry.target;
+        if (video.paused) return;
+
+        const $video = $(video);
+        const $block = $video.closest('.videoBlock, .videoBlockSimple');
+        const $playBtn = $block.find('.play__btn');
+
+        video.pause();
+        $block.removeClass('open');
+        $playBtn.fadeIn(150);
+      });
+    },
+    {
+      threshold: 0.25, // видео считается "видимым", если видно хотя бы 25%
+    }
+  );
+
+  $('video').each(function () {
+    observer.observe(this);
+  });
+}
+
+// инициализируем после загрузки
+setTimeout(initVideoVisibilityObserver, 300);
+
 });
