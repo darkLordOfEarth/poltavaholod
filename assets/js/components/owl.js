@@ -335,7 +335,44 @@ $(function () {
 
 
 
-
+  $('.reviews__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    stagePadding: 0,
+    items: 1,
+    responsive: {
+      0: {
+        stagePadding: 30,
+        margin: 15,
+      },
+      576: {
+        stagePadding: 50,
+        margin: 20,
+      },
+      768: {
+        stagePadding: 100,
+        margin: 20,
+      },
+      1024: {
+        stagePadding: 100,
+        margin: 20,
+      },
+      1280: {
+        stagePadding: 0,
+        margin: 20,
+      }
+    },
+  });
 
 
 });

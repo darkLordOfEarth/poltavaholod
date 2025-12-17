@@ -166,7 +166,7 @@ $(function () {
 
     $.ajax({
       // url: ajaxurl,
-      url: '/wp-content/themes/carcass/send.php',
+      url: '/wp-admin/admin-ajax.php',
       type: 'POST',
       data: formData,
       processData: false,
