@@ -1,0 +1,41 @@
+.certificates {
+  &__content {
+  }
+  &__slider {
+    margin: 75px auto 0;
+    padding: 0 178px;
+    @include max-fullhd {
+      margin: 50px auto 0;
+      padding: 0 120px;
+    }
+    @include max-xxl {
+      padding: 0 85px;
+    }
+    @include max-l {
+      padding: 0;
+      margin: 90px auto 0;
+      width: calc(100vw);
+      left: 50%;
+      margin-left: -50vw;
+      position: relative;
+    }
+    & .owl-stage-outer {
+      @include max-l {
+        margin-left: -85px;
+      }
+      @include max-sm {
+        margin-left: -20px;
+      }
+    }
+    & .owl-nav {
+      @include max-l {
+        top: -70px;
+        right: 20px;
+      }
+    }
+    & img {
+      @include max-fullhd {
+      }
+    }
+  }
+}

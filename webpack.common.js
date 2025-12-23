@@ -98,6 +98,10 @@ module.exports = {
       template: './assets/templates/notFound.hbs',
       filename: 'notFound.html',
     }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/licenses.hbs',
+      filename: 'licenses.html',
+    }),
   ],
 
   output: {

@@ -375,4 +375,88 @@ $(function () {
   });
 
 
+
+  $('.licenses__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    items: 2,
+    responsive: {
+      0: {
+        margin: 10,
+      },
+      576: {
+        margin: 36,
+      },
+      768: {
+        margin: 56,
+      },
+      1024: {
+        margin: 134,
+      },
+      1920: {
+        margin: 236,
+      },
+      2600: {
+        margin: 355,
+      }
+    },
+  });
+
+
+
+  $('.certificates__slider').owlCarousel({
+    loop: true,
+    nav: true,
+    navText: [
+      '<span class="sr-only">Наступний слайд</span>',
+      '<span class="sr-only">Попередній слайд</span>',
+    ],
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: false,
+    URLhashListener: false,
+    autoplay: false,
+    responsive: {
+      0: {
+        margin: 10,
+        items: 2,
+        stagePadding: 30
+      },
+      576: {
+        margin: 15,
+        items: 2,
+        stagePadding: 100
+      },
+      768: {
+        margin: 15,
+        items: 3,
+        stagePadding: 100
+      },
+      1024: {
+        margin: 35,
+        items: 4
+      },
+      1440: {
+        margin: 60,
+        items: 4
+      },
+      1920: {
+        margin: 88,
+        items: 4
+      }
+    },
+  });
+
+
 });
