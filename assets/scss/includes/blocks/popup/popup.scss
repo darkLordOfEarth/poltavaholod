@@ -163,6 +163,11 @@
       line-height: 28px;
     }
   }
+  & .lang__btn--ua {
+    @include max-sm {
+      margin-top: 20px;
+    }
+  }
   &__title {
     font-weight: 600;
     font-size: 48px;

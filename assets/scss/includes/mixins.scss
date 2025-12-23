@@ -11,6 +11,7 @@ $xlmidle: 1350px;
 $xxl: 1440px;
 $xxxl: 1650px;
 $fullhd: 1920px;
+$preBigScreen: 2300px;
 $bigScreen: 2600px;
 
 @mixin landscape {
@@ -97,7 +98,12 @@ $bigScreen: 2600px;
     @content;
   }
 }
-@mixin bigScreen {
+@mixin min-preBigScreen {
+  @media (min-width: #{$preBigScreen}) {
+    @content;
+  }
+}
+@mixin min-bigScreen {
   @media (min-width: #{$bigScreen}) {
     @content;
   }

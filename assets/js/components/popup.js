@@ -15,6 +15,7 @@ $(function () {
       let popupId = $(this).attr('data-popup');
       let targetPopup = $('#' + popupId);
       targetPopup.show();
+      targetPopup.find('.form').scrollTop(0);
     });
 
   $('[data-group]').on('click', function (e) {
@@ -107,7 +108,7 @@ $(function () {
     let hasError = false;
 
     // Проверка обычных input и textarea
-    form.find('.form__group-input').each(function () {
+    form.find('.form__group-input').not('[name="coment"]').each(function () {
       const $field = $(this);
       if ($field.val().trim() === '') {
         $field.addClass('error');
@@ -121,12 +122,19 @@ $(function () {
     const fileInput = $('#input-file')[0];
     const fileField = $('.form__group-file__field');
 
-    if (!fileInput.files || fileInput.files.length === 0) {
-      fileField.addClass('error');
-      hasError = true;
+    if (fileInput.files && fileInput.files.length > 0) {
+      fileField.removeClass('error'); // если выбран файл — убираем ошибку
     } else {
-      fileField.removeClass('error');
+      fileField.removeClass('error'); // если пусто — тоже ошибок нет
+      // hasError не меняем, т.к. файл необязательный
     }
+
+    // if (!fileInput.files || fileInput.files.length === 0) {
+    //   fileField.addClass('error');
+    //   hasError = true;
+    // } else {
+    //   fileField.removeClass('error');
+    // }
 
     if (hasError) {
       console.log('Форма не отправлена — ошибки.');
@@ -157,7 +165,7 @@ $(function () {
 
       if (totalSize > MAX_TOTAL_SIZE) {
         alert('Загальний розмір файлів не повинен перевищувати 50 МБ');
-         $btn.prop('disabled', false).text('Надіслати заявку');
+        $btn.prop('disabled', false).text('Надіслати заявку');
         return;
       }
 

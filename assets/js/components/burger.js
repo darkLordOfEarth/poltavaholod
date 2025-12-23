@@ -6,7 +6,7 @@ $('.menu__heading-close, .overlay').on('click', function () {
   $('.menu').removeClass('open');
   $('.overlay').hide();
 });
-  $('.menu__list-link, .header .menu a').off('click').on('click', function (e) {
+  $('.menu__list-link,.header .menu-item, .header .menu button, .menu-anchor-btn').off('click').on('click', function (e) {
     if ($(window).width() < 1280) {
       $('.menu').removeClass('open');
       $('.overlay').hide();
@@ -21,11 +21,10 @@ $('.menu__heading-close, .overlay').on('click', function () {
     }
 });
 
-  $('.submenu__link, .header .sub-menu a').off('click').on('click', function (e) {
+  $('.submenu__link, .header .sub-menu button').off('click').on('click', function (e) {
     // e.preventDefault();
     e.stopPropagation();
   });
-
 
 
 

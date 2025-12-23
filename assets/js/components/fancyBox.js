@@ -14,7 +14,7 @@ $(function () {
     $('body').append(btn);
   }
   $('.gallery-item').on('click', function () {
-    setTimeout(setFancyThumbsBtn, 50);
+    setTimeout(setFancyThumbsBtn, 350);
   });
   // Кнопка вставится всегда
   document.addEventListener('fancybox:init', () => {
@@ -255,61 +255,50 @@ $(function () {
     });
   });
 
-  Fancybox.bind('[data-fancybox]', {
-    on: {
-      destroy: (fancybox, slide) => {
-        $('.fancyThumbBtn').remove();
-      },
-    },
-  });
+  
 
   /* -------------------------------------------------------
     АВТО-ПАУЗА ВИДЕО ПРИ ВЫХОДЕ ИЗ ОБЛАСТИ ВИДИМОСТИ
 ------------------------------------------------------- */
 
-function initVideoVisibilityObserver() {
-  if (!('IntersectionObserver' in window)) return;
+  function initVideoVisibilityObserver() {
+    if (!('IntersectionObserver' in window)) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) return;
 
-        const video = entry.target;
-        if (video.paused) return;
+          const video = entry.target;
+          if (video.paused) return;
 
-        const $video = $(video);
-        const $block = $video.closest('.videoBlock, .videoBlockSimple');
-        const $playBtn = $block.find('.play__btn');
+          const $video = $(video);
+          const $block = $video.closest('.videoBlock, .videoBlockSimple');
+          const $playBtn = $block.find('.play__btn');
 
-        video.pause();
-        $block.removeClass('open');
-        $playBtn.fadeIn(150);
-      });
-    },
-    {
-      threshold: 0.25, // видео считается "видимым", если видно хотя бы 25%
-    }
-  );
+          video.pause();
+          $block.removeClass('open');
+          $playBtn.fadeIn(150);
+        });
+      },
+      {
+        threshold: 0.25, // видео считается "видимым", если видно хотя бы 25%
+      },
+    );
 
-  $('video').each(function () {
-    observer.observe(this);
-  });
-}
+    $('video').each(function () {
+      observer.observe(this);
+    });
+  }
 
-// инициализируем после загрузки
-setTimeout(initVideoVisibilityObserver, 300);
-
-
-
+  // инициализируем после загрузки
+  setTimeout(initVideoVisibilityObserver, 300);
 
   function initFancyboxPerSlide() {
     $('.reviews__slide').each(function (index) {
       const galleryId = 'reviews-slide-' + index;
 
-      $(this)
-        .find('.reviews__slide-project__images a')
-        .attr('data-fancybox', galleryId);
+      $(this).find('.reviews__slide-project__images a').attr('data-fancybox', galleryId);
     });
   }
 
@@ -320,5 +309,11 @@ setTimeout(initVideoVisibilityObserver, 300);
     initFancyboxPerSlide();
   });
 
-
+  Fancybox.bind('[data-fancybox]', {
+    on: {
+      destroy: (fancybox, slide) => {
+        $('.fancyThumbBtn').remove();
+      },
+    },
+  });
 });

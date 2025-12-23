@@ -20,8 +20,6 @@ $(function () {
   $(window).on('scroll', checkHeaderScroll);
   $(window).on('load', checkHeaderScroll);
 
- 
-
   $('.product__info-desc__btn')
     .off('click')
     .on('click', function () {
@@ -62,5 +60,37 @@ $(function () {
     }
   });
 
-  
+  $('.main-navigation a').each(function () {
+    const $link = $(this);
+    const href = $link.attr('href');
+
+    // если это якорь
+    if (href && href.startsWith('#')) {
+      const text = $link.text();
+      const classes = $link.attr('class') || '';
+
+      const $button = $('<button>', {
+        type: 'button',
+        class: classes + ' menu-anchor-btn',
+        text: text,
+        'data-target': href,
+      });
+
+      $link.replaceWith($button);
+    }
+  });
+
+  // обработчик клика по якорям
+  $(document).on('click', '.menu-anchor-btn', function () {
+    const target = $(this).data('target');
+
+    if ($(target).length) {
+      $('html, body').animate(
+        {
+          scrollTop: $(target).offset().top,
+        },
+        600,
+      );
+    }
+  });
 });

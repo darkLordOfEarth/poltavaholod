@@ -19,6 +19,7 @@
     }
     &-reverse {
       grid-template-columns: 1fr 1.2fr;
+      overflow: hidden;
       @include max-l {
         display: flex;
         flex-direction: column-reverse;
@@ -104,6 +105,10 @@
           font-size: 24px;
           line-height: 32px;
         }
+      }
+      & .text_simple {
+        flex: 1;
+        min-width: 0;
       }
     }
   }

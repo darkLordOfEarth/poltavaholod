@@ -74,7 +74,9 @@
   &__toggle {
     border-radius: 75px;
     padding: 6px 11px;
-    backdrop-filter: blur(35px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
     display: grid;
     grid-template-columns: 1fr 1fr;
     pointer-events: all;

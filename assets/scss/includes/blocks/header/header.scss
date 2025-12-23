@@ -67,11 +67,14 @@
     }
     & img {
       max-width: 360px;
+      width: 360px;
       @include max-fullhd {
         max-width: 240px;
+        width: 240px;
       }
       @include max-xxxl {
         max-width: 182px;
+        width: 182px;
       }
     }
     @include max-xl {

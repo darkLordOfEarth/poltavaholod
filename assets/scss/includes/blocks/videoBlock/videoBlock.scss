@@ -3,6 +3,24 @@
   display: flex;
   width: 100%;
   height: 100%;
+  & .video-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    pointer-events: none;
+    &-desktop {
+      @include max-lg {
+        display: none;
+      }
+    }
+    &-mobile {
+      display: none;
+      @include max-lg {
+        display: block;
+      }
+    }
+  }
   &.temporary-img {
     position: relative;
     z-index: 0;
@@ -17,9 +35,10 @@
     z-index: 5;
     background: rgba(0, 0, 0, 0.5);
   }
+  
   &.temporary-img::after {
-    content: 'Незабаром відкриття';
-    background-image: url(../images/temporary_img.png);
+    content: "";
+    background-image: url(../images/temporary_img_new.png);
     position: absolute;
     top: 0;
     left: 0;
@@ -34,6 +53,15 @@
     color: #fff;
     font-size: 200%;
     font-weight: 700;
+    @include max-md {
+        font-size: 150%;
+      }
+  }
+  &.temporary-img-ua::after {
+    content: 'Незабаром відкриття';
+  }
+  &.temporary-img-ru::after {
+    content: 'Скоро открытие';
   }
 }
 .videoBlock {
@@ -118,14 +146,13 @@
   & .play__btn {
     width: 150px;
     height: 150px;
-    // pointer-events: none;
+    pointer-events: all;
     @include max-fullhd {
       width: 100px;
       height: 100px;
     }
     @include max-l {
-      width: 50px;
-      height: 50px;
+      pointer-events: none;
     }
   }
 }

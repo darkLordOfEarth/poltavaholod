@@ -2,7 +2,7 @@ $(function () {
 
   function setHiddenImg() {
 
-    $('.reviews__slide-project__images').each(function () {
+    $('.reviews__slide-project__images, .production .template1__image').each(function () {
       const $wrap = $(this);
 
       $wrap.find('.hiddenImagesBlock').remove();

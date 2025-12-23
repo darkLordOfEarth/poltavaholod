@@ -94,6 +94,10 @@ module.exports = {
       template: './assets/templates/reviews.hbs',
       filename: 'reviews.html',
     }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/notFound.hbs',
+      filename: 'notFound.html',
+    }),
   ],
 
   output: {

@@ -4,11 +4,15 @@ $(function () {
     videos: {},
   };
   let activeVideoEl = null;
-
+$(".play__btn").on("click", function() {
+  $(this).closest(".video-poster").remove();
+  $(this).closest("video").play;
+})
   $('.virtualTour video').each(function () {
     const video = this;
 
     video.addEventListener('play', function () {
+      $(".video-poster").remove();
       activeVideoEl = video;
 
       const src = video.querySelector('source')?.getAttribute('src');
@@ -127,9 +131,21 @@ $(function () {
   });
 
   $('.temporary-btn').on('click', function () {
-    $(this).parents('.virtualTour').find('.videoBlockWrapper').addClass('temporary-img');
-  });
+  const $wrapper = $(this)
+    .closest('.virtualTour')
+    .find('.videoBlockWrapper');
+
+  $wrapper.addClass('temporary-img');
+
+  if (window.location.pathname.startsWith('/ru')) {
+    $wrapper.addClass('temporary-img-ru');
+    
+  } else {
+    $wrapper.addClass('temporary-img-ua');
+  }
+});
+
   $('.temporary-btn-clear').on('click', function () {
-    $(this).parents('.virtualTour').find('.videoBlockWrapper').removeClass('temporary-img');
+    $(this).parents('.virtualTour').find('.videoBlockWrapper').removeClass('temporary-img temporary-img-ru');
   });
 });
