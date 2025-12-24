@@ -102,6 +102,10 @@ module.exports = {
       template: './assets/templates/licenses.hbs',
       filename: 'licenses.html',
     }),
+    new HtmlWebpackPlugin({
+      template: './assets/templates/rules.hbs',
+      filename: 'rules.html',
+    }),
   ],
 
   output: {

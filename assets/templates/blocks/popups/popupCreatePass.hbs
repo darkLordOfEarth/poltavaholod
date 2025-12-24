@@ -1,0 +1,59 @@
+<div class='popup popupCreatePass' id='popup-create-pass'>
+    <div class='popup__inner'>
+      <div class="popup__header">
+        <img src='images/popup_close.svg' alt='close' class='popup__close' />
+        <div class='popup__title'>Придумайте пароль</div>
+      </div>
+      <div class="popupLogin__instruction">
+        <p>Будь ласка, введіть новий пароль для входу в особистий кабінет. Пароль повинен містити мінімум 8 символів.</p>
+        </div>
+      <form action='createPass.php' name='form' method='post' class='form'>
+        
+          <div class="form__group">
+            <label for="password" class="form__group-label">Новий пароль*</label>
+
+            <div class="input-wrapper">
+              <input
+                type="password"
+                class="form__group-input"
+                name="password"
+                placeholder="Введіть новий пароль"
+              />
+
+              <img
+                src="/images/pass_hide.svg"
+                alt="Показати пароль"
+                class="toggle-password"
+                data-show="/images/pass_show.svg"
+                data-hide="/images/pass_hide.svg"
+              >
+            </div>
+
+          </div>
+          <div class="form__group">
+            <label for="password" class="form__group-label">Підтвердження паролю*</label>
+
+            <div class="input-wrapper">
+              <input
+                type="password"
+                class="form__group-input"
+                name="password"
+                placeholder="Повторно введіть новий пароль"
+              />
+
+              <img
+                src="/images/pass_hide.svg"
+                alt="Показати пароль"
+                class="toggle-password"
+                data-show="/images/pass_show.svg"
+                data-hide="/images/pass_hide.svg"
+              >
+          </div>
+      </div>
+          <div class='popup__btn-group'>
+            <button class='custom-button popup__button btn-form' type='button'>Оновити пароль</button>
+            <div class='popup__notation'>Допомога із входом у кабінет: <a href="tel:+380970001397">+380970001397</a></div>
+          </div>
+        </div>
+      </form>
+</div>

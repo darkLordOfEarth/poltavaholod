@@ -609,7 +609,7 @@ select::-ms-expand {
   z-index: 3;
   pointer-events: none;
   cursor: pointer;
-   @include max-xl {
+  @include max-xl {
     display: none;
   }
 }
@@ -776,4 +776,27 @@ select::-ms-expand {
 .cf-turnstile.suspicious {
   height: auto !important;
   opacity: 1;
+}
+.input-wrapper {
+  position: relative;
+}
+.input-wrapper img {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 33px;
+  height: 33px;
+  cursor: pointer;
+  @include max-fullhd {
+    width: 22px;
+    height: 22px;
+  }
+}
+input[type="password"] {
+  // font-family: 'Open Sans', sans-serif;
+  color: #A3A3A3;
+  -webkit-text-security: circle;
+  border-radius: 10px;
 }

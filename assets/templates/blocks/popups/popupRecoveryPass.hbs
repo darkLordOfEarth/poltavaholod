@@ -1,0 +1,27 @@
+<div class='popup popupRecoveryPass' id='popup-recovery-pass'>
+    <div class='popup__inner'>
+      <div class="popup__header">
+        <img src='images/popup_close.svg' alt='close' class='popup__close' />
+        <div class='popup__title'>Відновлення паролю</div>
+      </div>
+      <div class="popupLogin__instruction">
+        <p>Введіть вашу корпоративну електронну адресу, яка була використана під час укладання угоди. Ми надішлемо вам інструкції для скидання паролю.</p>
+        </div>
+      <form action='recovery.php' name='form' method='post' class='form'>
+        
+          <div class='form__group'>
+            <label for='name' class='form__group-label'>Email*</label>
+            <input
+              type='text'
+              class='form__group-input'
+              name='name'
+              placeholder='Введіть свою електрону адресу'
+            />
+          </div>
+          <div class='popup__btn-group'>
+            <button class='custom-button popup__button btn-form' type='button'>Відправити інструкції</button>
+            <div class='popup__notation'>Допомога із входом у кабінет: <a href="tel:+380970001397">+380970001397</a></div>
+          </div>
+        </div>
+      </form>
+</div>

@@ -11,6 +11,7 @@
   z-index: 10;
   overflow-x: hidden;
   overflow-y: auto;
+  pointer-events: none;
   outline: 0;
   display: none;
   &[style*='display: block'] {
@@ -58,70 +59,70 @@
         padding: 40px 0 20px 10px;
       }
     }
-     &::before {
-    content: '';
-    position: absolute;
-    right: 43px;
-    top: 135px; // Отступ сверху (75px padding + 60px title с margin)
-    width: 14px;
-    background: #fff;
-    border-radius: 5px;
-    height: var(--track-height, 0);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    z-index: 10;
-    
-    @include max-fullhd {
-      right: 23px;
-      top: 130px; // 50px padding + 40px title с margin
-      width: 12px;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 43px;
+      top: 135px; // Отступ сверху (75px padding + 60px title с margin)
+      width: 14px;
+      background: #fff;
+      border-radius: 5px;
+      height: var(--track-height, 0);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 10;
+
+      @include max-fullhd {
+        right: 23px;
+        top: 130px; // 50px padding + 40px title с margin
+        width: 12px;
+      }
+
+      @include max-sm {
+        width: 10px;
+        right: 8px;
+        top: 90px; // 40px padding + 20px title с margin
+      }
     }
-    
-    @include max-sm {
-      width: 10px;
-      right: 8px;
-      top: 90px; // 40px padding + 20px title с margin
+
+    // Ползунок скроллбара
+    &::after {
+      content: '';
+      position: absolute;
+      right: 46px;
+      top: 135px; // Такой же отступ как у трека
+      width: 8px;
+      background: #cbcbcb;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      height: var(--thumb-height, 0);
+      transform: translateY(var(--thumb-top, 0)); // Обычное направление сверху вниз
+      z-index: 11;
+
+      @include max-fullhd {
+        width: 6px;
+        right: 26px;
+        top: 130px;
+      }
+
+      @include max-sm {
+        right: 10px;
+        top: 90px;
+      }
     }
-  }
-  
-  // Ползунок скроллбара
-  &::after {
-    content: '';
-    position: absolute;
-    right: 46px;
-    top: 135px; // Такой же отступ как у трека
-    width: 8px;
-    background: #cbcbcb;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    height: var(--thumb-height, 0);
-    transform: translateY(var(--thumb-top, 0)); // Обычное направление сверху вниз
-    z-index: 11;
-    
-    @include max-fullhd {
-      width: 6px;
-      right: 26px;
-      top: 130px;
+
+    &:has(.form.scrolling)::before,
+    &:has(.form.scrolling)::after {
+      opacity: 1;
     }
-    
-    @include max-sm {
-      right: 10px;
-      top: 90px;
+
+    &:has(.form:hover)::before,
+    &:has(.form:hover)::after {
+      opacity: 1;
     }
-  }
-  
-  &:has(.form.scrolling)::before,
-  &:has(.form.scrolling)::after {
-    opacity: 1;
-  }
-  
-  &:has(.form:hover)::before,
-  &:has(.form:hover)::after {
-    opacity: 1;
-  }
   }
   &__header {
     display: flex;
@@ -217,6 +218,101 @@
       margin-top: 0;
     }
   }
+  &Login {
+    & .popup__title {
+      margin-bottom: 15px;
+      @include max-fullhd {
+        margin-bottom: 10px;
+      }
+    }
+    &__instruction {
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+      margin-bottom: 45px;
+      @include max-fullhd {
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+      @include max-sm {
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      & p {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        color: #4d4d4d;
+        @include max-fullhd {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+    & .button-remember-pass {
+      margin-top: 8px;
+      display: block;
+      margin-right: 0;
+      margin-left: auto;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: right;
+      text-decoration: underline;
+      color: #f46d06;
+      cursor: pointer;
+      @include max-fullhd {
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+    & .checkbox-input + span {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    & .popup__notation {
+      margin-top: 24px;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+      @include max-fullhd {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @include max-sm {
+        margin-top: 10px;
+      }
+    }
+  }
+  &RecoveryPass, &InstructionsComplete, &CreatePass, &PassComplete {
+    & .popup__notation {
+      margin-top: 24px;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+      @include max-fullhd {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @include max-sm {
+        margin-top: 10px;
+      }
+    }
+  }
+  &InstructionsComplete {
+    & .popup__title {
+      margin-bottom: 15px;
+      @include max-fullhd {
+        margin-bottom: 10px;
+      }
+    }
+    & .popup__button {
+      margin-top: 0;
+    }
+  }
   & .text_simple {
     color: #4d4d4d;
     text-align: center;
@@ -272,6 +368,9 @@
     @include max-sm {
       font-size: 12px;
       line-height: 18px;
+    }
+    & a {
+      color: #f46d06;
     }
   }
 }

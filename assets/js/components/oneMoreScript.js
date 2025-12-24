@@ -93,4 +93,44 @@ $(function () {
       );
     }
   });
+
+  $('.toggle-password')
+    .css('cursor', 'pointer')
+    .on('click', function () {
+      const $icon = $(this);
+      const $input = $icon.siblings('input');
+
+      const showIcon = $icon.data('show');
+      const hideIcon = $icon.data('hide');
+
+      if ($input.attr('type') === 'password') {
+        $input.attr('type', 'text');
+        $icon.attr('src', showIcon).attr('alt', 'Сховати пароль');
+      } else {
+        $input.attr('type', 'password');
+        $icon.attr('src', hideIcon).attr('alt', 'Показати пароль');
+      }
+    });
+
+  let mouseDownTarget = null;
+
+  // Запоминаем где был mousedown
+  $(document).on('mousedown', function (e) {
+    mouseDownTarget = e.target;
+  });
+
+  // Закрываем только если и mousedown и mouseup были вне popup__inner
+  $(document).on('mouseup', function (e) {
+    const $popupInner = $('.popup__inner');
+
+    // Проверяем: mousedown и mouseup оба снаружи popup__inner
+    const isMouseDownOutside = !$(mouseDownTarget).closest('.popup__inner').length;
+    const isMouseUpOutside = !$(e.target).closest('.popup__inner').length;
+
+    if (isMouseDownOutside && isMouseUpOutside) {
+      $('.popup').fadeOut();
+    }
+
+    mouseDownTarget = null;
+  });
 });

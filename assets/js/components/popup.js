@@ -2,8 +2,73 @@ $(function () {
   $('.popup__close, .btn-for-close-popup').on('click', function () {
     $(this).parents('.popup').hide();
   });
-  $('.popup').on('click', function () {
-    $(this).hide();
+  // $('.popup').on('click', function (e) {
+
+  //   $(this).hide();
+  // });
+
+  $('.popup').on('click', function (e) {
+    // Если клик именно по .popup (фон), а не по его содержимому
+    if (e.target === this) {
+      $(this).fadeOut();
+    }
+  });
+  let isDragging = false;
+  let isMouseDownInsidePopup = false;
+
+  // Открытие попапа
+  $('.popup').on('mousedown', function (e) {
+    if ($(e.target).closest('.popup__inner').length) {
+      isMouseDownInsidePopup = true;
+    }
+  });
+
+  // Закрытие попапа при клике вне его
+  $(document).on('mousedown', function (e) {
+    const $popup = $('.popup');
+    const $popupInner = $('.popup__inner');
+
+    // Проверяем, начался ли клик внутри popup__inner
+    if ($popupInner.has(e.target).length || $popupInner.is(e.target)) {
+      isDragging = false;
+      return;
+    }
+
+    // Если клик снаружи
+    if (!$popupInner.has(e.target).length && !$popupInner.is(e.target)) {
+      isDragging = true;
+    }
+  });
+
+  $(document).on('mouseup', function (e) {
+    const $popup = $('.popup');
+    const $popupInner = $('.popup__inner');
+
+    // Закрываем только если mousedown и mouseup были снаружи
+    if (
+      isDragging &&
+      !isMouseDownInsidePopup &&
+      !$popupInner.has(e.target).length &&
+      !$popupInner.is(e.target)
+    ) {
+      $popup.fadeOut();
+    }
+
+    // Сброс флагов
+    isDragging = false;
+    isMouseDownInsidePopup = false;
+  });
+
+  // Закрытие по кнопке
+  $('.popup__close').on('click', function () {
+    $(this).closest('.popup').fadeOut();
+  });
+
+  // Сброс флага при движении мыши
+  $(document).on('mousemove', function () {
+    if (isMouseDownInsidePopup) {
+      isDragging = false;
+    }
   });
   $('.popup__inner').on('click', function (e) {
     e.stopPropagation();
@@ -108,15 +173,18 @@ $(function () {
     let hasError = false;
 
     // Проверка обычных input и textarea
-    form.find('.form__group-input').not('[name="coment"]').each(function () {
-      const $field = $(this);
-      if ($field.val().trim() === '') {
-        $field.addClass('error');
-        hasError = true;
-      } else {
-        $field.removeClass('error');
-      }
-    });
+    form
+      .find('.form__group-input')
+      .not('[name="coment"]')
+      .each(function () {
+        const $field = $(this);
+        if ($field.val().trim() === '') {
+          $field.addClass('error');
+          hasError = true;
+        } else {
+          $field.removeClass('error');
+        }
+      });
 
     // Проверка input type="file"
     const fileInput = $('#input-file')[0];
@@ -210,5 +278,15 @@ $(function () {
   // Убираем ошибку при выборе файла
   $('#input-file').on('change', function () {
     $('.form__group-file__field').removeClass('error');
+  });
+
+  $('.button-remember-pass').on('click', function () {
+    $('#popup-login').fadeOut();
+    $('#popup-recovery-pass').fadeIn();
+  });
+
+  $(".btn-for-popup-login").on("click", function() {
+    $(".popup").fadeOut();
+    $("#popup-login").fadeIn();
   });
 });
