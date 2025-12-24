@@ -334,6 +334,7 @@
       justify-content: flex-end;
       padding-bottom: 60px;
       max-width: 420px;
+      pointer-events: none;
       @include max-fullhd {
         gap: 20px;
       }
@@ -372,6 +373,7 @@
       max-width: 420px;
       width: 100%;
       cursor: pointer;
+      pointer-events: all;
       &:hover {
         transform: scale(1.01);
         transition: 0.1s;

@@ -800,3 +800,12 @@ input[type="password"] {
   -webkit-text-security: circle;
   border-radius: 10px;
 }
+.input-error {
+    border-color: #ff4d4f;
+}
+
+.password-error {
+    color: #ff4d4f;
+    font-size: 13px;
+    margin-top: 6px;
+}

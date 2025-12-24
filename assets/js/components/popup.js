@@ -285,8 +285,57 @@ $(function () {
     $('#popup-recovery-pass').fadeIn();
   });
 
-  $(".btn-for-popup-login").on("click", function() {
-    $(".popup").fadeOut();
-    $("#popup-login").fadeIn();
+  $('.btn-for-popup-login').on('click', function () {
+    $('.popup').fadeOut();
+    $('#popup-login').fadeIn();
+  });
+
+  const $pass1 = $('#password');
+  const $pass2 = $('#password_confirm');
+  const $btn = $('.popupCreatePass .btn-form');
+
+  function checkPasswords() {
+    const val1 = $pass1.val();
+    const val2 = $pass2.val();
+
+    // сброс ошибок
+    $pass1.removeClass('error');
+    $pass2.removeClass('error');
+    $('.password-error').remove();
+
+    // минимальная длина
+    if (val1.length < 6 || val2.length < 6) {
+      $btn.prop('disabled', true);
+      return;
+    }
+
+    // проверка совпадения
+    if (val1 !== val2) {
+      $pass1.addClass('error');
+      $pass2.addClass('error');
+
+      $pass2
+        .closest('.form__group')
+        .append('<div class="password-error">Паролі не співпадають</div>');
+
+      $btn.prop('disabled', true);
+      return;
+    }
+
+    // всё ок
+    $btn.prop('disabled', false);
+  }
+
+  // проверки при вводе
+  $pass1.on('input', checkPasswords);
+  $pass2.on('input', checkPasswords);
+
+  // клик по кнопке
+  $btn.on('click', function () {
+    checkPasswords();
+
+    if (!$(this).prop('disabled')) {
+      $('.form').submit();
+    }
   });
 });
