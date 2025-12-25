@@ -296,6 +296,8 @@
     width: 100%;
     position: relative;
     z-index: 1;
+  }
+  &__group {
     margin-top: 225px;
     @include max-fullhd {
       margin-top: 150px;
@@ -303,8 +305,6 @@
     @include max-lg {
       margin-top: 130px;
     }
-  }
-  &__group {
     & h1 {
       color: #fff;
       font-weight: 700;
@@ -322,89 +322,6 @@
       @include max-sm {
         font-size: 20px;
         line-height: 24px;
-      }
-    }
-
-    &-btns {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding-bottom: 60px;
-      max-width: 420px;
-      pointer-events: none;
-      @include max-fullhd {
-        gap: 20px;
-      }
-      @include max-lg {
-        height: auto;
-        position: absolute;
-        bottom: 0;
-      }
-      & {
-        position: fixed;
-        right: 120px;
-        bottom: 60px;
-        height: auto;
-        @include max-fullhd {
-          right: 80px;
-          bottom: 40px;
-        }
-        @include max-xxl {
-          right: 40px;
-          bottom: 30px;
-        }
-        @include max-xlmidle {
-          right: 20px;
-        }
-        & span {
-          display: none;
-        }
-      }
-    }
-
-    &-btn {
-      display: flex;
-      align-items: center;
-      background-color: #fff;
-      border-radius: 75px;
-      max-width: 420px;
-      width: 100%;
-      cursor: pointer;
-      pointer-events: all;
-      &:hover {
-        transform: scale(1.01);
-        transition: 0.1s;
-      }
-      & span {
-        font-size: 24px;
-        line-height: 33px;
-        padding: 0 20px 0 30px;
-        width: max-content;
-        min-width: max-content;
-        font-family: 'Open Sans', sans-serif;
-        color: #0d0d0d;
-        font-weight: 600;
-        @include max-fullhd {
-          font-size: 16px;
-          line-height: 22px;
-        }
-      }
-      & img {
-        width: 90px;
-        height: 90px;
-        margin-right: 0;
-        margin-left: auto;
-        @include max-fullhd {
-          width: 60px;
-          height: 60px;
-        }
-        @include max-lg {
-          width: 48px;
-          height: 48px;
-        }
       }
     }
   }
@@ -465,6 +382,63 @@
     @include max-sm {
       font-size: 14px;
       line-height: 20px;
+    }
+  }
+
+  .main__group-btns {
+  }
+  .main__group-btn {
+    max-width: 90px;
+    position: relative;
+    transition: 0.5s;
+    @include max-fullhd {
+      max-width: 60px;
+    }
+    @include max-xxl {
+      max-width: 50px;
+      // transition: none;
+    }
+    @include max-l {
+      max-width: 50px;
+      transition: none;
+    }
+    @include max-sm {
+      max-width: 48px;
+    }
+    &:hover {
+      transform: scale(1.1);
+      width: 420px;
+      max-width: 420px;
+      @include max-fullhd {
+        width: 280px;
+        height: 60px;
+      }
+      @include max-xxl {
+        height: 50px;
+        width: 255px;
+      }
+      @include max-sm {
+        width: 48px;
+        height: 48px;
+      }
+      & span {
+        padding: 0;
+        position: absolute;
+        left: 0;
+        right: 90px;
+        margin: auto;
+        display: block;
+        @include max-fullhd {
+          right: 60px;
+        }
+        @include max-xxl {
+          right: 50px;
+          // transition: none;
+        }
+        @include max-l {
+          transition: none;
+        }
+      }
     }
   }
 }
