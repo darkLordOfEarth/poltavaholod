@@ -141,7 +141,8 @@ $(function () {
     freeDrag: false,
     URLhashListener: false,
     autoplay: false,
-
+    onInitialized: toggleNav,
+    onChanged: toggleNav,
     items: 1,
     responsive: {
       0: {
@@ -162,6 +163,20 @@ $(function () {
       },
     },
   });
+  function toggleNav(event) {
+  const carousel = $(event.target);
+  const itemsCount = event.item.count;
+  if (itemsCount <= 1) {
+    carousel.find('.owl-nav').hide();
+  } else {
+    carousel.find('.owl-nav').show();
+  }
+}
+
+
+
+
+
   $('.product__slider_mobile').owlCarousel({
     loop: true,
     nav: true,

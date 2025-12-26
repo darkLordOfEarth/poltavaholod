@@ -30,7 +30,7 @@
         gap: 10px;
       }
       &:has(video) {
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1fr 1fr;
       }
       &:has(video) .product__slider-images {
         grid-template-columns: repeat(2, 1fr);

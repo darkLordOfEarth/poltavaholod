@@ -14,6 +14,13 @@
     @include max-sm {
       padding-top: 10px;
     }
+    // &.one-slide .owl-nav {
+    //   display: none;
+    // }
+
+    // &.one-slide .owl-item {
+    //   margin-right: 0 !important;
+    // }
     &-item {
       position: relative;
       display: block;

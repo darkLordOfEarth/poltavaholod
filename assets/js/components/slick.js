@@ -26,50 +26,35 @@ $(function () {
     const data = slidesData[index];
     if (!data) return;
 
+    // Обновляем ссылку
     $productLink.attr('href', data.link);
 
+    // Плавное обновление заголовка и описания
     $title.stop(true, true).css('opacity', 0).text(data.title).animate({ opacity: 1 }, 200);
     $desc.stop(true, true).css('opacity', 0).text(data.desc).animate({ opacity: 1 }, 200);
   }
 
   /* -----------------------------------------------------
-   * Прогресс-бар
+   * 3) Прогресс-бар для вертикального слайдера
    * ----------------------------------------------------- */
-  function startProgress(slick) {
-    if (!$slider_nav.length) return;
-
-    const bar = $slider_nav[0];
-    const autoplaySpeed = slick?.options?.autoplaySpeed;
-
-    bar.style.setProperty('--slide-progress-time', autoplaySpeed + 'ms');
-
-    bar.classList.remove('do-progress');
-    void bar.offsetWidth;
-    bar.classList.add('do-progress');
-  }
   function startVerticalProgress(slick) {
     if (!$slider_nav.length) return;
 
     const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
 
-    // подставляем время анимации
+    // Подставляем время анимации
     $slider_nav[0].style.setProperty('--slide-progress-time', autoplaySpeed);
 
-    // сброс анимации
+    // Сброс анимации (reflow trick)
     $slider_nav[0].classList.remove('do-progress');
-    void $slider_nav[0].offsetWidth; // reflow
+    void $slider_nav[0].offsetWidth;
     $slider_nav[0].classList.add('do-progress');
   }
 
   /* -----------------------------------------------------
-   * Вертикальная навигация
+   * 4) Вертикальная навигация
    * ----------------------------------------------------- */
   if ($slider_nav.length) {
-    $slider_nav.on('init', function (e, slick) {
-      updateTexts(0);
-      startProgress(slick);
-    });
-
     $slider_nav.slick({
       slidesToShow: 3,
       vertical: true,
@@ -81,22 +66,23 @@ $(function () {
       swipe: false,
       speed: 800,
       cssEase: 'ease',
+      focusOnSelect: true,
       asNavFor: '.hero__main-slider',
-      // responsive: [
-      //   {
-      //     breakpoint: 576,
-      //     settings: {
-      //       slidesToShow: 1,
-      //       slidesToScroll: 1,
-      //       vertical: false,
-      //     },
-      //   },
-      // ],
+      responsive: [
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            vertical: false,
+          },
+        },
+      ],
     });
   }
 
   /* -----------------------------------------------------
-   * Главный слайдер
+   * 5) Главный слайдер
    * ----------------------------------------------------- */
   if ($slider.length) {
     $slider.slick({
@@ -118,25 +104,24 @@ $(function () {
      * События слайдера
      * ----------------------------------------------------- */
 
-    // МГНОВЕННОЕ обновление заголовка и описания
+    // Инициализация - устанавливаем данные первого слайда
     $slider.on('init', function (event, slick) {
       updateTexts(0);
       startVerticalProgress(slick);
-      // устанавливаем переменную сразу для первого dot
+      
+      // Устанавливаем переменную для dots
       const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
       document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
 
-      // сбрасываем ширину ::after для первого dot
-      $('.slick-dots li').removeClass('slick-active'); // сброс класса
-      $($('.slick-dots li')[0]).addClass('slick-active'); // заново
+      // Сбрасываем класс для первого dot
+      $('.slick-dots li').removeClass('slick-active');
+      $($('.slick-dots li')[0]).addClass('slick-active');
     });
 
+    // Перед сменой слайда обновляем данные
     $slider.on('beforeChange', function (event, slick, current, next) {
       updateTexts(next);
       startVerticalProgress(slick);
-      // подставляем время анимации прогресса
-      const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
-      document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
     });
   }
 });

@@ -26,6 +26,7 @@
     left: 0;
     margin: auto;
     max-width: 280px;
+    
   }
   &.scrolled {
     position: fixed;
@@ -84,7 +85,7 @@
           // transition: none;
         }
         @include max-l {
-          transition: none;
+        //   transition: none;
         }
       }
     }
@@ -101,10 +102,14 @@
       }
       @include max-l {
         max-width: 50px;
-        transition: none;
+        // transition: none;
+      }
+      @include max-lg {
+        
       }
       @include max-sm {
         max-width: 48px;
+        transition: none;
       }
     }
     & .main__group-btn:first-child img {
@@ -137,6 +142,7 @@
   @include max-sm {
     width: 280px;
     height: 48px;
+    
   }
   &:hover {
     transform: scale(1.05);

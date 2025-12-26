@@ -43,22 +43,22 @@ $(function () {
       });
     });
 
-  const headerHeight = $('.header').outerHeight();
+  // const headerHeight = $('.header').outerHeight();
 
-  $('a[href^="#"]').on('click', function (e) {
-    e.preventDefault();
+  // $('a[href^="#"]').on('click', function (e) {
+  //   e.preventDefault();
 
-    const target = $($.attr(this, 'href'));
+  //   const target = $($.attr(this, 'href'));
 
-    if (target.length) {
-      $('html, body').animate(
-        {
-          scrollTop: target.offset().top - headerHeight + 50,
-        },
-        500,
-      );
-    }
-  });
+  //   if (target.length) {
+  //     $('html, body').animate(
+  //       {
+  //         scrollTop: target.offset().top - headerHeight + 50,
+  //       },
+  //       200,
+  //     );
+  //   }
+  // });
 
   $('.main-navigation a').each(function () {
     const $link = $(this);
@@ -80,16 +80,36 @@ $(function () {
     }
   });
 
+  const headerHeight = $('.header').outerHeight();
   // обработчик клика по якорям
+
+  $('a[href^="#"]').on('click', function (e) {
+    e.preventDefault();
+
+    const target = $($.attr(this, 'href'));
+
+    if (target.length) {
+      const targetPosition = target.offset().top - headerHeight + 50;
+
+      $('html, body').animate(
+        {
+          scrollTop: targetPosition,
+        },
+        300, // Увеличил немного время
+        'swing', // Или 'linear' для равномерной скорости
+      );
+    }
+  });
+
   $(document).on('click', '.menu-anchor-btn', function () {
     const target = $(this).data('target');
-
     if ($(target).length) {
       $('html, body').animate(
         {
           scrollTop: $(target).offset().top,
         },
-        600,
+        300,
+        'swing',
       );
     }
   });
