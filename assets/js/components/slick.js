@@ -10,11 +10,13 @@ $(function () {
    * ----------------------------------------------------- */
   const slidesData = [];
   if ($slider.length) {
-    $slider.find('img').each(function () {
+    $slider.find('.hero__slide').each(function () {
+      const $slide = $(this);
+
       slidesData.push({
-        title: $(this).attr('data-title') || '',
-        desc: $(this).attr('data-desc') || '',
-        link: $(this).attr('data-link') || '#',
+        title: $slide.find('img').attr('data-title') || '',
+        desc: $slide.find('img').attr('data-desc') || '',
+        link: $slide.find('img').attr('data-link') || '#',
       });
     });
   }
@@ -108,7 +110,7 @@ $(function () {
     $slider.on('init', function (event, slick) {
       updateTexts(0);
       startVerticalProgress(slick);
-      
+
       // Устанавливаем переменную для dots
       const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
       document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);

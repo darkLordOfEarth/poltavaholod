@@ -153,4 +153,14 @@ $(function () {
 
     mouseDownTarget = null;
   });
+
+  $(document).on('click', '.hero__nav a.hero__nav-btn', function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    const link = this.getAttribute('href');
+    if (link) {
+      window.location.href = link;
+    }
+  });
 });
