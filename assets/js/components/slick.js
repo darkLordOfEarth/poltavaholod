@@ -4,7 +4,9 @@ $(function () {
   const $title = $('.hero__title');
   const $productLink = $('.hero__nav-btn');
   const $desc = $('.hero__desc');
-
+  $(document).ready(function () {
+    $slider.find('.slick-next').click();
+  });
   /* -----------------------------------------------------
    * 1) Собираем данные из главных слайдов в массив
    * ----------------------------------------------------- */
@@ -61,9 +63,9 @@ $(function () {
       slidesToShow: 3,
       vertical: true,
       centerMode: true,
-      centerPadding: '10px',
+      // centerPadding: '10px',
       arrows: false,
-      infinite: true,
+      infinite: false,
       draggable: false,
       swipe: false,
       speed: 800,

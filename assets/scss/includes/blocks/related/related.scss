@@ -2,7 +2,10 @@
   &__content {
   }
   &__slider {
-    padding: 0 50px;
+    padding: 0 80px;
+    @include max-fullhd {
+      padding: 0 50px;
+    }
     @include max-l {
       width: calc(100vw);
       left: 50%;
