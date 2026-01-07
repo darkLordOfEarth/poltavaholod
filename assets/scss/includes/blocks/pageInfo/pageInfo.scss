@@ -47,10 +47,11 @@
       @include max-l {
         margin-bottom: 36px;
       }
-      @include max-sm {
+      @include max-md {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 20px;
+        max-width: 70%;
       }
     }
     & .text-slogan {
@@ -80,11 +81,19 @@
       flex-direction: row;
       gap: 10px;
     }
+    & .owl-nav {
+      @include max-l {
+        top: -75px;
+      }
+      @include max-md {
+        top: -65px;
+      }
+    }
     & .owl-stage-outer {
       @include max-l {
         width: calc(100vw);
         left: 50%;
-        margin-left: -51vw;
+        margin-left: -50vw;
         position: relative;
       }
       @include max-md {
@@ -101,6 +110,7 @@
       gap: 30px;
       border: 1px solid #cbcbcb;
       border-radius: 15px;
+      height: 100%;
       @include max-fullhd {
         gap: 20px;
         padding: 20px;
@@ -153,9 +163,14 @@
             }
           }
         }
-        & button {
+        & .custom-button {
           flex-shrink: 0;
           margin: auto;
+          white-space: nowrap;
+          @include max-l {
+            font-size: 16px;
+            line-height: 22px;
+          }
         }
       }
     }

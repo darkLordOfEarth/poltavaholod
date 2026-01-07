@@ -90,13 +90,14 @@
           max-width: 290px;
         }
         & span {
-          width: 100%;
+          // width: 100%;
         }
       }
     }
   }
   & + .text-slogan {
-    padding-bottom: 150px;
+    // padding-bottom: 150px;
+    margin-bottom: 150px;
     max-width: 1461px;
     @include max-fullhd {
       margin-bottom: 100px;

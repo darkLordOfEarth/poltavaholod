@@ -25,7 +25,8 @@
     right: 0;
     left: 0;
     margin: auto;
-    max-width: 280px;
+    // max-width: 280px;
+    max-width: max-content;
     
   }
   &.scrolled {
@@ -131,6 +132,7 @@
   overflow-x: hidden;
   position: relative;
   cursor: pointer;
+  pointer-events: all;
   @include max-fullhd {
     width: 280px;
     height: 60px;

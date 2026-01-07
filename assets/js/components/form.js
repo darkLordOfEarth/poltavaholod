@@ -1,5 +1,6 @@
 $(function () {
-    const $form = $('.form');
+  $('.popup .form').each(function () {
+    const $form = $(this);
     const $popupInner = $('.popup__inner');
     let hideTimeout;
 
@@ -80,3 +81,4 @@ $(function () {
       popupObserver.observe(popup, { attributes: true });
     }
   });
+});

@@ -38,18 +38,19 @@
         height: 50px;
       }
       @include max-l {
-        display: none;
+        display: none !important;
       }
     }
     & .slick-dots {
       gap: 8px;
       position: absolute;
-      z-index: 5;
-      bottom: 20px;
+      z-index: 1050;
+      bottom: 60px;
       left: 0;
       right: 0;
       margin: auto;
       width: max-content;
+      display: none !important;
       @include max-fullhd {
       }
       @include max-xxl {
@@ -89,30 +90,29 @@
     }
     &-nav-additional {
       &-wrapper {
-        
       }
-      
+
       display: flex;
       flex-direction: column;
       color: #fff;
       height: 160px;
       overflow: hidden;
       position: absolute;
-        left: 240px;
-        bottom: 90px;
-        z-index: 5;
-        @include max-fullhd {
-          left: 160px;
-        }
-        @include max-xxl {
-          left: 100px;
-        }
-        @include max-l {
-          left: 20px;
-        }
-        @include max-sm {
-          display: none;
-        }
+      left: 240px;
+      bottom: 90px;
+      z-index: 5;
+      @include max-fullhd {
+        left: 160px;
+      }
+      @include max-xxl {
+        left: 100px;
+      }
+      @include max-l {
+        left: 20px;
+      }
+      @include max-sm {
+        display: none;
+      }
       & .hero__title-misc {
         font-size: 24px;
         line-height: 33px;
@@ -221,6 +221,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    pointer-events: none;
   }
   &__group {
     margin-top: 225px;
@@ -273,6 +274,7 @@
       font-family: 'Open Sans', sans-serif;
       font-weight: 600;
       cursor: pointer;
+      pointer-events: all;
       @include max-fullhd {
         font-size: 16px;
         line-height: 22px;
@@ -282,6 +284,10 @@
         font-size: 14px;
         line-height: 18px;
         padding: 11px 25px;
+      }
+      &:hover {
+        transform: scale(1.05);
+        transition: 0.1s;
       }
     }
     & a {

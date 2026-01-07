@@ -51,12 +51,20 @@ $(function () {
       margin: 10,
       responsive: {
         0: {
-          items: 2,
+          items: 1,
+          stagePadding: 10,
+        },
+        576: {
+          items: 1,
           stagePadding: 10,
         },
         768: {
-          items: 3,
-          stagePadding: 30,
+          items: 2,
+          stagePadding: 10,
+        },
+        992: {
+          items: 2,
+          stagePadding: 10,
         },
       },
     });

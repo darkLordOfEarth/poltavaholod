@@ -81,6 +81,10 @@ $(function () {
       let targetPopup = $('#' + popupId);
       targetPopup.show();
       targetPopup.find('.form').scrollTop(0);
+      $('input[name="group"]').val($(this).data('group'));
+    $('input[name="video"]').val($(this).data('video'));
+    $('input[name="partner_type"]').val($(this).closest('.partnershipTypes__list-item')
+        .find('.partnershipTypes__list-item__title').text().trim());
     });
 
   $('[data-group]').on('click', function (e) {
@@ -147,7 +151,7 @@ $(function () {
       $input.val(selected);
     });
 
-  const $fileInput = $('#input-file');
+  const $fileInput = $('input[type="file"]');
   const $defaultText = $('.form__group-file__text_default');
   const $filesText = $('.form__group-file__text');
 
@@ -169,11 +173,12 @@ $(function () {
   });
 
   $('.btn-form').on('click', function () {
-    let form = $('.form');
+    const $form = $(this).closest('form');
+
     let hasError = false;
 
     // Проверка обычных input и textarea
-    form
+    $form
       .find('.form__group-input')
       .not('[name="coment"]')
       .each(function () {
@@ -187,7 +192,8 @@ $(function () {
       });
 
     // Проверка input type="file"
-    const fileInput = $('#input-file')[0];
+    const fileInput = $form.find('input[type="file"]')[0];
+
     const fileField = $('.form__group-file__field');
 
     if (fileInput.files && fileInput.files.length > 0) {
@@ -214,13 +220,14 @@ $(function () {
     $btn.prop('disabled', true).text('Відправка...');
 
     // Отправка формы через AJAX
-    let formData = new FormData();
+    let formData = new FormData($form[0]);
     formData.append('action', 'submit_form');
     formData.append('form_nonce', $('#form_nonce').val());
-    formData.append('name', $('input[name="name"]').val());
-    formData.append('tel', $('input[name="tel"]').val());
-    formData.append('company', $('input[name="company"]').val());
-    formData.append('coment', $('textarea[name="coment"]').val());
+    formData.append('name', $form.find('input[name="name"]').val());
+    formData.append('tel', $form.find('input[name="tel"]').val());
+    formData.append('company', $form.find('input[name="company"]').val());
+    formData.append('coment', $form.find('textarea[name="coment"]').val());
+
 
     // Добавляем файлы правильно
     const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
@@ -247,13 +254,16 @@ $(function () {
       data: formData,
       processData: false,
       contentType: false,
+      beforeSend: function () {
+            $form.addClass('loading');
+        },
       success: function (response) {
         console.log('Ответ сервера:', response);
 
         if (response.success) {
-          $('#popup-rozrahunok').hide();
+           $form[0].reset();
+            $form.closest('.popup').fadeOut();
           $('#popup-spasibi').show();
-          form[0].reset();
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();
         } else {
@@ -267,6 +277,9 @@ $(function () {
         alert('Помилка відправки форми. Спробуйте ще раз.');
         $btn.prop('disabled', false).text('Надіслати заявку');
       },
+      complete: function () {
+            $form.removeClass('loading');
+        }
     });
   });
 
@@ -276,7 +289,7 @@ $(function () {
   });
 
   // Убираем ошибку при выборе файла
-  $('#input-file').on('change', function () {
+  $('input[type="file"]').on('change', function () {
     $('.form__group-file__field').removeClass('error');
   });
 
@@ -335,7 +348,7 @@ $(function () {
     checkPasswords();
 
     if (!$(this).prop('disabled')) {
-      $('.form').submit();
+      $(this).closest('form').submit();
     }
   });
 });

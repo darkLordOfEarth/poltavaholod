@@ -88,6 +88,13 @@
       }
       &::placeholder {
         color: #a3a3a3;
+        font-size: 14px;
+        line-height: 20px;
+        @include max-md {
+          font-size: 12px;
+          line-height: 18px;
+        }
+        
       }
       &.error {
         border: 1px solid #e53935 !important;
@@ -142,7 +149,7 @@
     }
     &-file__box {
       position: relative;
-      & #input-file {
+      & input[type='file'] {
         position: absolute;
         top: 0;
         left: 0;
