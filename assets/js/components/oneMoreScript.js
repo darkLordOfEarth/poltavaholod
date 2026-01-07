@@ -163,4 +163,48 @@ $(function () {
       window.location.href = link;
     }
   });
+
+  // function setPositionOwlNav() {
+  //   let mediaHeight = $('.product__slider-media').outerHeight();
+  //   let owlNavHeight = $('.product__slider .owl-nav').outerHeight();
+  //   let productInfo = $('.product__slider .product__info').outerHeight();
+
+  //   let currentPosition = (mediaHeight - owlNavHeight) / 2;
+
+  //   $('.product__slider .owl-nav').css('top', -productInfo - (owlNavHeight / 2) - 10);
+  // }
+
+  // $(window).on('resize', function () {
+  //   setPositionOwlNav();
+  // });
+
+  // // обязательно вызвать при первой загрузке
+  // $(window).on('load', function () {
+  //   setPositionOwlNav();
+  // });
+  function setOwlNavToMediaCenter() {
+  const $slider = $('.product__slider');
+  const $activeItem = $slider.find('.owl-item.active .product__slider-media').first();
+  const $nav = $slider.find('.owl-nav');
+
+  if (!$activeItem.length || !$nav.length) return;
+
+  const sliderTop = $slider.offset().top;
+  const mediaTop = $activeItem.offset().top;
+  const mediaHeight = $activeItem.outerHeight();
+  const navHeight = $nav.outerHeight();
+
+  const topPosition =
+    mediaTop - sliderTop + (mediaHeight / 2) - (navHeight / 2);
+
+  $nav.css('top', topPosition);
+}
+$('.product__slider')
+  .on('initialized.owl.carousel changed.owl.carousel resized.owl.carousel', function () {
+    setOwlNavToMediaCenter();
+  });
+
+$(window).on('resize load', setOwlNavToMediaCenter);
+
+
 });
