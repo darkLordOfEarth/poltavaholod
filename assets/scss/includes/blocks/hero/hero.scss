@@ -134,7 +134,7 @@
         @include max-fullhd {
           // height: 130px !important;
           // overflow: hidden;
-          margin-top: 3px;
+          margin-top: 0;
         }
       }
       & .slick-slide {
@@ -155,13 +155,17 @@
         position: absolute;
         left: 0; /* регулируй */
         width: 4px;
-        height: 20px;
+        height: 25px;
         background: #a3a3a3;
         z-index: 10;
         border-radius: 23px;
-        top: 0;
+        top: 10px;
         bottom: 0;
         margin: auto;
+        @include max-fullhd {
+          top: -20px;
+          height: 20px;
+        }
         @include max-sm {
           // display: none;
         }
@@ -172,10 +176,14 @@
         left: 0;
         top: 70px;
         width: 4px;
-        height: 20px;
+        height: 25px;
         background: #fff;
         z-index: 11;
         animation: none;
+        @include max-fullhd {
+          top: 60px;
+          height: 20px;
+        }
         @include max-sm {
           // display: none;
         }
@@ -183,9 +191,13 @@
 
       &.do-progress::after {
         animation: slideProgressFill 30s linear forwards;
-        top: 70px;
+        top: 75px;
         border-radius: 23px;
-        max-height: 20px;
+        max-height: 25px;
+        @include max-fullhd {
+          max-height: 20px;
+          top: 60px;
+        }
       }
 
       & .slick-center .hero__title-misc {
@@ -198,7 +210,7 @@
         }
       }
       & .slick-list {
-        // padding: 0;
+        padding: 0 !important;
         // padding-top: 10px;
         // height: 100% !important;
         // max-height: 180px;
@@ -292,7 +304,8 @@
     }
     & a {
       background-color: #00000033;
-      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
       color: #fff;
       border: 1px solid transparent;
     }

@@ -65,7 +65,7 @@ $(function () {
       centerMode: true,
       // centerPadding: '10px',
       arrows: false,
-      infinite: false,
+      infinite: true,
       draggable: false,
       swipe: false,
       speed: 800,

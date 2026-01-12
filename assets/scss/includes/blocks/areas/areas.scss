@@ -82,16 +82,33 @@
           line-height: 18px;
         }
       }
-      &:hover .areas__grid-item__desc p {
+      &.active .areas__grid-item__desc p {
         display: block;
       }
-      &:hover .areas__grid-item__text {
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          & .areas__grid-item__desc p {
+            display: block;
+          }
+        }
+      }
+      &.active .areas__grid-item__text {
         top: 0;
         bottom: 0;
         margin: auto;
         height: max-content;
       }
-      &:hover::after {
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          & .areas__grid-item__text {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: max-content;
+          }
+        }
+      }
+      &.active::after {
         content: '';
         position: absolute;
         top: 0;
@@ -101,6 +118,21 @@
         background-color: rgba(0, 0, 0, 0.7);
         z-index: 5;
       }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 5;
+          }
+        }
+      }
+
       & .touch_icon {
         position: absolute;
         right: 0;

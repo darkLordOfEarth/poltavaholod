@@ -121,14 +121,31 @@
         border-radius: 10px;
       }
       @include max-l {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+      }
+      & > a {
+        height: auto;
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
       }
       & img {
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
       }
       &-group {
         display: flex;
         flex-direction: column;
+        height: 100%;
         @include max-l {
           gap: 20px;
         }

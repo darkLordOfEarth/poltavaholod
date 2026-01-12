@@ -1,6 +1,14 @@
 .related {
   &__content {
   }
+
+  &__home a {
+    display: flex;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 37.22%, rgba(0, 0, 0, 0.7) 103.98%);
+    & img {
+      z-index: -1;
+    }
+  }
   &__slider {
     padding: 0 80px;
     @include max-fullhd {
@@ -34,7 +42,7 @@
         // top: 0;
         left: 0;
         right: 0;
-        bottom: 20px;
+        bottom: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -45,6 +53,7 @@
         @include max-fullhd {
           font-size: 20px;
           line-height: 24px;
+          bottom: 15px;
         }
         @include max-xxl {
           font-size: 18px;
@@ -54,6 +63,12 @@
           font-size: 16px;
           line-height: 22px;
         }
+      }
+    }
+    & .owl-stage-outer {
+      padding: 20px 0;
+      @include max-sm {
+        padding: 15px 0;
       }
     }
     & .owl-stage {
@@ -67,12 +82,19 @@
       transform: scale(1.1);
       transition: 0.3s;
       & span {
-        bottom: 30px;
+        bottom: 23px;
+        @include max-fullhd {
+          bottom: 15px;
+        }
+        @include max-sm {
+          bottom: 5px;
+        }
       }
     }
     & .owl-nav {
       @include max-l {
         top: -65px;
+        display: none;
       }
       @include max-md {
         top: -55px;

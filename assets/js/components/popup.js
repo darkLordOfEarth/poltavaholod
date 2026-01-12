@@ -82,9 +82,14 @@ $(function () {
       targetPopup.show();
       targetPopup.find('.form').scrollTop(0);
       $('input[name="group"]').val($(this).data('group'));
-    $('input[name="video"]').val($(this).data('video'));
-    $('input[name="partner_type"]').val($(this).closest('.partnershipTypes__list-item')
-        .find('.partnershipTypes__list-item__title').text().trim());
+      $('input[name="video"]').val($(this).data('video'));
+      $('input[name="partner_type"]').val(
+        $(this)
+          .closest('.partnershipTypes__list-item')
+          .find('.partnershipTypes__list-item__title')
+          .text()
+          .trim(),
+      );
     });
 
   $('[data-group]').on('click', function (e) {
@@ -178,11 +183,30 @@ $(function () {
     let hasError = false;
 
     // Проверка обычных input и textarea
-    $form
-      .find('.form__group-input')
-      .not('[name="coment"]')
-      .each(function () {
+    $form.find('.form__group').each(function () {
+      const $group = $(this);
+      const $inputs = $group.find('input').not('[name="coment"], [name="link"]');
+
+      const $checks = $inputs.filter('[type="checkbox"], [type="radio"]');
+
+      // Если в группе есть чекбоксы или радио
+      if ($checks.length) {
+        const isAnyChecked = $checks.is(':checked');
+
+        if (isAnyChecked) {
+          $inputs.removeClass('error');
+        } else {
+          $checks.addClass('error');
+          hasError = true;
+        }
+
+        return;
+      }
+
+      // Если обычные поля (text, email и т.д.)
+      $inputs.each(function () {
         const $field = $(this);
+
         if ($field.val().trim() === '') {
           $field.addClass('error');
           hasError = true;
@@ -190,6 +214,7 @@ $(function () {
           $field.removeClass('error');
         }
       });
+    });
 
     // Проверка input type="file"
     const fileInput = $form.find('input[type="file"]')[0];
@@ -228,7 +253,6 @@ $(function () {
     formData.append('company', $form.find('input[name="company"]').val());
     formData.append('coment', $form.find('textarea[name="coment"]').val());
 
-
     // Добавляем файлы правильно
     const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
     let totalSize = 0;
@@ -255,14 +279,14 @@ $(function () {
       processData: false,
       contentType: false,
       beforeSend: function () {
-            $form.addClass('loading');
-        },
+        $form.addClass('loading');
+      },
       success: function (response) {
         console.log('Ответ сервера:', response);
 
         if (response.success) {
-           $form[0].reset();
-            $form.closest('.popup').fadeOut();
+          $form[0].reset();
+          $form.closest('.popup').fadeOut();
           $('#popup-spasibi').show();
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();
@@ -278,9 +302,18 @@ $(function () {
         $btn.prop('disabled', false).text('Надіслати заявку');
       },
       complete: function () {
-            $form.removeClass('loading');
-        }
+        $form.removeClass('loading');
+      },
     });
+  });
+
+  $(document).on('change', 'input[type="checkbox"], input[type="radio"]', function () {
+    const $group = $(this).closest('.form__group');
+    const isAnyChecked = $group.find('input[type="checkbox"], input[type="radio"]').is(':checked');
+
+    if (isAnyChecked) {
+      $group.find('input').removeClass('error');
+    }
   });
 
   // Убираем ошибку при вводе

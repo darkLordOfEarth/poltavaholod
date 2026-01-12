@@ -17,6 +17,9 @@
     min-height: 20px;
     max-height: 20px;
   }
+  &.error {
+    border-color: red;
+  }
 }
 
 .radio-input:checked {

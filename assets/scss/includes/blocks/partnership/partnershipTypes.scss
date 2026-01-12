@@ -45,6 +45,7 @@
           max-height: 432px;
           height: auto;
           object-fit: cover;
+          cursor: pointer;
           @include max-fullhd {
             max-height: 288px;
           }
@@ -61,6 +62,7 @@
       }
       &_bottom {
         flex-shrink: 0;
+        z-index: 0;
       }
       &__title {
         margin: 60px 0 15px;

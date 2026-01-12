@@ -353,7 +353,8 @@ select::-ms-expand {
   position: relative;
   // height: 100%;
 }
-.play__btn {
+.play__btn,
+.pause__btn {
   position: absolute;
   top: 0;
   left: 0;
@@ -361,6 +362,23 @@ select::-ms-expand {
   bottom: 0;
   margin: auto;
   cursor: pointer;
+}
+.pause__btn {
+  width: 150px; 
+  height: 150px;
+  @include max-fullhd {
+    width: 100px;
+    height: 100px;
+  }
+  @include max-l {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.pause__btn:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 .fancybox__button--zoom,
 .fancybox__button--slideshow,
@@ -693,7 +711,7 @@ select::-ms-expand {
 }
 
 .fancybox__thumb {
-  background-size: contain;
+  background-size: cover;
   background-color: transparent;
   padding-top: 56.25%;
 }
@@ -824,4 +842,53 @@ video::-moz-media-controls {
   left: 0;
   bottom: 0;
   object-fit: cover;
+  @include max-l {
+    height: auto;
+  }
 }
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content,
+.fancybox__carousel .fancybox__slide.is-draggable .fancybox__content {
+  cursor: auto;
+}
+.fancybox__thumbs .carousel__slide .has-html5video {
+  position: relative;
+}
+.fancybox__thumbs .carousel__slide.has-html5video::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50' fill='none'%3E%3CforeignObject x='-30' y='-30' width='110' height='110'%3E%3Cdiv xmlns='http://www.w3.org/1999/xhtml' style='backdrop-filter:blur(15px);clip-path:url(%23bgblur_0_2361_22462_clip_path);height:100%25;width:100%25'%3E%3C/div%3E%3C/foreignObject%3E%3Cg data-figma-bg-blur-radius='30'%3E%3Crect width='50' height='50' rx='25' fill='black' fill-opacity='0.3'/%3E%3Cpath d='M19.4224 14.6346C19.2959 14.5596 19.1518 14.5194 19.0047 14.5181C18.8576 14.5168 18.7128 14.5545 18.585 14.6273C18.4572 14.7001 18.3509 14.8054 18.277 14.9326C18.203 15.0597 18.1641 15.2042 18.1641 15.3513V34.6485C18.1641 34.7956 18.203 34.94 18.277 35.0672C18.3509 35.1943 18.4572 35.2997 18.585 35.3724C18.7128 35.4452 18.8576 35.4829 19.0047 35.4816C19.1518 35.4803 19.2959 35.4401 19.4224 35.3651L35.7043 25.7165C35.8287 25.6427 35.9317 25.5379 36.0033 25.4122C36.0748 25.2866 36.1124 25.1445 36.1124 24.9999C36.1124 24.8553 36.0748 24.7132 36.0033 24.5875C35.9317 24.4619 35.8287 24.357 35.7043 24.2832L19.4224 14.6346Z' fill='white' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='bgblur_0_2361_22462_clip_path' transform='translate(30 30)'%3E%3Crect width='50' height='50' rx='25'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+.fancybox__slide.paused {
+  position: relative;
+}
+
+.fancybox__slide.paused::after {
+  content: '';
+  display: block !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150' fill='none'%3E%3CforeignObject x='-45' y='-45' width='240' height='240'%3E%3Cdiv xmlns='http://www.w3.org/1999/xhtml' style='backdrop-filter:blur(22.5px);clip-path:url(%23bgblur_0_2979_35962_clip_path);height:100%25;width:100%25'%3E%3C/div%3E%3C/foreignObject%3E%3Cg data-figma-bg-blur-radius='45'%3E%3Crect width='150' height='150' rx='75' fill='black' fill-opacity='0.2'/%3E%3Cpath d='M58.2594 43.9043C57.8798 43.6792 57.4475 43.5586 57.0062 43.5548C56.565 43.5509 56.1306 43.6639 55.7471 43.8823C55.3637 44.1007 55.0449 44.4167 54.8231 44.7981C54.6013 45.1796 54.4845 45.613 54.4844 46.0543V103.946C54.4845 104.387 54.6013 104.821 54.8231 105.202C55.0449 105.583 55.3637 105.899 55.7471 106.118C56.1306 106.336 56.565 106.449 57.0062 106.445C57.4475 106.442 57.8798 106.321 58.2594 106.096L107.105 77.1501C107.478 76.9287 107.787 76.6141 108.002 76.2371C108.217 75.8602 108.329 75.4339 108.329 75.0001C108.329 74.5663 108.217 74.14 108.002 73.763C107.787 73.3861 107.478 73.0714 107.105 72.8501L58.2594 43.9043Z' fill='white' stroke='white' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='bgblur_0_2979_35962_clip_path' transform='translate(45 45)'%3E%3Crect width='150' height='150' rx='75'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-size: contain;
+  pointer-events: none;
+  z-index: 20;
+  width: 150px;
+  height: 150px;
+  @include max-fullhd {
+    width: 100px;
+    height: 100px;
+  }
+  @include max-l {
+    width: 50px;
+    height: 50px;
+  }
+}
+

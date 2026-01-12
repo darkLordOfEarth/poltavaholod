@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   & .video-poster {
     position: absolute;
     top: 0;
@@ -35,9 +36,9 @@
     z-index: 5;
     background: rgba(0, 0, 0, 0.5);
   }
-  
+
   &.temporary-img::after {
-    content: "";
+    content: '';
     background-image: url(../images/temporary_img_new.png);
     position: absolute;
     top: 0;
@@ -54,8 +55,8 @@
     font-size: 200%;
     font-weight: 700;
     @include max-md {
-        font-size: 150%;
-      }
+      font-size: 150%;
+    }
   }
   &.temporary-img-ua::after {
     content: 'Незабаром відкриття';

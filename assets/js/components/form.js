@@ -1,7 +1,8 @@
 $(function () {
   $('.popup .form').each(function () {
     const $form = $(this);
-    const $popupInner = $('.popup__inner');
+    const $popupInner = $form.closest('.popup').find('.popup__inner');
+
     let hideTimeout;
 
     function updateScrollbar() {

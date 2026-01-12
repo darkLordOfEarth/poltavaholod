@@ -149,6 +149,7 @@ $(function () {
     freeDrag: false,
     URLhashListener: false,
     autoplay: false,
+    autoHeight: true,
     onInitialized: toggleNav,
     onChanged: toggleNav,
     items: 1,
@@ -172,36 +173,39 @@ $(function () {
     },
   });
   function toggleNav(event) {
-  const carousel = $(event.target);
-  const itemsCount = event.item.count;
-  if (itemsCount <= 1) {
-    carousel.find('.owl-nav').hide();
-  } else {
-    carousel.find('.owl-nav').show();
+    const carousel = $(event.target);
+    const itemsCount = event.item.count;
+    if (itemsCount <= 1) {
+      carousel.find('.owl-nav').hide();
+    } else {
+      carousel.find('.owl-nav').show();
+    }
   }
-}
 
-
-
-
-
-  $('.product__slider_mobile').owlCarousel({
-    loop: true,
-    nav: true,
-    navText: [
-      '<span class="sr-only">Наступний слайд</span>',
-      '<span class="sr-only">Попередній слайд</span>',
-    ],
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    freeDrag: false,
-    URLhashListener: false,
-    autoplay: false,
-    stagePadding: 50,
-    margin: 10,
-    items: 1,
-  });
+  function initMediaCarousel() {
+    if ($(window).width() <= 576) {
+      $('.product__slider-media').owlCarousel({
+        loop: true,
+        nav: true,
+        navText: [
+          '<span class="sr-only">Наступний слайд</span>',
+          '<span class="sr-only">Попередній слайд</span>',
+        ],
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: false,
+        freeDrag: false,
+        URLhashListener: false,
+        autoplay: false,
+        stagePadding: 20,
+        margin: 10,
+        items: 1,
+        
+      });
+    }
+    // $(".product__slider-media .owl-next").click();
+  }
+  setTimeout(initMediaCarousel, 300);
 
   $('.related__slider').owlCarousel({
     loop: true,
@@ -337,8 +341,6 @@ $(function () {
     },
   });
 
-
-
   $('.projectAuditExpertise__slider').owlCarousel({
     loop: true,
     nav: true,
@@ -352,11 +354,9 @@ $(function () {
     freeDrag: false,
     URLhashListener: false,
     autoplay: false,
-    autoHeight:true,
+    autoHeight: true,
     items: 1,
   });
-
-
 
   $('.reviews__slider').owlCarousel({
     loop: true,
@@ -393,11 +393,9 @@ $(function () {
       1280: {
         stagePadding: 0,
         margin: 20,
-      }
+      },
     },
   });
-
-
 
   $('.licenses__slider').owlCarousel({
     loop: true,
@@ -431,11 +429,9 @@ $(function () {
       },
       2600: {
         margin: 355,
-      }
+      },
     },
   });
-
-
 
   $('.certificates__slider').owlCarousel({
     loop: true,
@@ -454,32 +450,30 @@ $(function () {
       0: {
         margin: 10,
         items: 2,
-        stagePadding: 30
+        stagePadding: 30,
       },
       576: {
         margin: 15,
         items: 2,
-        stagePadding: 100
+        stagePadding: 100,
       },
       768: {
         margin: 15,
         items: 3,
-        stagePadding: 100
+        stagePadding: 100,
       },
       1024: {
         margin: 35,
-        items: 4
+        items: 4,
       },
       1440: {
         margin: 60,
-        items: 4
+        items: 4,
       },
       1920: {
         margin: 88,
-        items: 4
-      }
+        items: 4,
+      },
     },
   });
-
-
 });

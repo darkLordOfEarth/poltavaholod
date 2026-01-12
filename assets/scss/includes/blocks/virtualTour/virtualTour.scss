@@ -12,6 +12,9 @@
   @include max-md {
     padding: 70px 20px;
   }
+  & .videoBlockWrapper {
+    height: 100%;
+  }
   &__video {
     position: absolute;
     left: 0;
