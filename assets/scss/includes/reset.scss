@@ -146,6 +146,7 @@ video {
 }
 video {
   cursor: pointer;
+  object-fit: cover;
 }
 a {
   text-decoration: none;
@@ -298,10 +299,8 @@ section {
     padding: 50px 0;
   }
 }
-.home {
-  & section {
-    border-top: 1px solid #cbcbcb;
-  }
+section {
+  border-top: 1px solid #cbcbcb;
 }
 .btn__next {
   width: 13px;
@@ -364,7 +363,7 @@ select::-ms-expand {
   cursor: pointer;
 }
 .pause__btn {
-  width: 150px; 
+  width: 150px;
   height: 150px;
   @include max-fullhd {
     width: 100px;
@@ -415,12 +414,23 @@ select::-ms-expand {
     }
   }
 }
+
 .fancybox__slide {
   padding: 0;
+  @include max-l {
+    justify-content: center;
+  }
+  &::before,
+  &::after {
+    display: none !important;
+  }
 }
 .fancybox__content {
   width: 100vw !important;
-  height: 100%;
+  height: 100% !important;
+  @include max-l {
+    height: auto !important;
+  }
 }
 .fancybox__nav .carousel__button.is-prev {
   left: 30px;
@@ -612,6 +622,7 @@ select::-ms-expand {
 }
 .imgBox {
   position: relative;
+  display: flex;
 }
 .imgBox img {
   height: 100%;
@@ -669,15 +680,35 @@ select::-ms-expand {
 }
 
 .owl-nav button {
+  border-radius: 50%;
+  overflow: hidden;
   &:hover {
     transform: scale(1.1);
     transition: 0.5s;
+    @include max-l {
+      transform: scale(1);
+    }
+  }
+  &:active {
+    @include max-l {
+      transform: scale(1.1);
+      transition: 0s;
+    }
   }
 }
 .owl-nav .owl-prev {
   &:hover {
     transform: scale(1.1) rotate(180deg);
     transition: 0.5s;
+    @include max-l {
+      transform: scale(1) rotate(180deg);
+      
+    }
+  }
+  &:active{
+    @include max-l {
+      transform: scale(1.1) rotate(180deg);
+    }
   }
 }
 
@@ -835,15 +866,17 @@ video::-moz-media-controls {
 }
 .fancybox__html5video,
 .fancybox__iframe {
-  height: 100vh;
+  height: 100% !important;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   object-fit: cover;
+  outline: none !important;
   @include max-l {
-    height: auto;
+    height: auto !important;
+    margin: auto;
   }
 }
 .fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content,
@@ -891,4 +924,3 @@ video::-moz-media-controls {
     height: 50px;
   }
 }
-

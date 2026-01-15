@@ -142,7 +142,7 @@
         height: 32px;
         @include max-l {
           display: block;
-          z-index: 10;
+          z-index: 0;
         }
       }
     }

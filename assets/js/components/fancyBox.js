@@ -27,9 +27,8 @@ $(function () {
     $('.fancyThumbBtn').remove();
 
     const $thumbs = $('.fancybox__thumbs');
-    if (!$thumbs.length) return;
-
-    $('body').append(`
+    if ($thumbs.length) {
+      $('body').append(`
     <button class="fancyThumbBtn">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
         <path d="M0.75 0.75L6.75 6.75L12.75 0.75"
@@ -38,10 +37,40 @@ $(function () {
       </svg>
     </button>
   `);
+    } else {
+      return;
+    }
   }
+  setFancyThumbsBtn();
+  // Удаляем кнопку при клике на крестик
+  $(document).on('click', '.fancybox__button--close', function () {
+    $('.fancyThumbBtn').remove();
+  });
 
+  // Удаляем кнопку при нажатии Esc
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape') {
+      $('.fancyThumbBtn').remove();
+    }
+  });
+
+  // Если нужно, можно добавить обработку закрытия через Fancybox API
+  // Fancybox.bind('[data-fancybox]', {
+  //     on: {
+  //        done: () => {
+  //         setFancyThumbsBtn();
+  //        },
+  //         destroy: () => {
+  //             $('.fancyThumbBtn').remove();
+  //         }
+  //     }
+  // });
+
+  $(document).on('click touchstart', '.gallery-item, .videoBlockWrapper.imgBox', function (e) {
+    setTimeout(setFancyThumbsBtn, 300);
+  });
   $(document).on('afterShow.fb', function () {
-    setTimeout(setFancyThumbsBtn, 0);
+    setTimeout(setFancyThumbsBtn, 250);
   });
 
   $(document).on('click', '.fancyThumbBtn', function (e) {
@@ -176,16 +205,14 @@ $(function () {
       Thumbs: { autoStart: true },
       on: {
         done: (fancybox, slide) => {
-          setFancyThumbsBtn();
           $('.fancybox__html5video').removeAttr('controls');
-          // Восстанавливаем состояние видео при открытии
+
           const $video = $(slide.$el).find('video');
           if ($video.length) {
             const video = $video[0];
             const src = $video.find('source').attr('src');
             restoreVideoState(video, src);
 
-            // Добавляем класс paused если видео на паузе
             if (video.paused) {
               $(slide.$el).addClass('paused');
             }
@@ -195,7 +222,7 @@ $(function () {
         beforeClose: (fancybox) => {
           pauseAllFancyboxVideos();
         },
-        // Перед сменой слайда сохраняем состояние текущего видео
+
         'Carousel.change': (fancybox, carousel, to, from) => {
           if (typeof from !== 'undefined') {
             const $fromSlide = $(carousel.slides[from].$el);
@@ -210,7 +237,6 @@ $(function () {
           }
         },
 
-        // После смены слайда восстанавливаем состояние нового видео
         'Carousel.ready': (fancybox, carousel) => {
           const currentSlide = carousel.slides[carousel.page];
           if (currentSlide) {
@@ -219,39 +245,31 @@ $(function () {
               const video = $video[0];
               const src = $video.find('source').attr('src');
 
-              // Сначала восстанавливаем позицию
               if (fancyboxVideoState[src]) {
                 const state = fancyboxVideoState[src];
-
                 video.currentTime = state.time || 0;
-
-                // 🔥 КРИТИЧНО: запрещаем любой автоплей
                 video.autoplay = false;
 
                 if (state.paused) {
                   video.pause();
-
-                  // 🔥 принудительно ломаем future play()
                   video.onplay = function () {
                     video.pause();
                   };
-
                   $(currentSlide.$el).addClass('paused');
                 } else {
                   video.onplay = null;
                   $(currentSlide.$el).removeClass('paused');
                 }
               } else {
-                // Если нет сохраненного состояния - всегда на паузе
                 $(currentSlide.$el).addClass('paused');
               }
             }
           }
         },
 
+        // 🔥 Объединяем оба destroy в один
         destroy: (fancybox) => {
           $('.fancyThumbBtn').remove();
-          // Сохраняем состояние перед закрытием
           pauseAllFancyboxVideos();
         },
       },
@@ -297,6 +315,7 @@ $(function () {
 
     const $sliderItem = $(this).closest('.product__slider-item');
     openGallery($sliderItem, $(this).attr('href'));
+    // setTimeout(setFancyThumbsBtn, 500);
   });
 
   // -------------------------------------------------------
@@ -356,7 +375,27 @@ $(function () {
   });
 
   Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-related-home"]', {
-    infinite: false,
+    infinite: true,
+  });
+  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-product-images"]', {
+    infinite: true,
+  });
+  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-about-slider"]', {
+    infinite: true,
+  });
+
+  const fancyGroups = new Set();
+
+  document.querySelectorAll('[data-fancybox^="departments_item_images_"]').forEach((el) => {
+    fancyGroups.add(el.dataset.fancybox);
+  });
+
+  // для КАЖДОЙ группы — свой bind
+  fancyGroups.forEach((group) => {
+    Fancybox.bind(`.owl-item:not(.cloned) [data-fancybox="${group}"]`, {
+      infinite: true,
+      dragToClose: false,
+    });
   });
 
   // Кнопка открыть галерею для current building
@@ -388,10 +427,14 @@ $(function () {
     // Открываем Fancybox
     Fancybox.show(items, {
       Thumbs: { autoStart: true },
-      infinite: false,
+      infinite: true,
       on: {
         done: (fancybox, slide) => {
           // Дополнительно, если нужно
+          setTimeout(setFancyThumbsBtn, 100);
+        },
+        destroy: (fancybox) => {
+          $('.fancyThumbBtn').remove();
         },
       },
     });

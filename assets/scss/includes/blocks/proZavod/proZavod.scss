@@ -17,6 +17,9 @@
     @include max-md {
       grid-template-columns: 1fr;
     }
+    & video {
+      object-fit: cover;
+    }
   }
   &__info {
     &-title {

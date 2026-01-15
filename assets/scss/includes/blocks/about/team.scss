@@ -10,6 +10,9 @@
       gap: 20px;
     }
   }
+  &__images a:nth-child(n+2) {
+    display: none;
+  } 
   &__desc {
   }
   &__btn {

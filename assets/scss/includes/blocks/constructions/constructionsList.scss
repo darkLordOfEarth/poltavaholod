@@ -17,6 +17,9 @@
       @include max-l {
         gap: 90px;
       }
+      @include max-md {
+        gap: 0;
+      }
       &__top {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -71,6 +74,12 @@
           @include max-l {
             margin: 20px auto 0;
             position: absolute;
+            left: 0;
+            right: 0;
+          }
+          @include max-md {
+            margin: 20px auto 0;
+            position: relative;
             left: 0;
             right: 0;
           }

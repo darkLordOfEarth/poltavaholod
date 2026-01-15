@@ -48,6 +48,17 @@
       grid-template-columns: 1fr;
       gap: 20px;
     }
+    & img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      height: auto;
+    }
+    &-images__list a {
+      display: flex;
+    }
+    &-images__list a:nth-child(n+2) {
+      display: none;
+    }
     &-text {
       display: flex;
       flex-direction: column;

@@ -1,9 +1,5 @@
 $(function () {
-  const virtualTourState = {
-    activeSrc: null,
-    videos: {},
-  };
-  let activeVideoEl = null;
+  
 
   $('.play__btn, .videoBlockWrapper').on('click', function () {
     $(this).closest('.video-poster').remove();
@@ -317,85 +313,199 @@ $(function () {
 
     
 });
-$(document).ready(function() {
-  // Только для видео внутри constructionsList__item-row__top
-  $('.constructionsList__item-row__top .videoBlockSimple').each(function() {
-    const $videoBlock = $(this);
-    const $video = $videoBlock.find('.video-element');
-    const $playBtn = $videoBlock.find('.play__btn');
-    const $closeBtn = $videoBlock.find('.videoBlock__close');
-    const video = $video[0]; // получаем DOM элемент
+// $(document).ready(function() {
+//   // Только для видео внутри constructionsList__item-row__top
+//   $('.constructionsList__item-row__top .videoBlockSimple').each(function() {
+//     const $videoBlock = $(this);
+//     const $video = $videoBlock.find('.video-element');
+//     const $playBtn = $videoBlock.find('.play__btn');
+//     const $closeBtn = $videoBlock.find('.videoBlock__close');
+//     const video = $video[0]; // получаем DOM элемент
     
-    // Создаем кнопку паузы (скрыта по умолчанию)
-    const $pauseBtn = $('<img>', {
-      src: '/wp-content/themes/carcass/assets/images/pause_btn.svg',
-      alt: 'pause',
-      class: 'pause__btn',
-      css: { display: 'none' }
-    });
-    $videoBlock.find('.videoBlockWrapper').append($pauseBtn);
+//     // Создаем кнопку паузы (скрыта по умолчанию)
+//     const $pauseBtn = $('<img>', {
+//       src: '/wp-content/themes/carcass/assets/images/pause_btn.svg',
+//       alt: 'pause',
+//       class: 'pause__btn',
+//       css: { display: 'none' }
+//     });
+//     $videoBlock.find('.videoBlockWrapper').append($pauseBtn);
     
-    // Функция запуска видео
-    function playVideo() {
-      video.play();
-      $playBtn.hide();
-      $pauseBtn.hide();
-    }
+//     // Функция запуска видео
+//     function playVideo() {
+//       video.play();
+//       $playBtn.hide();
+//       $pauseBtn.hide();
+//     }
     
-    // Функция паузы видео
-    function pauseVideo() {
-      video.pause();
-      $pauseBtn.hide();
-      $playBtn.show();
-    }
+//     // Функция паузы видео
+//     function pauseVideo() {
+//       video.pause();
+//       $pauseBtn.hide();
+//       $playBtn.show();
+//     }
     
-    // Клик по кнопке Play
-    $playBtn.on('click', function(e) {
-      e.stopPropagation();
-      playVideo();
-    });
+//     // Клик по кнопке Play
+//     $playBtn.on('click', function(e) {
+//       e.stopPropagation();
+//       playVideo();
+//     });
     
-    // Клик по кнопке Pause
-    $pauseBtn.on('click', function(e) {
-      e.stopPropagation();
-      pauseVideo();
-    });
+//     // Клик по кнопке Pause
+//     $pauseBtn.on('click', function(e) {
+//       e.stopPropagation();
+//       pauseVideo();
+//     });
     
-    // Клик по самому видео
-    $video.on('click', function(e) {
-      e.stopPropagation();
-      if (video.paused || video.ended) {
-        playVideo();
-      } else {
-        pauseVideo();
-      }
-    });
+//     // Клик по самому видео
+//     $video.on('click', function(e) {
+//       e.stopPropagation();
+//       if (video.paused || video.ended) {
+//         playVideo();
+//       } else {
+//         pauseVideo();
+//       }
+//     });
     
-    // Показ кнопки паузы при наведении (только если видео играет)
-    $videoBlock.on('mouseenter', function() {
-      if (!video.paused && !video.ended) {
-        $pauseBtn.show();
-      }
-    });
+//     // Показ кнопки паузы при наведении (только если видео играет)
+//     $videoBlock.on('mouseenter', function() {
+//       if (!video.paused && !video.ended) {
+//         $pauseBtn.show();
+//       }
+//     });
     
-    // Скрытие кнопки паузы при уходе курсора
-    $videoBlock.on('mouseleave', function() {
-      $pauseBtn.hide();
-    });
+//     // Скрытие кнопки паузы при уходе курсора
+//     $videoBlock.on('mouseleave', function() {
+//       $pauseBtn.hide();
+//     });
     
-    // Когда видео закончилось - показываем кнопку Play
-    $video.on('ended', function() {
-      $playBtn.show();
-      $pauseBtn.hide();
-    });
+//     // Когда видео закончилось - показываем кнопку Play
+//     $video.on('ended', function() {
+//       $playBtn.show();
+//       $pauseBtn.hide();
+//     });
     
-    // Клик по кнопке Close
-    $closeBtn.on('click', function(e) {
-      e.stopPropagation();
-      video.pause();
-      video.currentTime = 0;
-      $playBtn.show();
-      $pauseBtn.hide();
-    });
-  });
-});
+//     // Клик по кнопке Close
+//     $closeBtn.on('click', function(e) {
+//       e.stopPropagation();
+//       video.pause();
+//       video.currentTime = 0;
+//       $playBtn.show();
+//       $pauseBtn.hide();
+//     });
+//   });
+// });
+
+// $(function () {
+
+//   const videosState = new Map();
+//   const userPausedVideos = new WeakSet();
+
+//   function isInViewport($el, threshold = 0.6) {
+//     const rect = $el[0].getBoundingClientRect();
+//     const h = window.innerHeight || document.documentElement.clientHeight;
+//     const visible = Math.min(rect.bottom, h) - Math.max(rect.top, 0);
+//     return visible / rect.height >= threshold;
+//   }
+
+//   function handleScrollVideos() {
+
+//     $('.constructionsList__item-row__top').each(function () {
+
+//       const $container = $(this);
+//       const $video = $container.find('video.video-element');
+//       if (!$video.length) return;
+
+//       if ($container.closest('.fancybox__slide, .virtualTour').length) return;
+
+//       const video = $video[0];
+//       const $playBtn = $container.find('.play__btn');
+//       const $pauseBtn = $container.find('.pause__btn');
+
+//       // ❌ если пользователь сам поставил паузу — автоплей запрещён
+//       if (userPausedVideos.has(video)) return;
+
+//       if (isInViewport($container)) {
+
+//         if (video.paused) {
+
+//           if (videosState.has(video)) {
+//             video.currentTime = videosState.get(video);
+//           }
+
+//           video.play().catch(() => {});
+
+//           $playBtn.hide();
+//         }
+
+//       } else {
+
+//         if (!video.paused) {
+//           videosState.set(video, video.currentTime);
+//           video.pause();
+
+//           $pauseBtn.hide();
+//           $playBtn.show();
+//         }
+//       }
+//     });
+//   }
+
+//   /* -------------------------------
+//      ОТСЛЕЖИВАЕМ РУЧНУЮ ПАУЗУ через событие video
+//   -------------------------------- */
+//   $(document).on('pause', 'video.video-element', function () {
+//     const video = this;
+//     const $container = $(video).closest('.constructionsList__item-row__top');
+    
+//     // Проверяем, что видео в зоне видимости (значит пауза ручная, а не от скролла)
+//     if (isInViewport($container)) {
+//       userPausedVideos.add(video);
+//     }
+//   });
+
+//   /* -------------------------------
+//      ОТСЛЕЖИВАЕМ РУЧНОЙ PLAY
+//   -------------------------------- */
+//   $(document).on('play', 'video.video-element', function () {
+//     const video = this;
+//     userPausedVideos.delete(video);
+//   });
+
+//   /* -------------------------------
+//      КЛИКИ ПО КНОПКАМ (опционально, если нужны)
+//   -------------------------------- */
+//   $(document).on('click', '.pause__btn', function () {
+//     const $container = $(this).closest('.constructionsList__item-row__top');
+//     const video = $container.find('video.video-element')[0];
+//     if (video) {
+//       video.pause(); // событие 'pause' сработает автоматически
+//     }
+//   });
+
+//   $(document).on('click', '.play__btn', function () {
+//     const $container = $(this).closest('.constructionsList__item-row__top');
+//     const video = $container.find('video.video-element')[0];
+//     if (video) {
+//       video.play(); // событие 'play' сработает автоматически
+//     }
+//   });
+
+//   /* -------------------------------
+//      SCROLL / RESIZE
+//   -------------------------------- */
+//   let ticking = false;
+
+//   $(window).on('scroll resize', function () {
+//     if (!ticking) {
+//       requestAnimationFrame(() => {
+//         handleScrollVideos();
+//         ticking = false;
+//       });
+//       ticking = true;
+//     }
+//   });
+
+//   handleScrollVideos();
+
+// });

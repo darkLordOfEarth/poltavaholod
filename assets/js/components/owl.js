@@ -200,7 +200,9 @@ $(function () {
         stagePadding: 20,
         margin: 10,
         items: 1,
-        
+        // onDragged: function () {
+        //   return false;
+        // },
       });
     }
     // $(".product__slider-media .owl-next").click();

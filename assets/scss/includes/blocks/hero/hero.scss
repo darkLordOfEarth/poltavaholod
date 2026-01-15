@@ -257,9 +257,9 @@
         font-size: 32px;
         line-height: 40px;
       }
-      @include max-sm {
+      @include max-ip {
         font-size: 20px;
-        line-height: 24px;
+        line-height: 24px; 
       }
     }
   }
@@ -323,7 +323,7 @@
     @include max-fullhd {
       margin-bottom: 20px;
     }
-    @include max-sm {
+    @include max-ip {
       font-size: 14px;
       line-height: 20px;
     }

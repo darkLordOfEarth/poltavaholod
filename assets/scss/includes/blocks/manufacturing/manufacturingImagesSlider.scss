@@ -3,6 +3,12 @@
     @include max-l {
       display: none;
     }
+    &-images {
+      display: grid;
+    }
+    &-images a:nth-child(n+5) {
+      display: block
+    }
     &_mobile {
       display: none;
       @include max-l {

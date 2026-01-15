@@ -210,30 +210,30 @@ $(function () {
   $(window).on('resize load', setOwlNavToMediaCenter);
 
   if ($(window).width() <= 576) {
-    $(document).on('focus', 'input, textarea', function () {
-      $('body').addClass('no-scroll');
-    });
+    // $(document).on('focus', 'input, textarea', function () {
+    //   $('body').addClass('no-scroll');
+    // });
 
-    $(document).on('blur', 'input, textarea', function () {
-      $('body').removeClass('no-scroll');
-    });
+    // $(document).on('blur', 'input, textarea', function () {
+    //   $('body').removeClass('no-scroll');
+    // });
 
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', () => {
-        // Компенсировать изменение размера
-        document.body.style.height = `${window.visualViewport.height}px`;
-      });
-    }
+    // if (window.visualViewport) {
+    //   window.visualViewport.addEventListener('resize', () => {
+    //     // Компенсировать изменение размера
+    //     document.body.style.height = `${window.visualViewport.height}px`;
+    //   });
+    // }
 
-    document.querySelectorAll('input, textarea').forEach((input) => {
-      input.addEventListener(
-        'focus',
-        (e) => {
-          window.scrollTo(0, 0);
-        },
-        { passive: false },
-      );
-    });
+    // document.querySelectorAll('input, textarea').forEach((input) => {
+    //   input.addEventListener(
+    //     'focus',
+    //     (e) => {
+    //       window.scrollTo(0, 0);
+    //     },
+    //     { passive: false },
+    //   );
+    // });
     $('.product__slider-media').each(function () {
       const $media = $(this);
       const items = [];
@@ -269,11 +269,104 @@ $(function () {
     $(this).parents('.partnershipTypes__list-item').find('.btn-for-popup').click();
   });
 
-  
-
   if ($(window).width() <= 1024) {
-    $(".areas__grid-item").on("click", function(){
-      $(this).toggleClass("active");
+    $('.areas__grid-item').on('click', function () {
+      $(this).toggleClass('active');
     });
   }
+
+  //   const $outer = $('.product .product__slider');
+
+  //   let innerDragged = false;
+
+  //   $('.product__slider-media')
+  //     .on('touchstart mousedown', function () {
+  //       innerDragged = false;
+
+  //       const outerOwl = $outer.data('owl.carousel');
+  //       if (!outerOwl) return;
+
+  //       outerOwl.options.touchDrag = false;
+  //       outerOwl.options.mouseDrag = false;
+  //     })
+  //     .on('touchmove mousemove', function () {
+  //       innerDragged = true;
+  //     })
+  //     .on('touchend mouseup touchcancel mouseleave', function () {
+  //       const outerOwl = $outer.data('owl.carousel');
+  //       if (!outerOwl) return;
+
+  //       // небольшая задержка, иначе Owl ловит инерцию
+  //       setTimeout(() => {
+  //         outerOwl.options.touchDrag = true;
+  //         outerOwl.options.mouseDrag = true;
+  //       }, 50);
+  //     });
+
+  //   // 🔒 БЛОКИРУЕМ КЛИК ПОСЛЕ СВАЙПА (чтобы Fancybox не открывался)
+  //   $(document).on(
+  //     'click',
+  //     '.product__slider-media a.gallery-item, .product__slider-media .video-fancybox-trigger',
+  //     function (e) {
+  //       if (innerDragged) {
+  //         e.preventDefault();
+  //         e.stopImmediatePropagation();
+  //         innerDragged = false;
+  //       }
+  //     },
+  //   );
+  //   $('.product__slider-media').on('touchstart touchmove mousedown mousemove', function (e) {
+  //     e.stopPropagation();
+  // });
+
+  // Рішення 1: Зупинка спливання подій для внутрішніх слайдерів
+
+  // Знаходимо всі внутрішні слайдери
+  $('.product__slider-media').each(function () {
+    var $innerSlider = $(this);
+
+    // Зупиняємо спливання подій миші
+    $innerSlider.on('mousedown touchstart', function (e) {
+      e.stopPropagation();
+    });
+
+    // Зупиняємо спливання подій перетягування
+    $innerSlider.on('drag.owl.carousel dragged.owl.carousel', function (e) {
+      e.stopPropagation();
+    });
+
+    // Альтернативний метод: Вимкнення зовнішнього слайдера під час взаємодії з внутрішнім
+    $('.product__slider-media').on('mouseenter touchstart', function () {
+      // Знаходимо батківський зовнішній слайдер
+      var $outerSlider = $(this).closest('.product__slider');
+
+      // Тимчасово вимикаємо перетягування на зовнішньому слайдері
+      $outerSlider.trigger('stop.owl.autoplay');
+      $outerSlider.data('owl.carousel').settings.mouseDrag = false;
+      $outerSlider.data('owl.carousel').settings.touchDrag = false;
+    });
+
+    $('.product__slider-media').on('mouseleave touchend', function () {
+      // Знаходимо батківський зовнішній слайдер
+      var $outerSlider = $(this).closest('.product__slider');
+
+      // Вмикаємо назад перетягування на зовнішньому слайдері
+      $outerSlider.data('owl.carousel').settings.mouseDrag = true;
+      $outerSlider.data('owl.carousel').settings.touchDrag = true;
+    });
+  });
+
+  // Рішення 2: При ініціалізації слайдерів (якщо ви контролюєте їх ініціалізацію)
+  // Додайте це до коду ініціалізації внутрішнього слайдера:
+  /*
+$('.product__slider-media').owlCarousel({
+    // ваші налаштування...
+    onDrag: function(event) {
+        event.stopPropagation();
+    },
+    onDragged: function(event) {
+        event.stopPropagation();
+    }
+});
+*/
 });
