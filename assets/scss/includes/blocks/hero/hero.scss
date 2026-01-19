@@ -89,13 +89,10 @@
       }
     }
     &-nav-additional {
-      &-wrapper {
-      }
-
       display: flex;
       flex-direction: column;
       color: #fff;
-      height: 160px;
+      height: auto;
       overflow: hidden;
       position: absolute;
       left: 240px;
@@ -116,107 +113,90 @@
       & .hero__title-misc {
         font-size: 24px;
         line-height: 33px;
-        color: #cbcbcb;
-        padding: 10px 36px;
-        @include max-fullhd {
+        padding: 10px 36px !important;
+         @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
+        }
+      }
+      & .slick-current.slick-center .hero__title-misc {
+        font-size: 30px;
+        line-height: 42px;
+        color: #cbcbcb;
+        
+        @include max-fullhd {
+          font-size: 20px;
+          line-height: 28px;
         }
       }
       & .slick-track {
         display: flex;
         flex-direction: column;
+        height: auto !important;
       }
       & .slick-list {
-        // height: 160px !important;
         overflow: hidden;
-        // margin-top: -58px;
+        height: 200px !important; 
+        margin-top: 0 !important;
         @include max-fullhd {
-          // height: 130px !important;
-          // overflow: hidden;
+          height: 160px !important;
           margin-top: 0;
         }
       }
       & .slick-slide {
-        // position: relative;
-        // overflow: visible;
-        // height: auto !important;
-        // padding: 20px 0;
         width: auto !important;
-        &:not(.slick-active) {
-          // visibility: hidden;
-        }
-        &.slick-active {
-          // visibility: visible;
+        height: auto !important;
+        min-height: 66px;
+        display: flex;
+        align-items: center;
+        @include max-fullhd {
+          min-height: 53px;
         }
       }
       &::before {
         content: '';
         position: absolute;
-        left: 0; /* регулируй */
+        left: 0; 
         width: 4px;
         height: 25px;
         background: #a3a3a3;
         z-index: 10;
         border-radius: 23px;
-        top: 10px;
+        top: -3px;
         bottom: 0;
         margin: auto;
         @include max-fullhd {
-          top: -20px;
+          top: 0;
           height: 20px;
-        }
-        @include max-sm {
-          // display: none;
         }
       }
       &::after {
         content: '';
         position: absolute;
         left: 0;
-        top: 70px;
+        top: 86px;
         width: 4px;
         height: 25px;
         background: #fff;
         z-index: 11;
         animation: none;
         @include max-fullhd {
-          top: 60px;
+          top: 50px;
           height: 20px;
-        }
-        @include max-sm {
-          // display: none;
         }
       }
 
       &.do-progress::after {
         animation: slideProgressFill 30s linear forwards;
-        top: 75px;
+        top: 86px;
         border-radius: 23px;
         max-height: 25px;
         @include max-fullhd {
           max-height: 20px;
-          top: 60px;
+          top: 70px;
         }
-      }
-
-      & .slick-center .hero__title-misc {
-        font-size: 30px;
-        line-height: 42px;
-        color: #fff;
-        @include max-fullhd {
-          font-size: 20px;
-          line-height: 28px;
-        }
-      }
-      & .slick-list {
-        padding: 0 !important;
-        // padding-top: 10px;
-        // height: 100% !important;
-        // max-height: 180px;
       }
       & .slick-slide {
-        // margin: 10px 0;
         cursor: pointer;
       }
     }
@@ -259,7 +239,7 @@
       }
       @include max-ip {
         font-size: 20px;
-        line-height: 24px; 
+        line-height: 24px;
       }
     }
   }

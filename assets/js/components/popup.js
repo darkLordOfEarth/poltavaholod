@@ -1,17 +1,37 @@
 $(function () {
+  function resetPartnersForm() {
+    const $form = $('.form-partners');
+    if (!$form.length) return;
+
+    // 1. стандартный сброс полей
+    $form[0].reset();
+
+    // 2. чистим кастомные файловые поля (у вас есть .form__group-file__text)
+    $form.find('.form__group-file__text').text('');
+    $form.find('input[type=file]').val('');
+
+    // 3. убираем классы ошибок/успеха, если вы их где-то ставите
+    $form.find('.error, .success').removeClass('error success');
+
+    // 4. возвращаем дефолтные радио/чекбоксы, если они рисуются вручную
+    $form.find('.radio-input, .checkbox-input').each(function () {
+      const $span = $(this).closest('label').find('span');
+      $(this).is(':checked') ? $span.addClass('active') : $span.removeClass('active');
+    });
+  }
   $('.popup__close, .btn-for-close-popup').on('click', function () {
     $(this).parents('.popup').hide();
+    resetPartnersForm()
   });
-  // $('.popup').on('click', function (e) {
 
-  //   $(this).hide();
-  // });
+  /* ---------- сброс всей формы ---------- */
 
   $('.popup').on('click', function (e) {
     // Если клик именно по .popup (фон), а не по его содержимому
     if (e.target === this) {
       $(this).fadeOut();
-      $(".popupPartners").find('.play__btn').fadeIn(200);
+      $('.popupPartners').find('.play__btn').fadeIn(200);
+      resetPartnersForm()
     }
   });
   let isDragging = false;
@@ -53,7 +73,8 @@ $(function () {
       !$popupInner.is(e.target)
     ) {
       $popup.fadeOut();
-      $(".popupPartners").find('.play__btn').fadeIn(200);
+      $('.popupPartners').find('.play__btn').fadeIn(200);
+      resetPartnersForm()
     }
 
     // Сброс флагов
@@ -64,7 +85,8 @@ $(function () {
   // Закрытие по кнопке
   $('.popup__close').on('click', function () {
     $(this).closest('.popup').fadeOut();
-    $(".popupPartners").find('.play__btn').fadeIn(200);
+    $('.popupPartners').find('.play__btn').fadeIn(200);
+    resetPartnersForm()
   });
 
   // Сброс флага при движении мыши
@@ -292,7 +314,7 @@ $(function () {
         if (response.success) {
           $form[0].reset();
           $form.closest('.popup').fadeOut();
-          $(".popupPartners").find('.play__btn').fadeIn(200);
+          $('.popupPartners').find('.play__btn').fadeIn(200);
           $('#popup-spasibi').show();
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();

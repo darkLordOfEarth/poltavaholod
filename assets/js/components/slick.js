@@ -49,10 +49,12 @@ $(function () {
     // Подставляем время анимации
     $slider_nav[0].style.setProperty('--slide-progress-time', autoplaySpeed);
 
-    // Сброс анимации (reflow trick)
-    $slider_nav[0].classList.remove('do-progress');
-    void $slider_nav[0].offsetWidth;
-    $slider_nav[0].classList.add('do-progress');
+    // Сброс анимации с небольшой задержкой для стабильности
+    setTimeout(() => {
+      $slider_nav[0].classList.remove('do-progress');
+      void $slider_nav[0].offsetWidth; // trigger reflow
+      $slider_nav[0].classList.add('do-progress');
+    }, 10);
   }
 
   /* -----------------------------------------------------
@@ -61,17 +63,23 @@ $(function () {
   if ($slider_nav.length) {
     $slider_nav.slick({
       slidesToShow: 3,
+      slidesToScroll: 1,
       vertical: true,
       centerMode: true,
-      // centerPadding: '10px',
+      centerPadding: '0',
       arrows: false,
       infinite: true,
       draggable: false,
       swipe: false,
+      pauseOnFocus: false,
+      pauseOnHover: false,
       speed: 800,
       cssEase: 'ease',
+      initialSlide: 0,
       focusOnSelect: true,
       asNavFor: '.hero__main-slider',
+      // verticalSwiping: false,
+      // touchMove: false,
       responsive: [
         {
           breakpoint: 576,
@@ -97,6 +105,8 @@ $(function () {
       infinite: true,
       speed: 800,
       autoplay: true,
+      pauseOnFocus: false,
+      pauseOnHover: false,
       autoplaySpeed: 3000,
       cssEase: 'ease',
       prevArrow: '<button type="button" class="slick-prev slick-arrow"></button>',
@@ -128,4 +138,59 @@ $(function () {
       startVerticalProgress(slick);
     });
   }
+  // Добавьте этот код после инициализации $slider_nav
+  $slider_nav.on('afterChange', function (event, slick, currentSlide) {
+    // Принудительно обновляем позицию слайдов
+    setTimeout(() => {
+      const $track = $slider_nav.find('.slick-track');
+      if ($track.length) {
+        const transformValue = $track.css('transform');
+        // Проверяем, чтобы трансформация не выходила за пределы
+        const match = transformValue.match(/translate3d\(0px, (-\d+)px, 0px\)/);
+        if (match) {
+          const translateY = parseInt(match[1]);
+          const maxTranslate = $track.height() - $slider_nav.find('.slick-list').height();
+
+          // Ограничиваем позицию, чтобы не уходили вверх
+          if (translateY > 0) {
+            $track.css('transform', 'translate3d(0px, 0px, 0px)');
+          } else if (Math.abs(translateY) > maxTranslate) {
+            $track.css('transform', `translate3d(0px, -${maxTranslate}px, 0px)`);
+          }
+        }
+      }
+    }, 50);
+  });
+  /* -----------------------------------------------------
+ * 6) Улучшенная обработка кликов на слайды
+ * ----------------------------------------------------- */
+if ($slider_nav.length) {
+  // Обработчик клика на слайды навигации
+  $slider_nav.on('click', '.slick-dupe', function() {
+    const $slide = $(this);
+    const currentIndex = $slider_nav.slick('slickCurrentSlide');
+    const clickedIndex = parseInt($slide.attr('data-slick-index'));
+    const isCloned = $slide.hasClass('slick-cloned');
+    
+    // Если это дублированный слайд, переключаемся на соответствующий оригинал
+    if (isCloned) {
+      const totalSlides = $slider_nav.slick('getSlick').slideCount;
+      const visibleSlides = 3; // slidesToShow
+      
+      let targetIndex;
+      
+      // Определяем направление
+      if (clickedIndex > currentIndex) {
+        // Клик на слайд в будущем
+        $slider.slick('slickNext');
+      } else {
+        // Клик на слайд в прошлом
+        $slider.slick('slickPrev');
+      }
+    } else {
+      // Для оригинальных слайдов используем стандартное поведение
+      $slider_nav.slick('slickGoTo', clickedIndex);
+    }
+  });
+}
 });
