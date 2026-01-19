@@ -137,6 +137,10 @@
       padding: 20px;
     }
     & .custom-scroll-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
       @include phoneLandscape {
         padding-right: 20px; /* место под скроллбар */
       }

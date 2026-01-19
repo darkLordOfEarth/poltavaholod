@@ -11,7 +11,7 @@
   z-index: 10;
   overflow-x: hidden;
   overflow-y: auto;
-  pointer-events: none;
+  pointer-events: all;
   outline: 0;
   display: none;
   &[style*='display: block'] {
