@@ -1,4 +1,7 @@
 .aboutSlider {
+  @include max-l {
+      padding-top: 90px;
+    }
   &__slider {
     padding: 0 105px;
     @include max-fullhd {
@@ -28,6 +31,7 @@
     .owl-nav {
       @include max-l {
         top: -60px;
+        right: 20px;
       }
     }
   }

@@ -157,18 +157,26 @@ $(function () {
       0: {
         stagePadding: 0,
         margin: 0,
+        mouseDrag: false,
+        touchDrag: false,
       },
       768: {
+        mouseDrag: true,
+        touchDrag: true,
         stagePadding: 0,
         margin: 0,
       },
       1280: {
         stagePadding: 75,
         margin: 75,
+        mouseDrag: true,
+        touchDrag: true,
       },
       1920: {
         stagePadding: 100,
         margin: 100,
+        mouseDrag: true,
+        touchDrag: true,
       },
     },
   });
@@ -320,7 +328,7 @@ $(function () {
         stagePadding: 20,
         margin: 10,
       },
-      375: {
+      576: {
         items: 2,
         stagePadding: 30,
         margin: 10,
@@ -358,7 +366,37 @@ $(function () {
     autoplay: false,
     autoHeight: true,
     items: 1,
+    responsive: {
+      0: {
+        mouseDrag: false,
+        touchDrag: false,
+      },
+      576: {
+        mouseDrag: true,
+        touchDrag: true,
+      },
+    },
   });
+  if ($(window).width() <= 576) {
+    $('.projectAuditExpertise__slide-top').owlCarousel({
+      loop: true,
+      nav: true,
+      navText: [
+        '<span class="sr-only">Наступний слайд</span>',
+        '<span class="sr-only">Попередній слайд</span>',
+      ],
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      freeDrag: false,
+      URLhashListener: false,
+      autoplay: false,
+      autoHeight: true,
+      items: 1,
+      stagePadding: 30,
+      margin: 10,
+    });
+  }
 
   $('.reviews__slider').owlCarousel({
     loop: true,

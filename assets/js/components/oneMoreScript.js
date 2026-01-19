@@ -24,7 +24,7 @@ $(function () {
     .off('click')
     .on('click', function () {
       const $btn = $(this);
-      const $desc = $btn.parent().find('.product__info-desc');
+      const $desc = $btn.parent().find('p');
 
       $desc.slideToggle(300, function () {
         // По окончании анимации
@@ -369,4 +369,41 @@ $('.product__slider-media').owlCarousel({
     }
 });
 */
+  if ($(window).width() <= 576) {
+    $('.projectAuditExpertise__slide-top')
+      .on('touchstart mousedown', function (e) {
+        // 🔥 НЕ даём событию уйти во внешний слайдер
+        e.stopPropagation();
+      })
+      .on('drag.owl.carousel dragged.owl.carousel', function (e) {
+        e.stopPropagation();
+      })
+      .on('touchstart', function () {
+        const $outer = $(this).closest('.projectAuditExpertise__slider');
+        const owl = $outer.data('owl.carousel');
+
+        if (!owl) return;
+
+        owl.options.mouseDrag = false;
+        owl.options.touchDrag = false;
+      })
+      .on('touchend touchcancel mouseup', function () {
+        const $outer = $(this).closest('.projectAuditExpertise__slider');
+        const owl = $outer.data('owl.carousel');
+
+        if (!owl) return;
+
+        owl.options.mouseDrag = true;
+        owl.options.touchDrag = true;
+      });
+  }
+
+
+
+
 });
+
+
+
+
+

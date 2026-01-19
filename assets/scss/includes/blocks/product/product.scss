@@ -1,5 +1,6 @@
 .product {
   &__slider {
+    display: flex;
     @include max-sm {
       // display: none;
     }
@@ -129,6 +130,10 @@
       }
     }
     &-video {
+      position: relative;
+      & .videoBlockWrapper {
+        height: 100%;
+      }
       & video {
         object-fit: cover;
       }
@@ -147,6 +152,10 @@
         }
       }
     }
+    & > .owl-stage-outer > .owl-stage > .owl-item:not(.active) {
+      opacity: 0;
+    }
+
     & .owl-nav {
       bottom: initial;
       @include max-xl {

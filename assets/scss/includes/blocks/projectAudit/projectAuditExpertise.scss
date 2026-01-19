@@ -1,7 +1,18 @@
 .projectAuditExpertise {
-  &__content {
+  & .container {
+    @include max-sm {
+      padding: 0 !important;
+    }
+  }
+  & .sectionTitle {
+    @include max-sm {
+      padding: 0 15px;
+    }
   }
   &__desc {
+    @include max-sm {
+      padding: 0 15px;
+    }
   }
   &__slider {
     margin-top: 75px;
@@ -23,12 +34,16 @@
       @include max-l {
         top: -68px;
       }
+      @include max-sm {
+        right: 15px;
+      }
     }
   }
   &__slide {
     display: grid;
     grid-template-columns: 1fr;
     gap: 75px;
+    touch-action: none;
     @include max-fullhd {
       gap: 50px;
     }
@@ -44,12 +59,27 @@
       }
     }
     &-top {
+      @include max-sm {
+        grid-template-columns: 1fr;
+        width: calc(100vw);
+        left: 50%;
+        margin-left: -50vw;
+        position: relative;
+      }
+      .owl-stage {
+        @include max-sm {
+              margin-left: -20px;
+        }
+      }
     }
     &-bottom {
       @include max-l {
         display: flex;
         flex-direction: column-reverse;
         gap: 20px;
+      }
+      @include max-sm {
+        padding: 0 15px;
       }
     }
     & .product__info-desc__btn {
@@ -58,12 +88,12 @@
         display: block;
         margin-top: 20px;
       }
-      
     }
   }
 
   &__imgbox {
     position: relative;
+    touch-action: auto;
     &::after {
       content: '';
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 37.22%, rgba(0, 0, 0, 0.7) 103.98%);

@@ -14,6 +14,17 @@ $fullhd: 1920px;
 $preBigScreen: 2300px;
 $bigScreen: 2600px;
 
+
+@mixin phoneLandscape {
+  @media
+    (orientation: landscape)
+    and (hover: none)
+    and (pointer: coarse) {
+    @content;
+  }
+}
+
+
 @mixin landscape {
   @media (orientation: landscape) {
     @content;

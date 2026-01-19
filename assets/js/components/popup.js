@@ -11,6 +11,7 @@ $(function () {
     // Если клик именно по .popup (фон), а не по его содержимому
     if (e.target === this) {
       $(this).fadeOut();
+      $(".popupPartners").find('.play__btn').fadeIn(200);
     }
   });
   let isDragging = false;
@@ -52,6 +53,7 @@ $(function () {
       !$popupInner.is(e.target)
     ) {
       $popup.fadeOut();
+      $(".popupPartners").find('.play__btn').fadeIn(200);
     }
 
     // Сброс флагов
@@ -62,6 +64,7 @@ $(function () {
   // Закрытие по кнопке
   $('.popup__close').on('click', function () {
     $(this).closest('.popup').fadeOut();
+    $(".popupPartners").find('.play__btn').fadeIn(200);
   });
 
   // Сброс флага при движении мыши
@@ -95,6 +98,7 @@ $(function () {
   $('[data-group]').on('click', function (e) {
     e.preventDefault();
     const $videoLink = $(this).attr('data-video');
+    const $videoPoster = $(this).attr('data-video-poster');
     const $videoPopup = $('.popupPartners video');
     const $title = $(this)
       .parents('.partnershipTypes__list-item')
@@ -108,6 +112,7 @@ $(function () {
 
     $popupTitle.text($title);
     $videoPopup.attr('src', $videoLink);
+    $videoPopup.attr('poster', $videoPoster);
 
     if (!$dynamicGroup.length) {
       console.warn('#dynamic-form-group не найден в DOM');
@@ -287,6 +292,7 @@ $(function () {
         if (response.success) {
           $form[0].reset();
           $form.closest('.popup').fadeOut();
+          $(".popupPartners").find('.play__btn').fadeIn(200);
           $('#popup-spasibi').show();
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();

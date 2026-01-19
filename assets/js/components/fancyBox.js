@@ -46,6 +46,9 @@ $(function () {
   $(document).on('click', '.fancybox__button--close', function () {
     $('.fancyThumbBtn').remove();
   });
+  $(document).on('click', '.fancybox__viewport', function () {
+    $('.fancyThumbBtn').remove();
+  });
 
   // Удаляем кнопку при нажатии Esc
   $(document).on('keydown', function (e) {
@@ -213,8 +216,9 @@ $(function () {
             const src = $video.find('source').attr('src');
             restoreVideoState(video, src);
 
-            if (video.paused) {
-              $(slide.$el).addClass('paused');
+            // 🔥 ИСПРАВЛЕНИЕ: убираем класс paused, если видео играет
+            if (!video.paused) {
+              $(slide.$el).removeClass('paused');
             }
           }
         },
@@ -233,6 +237,38 @@ $(function () {
               const src = $video.find('source').attr('src');
               saveVideoState(video, src);
               video.pause();
+            }
+          }
+
+          // 🔥 ИСПРАВЛЕНИЕ: при переходе на новый слайд проверяем видео
+          if (typeof to !== 'undefined') {
+            const $toSlide = $(carousel.slides[to].$el);
+            const $video = $toSlide.find('video');
+
+            if ($video.length) {
+              const video = $video[0];
+              const src = $video.find('source').attr('src');
+
+              // Восстанавливаем состояние
+              if (fancyboxVideoState[src]) {
+                const state = fancyboxVideoState[src];
+                video.currentTime = state.time || 0;
+
+                // Если видео было на паузе - ставим на паузу и показываем кнопку
+                if (state.paused) {
+                  video.pause();
+                  $toSlide.removeClass('paused');
+                  console.log("removeClass('paused'); 1")
+                } else {
+                  // Если видео играло - убираем кнопку паузы
+                  $toSlide.removeClass('paused');
+                  console.log("removeClass('paused'); 2")
+                }
+              } else {
+                // Новое видео - по умолчанию на паузе
+                $toSlide.addClass('paused');
+                console.log("addClass('paused'); 2")
+              }
             }
           }
         },
@@ -256,12 +292,15 @@ $(function () {
                     video.pause();
                   };
                   $(currentSlide.$el).addClass('paused');
+                  console.log(".addClass('paused'); 1")
                 } else {
                   video.onplay = null;
                   $(currentSlide.$el).removeClass('paused');
+                  console.log("removeClass('paused');")
                 }
               } else {
                 $(currentSlide.$el).addClass('paused');
+                console.log(".addClass('paused'); 2")
               }
             }
           }
@@ -360,6 +399,7 @@ $(function () {
       autoplayProductSliderVideo(slick, slick.currentSlide);
     })
     .on('afterChange', function (event, slick, currentSlide) {
+      
       autoplayProductSliderVideo(slick, currentSlide);
     });
 
@@ -383,6 +423,9 @@ $(function () {
   Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-about-slider"]', {
     infinite: true,
   });
+  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox]', {
+    infinite: true,
+  });
 
   const fancyGroups = new Set();
 
@@ -398,8 +441,15 @@ $(function () {
     });
   });
 
+  
+  // $(document).on("click", ".carousel__button", function() {
+  //     console.log("121212")
+  //     $(".fancybox__slide.has-html5video").removeClass('paused');
+  // })
+
+
   // Кнопка открыть галерею для current building
-  $(document).on('click', '.custom-button', function (e) {
+  $(document).on('click', '.constructionsList__item-row .custom-button', function (e) {
     e.preventDefault();
     e.stopPropagation();
 
