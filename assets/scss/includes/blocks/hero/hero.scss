@@ -113,7 +113,7 @@
       & .hero__title-misc {
         font-size: 24px;
         line-height: 33px;
-        padding: 10px 36px !important;
+        padding: 0 36px !important;
          @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
@@ -142,6 +142,10 @@
           height: 160px !important;
           margin-top: 0;
         }
+        @include max-xxl {
+          height: 120px !important;
+          margin-top: 0;
+        }
       }
       & .slick-slide {
         width: auto !important;
@@ -151,6 +155,9 @@
         align-items: center;
         @include max-fullhd {
           min-height: 53px;
+        }
+        @include max-xxl {
+          min-height: 40px;
         }
       }
       &::before {
@@ -194,6 +201,10 @@
         @include max-fullhd {
           max-height: 20px;
           top: 70px;
+        }
+        @include max-xxl {
+          animation: slideProgressFill 25s linear forwards;
+          top: 50px;
         }
       }
       & .slick-slide {

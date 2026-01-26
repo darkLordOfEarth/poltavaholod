@@ -377,6 +377,25 @@ $(function () {
       },
     },
   });
+
+  var $mainOwl = $('.projectAuditExpertise__slider');
+
+  $mainOwl.owlCarousel({
+    items: 1,
+    loop: true,
+    nav: true,
+    dots: true,
+    autoHeight: true,
+  });
+
+  // Пересчитать высоту один раз после загрузки всех картинок в слайде
+  $mainOwl.find('img').each(function () {
+    if (this.complete) return; // уже загружена
+    $(this).on('load', function () {
+      $mainOwl.trigger('refresh.owl.carousel'); // обновление один раз
+    });
+  });
+
   if ($(window).width() <= 576) {
     $('.projectAuditExpertise__slide-top').owlCarousel({
       loop: true,

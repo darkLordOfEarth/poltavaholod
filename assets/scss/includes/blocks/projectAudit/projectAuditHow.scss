@@ -1,4 +1,22 @@
 .projectAuditHow {
+  &__desc {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 44px;
+    color: #4d4d4d;
+    @include max-fullhd {
+      font-size: 18px;
+      line-height: 30px;
+    }
+    @include max-xxl {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    @include max-ip {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
   &__steps {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

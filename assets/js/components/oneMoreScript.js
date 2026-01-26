@@ -21,27 +21,34 @@ $(function () {
   $(window).on('load', checkHeaderScroll);
 
   $('.product__info-desc__btn')
-    .off('click')
-    .on('click', function () {
-      const $btn = $(this);
-      const $desc = $btn.parent().find('p');
+  .off('click')
+  .on('click', function () {
+    const $btn = $(this);
+    const $desc = $btn.siblings('p'); // надёжнее чем parent().find
 
-      $desc.slideToggle(300, function () {
-        // По окончании анимации
-        const isOpen = $desc.hasClass('open');
+    const isOpen = $desc.hasClass('open');
 
-        if (isOpen) {
+    if (isOpen) {
+      // закрываем
+      $desc
+        .removeClass('open')
+        .slideUp(300, function () {
           $btn.text('Читати опис');
-          $desc.removeClass('open');
-        } else {
-          $desc.addClass('open');
+          $('.projectAuditExpertise__slider')
+            .trigger('refresh.owl.carousel');
+        });
+    } else {
+      // открываем
+      $desc
+        .addClass('open')
+        .slideDown(300, function () {
           $btn.text('Сховати опис');
-        }
+          $('.projectAuditExpertise__slider')
+            .trigger('refresh.owl.carousel');
+        });
+    }
+  });
 
-        // ❗ Пересчитать высоту после изменения
-        $('.projectAuditExpertise__slider').trigger('refresh.owl.carousel');
-      });
-    });
 
   // const headerHeight = $('.header').outerHeight();
 
@@ -370,40 +377,92 @@ $('.product__slider-media').owlCarousel({
 });
 */
   if ($(window).width() <= 576) {
-    $('.projectAuditExpertise__slide-top')
-      .on('touchstart mousedown', function (e) {
-        // 🔥 НЕ даём событию уйти во внешний слайдер
-        e.stopPropagation();
-      })
-      .on('drag.owl.carousel dragged.owl.carousel', function (e) {
-        e.stopPropagation();
-      })
-      .on('touchstart', function () {
-        const $outer = $(this).closest('.projectAuditExpertise__slider');
-        const owl = $outer.data('owl.carousel');
+    let startX = 0;
+    let startY = 0;
 
-        if (!owl) return;
+    $('.projectAuditExpertise__slide').on('touchstart', function (e) {
+      const touch = e.originalEvent.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+    });
 
-        owl.options.mouseDrag = false;
+    $('.projectAuditExpertise__slide').on('touchmove', function (e) {
+      const touch = e.originalEvent.touches[0];
+      const diffX = Math.abs(touch.clientX - startX);
+      const diffY = Math.abs(touch.clientY - startY);
+
+      const $slider = $(this).closest('.projectAuditExpertise__slider');
+      const owl = $slider.data('owl.loaded');
+      if (!owl) return;
+
+      // 👉 вертикаль — отключаем drag, страница скроллится
+      if (diffY > diffX) {
         owl.options.touchDrag = false;
-      })
-      .on('touchend touchcancel mouseup', function () {
-        const $outer = $(this).closest('.projectAuditExpertise__slider');
-        const owl = $outer.data('owl.carousel');
+        owl.options.mouseDrag = false;
+        return;
+      }
 
-        if (!owl) return;
+      // 👉 горизонталь — включаем drag
+      owl.options.touchDrag = true;
+      owl.options.mouseDrag = true;
+    });
 
-        owl.options.mouseDrag = true;
-        owl.options.touchDrag = true;
-      });
+    $('.projectAuditExpertise__slide').on('touchend touchcancel', function () {
+      const $slider = $(this).closest('.projectAuditExpertise__slider');
+      const owl = $slider.data('owl.carousel');
+      if (!owl) return;
+
+      owl.options.touchDrag = true;
+      owl.options.mouseDrag = true;
+    });
   }
 
+  function updateNavPositionViewport($slider) {
+    const $slideTop = $slider.find('.owl-item.active .projectAuditExpertise__slide-top').first();
 
+    const $nav = $slider.find('.owl-nav');
 
+    if (!$slideTop.length || !$nav.length) return;
 
+    const slideRect = $slideTop[0].getBoundingClientRect();
+    const slideHeight = $slideTop.outerHeight();
+    const navHeight = $nav.outerHeight();
+
+    const top = slideRect.top + slideHeight / 2 - navHeight / 2;
+
+    $nav.css({
+      position: 'fixed',
+      top: `${top}px`,
+      left: '0',
+      right: '0',
+      pointerEvents: 'none',
+    });
+
+    $nav.find('button').css('pointer-events', 'auto');
+  }
+  const $slider = $('.projectAuditExpertise__slider');
+
+  function shouldUpdate() {
+    return $(window).width() >= 1024;
+  }
+
+  $slider.on('initialized.owl.carousel', function () {
+    if (!shouldUpdate()) return;
+    updateNavPositionViewport($(this));
+  });
+
+  $slider.on('changed.owl.carousel', function () {
+    if (!shouldUpdate()) return;
+    updateNavPositionViewport($(this));
+  });
+
+  $slider.find('img').on('load', function () {
+    if (!shouldUpdate()) return;
+    updateNavPositionViewport($slider);
+  });
+
+  $(window).on('resize orientationchange scroll', function () {
+    if (!shouldUpdate()) return;
+    updateNavPositionViewport($slider);
+  });
 });
-
-
-
-
-

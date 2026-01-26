@@ -10,12 +10,20 @@
       gap: 20px;
     }
   }
-  &__images a:nth-child(n+2) {
-    display: none;
-  } 
+  & .videoBlockSimple .pause__btn {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  & .videoBlockSimple .pause__btn.is-hidden {
+    opacity: 0;
+  }
+
   &__desc {
   }
-  &__btn {
+  & .custom-button {
     margin: auto;
+    display: block;
   }
 }

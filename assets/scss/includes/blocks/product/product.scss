@@ -1,8 +1,29 @@
+@keyframes show-owl-nav {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
 .product {
   &__slider {
+    opacity: 0;
     display: flex;
     @include max-sm {
       // display: none;
+    }
+    & > .owl-stage-outer {
+        height: auto !important;
+      }
+    &.owl-loaded {
+      opacity: 1;
+    }
+    // & > .owl-nav {
+    //   opacity: 1;
+    // }
+    & > .owl-nav {
+      animation: show-owl-nav linear 1s;
     }
     & a {
       @include max-sm {
@@ -18,6 +39,16 @@
         // position: relative !important;
       }
     }
+
+    
+    // & > .owl-stage-outer > .owl-stage > .owl-item {
+    //   opacity: 0;
+    //   visibility: hidden;
+    //   &.active {
+    //     opacity: 1;
+    //     visibility: visible;
+    //   }
+    // }
     &_mobile {
       display: none;
       @include max-sm {
@@ -191,6 +222,7 @@
     }
     & .line {
       &_vertical {
+        height: auto;
         @include max-lg {
           height: 1px;
           width: 100%;
