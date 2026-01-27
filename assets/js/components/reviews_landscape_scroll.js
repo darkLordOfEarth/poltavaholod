@@ -1,13 +1,38 @@
 $(function () {
+  const phoneLandscapeMQ = window.matchMedia(
+    '(orientation: landscape) and (hover: none) and (pointer: coarse)',
+  );
+
+  if (phoneLandscapeMQ.matches) {
+    initCustomScrollbar();
+  }
+
+  phoneLandscapeMQ.addEventListener('change', (e) => {
+    if (e.matches) {
+      initCustomScrollbar();
+    } else {
+      destroyCustomScrollbar();
+    }
+  });
+
+  // let scrollbarInited = false;
+  function initCustomScrollbar() {
   $('.reviews__slide').each(function () {
     const $slide = $(this);
-    const $slideHeight = $slide.outerHeight();
 
-    const $content = $slide.wrapInner('<div class="custom-scroll-content"></div>').find('.custom-scroll-content');
+    if ($slide.find('.custom-scroll-content').length) return;
+    if ($slide.data('custom-scroll')) return;
+
+    $slide.data('custom-scroll', true);
+
+    const $content = $slide
+      .wrapInner('<div class="custom-scroll-content"></div>')
+      .find('.custom-scroll-content');
+
     $content.css({
-      maxHeight: $slideHeight,
+      maxHeight: $slide.outerHeight(),
       overflowY: 'auto',
-      scrollbarWidth: 'none'
+      scrollbarWidth: 'none',
     });
 
     const $scrollbar = $('<div class="custom-scrollbar"><div class="custom-scrollbar-thumb"></div></div>');
@@ -18,50 +43,61 @@ $(function () {
     function updateThumb() {
       const contentHeight = $content[0].scrollHeight;
       const visibleHeight = $content.innerHeight();
+      if (contentHeight <= visibleHeight) {
+        $scrollbar.hide();
+        return;
+      }
+      $scrollbar.show();
+
+      const scrollbarHeight = $scrollbar.innerHeight();
+      const thumbHeight = Math.max(20, (visibleHeight / contentHeight) * scrollbarHeight);
       const scrollRatio = $content[0].scrollTop / (contentHeight - visibleHeight);
 
-      const scrollbarHeight = $scrollbar.innerHeight();
-      const thumbHeight = Math.max(20, (visibleHeight / contentHeight) * scrollbarHeight); // минимум 20px
       $thumb.height(thumbHeight);
-
-      const maxThumbTop = scrollbarHeight - thumbHeight;
-      const thumbTop = scrollRatio * maxThumbTop;
-      $thumb.css('top', thumbTop);
+      $thumb.css('top', scrollRatio * (scrollbarHeight - thumbHeight));
     }
-
-    let dragging = false;
-    let startY = 0;
-    let startScrollTop = 0;
-
-    $thumb.on('mousedown', function (e) {
-      dragging = true;
-      startY = e.pageY;
-      startScrollTop = $content[0].scrollTop;
-      $('body').css('user-select', 'none');
-    });
-
-    $(document).on('mousemove', function (e) {
-      if (!dragging) return;
-      const delta = e.pageY - startY;
-      const scrollbarHeight = $scrollbar.innerHeight();
-      const thumbHeight = $thumb.innerHeight();
-      const scrollRatio = delta / (scrollbarHeight - thumbHeight);
-      const maxScrollTop = $content[0].scrollHeight - $content.innerHeight();
-      $content[0].scrollTop = startScrollTop + scrollRatio * maxScrollTop;
-      updateThumb();
-    });
-
-    $(document).on('mouseup', function () {
-      dragging = false;
-      $('body').css('user-select', '');
-    });
 
     $content.on('scroll', updateThumb);
 
-    // Обновление при изменении размеров или подгрузке контента
     const resizeObserver = new ResizeObserver(updateThumb);
     resizeObserver.observe($content[0]);
 
-    updateThumb(); // первичная инициализация
+    $slide.data('custom-scroll-data', {
+      resizeObserver,
+      $scrollbar,
+    });
+
+    updateThumb();
   });
+}
+
+
+  function destroyCustomScrollbar() {
+  $(document).off('mousemove mouseup');
+
+  $('.reviews__slide').each(function () {
+    const $slide = $(this);
+    const data = $slide.data('custom-scroll-data');
+
+    if (data?.resizeObserver) {
+      data.resizeObserver.disconnect();
+    }
+
+    $slide.find('.custom-scrollbar').remove();
+
+    $slide.find('.custom-scroll-content').each(function () {
+      $(this)
+        .css({
+          maxHeight: '',
+          overflowY: '',
+          scrollbarWidth: '',
+        })
+        .children()
+        .unwrap();
+    });
+
+    $slide.removeData('custom-scroll custom-scroll-data');
+  });
+}
+
 });

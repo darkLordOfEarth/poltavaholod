@@ -14,9 +14,9 @@
   height: max-content;
   width: 100%;
   max-width: 1800px;
-  z-index: 5;
-  @include max-bigScreen {
-    max-width: 1400px;
+  z-index: 0;
+  @include max-preBigScreen {
+    max-width: 1440px;
   }
   @include max-fullhd {
     max-width: 1200px;
@@ -26,6 +26,9 @@
   }
   @include max-xl {
     max-width: 100%;
+  }
+  @include max-sm {
+    // height: 80vh;
   }
   &__content {
   }
@@ -112,7 +115,7 @@
     // &.scrolling::after {
     //   opacity: 1;
     // }
-    @include max-bigScreen {
+    @include max-preBigScreen {
       padding: 70px 120px;
     }
     @include max-fullhd {
@@ -130,6 +133,9 @@
     @include max-sm {
       padding: 20px;
       border-radius: 10px;
+    }
+    @include max-ip {
+      max-height: 95vh;
     }
     @include phoneLandscape {
       height: 80vh;
@@ -275,6 +281,10 @@
           display: flex;
           width: 267px;
           height: 150px;
+          @include max-preBigScreen {
+            width: 222px;
+            height: 125px;
+          }
           @include max-fullhd {
             width: 178px;
             height: 100px;
@@ -295,39 +305,43 @@
               display: none;
             }
           }
+          &:nth-child(3):hover::after {
+            background: rgba(0, 0, 0, 0.5);
+          }
           &:nth-child(3)::after {
             content: '';
-            background-color: #0000004d;
+            background: #0000004D;
             position: absolute;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
           }
-          &:nth-child(2)::after {
-            display: none;
-            @include max-sm {
-              display: block;
-              content: '';
-              background-color: #0000004d;
-              position: absolute;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-            }
-          }
+          // &:nth-child(2)::after {
+          //   display: none;
+          //   @include max-sm {
+          //     display: block;
+          //     content: '';
+          //     background-color: #0000004d;
+          //     position: absolute;
+          //     left: 0;
+          //     top: 0;
+          //     width: 100%;
+          //     height: 100%;
+          //   }
+          // }
         }
       }
 
       &__logo {
+        display: flex;
         @include max-lg {
           display: none;
         }
         &_mobile {
           display: none;
           @include max-lg {
-            display: block;
+            display: flex;
             margin-bottom: 25px;
           }
           @include max-sm {
@@ -340,6 +354,10 @@
         & img {
           width: 420px;
           height: 143px;
+          @include max-preBigScreen {
+            width: 350px;
+            height: 119px;
+          }
           @include max-fullhd {
             width: 280px;
             height: 95px;

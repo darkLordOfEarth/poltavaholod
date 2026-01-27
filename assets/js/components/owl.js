@@ -417,6 +417,7 @@ $(function () {
     });
   }
 
+
   $('.reviews__slider').owlCarousel({
     loop: true,
     nav: true,
@@ -455,7 +456,6 @@ $(function () {
       },
     },
   });
-
   $('.licenses__slider').owlCarousel({
     loop: true,
     nav: true,

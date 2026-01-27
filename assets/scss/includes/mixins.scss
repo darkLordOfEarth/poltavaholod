@@ -191,6 +191,11 @@ $bigScreen: 2600px;
     @content;
   }
 }
+@mixin max-preBigScreen {
+  @media (max-width: #{$preBigScreen}) {
+    @content;
+  }
+}
 @mixin max-bigScreen {
   @media (max-width: #{$bigScreen}) {
     @content;
