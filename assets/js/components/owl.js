@@ -32,108 +32,159 @@ $(function () {
       },
     },
   });
+  function setPageInfoProductList() {
+    const $carousel = $('.pageInfo__product-list');
+    const isMobile = $(window).width() < 1024;
 
-  if ($(window).width() < 1280) {
-    $('.pageInfo__product-list').owlCarousel({
-      loop: true,
-      nav: true,
-      navText: [
-        '<span class="sr-only">Наступний слайд</span>',
-        '<span class="sr-only">Попередній слайд</span>',
-      ],
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: false,
-      freeDrag: false,
-      URLhashListener: false,
-      autoplay: false,
-      stagePadding: 50,
-      margin: 10,
-      responsive: {
-        0: {
-          items: 1,
-          stagePadding: 10,
-        },
-        576: {
-          items: 1,
-          stagePadding: 10,
-        },
-        768: {
-          items: 2,
-          stagePadding: 10,
-        },
-        992: {
-          items: 2,
-          stagePadding: 10,
-        },
-      },
-    });
+    if (isMobile) {
+      // INIT
+      if (!$carousel.hasClass('owl-loaded')) {
+        $carousel.owlCarousel({
+          loop: true,
+          nav: true,
+          navText: [
+            '<span class="sr-only">Наступний слайд</span>',
+            '<span class="sr-only">Попередній слайд</span>',
+          ],
+          mouseDrag: true,
+          touchDrag: true,
+          pullDrag: false,
+          freeDrag: false,
+          URLhashListener: false,
+          autoplay: false,
+          stagePadding: 50,
+          margin: 10,
+          responsive: {
+            0: {
+              items: 1,
+              stagePadding: 10,
+            },
+            576: {
+              items: 1,
+              stagePadding: 10,
+            },
+            768: {
+              items: 2,
+              stagePadding: 10,
+            },
+            992: {
+              items: 2,
+              stagePadding: 10,
+            },
+          },
+        });
+      }
+    } else {
+      // DESTROY
+      if ($carousel.hasClass('owl-loaded')) {
+        $carousel.trigger('destroy.owl.carousel');
+
+        // 🧼 необязательно, но рекомендую
+        $carousel.find('.owl-stage-outer').children().unwrap();
+        $carousel.removeClass('owl-loaded');
+      }
+    }
   }
 
-  $('.manufacturingImagesSlider .product__slider').owlCarousel({
-    loop: true,
-    nav: true,
-    navText: [
-      '<span class="sr-only">Наступний слайд</span>',
-      '<span class="sr-only">Попередній слайд</span>',
-    ],
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    freeDrag: false,
-    URLhashListener: false,
-    autoplay: false,
+  setPageInfoProductList();
+  $(window).on('resize', setPageInfoProductList);
 
-    items: 1,
-    responsive: {
-      0: {
-        stagePadding: 10,
-        margin: 10,
-      },
-      576: {
-        stagePadding: 20,
-        margin: 10,
-      },
-      768: {
-        stagePadding: 100,
-        margin: 10,
-      },
-      1280: {
-        stagePadding: 75,
-        margin: 75,
-      },
-      1920: {
-        stagePadding: 100,
-        margin: 100,
-      },
-    },
-  });
-  $('.manufacturingImagesSlider .product__slider_mobile').owlCarousel({
-    loop: true,
-    nav: true,
-    navText: [
-      '<span class="sr-only">Наступний слайд</span>',
-      '<span class="sr-only">Попередній слайд</span>',
-    ],
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    freeDrag: false,
-    URLhashListener: false,
-    autoplay: false,
-    margin: 10,
-    items: 1,
-    responsive: {
-      0: {
-        stagePadding: 20,
-      },
-      576: {
-        stagePadding: 30,
-      },
-      768: {
-        stagePadding: 100,
-      },
-    },
+  function initManufacturingSliders() {
+    const isMobile = $(window).width() < 1024;
+
+    const $desktopSlider = $('.manufacturingImagesSlider .product__slider');
+    const $mobileSlider = $('.manufacturingImagesSlider .product__slider_mobile');
+
+    // ===== MOBILE =====
+    if (isMobile) {
+      // уничтожаем desktop
+      if ($desktopSlider.hasClass('owl-loaded')) {
+        $desktopSlider.trigger('destroy.owl.carousel');
+        $desktopSlider.removeClass('owl-loaded');
+        $desktopSlider.find('.owl-stage-outer').children().unwrap();
+      }
+
+      // инициализируем mobile
+      if (!$mobileSlider.hasClass('owl-loaded')) {
+        $mobileSlider.owlCarousel({
+          loop: true,
+          nav: true,
+          navText: [
+            '<span class="sr-only">Наступний слайд</span>',
+            '<span class="sr-only">Попередній слайд</span>',
+          ],
+          mouseDrag: true,
+          touchDrag: true,
+          pullDrag: false,
+          freeDrag: false,
+          autoplay: false,
+          margin: 10,
+          items: 1,
+          responsive: {
+            0: { stagePadding: 20 },
+            576: { stagePadding: 30 },
+            768: { stagePadding: 100 },
+          },
+        });
+      }
+
+      // ===== DESKTOP =====
+    } else {
+      // уничтожаем mobile
+      if ($mobileSlider.hasClass('owl-loaded')) {
+        $mobileSlider.trigger('destroy.owl.carousel');
+        $mobileSlider.removeClass('owl-loaded');
+        $mobileSlider.find('.owl-stage-outer').children().unwrap();
+      }
+
+      // инициализируем desktop
+      if (!$desktopSlider.hasClass('owl-loaded')) {
+        $desktopSlider.owlCarousel({
+          loop: true,
+          nav: true,
+          navText: [
+            '<span class="sr-only">Наступний слайд</span>',
+            '<span class="sr-only">Попередній слайд</span>',
+          ],
+          mouseDrag: true,
+          touchDrag: true,
+          pullDrag: false,
+          freeDrag: false,
+          autoplay: false,
+          items: 1,
+          responsive: {
+            0: {
+              stagePadding: 10,
+              margin: 10,
+            },
+            576: {
+              stagePadding: 20,
+              margin: 10,
+            },
+            768: {
+              stagePadding: 100,
+              margin: 10,
+            },
+            1024: {
+              stagePadding: 75,
+              margin: 75,
+            },
+            1920: {
+              stagePadding: 100,
+              margin: 100,
+            },
+          },
+        });
+      }
+    }
+  }
+
+  // первый запуск
+  initManufacturingSliders();
+
+  // resize + rotate
+  $(window).on('resize orientationchange', function () {
+    initManufacturingSliders();
   });
 
   $('.product__slider').owlCarousel({
@@ -247,7 +298,7 @@ $(function () {
         stagePadding: 200,
         items: 1,
       },
-      1280: {
+      1024: {
         margin: 10,
         stagePadding: 0,
         items: 3,
@@ -265,49 +316,61 @@ $(function () {
     },
   });
 
-  if ($(window).width() < 1280) {
-    $('.departments__items').owlCarousel({
-      loop: true,
-      nav: true,
-      navText: [
-        '<span class="sr-only">Наступний слайд</span>',
-        '<span class="sr-only">Попередній слайд</span>',
-      ],
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: false,
-      freeDrag: false,
-      URLhashListener: false,
-      autoplay: false,
-      responsive: {
-        0: {
-          margin: 15,
-          stagePadding: 30,
-          items: 1,
-        },
-        576: {
-          margin: 20,
-          stagePadding: 20,
-          items: 2,
-        },
-        992: {
-          margin: 20,
-          stagePadding: 100,
-          items: 2,
-        },
-        // 1920: {
-        //   margin: 10,
-        //   stagePadding: 200,
-        //   items: 3,
-        // },
-        // 2800: {
-        //   margin: 15,
-        //   stagePadding: 0,
-        //   items: 3,
-        // },
-      },
-    });
+  function initDepartmentsSlider() {
+    const $slider = $('.departments__items');
+    const isMobile = $(window).width() < 1024;
+
+    if (isMobile) {
+      // если еще НЕ инициализирован
+      if (!$slider.hasClass('owl-loaded')) {
+        $slider.owlCarousel({
+          loop: true,
+          nav: true,
+          navText: [
+            '<span class="sr-only">Наступний слайд</span>',
+            '<span class="sr-only">Попередній слайд</span>',
+          ],
+          mouseDrag: true,
+          touchDrag: true,
+          pullDrag: false,
+          freeDrag: false,
+          autoplay: false,
+          responsive: {
+            0: {
+              margin: 15,
+              stagePadding: 30,
+              items: 1,
+            },
+            576: {
+              margin: 20,
+              stagePadding: 20,
+              items: 2,
+            },
+            992: {
+              margin: 20,
+              stagePadding: 100,
+              items: 2,
+            },
+          },
+        });
+      }
+    } else {
+      // если был инициализирован — уничтожаем
+      if ($slider.hasClass('owl-loaded')) {
+        $slider.trigger('destroy.owl.carousel');
+        $slider.removeClass('owl-loaded');
+        $slider.find('.owl-stage-outer').children().unwrap();
+      }
+    }
   }
+
+  // первый запуск
+  initDepartmentsSlider();
+
+  // resize + rotate
+  $(window).on('resize orientationchange', function () {
+    initDepartmentsSlider();
+  });
 
   $('.aboutSlider__slider').owlCarousel({
     loop: true,
@@ -416,7 +479,6 @@ $(function () {
       margin: 10,
     });
   }
-
 
   $('.reviews__slider').owlCarousel({
     loop: true,

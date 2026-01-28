@@ -44,9 +44,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    @include max-fullhd {
+      gap: 20px;
+    }
     @include max-l {
       grid-template-columns: 1fr;
-      gap: 20px;
     }
     & img {
       aspect-ratio: 16 / 9;

@@ -21,6 +21,9 @@
     }
   }
   & .owl-nav {
+    bottom: 0;
+    top: 0;
+    width: 100%;
     @include max-l {
       display: none;
     }

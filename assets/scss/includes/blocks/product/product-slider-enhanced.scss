@@ -1,0 +1,179 @@
+// Добавьте эти стили к существующим или замените секцию &-media
+
+.product {
+  &__slider {
+    // ... ваш существующий код ...
+    
+    &-media {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      height: max-content;
+      
+      // ВАЖНО: Принудительная стабилизация grid
+      width: 100%;
+      position: relative;
+      
+      @include max-fullhd {
+        gap: 10px;
+      }
+      @include max-sm {
+        display: flex;
+        gap: 0;
+      }
+      
+      &:has(video) {
+        grid-template-columns: 1fr 1fr !important; // !important для перезаписи inline стилей
+        
+        // Дополнительная защита от растягивания
+        & > * {
+          min-width: 0; // Критично для предотвращения overflow в grid
+          max-width: 100%;
+        }
+      }
+      
+      &:has(video) .product__slider-images {
+        grid-template-columns: repeat(2, 1fr);
+        
+        // Стабилизация размеров
+        width: 100%;
+        min-width: 0;
+      }
+      
+      // Дополнительная стабилизация для iPad
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        &:has(video) {
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          
+          // Принудительное обновление при изменении ориентации
+          @media (orientation: portrait) {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          
+          @media (orientation: landscape) {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+      }
+      
+      & .owl-stage {
+        height: max-content;
+      }
+      & .owl-stage-outer {
+        height: max-content;
+      }
+      & .owl-item {
+        position: relative;
+        height: max-content;
+      }
+      
+      &.owl-loaded .owl-nav {
+        display: none;
+        @include max-sm {
+          display: flex;
+          position: absolute;
+          top: 0 !important;
+          bottom: 0;
+          width: 100%;
+          justify-content: space-between;
+          opacity: 0.5;
+        }
+        & .owl-prev {
+          @include max-sm {
+            left: 20px;
+            position: relative;
+          }
+        }
+        & .owl-next {
+          @include max-sm {
+            right: 20px;
+            position: relative;
+          }
+        }
+      }
+    }
+    
+    &-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      
+      // Важно для grid stability
+      width: 100%;
+      min-width: 0;
+      
+      @include max-fullhd {
+        gap: 10px;
+      }
+      @include max-l {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include max-sm {
+        display: flex;
+      }
+      & a:nth-child(n + 5) {
+        display: none;
+        @include max-sm {
+          display: block;
+        }
+      }
+      
+      // Стабилизация изображений внутри
+      & a,
+      & img {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
+    
+    &-video {
+      position: relative;
+      
+      // Важно для grid stability
+      width: 100%;
+      min-width: 0;
+      
+      & .videoBlockWrapper {
+        height: 100%;
+        width: 100%;
+      }
+      & video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+      }
+
+      & .play__btn {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+        @include max-fullhd {
+          width: 100px;
+          height: 100px;
+        }
+        @include max-l {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+// Дополнительный фикс специально для iPad
+@supports (-webkit-touch-callout: none) {
+  /* iOS/iPadOS specific */
+  .product__slider-media:has(video) {
+    grid-template-columns: 1fr 1fr !important;
+    
+    & > * {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      flex: none !important;
+    }
+  }
+}

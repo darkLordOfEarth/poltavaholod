@@ -20,34 +20,71 @@ $(function () {
   $(window).on('scroll', checkHeaderScroll);
   $(window).on('load', checkHeaderScroll);
 
-  $('.product__info-desc__btn')
+ $('.product__info-desc__btn')
   .off('click')
   .on('click', function () {
     const $btn = $(this);
-    const $desc = $btn.siblings('p'); // надёжнее чем parent().find
+    const $desc = $btn.siblings('.product__info-desc');
 
     const isOpen = $desc.hasClass('open');
 
     if (isOpen) {
-      // закрываем
       $desc
         .removeClass('open')
-        .slideUp(300, function () {
-          $btn.text('Читати опис');
-          $('.projectAuditExpertise__slider')
-            .trigger('refresh.owl.carousel');
-        });
+        .data('mobile-open', false)
+        .slideUp(300, refreshSlider);
+
+      $btn.text('Читати опис');
     } else {
-      // открываем
       $desc
         .addClass('open')
-        .slideDown(300, function () {
-          $btn.text('Сховати опис');
-          $('.projectAuditExpertise__slider')
-            .trigger('refresh.owl.carousel');
-        });
+        .data('mobile-open', true)
+        .slideDown(300, refreshSlider);
+
+      $btn.text('Сховати опис');
     }
   });
+
+
+function refreshSlider() {
+  $('.projectAuditExpertise__slider').trigger('refresh.owl.carousel');
+}
+
+
+$(window).on('resize orientationchange', function () {
+  const isMobile = $(window).width() <= 1280;
+
+  $('.constructionsList__item-row__bottom').each(function () {
+    const $wrap = $(this);
+    const $desc = $wrap.find('.product__info-desc');
+    const $btn  = $wrap.find('.product__info-desc__btn');
+
+    // 🔑 FIX: если состояние ещё не задано — считаем, что открыто
+    if ($desc.data('mobile-open') === undefined) {
+      $desc.data('mobile-open', true);
+    }
+
+    const wasOpen = $desc.data('mobile-open');
+
+    if (isMobile) {
+      if (wasOpen) {
+        $desc.show().addClass('open');
+        $btn.text('Сховати опис');
+      } else {
+        $desc.hide().removeClass('open');
+        $btn.text('Читати опис');
+      }
+    } else {
+      // desktop — всегда показываем
+      $desc.show().addClass('open');
+      $btn.text('Читати опис');
+    }
+  });
+
+  refreshSlider();
+});
+
+
 
 
   // const headerHeight = $('.header').outerHeight();
