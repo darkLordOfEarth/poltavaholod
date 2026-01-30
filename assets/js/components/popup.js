@@ -74,7 +74,8 @@ $(function () {
     ) {
       $popup.fadeOut();
       $('.popupPartners').find('.play__btn').fadeIn(200);
-      resetPartnersForm()
+      resetPartnersForm();
+      $("html, body").removeClass("ovh");
     }
 
     // Сброс флагов
@@ -86,7 +87,8 @@ $(function () {
   $('.popup__close').on('click', function () {
     $(this).closest('.popup').fadeOut();
     $('.popupPartners').find('.play__btn').fadeIn(200);
-    resetPartnersForm()
+    resetPartnersForm();
+    $("html, body").removeClass("ovh");
   });
 
   // Сброс флага при движении мыши
@@ -105,6 +107,7 @@ $(function () {
       let popupId = $(this).attr('data-popup');
       let targetPopup = $('#' + popupId);
       targetPopup.show();
+      $("html, body").addClass("ovh");
       targetPopup.find('.form').scrollTop(0);
       $('input[name="group"]').val($(this).data('group'));
       $('input[name="video"]').val($(this).data('video'));
@@ -320,6 +323,7 @@ $(function () {
           $('.form__group-file__text_default').show();
         } else {
           alert('Помилка: ' + (response.data || 'Невідома помилка'));
+          $("html, body").removeClass("ovh");
         }
 
         $btn.prop('disabled', false).text('Надіслати заявку');

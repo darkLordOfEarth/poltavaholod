@@ -20,72 +20,58 @@ $(function () {
   $(window).on('scroll', checkHeaderScroll);
   $(window).on('load', checkHeaderScroll);
 
- $('.product__info-desc__btn')
-  .off('click')
-  .on('click', function () {
-    const $btn = $(this);
-    const $desc = $btn.siblings('.product__info-desc');
+  //   $('.product__info-desc__btn')
+  //   .off('click')
+  //   .on('click', function () {
+  //     const $btn = $(this);
+  //     const $desc = $btn.siblings('.product__info-desc');
 
-    const isOpen = $desc.hasClass('open');
+  //     if ($desc.hasClass('open')) {
+  //       // закрываем
+  //       $desc
+  //         .removeClass('open')
+  //         .slideUp(300, refreshSlider);
 
-    if (isOpen) {
-      $desc
-        .removeClass('open')
-        .data('mobile-open', false)
-        .slideUp(300, refreshSlider);
+  //       $btn.text('Читати опис');
+  //     } else {
+  //       // открываем
+  //       $desc
+  //         .addClass('open')
+  //         .slideDown(300, refreshSlider);
 
-      $btn.text('Читати опис');
-    } else {
-      $desc
-        .addClass('open')
-        .data('mobile-open', true)
-        .slideDown(300, refreshSlider);
+  //       $btn.text('Сховати опис');
+  //     }
+  //   });
 
-      $btn.text('Сховати опис');
-    }
-  });
+  // $(window).on('resize orientationchange', function () {
+  //   const isMobile = $(window).width() <= 1280;
 
+  //   $('.constructionsList__item-row__bottom').each(function () {
+  //     const $wrap = $(this);
+  //     const $desc = $wrap.find('.product__info-desc');
+  //     const $btn  = $wrap.find('.product__info-desc__btn');
 
-function refreshSlider() {
-  $('.projectAuditExpertise__slider').trigger('refresh.owl.carousel');
-}
+  //     if (isMobile) {
+  //       // мобильный режим
+  //       if ($desc.hasClass('open')) {
+  //         $desc.show();
+  //         $btn.text('Сховати опис');
+  //       } else {
+  //         $desc.hide();
+  //         $btn.text('Читати опис');
+  //       }
+  //     } else {
+  //       // десктоп — описание всегда видно
+  //       $desc
+  //         .show()
+  //         .removeClass('open');
 
+  //       $btn.text('Читати опис');
+  //     }
+  //   });
 
-$(window).on('resize orientationchange', function () {
-  const isMobile = $(window).width() <= 1280;
-
-  $('.constructionsList__item-row__bottom').each(function () {
-    const $wrap = $(this);
-    const $desc = $wrap.find('.product__info-desc');
-    const $btn  = $wrap.find('.product__info-desc__btn');
-
-    // 🔑 FIX: если состояние ещё не задано — считаем, что открыто
-    if ($desc.data('mobile-open') === undefined) {
-      $desc.data('mobile-open', true);
-    }
-
-    const wasOpen = $desc.data('mobile-open');
-
-    if (isMobile) {
-      if (wasOpen) {
-        $desc.show().addClass('open');
-        $btn.text('Сховати опис');
-      } else {
-        $desc.hide().removeClass('open');
-        $btn.text('Читати опис');
-      }
-    } else {
-      // desktop — всегда показываем
-      $desc.show().addClass('open');
-      $btn.text('Читати опис');
-    }
-  });
-
-  refreshSlider();
-});
-
-
-
+  //   refreshSlider();
+  // });
 
   // const headerHeight = $('.header').outerHeight();
 
@@ -413,69 +399,79 @@ $('.product__slider-media').owlCarousel({
     }
 });
 */
-  if ($(window).width() <= 576) {
-    let startX = 0;
-    let startY = 0;
+  // if ($(window).width() <= 576) {
+  //   let startX = 0;
+  //   let startY = 0;
 
-    $('.projectAuditExpertise__slide').on('touchstart', function (e) {
-      const touch = e.originalEvent.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-    });
+  //   $('.projectAuditExpertise__slide').on('touchstart', function (e) {
+  //     const touch = e.originalEvent.touches[0];
+  //     startX = touch.clientX;
+  //     startY = touch.clientY;
+  //   });
 
-    $('.projectAuditExpertise__slide').on('touchmove', function (e) {
-      const touch = e.originalEvent.touches[0];
-      const diffX = Math.abs(touch.clientX - startX);
-      const diffY = Math.abs(touch.clientY - startY);
+  //   $('.projectAuditExpertise__slide').on('touchmove', function (e) {
+  //     const touch = e.originalEvent.touches[0];
+  //     const diffX = Math.abs(touch.clientX - startX);
+  //     const diffY = Math.abs(touch.clientY - startY);
 
-      const $slider = $(this).closest('.projectAuditExpertise__slider');
-      const owl = $slider.data('owl.loaded');
-      if (!owl) return;
+  //     const $slider = $(this).closest('.projectAuditExpertise__slider');
+  //     const owl = $slider.data('owl.loaded');
+  //     if (!owl) return;
 
-      // 👉 вертикаль — отключаем drag, страница скроллится
-      if (diffY > diffX) {
-        owl.options.touchDrag = false;
-        owl.options.mouseDrag = false;
-        return;
-      }
+  //     // 👉 вертикаль — отключаем drag, страница скроллится
+  //     if (diffY > diffX) {
+  //       owl.options.touchDrag = false;
+  //       owl.options.mouseDrag = false;
+  //       return;
+  //     }
 
-      // 👉 горизонталь — включаем drag
-      owl.options.touchDrag = true;
-      owl.options.mouseDrag = true;
-    });
+  //     // 👉 горизонталь — включаем drag
+  //     owl.options.touchDrag = true;
+  //     owl.options.mouseDrag = true;
+  //   });
 
-    $('.projectAuditExpertise__slide').on('touchend touchcancel', function () {
-      const $slider = $(this).closest('.projectAuditExpertise__slider');
-      const owl = $slider.data('owl.carousel');
-      if (!owl) return;
+  //   $('.projectAuditExpertise__slide').on('touchend touchcancel', function () {
+  //     const $slider = $(this).closest('.projectAuditExpertise__slider');
+  //     const owl = $slider.data('owl.carousel');
+  //     if (!owl) return;
 
-      owl.options.touchDrag = true;
-      owl.options.mouseDrag = true;
-    });
-  }
+  //     owl.options.touchDrag = true;
+  //     owl.options.mouseDrag = true;
+  //   });
+  // }
 
   function updateNavPositionViewport($slider) {
-    const $slideTop = $slider.find('.owl-item.active .projectAuditExpertise__slide-top').first();
+    if ($(window).width() >= 1024) {
+      const $slideTop = $slider.find('.owl-item.active .projectAuditExpertise__slide-top').first();
 
-    const $nav = $slider.find('.owl-nav');
+      const $nav = $slider.find('.owl-nav');
 
-    if (!$slideTop.length || !$nav.length) return;
+      if (!$slideTop.length || !$nav.length) return;
 
-    const slideRect = $slideTop[0].getBoundingClientRect();
-    const slideHeight = $slideTop.outerHeight();
-    const navHeight = $nav.outerHeight();
+      const slideRect = $slideTop[0].getBoundingClientRect();
+      const slideHeight = $slideTop.outerHeight();
+      const navHeight = $nav.outerHeight();
 
-    const top = slideRect.top + slideHeight / 2 - navHeight / 2;
+      const top = slideRect.top + slideHeight / 2 - navHeight / 2;
 
-    $nav.css({
-      position: 'fixed',
-      top: `${top}px`,
-      left: '0',
-      right: '0',
-      pointerEvents: 'none',
-    });
+      $nav.css({
+        position: 'fixed',
+        top: `${top}px`,
+        left: '0',
+        right: '0',
+        pointerEvents: 'none',
+      });
 
-    $nav.find('button').css('pointer-events', 'auto');
+      $nav.find('button').css('pointer-events', 'auto');
+    }
+    // else {
+    //   $nav.css({
+    //     position: 'absolute',
+    //     top: `auto`,
+    //     right: '0',
+    //     pointerEvents: 'none',
+    //   });
+    // }
   }
   const $slider = $('.projectAuditExpertise__slider');
 
@@ -498,7 +494,11 @@ $('.product__slider-media').owlCarousel({
     updateNavPositionViewport($slider);
   });
 
-  $(window).on('resize orientationchange scroll', function () {
+  $(window).on('resize orientationchange', function () {
+    if (!shouldUpdate()) return;
+    setTimeout(()=> {updateNavPositionViewport($slider)}, 250)
+  });
+  $(window).on('scroll', function () {
     if (!shouldUpdate()) return;
     updateNavPositionViewport($slider);
   });

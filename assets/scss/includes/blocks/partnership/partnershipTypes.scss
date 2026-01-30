@@ -42,22 +42,10 @@
       &_top {
         flex: 1 0 auto;
         & img {
-          max-height: 432px;
+          aspect-ratio: 16 / 9;
           height: auto;
           object-fit: cover;
           cursor: pointer;
-          @include max-fullhd {
-            max-height: 288px;
-          }
-          @include max-xxl {
-            max-height: 236px;
-          }
-          @include max-l {
-            max-height: 257px;
-          }
-          @include max-sm {
-            max-height: 182px;
-          }
         }
       }
       &_bottom {
@@ -85,7 +73,7 @@
           margin: 20px auto 0;
           max-width: 350px;
         }
-        @include max-xl {
+        @include max-l {
           max-width: 100%;
         }
         @include max-sm {

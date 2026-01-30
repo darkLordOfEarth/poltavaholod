@@ -29,6 +29,9 @@
       margin-top: 82px;
       padding: 0;
     }
+    & > .owl-stage-outer {
+      // height: max-content !important;
+    }
     & > .owl-stage-outer > .owl-stage > .owl-item {
       height: max-content !important;
     }
@@ -46,7 +49,9 @@
         padding: 0 20px;
       }
       @include max-l {
-        top: -68px;
+        position: absolute !important;
+        top: -68px !important;
+        left: auto !important;
         padding: 0;
       }
       @include max-sm {
@@ -68,6 +73,7 @@
     @include max-lg {
       touch-action: pan-y;
     }
+    
     &-group {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -105,7 +111,7 @@
     }
     & .product__info-desc__btn {
       display: none;
-      @include max-sm {
+      @include max-l {
         display: block;
         margin-top: 20px;
       }

@@ -414,71 +414,142 @@ $(function () {
     },
   });
 
-  $('.projectAuditExpertise__slider').owlCarousel({
-    loop: true,
-    nav: true,
-    navText: [
-      '<span class="sr-only">Наступний слайд</span>',
-      '<span class="sr-only">Попередній слайд</span>',
-    ],
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    freeDrag: false,
-    URLhashListener: false,
-    autoplay: false,
-    autoHeight: true,
-    items: 1,
-    responsive: {
-      0: {
-        mouseDrag: false,
-        touchDrag: false,
-      },
-      576: {
-        mouseDrag: true,
-        touchDrag: true,
-      },
-    },
-  });
-
   var $mainOwl = $('.projectAuditExpertise__slider');
+  var $topSliders = $('.projectAuditExpertise__slide-top');
 
-  $mainOwl.owlCarousel({
-    items: 1,
-    loop: true,
-    nav: true,
-    dots: true,
-    autoHeight: true,
-  });
+  var MOBILE_QUERY = window.matchMedia('(max-width: 1280px)');
+  var isMobile = null;
 
-  // Пересчитать высоту один раз после загрузки всех картинок в слайде
-  $mainOwl.find('img').each(function () {
-    if (this.complete) return; // уже загружена
-    $(this).on('load', function () {
-      $mainOwl.trigger('refresh.owl.carousel'); // обновление один раз
-    });
-  });
+  /* =========================
+     MAIN SLIDER
+  ========================= */
 
-  if ($(window).width() <= 576) {
-    $('.projectAuditExpertise__slide-top').owlCarousel({
+  function initMainSlider() {
+    if (!$mainOwl.length || $mainOwl.hasClass('owl-loaded')) return;
+
+    $mainOwl.owlCarousel({
+      items: 1,
       loop: true,
       nav: true,
+      dots: true,
+      autoHeight: true,
       navText: [
         '<span class="sr-only">Наступний слайд</span>',
         '<span class="sr-only">Попередній слайд</span>',
       ],
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: false,
-      freeDrag: false,
-      URLhashListener: false,
-      autoplay: false,
-      autoHeight: true,
-      items: 1,
-      stagePadding: 30,
-      margin: 10,
+      responsive: {
+        0: {
+          mouseDrag: false,
+          touchDrag: false,
+        },
+        992: {
+          mouseDrag: true,
+          touchDrag: true,
+        },
+      },
+    });
+
+    // обновление высоты после загрузки картинок
+    $mainOwl.find('img').each(function () {
+      if (this.complete) return;
+      $(this).one('load', function () {
+        $mainOwl.trigger('refresh.owl.carousel');
+      });
     });
   }
+  initMainSlider();
+  $(window).on('resize', function () {
+    if ($(window).width() <= 576) {
+      initTopSliders();
+    } else {
+      destroyTopSliders();
+      initMainSlider()
+    }
+  });
+  /* =========================
+     TOP SLIDER (MOBILE ONLY)
+  ========================= */
+
+  function initTopSliders() {
+    $topSliders.each(function () {
+      var $s = $(this);
+
+      if ($s.hasClass('owl-loaded')) return;
+
+      $s.owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true,
+        autoHeight: true,
+        stagePadding: 30,
+        margin: 10,
+        navText: [
+          '<span class="sr-only">Наступний слайд</span>',
+          '<span class="sr-only">Попередній слайд</span>',
+        ],
+      });
+    });
+  }
+  if ($(window).width() <= 576) {
+    initTopSliders();
+  }
+
+  function destroyTopSliders() {
+    $topSliders.each(function () {
+      var $s = $(this);
+
+      if (!$s.hasClass('owl-loaded')) return;
+
+      $s.trigger('destroy.owl.carousel');
+
+      // вернуть DOM в исходное состояние
+      $s.removeClass('owl-loaded owl-hidden');
+      $s.find('.owl-stage-outer').children().unwrap();
+      $s.find('.owl-stage').children().unwrap();
+    });
+  }
+
+  /* =========================
+     MODE SWITCHER
+  ========================= */
+
+  // function updateTopSliders() {
+  //   var mobileNow = MOBILE_QUERY.matches;
+
+  //   if (mobileNow === isMobile) return;
+  //   isMobile = mobileNow;
+
+  //   if (mobileNow) {
+  //     initTopSliders();
+  //   } else {
+  //     destroyTopSliders();
+  //   }
+  // }
+
+  /* =========================
+     INIT
+  ========================= */
+
+  // updateTopSliders();
+
+  // смена брейкпоинта
+  // if (MOBILE_QUERY.addEventListener) {
+  //   MOBILE_QUERY.addEventListener('change', updateTopSliders);
+  // } else {
+  //   MOBILE_QUERY.addListener(updateTopSliders);
+  // }
+
+  // Safari / Android fallback
+  // window.addEventListener('orientationchange', function () {
+  //   setTimeout(updateTopSliders, 300);
+  //   if($(window).width() <= 1280) {
+
+  //     setTimeout(destroyTopSliders, 300);
+  //   } else if($(window).width() <= 992) {
+  //     setTimeout(initTopSliders, 300);
+  //   }
+  //   initMainSlider();
+  // });
 
   $('.reviews__slider').owlCarousel({
     loop: true,

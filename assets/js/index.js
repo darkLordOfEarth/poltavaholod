@@ -12,3 +12,5 @@ const btnBack = require('./components/btnBack.js');
 const oneMoreScript = require('./components/oneMoreScript.js');
 const reviews_landscape_scroll = require('./components/reviews_landscape_scroll.js');
 const product_slider_fix = require('./components/product-slider-fix.js');
+// const projectniy_audit_visibility_text = require('./components/projectniy_audit_visibility_text.js');
+const visibility_text = require('./components/visibility_text.js');

@@ -1,21 +1,24 @@
 .main {
-  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
   background-size: cover;
   display: flex;
   align-items: center;
   background-position-x: 40%;
   position: relative;
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  overscroll-behavior: none;
   &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    inset: 0;  
     z-index: 0;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
+    touch-action: none;
   }
   @include max-lg {
     background-position-x: 55%;

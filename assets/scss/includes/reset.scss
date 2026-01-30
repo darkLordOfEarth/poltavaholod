@@ -170,6 +170,20 @@ button {
 .hide {
   display: none !important;
 }
+.desktop {
+  @include max-sm {
+    display: none !important;
+  }
+}
+.mobile {
+  display: none !important;
+  @include max-sm {
+    display: block !important;
+  }
+}
+.ovh {
+  overflow: hidden !important;
+}
 .d__block {
   display: block !important;
 }
@@ -404,7 +418,9 @@ select::-ms-expand {
   right: 0;
   left: 0;
   padding: 45px 0;
-  transition: height 0.3s ease, opacity 0.3s ease;
+  transition:
+    height 0.3s ease,
+    opacity 0.3s ease;
   overflow: hidden;
   pointer-events: none;
   @include max-fullhd {
@@ -641,7 +657,7 @@ select::-ms-expand {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 0;
   pointer-events: none;
   cursor: pointer;
   @include max-xl {
@@ -711,10 +727,9 @@ select::-ms-expand {
     transition: 0.5s;
     @include max-l {
       transform: scale(1) rotate(180deg);
-      
     }
   }
-  &:active{
+  &:active {
     @include max-l {
       transform: scale(1.1) rotate(180deg);
     }
