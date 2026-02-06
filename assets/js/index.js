@@ -14,3 +14,4 @@ const reviews_landscape_scroll = require('./components/reviews_landscape_scroll.
 const product_slider_fix = require('./components/product-slider-fix.js');
 // const projectniy_audit_visibility_text = require('./components/projectniy_audit_visibility_text.js');
 const visibility_text = require('./components/visibility_text.js');
+const loader = require('./components/loader.js');

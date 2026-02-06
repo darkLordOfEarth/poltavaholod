@@ -118,6 +118,10 @@ $(function () {
           .text()
           .trim(),
       );
+      setTimeout(()=>{
+        $(".popup__title").click();
+      }, 500)
+      
     });
 
   $('[data-group]').on('click', function (e) {

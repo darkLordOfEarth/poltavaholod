@@ -24,6 +24,7 @@
     }
     & span:last-child {
       color: #0d0d0d;
+      text-align: right;
     }
     & svg {
       @include max-fullhd {

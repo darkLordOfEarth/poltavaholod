@@ -114,8 +114,24 @@ body {
   font-size: 1rem;
   position: relative;
   background-color: #f0f0ef;
-  scrollbar-gutter: stable;
+  // scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0);
+}
+body::-webkit-scrollbar {
+    height: 6px;
+    width: 8px;
+    background: #fff;
+    position: absolute;
+    right: 0;
+
+}
+body::-webkit-scrollbar-thumb {
+    background: #CBCBCB;
+    cursor: grab;
 }
 ol,
 ul {
@@ -282,10 +298,7 @@ button {
 .catalog__active {
   margin-top: 11px !important;
 }
-::-webkit-scrollbar {
-  width: 0px;
-  background: rgba(255, 255, 255, 0);
-}
+
 .sectionTitle {
   font-weight: 700;
   font-size: 72px;
@@ -573,24 +586,24 @@ select::-ms-expand {
   line-height: 84px;
   text-align: center;
   color: #cbcbcb;
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto;
   @include max-fullhd {
   }
   @include max-fullhd {
     font-size: 48px;
     line-height: 56px;
-    max-width: 802px;
+    // max-width: 802px;
   }
   @include max-xxl {
     font-size: 32px;
     line-height: 40px;
-    max-width: 535px;
+    // max-width: 535px;
   }
   @include max-l {
     font-size: 24px;
     line-height: 32px;
-    max-width: 420px;
+    // max-width: 420px;
   }
   @include max-sm {
     font-size: 20px;

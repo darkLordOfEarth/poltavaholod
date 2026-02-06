@@ -18,7 +18,7 @@
     display: flex !important;
   }
   @include max-xl {
-    height: 100vh !important;
+    height: 100svh !important;
   }
   &__box {
     padding: 50px 0;
@@ -39,7 +39,7 @@
     background-clip: padding-box;
     display: flex;
     flex-direction: column;
-
+    min-height: 0;
     @include max-fullhd {
       border-radius: 20px;
       max-width: 650px;
@@ -327,6 +327,9 @@
     }
   }
   &__socials {
+    justify-content: center;
+  }
+  &__socials .socials {
     margin-top: 30px;
     justify-content: center;
     gap: 60px;

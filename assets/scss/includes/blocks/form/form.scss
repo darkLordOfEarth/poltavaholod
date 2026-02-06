@@ -3,17 +3,27 @@
   flex-direction: column;
   gap: 30px;
   height: 100%;
+  height: auto;
   position: relative;
   flex: 1 1 auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 20px;
-  
+  // padding-right: env(safe-area-inset-right, 20);
+   // Скрываем стандартный скроллбар
+  scrollbar-width: none; // Firefox
+  min-height: 0; // 🔥 критично для iOS
+  flex: 1 1 auto;
   @include max-fullhd {
     gap: 20px;
   }
+  @supports (-webkit-touch-callout: none) {
   
-  // Скрываем стандартный скроллбар
-  scrollbar-width: none; // Firefox
+    padding-right: 20px; // или меньше
+  
+}
+
+ 
+  
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari
   }

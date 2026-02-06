@@ -88,13 +88,13 @@
   & + .text-slogan {
     // padding-bottom: 150px;
     margin-bottom: 150px;
-    max-width: 1461px;
+    // max-width: 1461px;
     @include max-fullhd {
       margin-bottom: 100px;
-      max-width: 974px;
+      // max-width: 974px;
     }
     @include max-xxl {
-      max-width: 650px;
+      // max-width: 650px;
     }
     @include max-l {
       margin-bottom: 50px;

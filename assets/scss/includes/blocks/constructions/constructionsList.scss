@@ -20,11 +20,19 @@
       @include max-md {
         gap: 0;
       }
+      &__title .constructionsList__item-row__top {
+        grid-template-areas: 'left right';
+        @include max-md {
+          display: flex;
+          gap: 0;
+        }
+      }
       &__top {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas: 'video char';
         gap: 75px;
+        position: relative;
         @include max-fullhd {
           gap: 50px;
         }
@@ -37,8 +45,8 @@
         @include max-md {
           grid-template-columns: 1fr;
           grid-template-areas:
-          "video"
-          "char";
+            'video'
+            'char';
         }
         & .videoBlock {
           grid-area: video;
@@ -76,19 +84,30 @@
             position: absolute;
             left: 0;
             right: 0;
+            top: 100%;
           }
           @include max-md {
             margin: 20px auto 0;
             position: relative;
             left: 0;
             right: 0;
+            top: 0;
           }
         }
       }
       &__bottom {
         .product__info-desc {
           @include max-l {
-            // display: block;
+            // display: none;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            transition: max-height 300ms ease;
+            &.is-open {
+              -webkit-line-clamp: unset;
+              overflow: visible;
+            }
           }
         }
       }
@@ -101,21 +120,25 @@
       }
       @include max-md {
         grid-template-areas:
-          "video"
-          "char";
+          'video'
+          'char';
         grid-template-columns: 1fr;
       }
+    }
+    &:nth-child(even) .constructionsList__item-row__title .constructionsList__item-row__top {
+      display: flex;
+      gap: 0;
     }
   }
   & .text-slogan {
     margin-top: 150px;
-    max-width: 1550px;
+    // max-width: 1550px;
     @include max-fullhd {
       margin-top: 100px;
-      max-width: 1024px;
+      // max-width: 1024px;
     }
     @include max-xxl {
-      max-width: 683px;
+      // max-width: 683px;
     }
     @include max-md {
       max-width: 100%;
