@@ -35,7 +35,10 @@
     &-item {
       position: relative;
       display: block;
+      background: linear-gradient(180deg, transparent 37.22%, rgba(0, 0, 0, .7) 103.98%);
+    display: flex;
       & img {
+        z-index: -1;
       }
       & span {
         position: absolute;

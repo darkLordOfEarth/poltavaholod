@@ -2,6 +2,14 @@ $(function () {
   // var windowWidth = window.innerWidth;
   // var windowHeight = window.innerHeight;
   // alert('width:' + windowWidth + ' ' + 'height:' + windowHeight);
+  document.addEventListener('click', function (e) {
+    const el = e.target;
+
+    console.log('CLICKED ELEMENT:', el);
+    console.log('TAG:', el.tagName);
+    console.log('CLASSES:', el.className);
+    console.log('ID:', el.id || '—');
+  });
 
   function checkHeaderScroll() {
     if ($(window).scrollTop() > 50) {
@@ -19,76 +27,6 @@ $(function () {
 
   $(window).on('scroll', checkHeaderScroll);
   $(window).on('load', checkHeaderScroll);
-
-  //   $('.product__info-desc__btn')
-  //   .off('click')
-  //   .on('click', function () {
-  //     const $btn = $(this);
-  //     const $desc = $btn.siblings('.product__info-desc');
-
-  //     if ($desc.hasClass('open')) {
-  //       // закрываем
-  //       $desc
-  //         .removeClass('open')
-  //         .slideUp(300, refreshSlider);
-
-  //       $btn.text('Читати опис');
-  //     } else {
-  //       // открываем
-  //       $desc
-  //         .addClass('open')
-  //         .slideDown(300, refreshSlider);
-
-  //       $btn.text('Сховати опис');
-  //     }
-  //   });
-
-  // $(window).on('resize orientationchange', function () {
-  //   const isMobile = $(window).width() <= 1280;
-
-  //   $('.constructionsList__item-row__bottom').each(function () {
-  //     const $wrap = $(this);
-  //     const $desc = $wrap.find('.product__info-desc');
-  //     const $btn  = $wrap.find('.product__info-desc__btn');
-
-  //     if (isMobile) {
-  //       // мобильный режим
-  //       if ($desc.hasClass('open')) {
-  //         $desc.show();
-  //         $btn.text('Сховати опис');
-  //       } else {
-  //         $desc.hide();
-  //         $btn.text('Читати опис');
-  //       }
-  //     } else {
-  //       // десктоп — описание всегда видно
-  //       $desc
-  //         .show()
-  //         .removeClass('open');
-
-  //       $btn.text('Читати опис');
-  //     }
-  //   });
-
-  //   refreshSlider();
-  // });
-
-  // const headerHeight = $('.header').outerHeight();
-
-  // $('a[href^="#"]').on('click', function (e) {
-  //   e.preventDefault();
-
-  //   const target = $($.attr(this, 'href'));
-
-  //   if (target.length) {
-  //     $('html, body').animate(
-  //       {
-  //         scrollTop: target.offset().top - headerHeight + 50,
-  //       },
-  //       200,
-  //     );
-  //   }
-  // });
 
   $('.main-navigation a').each(function () {
     const $link = $(this);
@@ -194,24 +132,6 @@ $(function () {
     }
   });
 
-  // function setPositionOwlNav() {
-  //   let mediaHeight = $('.product__slider-media').outerHeight();
-  //   let owlNavHeight = $('.product__slider .owl-nav').outerHeight();
-  //   let productInfo = $('.product__slider .product__info').outerHeight();
-
-  //   let currentPosition = (mediaHeight - owlNavHeight) / 2;
-
-  //   $('.product__slider .owl-nav').css('top', -productInfo - (owlNavHeight / 2) - 10);
-  // }
-
-  // $(window).on('resize', function () {
-  //   setPositionOwlNav();
-  // });
-
-  // // обязательно вызвать при первой загрузке
-  // $(window).on('load', function () {
-  //   setPositionOwlNav();
-  // });
   function setOwlNavToMediaCenter() {
     if ($(window).width() > 1280) {
       const $slider = $('.product__slider');
@@ -240,30 +160,6 @@ $(function () {
   $(window).on('resize load', setOwlNavToMediaCenter);
 
   if ($(window).width() <= 576) {
-    // $(document).on('focus', 'input, textarea', function () {
-    //   $('body').addClass('no-scroll');
-    // });
-
-    // $(document).on('blur', 'input, textarea', function () {
-    //   $('body').removeClass('no-scroll');
-    // });
-
-    // if (window.visualViewport) {
-    //   window.visualViewport.addEventListener('resize', () => {
-    //     // Компенсировать изменение размера
-    //     document.body.style.height = `${window.visualViewport.height}px`;
-    //   });
-    // }
-
-    // document.querySelectorAll('input, textarea').forEach((input) => {
-    //   input.addEventListener(
-    //     'focus',
-    //     (e) => {
-    //       window.scrollTo(0, 0);
-    //     },
-    //     { passive: false },
-    //   );
-    // });
     $('.product__slider-media').each(function () {
       const $media = $(this);
       const items = [];
@@ -305,53 +201,6 @@ $(function () {
     });
   }
 
-  //   const $outer = $('.product .product__slider');
-
-  //   let innerDragged = false;
-
-  //   $('.product__slider-media')
-  //     .on('touchstart mousedown', function () {
-  //       innerDragged = false;
-
-  //       const outerOwl = $outer.data('owl.carousel');
-  //       if (!outerOwl) return;
-
-  //       outerOwl.options.touchDrag = false;
-  //       outerOwl.options.mouseDrag = false;
-  //     })
-  //     .on('touchmove mousemove', function () {
-  //       innerDragged = true;
-  //     })
-  //     .on('touchend mouseup touchcancel mouseleave', function () {
-  //       const outerOwl = $outer.data('owl.carousel');
-  //       if (!outerOwl) return;
-
-  //       // небольшая задержка, иначе Owl ловит инерцию
-  //       setTimeout(() => {
-  //         outerOwl.options.touchDrag = true;
-  //         outerOwl.options.mouseDrag = true;
-  //       }, 50);
-  //     });
-
-  //   // 🔒 БЛОКИРУЕМ КЛИК ПОСЛЕ СВАЙПА (чтобы Fancybox не открывался)
-  //   $(document).on(
-  //     'click',
-  //     '.product__slider-media a.gallery-item, .product__slider-media .video-fancybox-trigger',
-  //     function (e) {
-  //       if (innerDragged) {
-  //         e.preventDefault();
-  //         e.stopImmediatePropagation();
-  //         innerDragged = false;
-  //       }
-  //     },
-  //   );
-  //   $('.product__slider-media').on('touchstart touchmove mousedown mousemove', function (e) {
-  //     e.stopPropagation();
-  // });
-
-  // Рішення 1: Зупинка спливання подій для внутрішніх слайдерів
-
-  // Знаходимо всі внутрішні слайдери
   $('.product__slider-media').each(function () {
     var $innerSlider = $(this);
 
@@ -385,60 +234,6 @@ $(function () {
       $outerSlider.data('owl.carousel').settings.touchDrag = true;
     });
   });
-
-  // Рішення 2: При ініціалізації слайдерів (якщо ви контролюєте їх ініціалізацію)
-  // Додайте це до коду ініціалізації внутрішнього слайдера:
-  /*
-$('.product__slider-media').owlCarousel({
-    // ваші налаштування...
-    onDrag: function(event) {
-        event.stopPropagation();
-    },
-    onDragged: function(event) {
-        event.stopPropagation();
-    }
-});
-*/
-  // if ($(window).width() <= 576) {
-  //   let startX = 0;
-  //   let startY = 0;
-
-  //   $('.projectAuditExpertise__slide').on('touchstart', function (e) {
-  //     const touch = e.originalEvent.touches[0];
-  //     startX = touch.clientX;
-  //     startY = touch.clientY;
-  //   });
-
-  //   $('.projectAuditExpertise__slide').on('touchmove', function (e) {
-  //     const touch = e.originalEvent.touches[0];
-  //     const diffX = Math.abs(touch.clientX - startX);
-  //     const diffY = Math.abs(touch.clientY - startY);
-
-  //     const $slider = $(this).closest('.projectAuditExpertise__slider');
-  //     const owl = $slider.data('owl.loaded');
-  //     if (!owl) return;
-
-  //     // 👉 вертикаль — отключаем drag, страница скроллится
-  //     if (diffY > diffX) {
-  //       owl.options.touchDrag = false;
-  //       owl.options.mouseDrag = false;
-  //       return;
-  //     }
-
-  //     // 👉 горизонталь — включаем drag
-  //     owl.options.touchDrag = true;
-  //     owl.options.mouseDrag = true;
-  //   });
-
-  //   $('.projectAuditExpertise__slide').on('touchend touchcancel', function () {
-  //     const $slider = $(this).closest('.projectAuditExpertise__slider');
-  //     const owl = $slider.data('owl.carousel');
-  //     if (!owl) return;
-
-  //     owl.options.touchDrag = true;
-  //     owl.options.mouseDrag = true;
-  //   });
-  // }
 
   function updateNavPositionViewport($slider) {
     if ($(window).width() >= 1024) {
@@ -496,7 +291,9 @@ $('.product__slider-media').owlCarousel({
 
   $(window).on('resize orientationchange', function () {
     if (!shouldUpdate()) return;
-    setTimeout(()=> {updateNavPositionViewport($slider)}, 250)
+    setTimeout(() => {
+      updateNavPositionViewport($slider);
+    }, 250);
   });
   $(window).on('scroll', function () {
     if (!shouldUpdate()) return;

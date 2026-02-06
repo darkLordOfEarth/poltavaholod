@@ -20,6 +20,11 @@
       overflow: hidden;
       padding-top: 56.25%;
       width: 100%;
+      background: linear-gradient(180deg, transparent 37.22%, rgba(0, 0, 0, 0.7) 103.98%);
+      display: flex;
+      & img {
+        z-index: -1;
+      }
       & img:first-child {
         height: 100%;
         left: 0;

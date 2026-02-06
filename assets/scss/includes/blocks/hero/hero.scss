@@ -1,7 +1,6 @@
 .hero {
   height: 100svh;
-  min-height: 100svh;
-  background-size: cover;
+  // background-size: cover;
   display: flex;
   align-items: center;
   background-position-x: 40%;
@@ -13,14 +12,31 @@
     top: 0;
     left: 0;
     width: 100%;
-    inset: 0;  
-    z-index: 0;
+    inset: 0;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
-    touch-action: none;
   }
   @include max-lg {
     background-position-x: 55%;
+  }
+  &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    z-index: 0;
+    object-fit: cover;
+    object-position: 40%;
+    transform: translateZ(0);
+    @include max-lg {
+      object-position: 55%;
+    }
+  }
+  & > *:not(.main__bg, .btnBack, .hero__main-slider, .hero__main-slider-nav-additional) {
+    position: relative;
+    z-index: 2;
   }
   &__main-slider {
     position: absolute;
@@ -43,6 +59,9 @@
       @include max-l {
         display: none !important;
       }
+    }
+    & + .container {
+      pointer-events: none;
     }
     & .slick-dots {
       gap: 8px;
@@ -117,7 +136,7 @@
         font-size: 24px;
         line-height: 33px;
         padding: 0 36px !important;
-         @include max-fullhd {
+        @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
         }
@@ -126,7 +145,7 @@
         font-size: 30px;
         line-height: 42px;
         color: #cbcbcb;
-        
+
         @include max-fullhd {
           font-size: 20px;
           line-height: 28px;
@@ -139,7 +158,7 @@
       }
       & .slick-list {
         overflow: hidden;
-        height: 200px !important; 
+        height: 200px !important;
         margin-top: 0 !important;
         @include max-fullhd {
           height: 160px !important;
@@ -166,7 +185,7 @@
       &::before {
         content: '';
         position: absolute;
-        left: 0; 
+        left: 0;
         width: 4px;
         height: 25px;
         background: #a3a3a3;
@@ -212,6 +231,9 @@
       }
       & .slick-slide {
         cursor: pointer;
+      }
+      & + .container {
+        pointer-events: none;
       }
     }
     & img {

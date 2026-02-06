@@ -1,12 +1,10 @@
 .main {
   height: 100svh;
-  min-height: 100svh;
-  background-size: cover;
+  // background-size: cover;
   display: flex;
   align-items: center;
   background-position-x: 40%;
   position: relative;
-  // overflow-x: hidden;
   overscroll-behavior: none;
   &::after {
     content: '';
@@ -14,14 +12,32 @@
     top: 0;
     left: 0;
     width: 100%;
-    inset: 0;  
-    z-index: 0;
+    inset: 0;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
-    touch-action: none;
   }
   @include max-lg {
     background-position-x: 55%;
+  }
+  
+  &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    z-index: 0;
+    object-fit: cover;
+    object-position: 40%;
+    transform: translateZ(0);
+    @include max-lg {
+      object-position: 55%;
+    }
+  }
+  & > *:not(.main__bg, .btnBack, .hero__main-slider, .hero__main-slider-nav-additional) {
+    position: relative;
+    z-index: 2;
   }
   &__logo {
     height: auto;
@@ -80,7 +96,6 @@
         line-height: 34px;
       }
     }
-    
   }
   &__text {
     font-weight: 600;
