@@ -14,17 +14,15 @@
     border-bottom: solid 1px #4d4d4d;
     gap: 7%;
     overflow: hidden;
-    // @include max-xl {
-    //   grid-template-columns: repeat(2, 1fr);
-    //   padding: 40px 0 30px;
-    // }
     @include max-xl {
       grid-template-columns: 1fr 1fr;
-      padding: 40px 0 30px;
+      grid-template-rows: 1fr 1fr;
+      padding: 40px 0 0;
       gap: 20px;
     }
     @include max-lg {
       grid-template-columns: 1fr;
+      grid-template-rows: auto;
       gap: 40px;
     }
   }
@@ -67,9 +65,9 @@
       // }
     }
   }
-  &__menu {
-    display: flex;
-    flex-direction: column;
+  &__menu-wrap {
+    display: grid;
+    // flex-direction: column;
     gap: 30px;
     @include max-bigScreen {
       gap: 20px;
@@ -162,6 +160,9 @@
     gap: 60px;
     @include max-bigScreen {
       gap: 40px;
+    }
+    @include max-xl {
+      margin: auto;
     }
     @include max-lg {
       grid-row-start: 2;

@@ -26,7 +26,7 @@
     top: 0;
     width: 100%;
     height: 100svh;
-    z-index: 0;
+    z-index: -1;
     object-fit: cover;
     object-position: 40%;
     transform: translateZ(0);
@@ -141,7 +141,9 @@
           line-height: 22px;
         }
       }
-      & .slick-current.slick-center .hero__title-misc {
+      & .slick-current .hero__title-misc,
+      .slick-center .hero__title-misc,
+      .slick-current.slick-center .hero__title-misc {
         font-size: 30px;
         line-height: 42px;
         color: #cbcbcb;
@@ -237,14 +239,15 @@
       }
     }
     & img {
-      height: 100vh;
+      height: 100svh;
       object-fit: cover;
     }
   }
   &__content {
     display: flex;
     align-items: flex-start;
-    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     justify-content: center;
     width: 100%;
     position: relative;

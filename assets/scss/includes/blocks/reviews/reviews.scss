@@ -14,7 +14,7 @@
   height: max-content;
   width: 100%;
   max-width: 1800px;
-  z-index: 0;
+  z-index: 2;
   @include max-preBigScreen {
     max-width: 1440px;
   }
@@ -93,6 +93,7 @@
     position: relative;
     overflow: hidden;
     scrollbar-width: none;
+    pointer-events: all;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -297,6 +298,7 @@
         }
         & a {
           position: relative;
+          pointer-events: all;
           &:nth-child(n + 4) {
             display: none;
           }

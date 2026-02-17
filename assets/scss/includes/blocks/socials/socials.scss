@@ -16,6 +16,7 @@
     max-width: 100%;
   }
   &__icon {
+    display: flex;
     & img {
       width: 42px;
       height: 42px;
@@ -23,6 +24,15 @@
         width: 28px;
         height: 28px;
       }
+      &.social__icon-colored {
+        display: none;
+      }
+    }
+    &:hover .social__icon-colored {
+      display: flex;
+    }
+    &:hover .social__icon-default {
+      display: none;
     }
   }
 }

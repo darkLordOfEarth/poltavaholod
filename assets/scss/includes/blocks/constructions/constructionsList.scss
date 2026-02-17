@@ -15,14 +15,14 @@
       display: flex;
       flex-direction: column;
       @include max-l {
-        gap: 90px;
+        gap: 0;
       }
       @include max-md {
         gap: 0;
       }
       &__title .constructionsList__item-row__top {
         grid-template-areas: 'left right';
-        @include max-md {
+        @include max-xl {
           display: flex;
           gap: 0;
         }
@@ -53,6 +53,18 @@
         }
         & .charBox {
           grid-area: char;
+          & .custom-button {
+            margin: 75px auto 0;
+            @include max-fullhd {
+              margin: 50px auto 0;
+            }
+            @include max-xxl {
+              margin: 40px auto 0;
+            }
+            @include max-l {
+              display: none;
+            }
+          }
         }
         & video {
           object-fit: cover;
@@ -71,31 +83,37 @@
           //     max-height: 200px;
           //   }
         }
-        & .custom-button {
-          margin: 75px auto 0;
-          @include max-fullhd {
-            margin: 50px auto 0;
-          }
-          @include max-xxl {
-            margin: 40px auto 0;
-          }
+      }
+      &__bottom {
+        @include max-l {
+          margin-top: 20px;
+        }
+        @include max-md {
+          margin-top: 0;
+        }
+        & > .custom-button {
+          display: none;
+
           @include max-l {
-            margin: 20px auto 0;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            height: max-content;
           }
           @include max-md {
             margin: 20px auto 0;
             position: relative;
-            left: 0;
-            right: 0;
-            top: 0;
           }
         }
-      }
-      &__bottom {
+        & .product__info {
+          @include max-l {
+            display: flex;
+            flex-direction: column-reverse;
+          }
+        }
         .product__info-desc {
           @include max-l {
             // display: none;
@@ -103,10 +121,29 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
+            max-height: 66px;
             transition: max-height 300ms ease;
+            &::after {
+              content: '…';
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              padding-left: 20px;
+              background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 40%);
+            }
             &.is-open {
               -webkit-line-clamp: unset;
+              max-height: 2000px;
               overflow: visible;
+              &::after {
+                display: none;
+              }
+            }
+          }
+          &.ios {
+            @include max-l {
+              -webkit-line-clamp: unset;
+              max-height: 100%;
             }
           }
         }

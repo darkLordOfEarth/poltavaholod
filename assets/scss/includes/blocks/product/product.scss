@@ -172,7 +172,8 @@
       & .play__btn {
         width: 150px;
         height: 150px;
-        opacity: 0;
+        // opacity: 0;
+        transition: .5s;
         @include max-fullhd {
           width: 100px;
           height: 100px;
@@ -181,6 +182,10 @@
           width: 50px;
           height: 50px;
         }
+      }
+      &:hover .play__btn {
+        transform: scale(1.1);
+        transition: .5s;
       }
     }
     & > .owl-stage-outer > .owl-stage > .owl-item:not(.active) {

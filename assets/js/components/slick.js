@@ -136,6 +136,7 @@ $(function () {
     $slider.on('beforeChange', function (event, slick, current, next) {
       updateTexts(next);
       startVerticalProgress(slick);
+      
     });
   }
   // Добавьте этот код после инициализации $slider_nav

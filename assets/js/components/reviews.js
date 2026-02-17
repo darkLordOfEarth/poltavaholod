@@ -14,7 +14,7 @@ $(function () {
 
       if (hiddenCount > 0 && $visibleItems.length) {
         $visibleItems.last().append(
-          "<div class='hiddenImagesBlock text_simple'>+" + hiddenCount + "</div>"
+          "<span class='hiddenImagesBlock text_simple'>+" + hiddenCount + "</span>"
         );
       }
     });

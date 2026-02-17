@@ -1,5 +1,5 @@
 .main__group-btns {
-  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -9,6 +9,7 @@
   max-width: 420px;
   position: absolute;
   right: 0;
+  z-index: 2;
   @include max-fullhd {
     gap: 20px;
   }

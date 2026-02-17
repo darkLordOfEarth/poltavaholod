@@ -258,16 +258,16 @@ $(function () {
                 if (state.paused) {
                   video.pause();
                   $toSlide.removeClass('paused');
-                  console.log("removeClass('paused'); 1")
+                  console.log("removeClass('paused'); 1");
                 } else {
                   // Если видео играло - убираем кнопку паузы
                   $toSlide.removeClass('paused');
-                  console.log("removeClass('paused'); 2")
+                  console.log("removeClass('paused'); 2");
                 }
               } else {
                 // Новое видео - по умолчанию на паузе
                 $toSlide.addClass('paused');
-                console.log("addClass('paused'); 2")
+                console.log("addClass('paused'); 2");
               }
             }
           }
@@ -292,15 +292,15 @@ $(function () {
                     video.pause();
                   };
                   $(currentSlide.$el).addClass('paused');
-                  console.log(".addClass('paused'); 1")
+                  console.log(".addClass('paused'); 1");
                 } else {
                   video.onplay = null;
                   $(currentSlide.$el).removeClass('paused');
-                  console.log("removeClass('paused');")
+                  console.log("removeClass('paused');");
                 }
               } else {
                 $(currentSlide.$el).addClass('paused');
-                console.log(".addClass('paused'); 2")
+                console.log(".addClass('paused'); 2");
               }
             }
           }
@@ -399,7 +399,6 @@ $(function () {
       autoplayProductSliderVideo(slick, slick.currentSlide);
     })
     .on('afterChange', function (event, slick, currentSlide) {
-      
       autoplayProductSliderVideo(slick, currentSlide);
     });
 
@@ -441,25 +440,64 @@ $(function () {
     });
   });
 
-  
   // $(document).on("click", ".carousel__button", function() {
   //     console.log("121212")
   //     $(".fancybox__slide.has-html5video").removeClass('paused');
   // })
 
-
   // Кнопка открыть галерею для current building
-  $(document).on('click', '.constructionsList__item-row .custom-button', function (e) {
+  // $(document).on('click', '.constructionsList__item-row .custom-button', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+
+  //   const $galleryList = $(this)
+  //     .closest('.constructionsList__item-row__top')
+  //     .find('.buildings__gallery-list');
+  //   if (!$galleryList.length) return;
+
+  //   // Собираем элементы галереи
+  //   const items = [];
+  //   $galleryList.find('.buildings__gallery-list__item').each(function () {
+  //     const src = $(this).attr('href');
+  //     const thumb = $(this).find('img').attr('src');
+  //     if (!src) return;
+
+  //     items.push({
+  //       src,
+  //       type: 'image',
+  //       thumb,
+  //     });
+  //   });
+
+  //   if (!items.length) return;
+
+  //   // Открываем Fancybox
+  //   Fancybox.show(items, {
+  //     Thumbs: { autoStart: true },
+  //     infinite: true,
+  //     on: {
+  //       done: (fancybox, slide) => {
+  //         // Дополнительно, если нужно
+  //         setTimeout(setFancyThumbsBtn, 100);
+  //       },
+  //       destroy: (fancybox) => {
+  //         $('.fancyThumbBtn').remove();
+  //       },
+  //     },
+  //   });
+  // });
+  $(document).on('click', '.constructionsList__item .custom-button', function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    const $galleryList = $(this)
-      .closest('.constructionsList__item-row__top')
-      .find('.buildings__gallery-list');
+    const $item = $(this).closest('.constructionsList__item');
+    if (!$item.length) return;
+
+    const $galleryList = $item.find('.buildings__gallery-list').first();
     if (!$galleryList.length) return;
 
-    // Собираем элементы галереи
     const items = [];
+
     $galleryList.find('.buildings__gallery-list__item').each(function () {
       const src = $(this).attr('href');
       const thumb = $(this).find('img').attr('src');
@@ -473,20 +511,28 @@ $(function () {
     });
 
     if (!items.length) return;
-
-    // Открываем Fancybox
+    if (Fancybox.getInstance()) return;
     Fancybox.show(items, {
       Thumbs: { autoStart: true },
       infinite: true,
       on: {
-        done: (fancybox, slide) => {
-          // Дополнительно, если нужно
+        done: () => {
           setTimeout(setFancyThumbsBtn, 100);
         },
-        destroy: (fancybox) => {
+        destroy: () => {
           $('.fancyThumbBtn').remove();
         },
       },
     });
+
+    console.log('gallery opened');
   });
+
+  // window.addEventListener('orientationchange', function () {
+  //   setTimeout(() => {
+  //     if (window.Fancybox) {
+  //       Fancybox.destroy();
+  //     }
+  //   }, 300);
+  // });
 });

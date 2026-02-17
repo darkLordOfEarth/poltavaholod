@@ -1,4 +1,45 @@
 $(function () {
+  // Запрещаем открытие файла в браузере
+  $(document).on('drop', function (e) {
+  if (!$(e.target).closest('.form__group-file__box').length) {
+    e.preventDefault();
+  }
+});
+
+  const $dropZone = $('.form__group-file__box');
+
+$dropZone.on('dragenter dragover', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).addClass('dragover');
+});
+
+$dropZone.on('dragleave', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).removeClass('dragover');
+});
+
+$dropZone.on('drop', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).removeClass('dragover');
+
+  const files = Array.from(e.originalEvent.dataTransfer.files);
+  if (!files.length) return;
+
+  files.forEach((file) => {
+    const exists = selectedFiles.some(
+      (f) => f.name === file.name && f.size === file.size
+    );
+
+    if (!exists) selectedFiles.push(file);
+  });
+
+  renderFileList();
+});
+
+
   function resetPartnersForm() {
     const $form = $('.form-partners');
     if (!$form.length) return;
@@ -18,10 +59,14 @@ $(function () {
       const $span = $(this).closest('label').find('span');
       $(this).is(':checked') ? $span.addClass('active') : $span.removeClass('active');
     });
+    selectedFiles = [];
+    if (typeof renderFileList === 'function') {
+      renderFileList();
+    }
   }
   $('.popup__close, .btn-for-close-popup').on('click', function () {
     $(this).parents('.popup').hide();
-    resetPartnersForm()
+    resetPartnersForm();
   });
 
   /* ---------- сброс всей формы ---------- */
@@ -31,7 +76,7 @@ $(function () {
     if (e.target === this) {
       $(this).fadeOut();
       $('.popupPartners').find('.play__btn').fadeIn(200);
-      resetPartnersForm()
+      resetPartnersForm();
     }
   });
   let isDragging = false;
@@ -75,7 +120,7 @@ $(function () {
       $popup.fadeOut();
       $('.popupPartners').find('.play__btn').fadeIn(200);
       resetPartnersForm();
-      $("html, body").removeClass("ovh");
+      $('html, body').removeClass('ovh');
     }
 
     // Сброс флагов
@@ -88,7 +133,7 @@ $(function () {
     $(this).closest('.popup').fadeOut();
     $('.popupPartners').find('.play__btn').fadeIn(200);
     resetPartnersForm();
-    $("html, body").removeClass("ovh");
+    $('html, body').removeClass('ovh');
   });
 
   // Сброс флага при движении мыши
@@ -107,7 +152,7 @@ $(function () {
       let popupId = $(this).attr('data-popup');
       let targetPopup = $('#' + popupId);
       targetPopup.show();
-      $("html, body").addClass("ovh");
+      $('html, body').addClass('ovh');
       targetPopup.find('.form').scrollTop(0);
       $('input[name="group"]').val($(this).data('group'));
       $('input[name="video"]').val($(this).data('video'));
@@ -118,10 +163,9 @@ $(function () {
           .text()
           .trim(),
       );
-      setTimeout(()=>{
-        $(".popup__title").click();
-      }, 500)
-      
+      setTimeout(() => {
+        $('.popup__title').click();
+      }, 500);
     });
 
   $('[data-group]').on('click', function (e) {
@@ -193,74 +237,149 @@ $(function () {
   const $fileInput = $('input[type="file"]');
   const $defaultText = $('.form__group-file__text_default');
   const $filesText = $('.form__group-file__text');
+  const $fileList = $('.form__group-file__list'); // контейнер списка
+  let selectedFiles = []; // 🔥 ОБЯЗАТЕЛЬНО
 
   $fileInput.on('change', function () {
-    const files = this.files;
-
-    if (files.length > 0) {
-      $defaultText.hide();
-
-      let fileNames = [];
-      for (let i = 0; i < files.length; i++) {
-        fileNames.push(files[i].name);
-      }
-      $filesText.text(fileNames.join(', ')).show();
-    } else {
-      $filesText.hide().text('');
-      $defaultText.show();
+    // const files = this.files;
+    const newFiles = Array.from(this.files);
+    if (!newFiles.length) {
+      // Ничего не выбрали — просто выходим, НЕ чистим список
+      return;
     }
+    newFiles.forEach((file) => {
+      // защита от дублей (по имени + размеру)
+      const exists = selectedFiles.some((f) => f.name === file.name && f.size === file.size);
+      if (!exists) {
+        selectedFiles.push(file);
+      }
+    });
+
+    renderFileList();
+    this.value = '';
+    // if (files.length > 0) {
+    //   $defaultText.hide();
+
+    //   let fileNames = [];
+    //   for (let i = 0; i < files.length; i++) {
+    //     fileNames.push(files[i].name);
+    //   }
+    //   $filesText.text(fileNames.join(', ')).show();
+    // } else {
+    //   $filesText.hide().text('');
+    //   $defaultText.show();
+    // }
+  });
+  // Рендер списка файлов
+  function renderFileList() {
+    if (!selectedFiles.length) {
+      $fileList.empty().hide();
+      // $defaultText.show();
+      $('.form__group-file__field').removeClass('flex-column-reverse');
+      return;
+    }
+
+    // $defaultText.hide();
+    $('.form__group-file__field').addClass('flex-column-reverse');
+    $fileList.show().empty();
+
+    selectedFiles.forEach((file, index) => {
+      $fileList.append(`
+      <div class="file-item" data-index="${index}">
+        <span class="file-name">${file.name}</span>
+        <span class="file-remove">&times;</span>
+      </div>
+    `);
+    });
+  }
+
+  // Удаление файла
+  $fileList.on('click', '.file-remove', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const index = $(this).closest('.file-item').data('index');
+    selectedFiles.splice(index, 1);
+    renderFileList();
   });
 
   $('.btn-form').on('click', function () {
     const $form = $(this).closest('form');
 
-    let hasError = false;
+    // let hasError = false;
 
     // Проверка обычных input и textarea
-    $form.find('.form__group').each(function () {
-      const $group = $(this);
-      const $inputs = $group.find('input').not('[name="coment"], [name="link"]');
+    // $form.find('.form__group').each(function () {
+    //   const $group = $(this);
+    //   const $inputs = $group.find('input').not('[name="coment"], [name="link"]');
 
-      const $checks = $inputs.filter('[type="checkbox"], [type="radio"]');
+    //   const $checks = $inputs.filter('[type="checkbox"], [type="radio"]');
 
-      // Если в группе есть чекбоксы или радио
-      if ($checks.length) {
-        const isAnyChecked = $checks.is(':checked');
+    //   // Если в группе есть чекбоксы или радио
+    //   if ($checks.length) {
+    //     const isAnyChecked = $checks.is(':checked');
 
-        if (isAnyChecked) {
-          $inputs.removeClass('error');
-        } else {
-          $checks.addClass('error');
-          hasError = true;
-        }
+    //     if (isAnyChecked) {
+    //       $inputs.removeClass('error');
+    //     } else {
+    //       $checks.addClass('error');
+    //       hasError = true;
+    //     }
 
-        return;
-      }
+    //     return;
+    //   }
 
-      // Если обычные поля (text, email и т.д.)
-      $inputs.each(function () {
-        const $field = $(this);
+    //   // Если обычные поля (text, email и т.д.)
+    //   $inputs.each(function () {
+    //     const $field = $(this);
 
-        if ($field.val().trim() === '') {
+    //     if ($field.val().trim() === '') {
+    //       $field.addClass('error');
+    //       hasError = true;
+    //     } else {
+    //       $field.removeClass('error');
+    //     }
+    //   });
+    // });
+    let hasError = false;
+
+    $form.find('.js-required').each(function () {
+      const $field = $(this);
+      const type = $field.attr('type');
+
+      if (type === 'checkbox' || type === 'radio') {
+        const name = $field.attr('name');
+
+        if (!$form.find(`[name="${name}"]:checked`).length) {
           $field.addClass('error');
           hasError = true;
         } else {
           $field.removeClass('error');
         }
-      });
+
+        return;
+      }
+
+      if ($field.val().trim() === '') {
+        $field.addClass('error');
+        hasError = true;
+      } else {
+        $field.removeClass('error');
+      }
     });
 
+    if (hasError) return;
+
     // Проверка input type="file"
-    const fileInput = $form.find('input[type="file"]')[0];
+    // const fileInput = $form.find('input[type="file"]')[0];
 
-    const fileField = $('.form__group-file__field');
+    // const fileField = $('.form__group-file__field');
 
-    if (fileInput.files && fileInput.files.length > 0) {
-      fileField.removeClass('error'); // если выбран файл — убираем ошибку
-    } else {
-      fileField.removeClass('error'); // если пусто — тоже ошибок нет
-      // hasError не меняем, т.к. файл необязательный
-    }
+    // if (fileInput.files && fileInput.files.length > 0) {
+    //   fileField.removeClass('error'); // если выбран файл — убираем ошибку
+    // } else {
+    //   fileField.removeClass('error'); // если пусто — тоже ошибок нет
+    //   // hasError не меняем, т.к. файл необязательный
+    // }
 
     // if (!fileInput.files || fileInput.files.length === 0) {
     //   fileField.addClass('error');
@@ -288,13 +407,14 @@ $(function () {
     formData.append('coment', $form.find('textarea[name="coment"]').val());
 
     // Добавляем файлы правильно
+    // const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
+    // let totalSize = 0;
+
     const MAX_TOTAL_SIZE = 50 * 1024 * 1024;
     let totalSize = 0;
 
-    const files = fileInput.files;
-
-    for (let i = 0; i < files.length; i++) {
-      totalSize += files[i].size;
+    selectedFiles.forEach((file) => {
+      totalSize += file.size;
 
       if (totalSize > MAX_TOTAL_SIZE) {
         alert('Загальний розмір файлів не повинен перевищувати 50 МБ');
@@ -302,8 +422,20 @@ $(function () {
         return;
       }
 
-      formData.append('files[]', files[i]);
-    }
+      formData.append('files[]', file);
+    });
+
+    // for (let i = 0; i < files.length; i++) {
+    //   totalSize += files[i].size;
+
+    //   if (totalSize > MAX_TOTAL_SIZE) {
+    //     alert('Загальний розмір файлів не повинен перевищувати 50 МБ');
+    //     $btn.prop('disabled', false).text('Надіслати заявку');
+    //     return;
+    //   }
+
+    //   formData.append('files[]', files[i]);
+    // }
 
     $.ajax({
       // url: ajaxurl,
@@ -325,9 +457,12 @@ $(function () {
           $('#popup-spasibi').show();
           $('.form__group-file__text').hide().text('');
           $('.form__group-file__text_default').show();
+          selectedFiles = [];
+          renderFileList();
+          $fileInput.val('');
         } else {
           alert('Помилка: ' + (response.data || 'Невідома помилка'));
-          $("html, body").removeClass("ovh");
+          $('html, body').removeClass('ovh');
         }
 
         $btn.prop('disabled', false).text('Надіслати заявку');

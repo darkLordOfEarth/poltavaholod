@@ -2,14 +2,14 @@ $(function () {
   // var windowWidth = window.innerWidth;
   // var windowHeight = window.innerHeight;
   // alert('width:' + windowWidth + ' ' + 'height:' + windowHeight);
-  document.addEventListener('click', function (e) {
-    const el = e.target;
+  // document.addEventListener('click', function (e) {
+  // const el = e.target;
 
-    console.log('CLICKED ELEMENT:', el);
-    console.log('TAG:', el.tagName);
-    console.log('CLASSES:', el.className);
-    console.log('ID:', el.id || '—');
-  });
+  // console.log('CLICKED ELEMENT:', el);
+  // console.log('TAG:', el.tagName);
+  // console.log('CLASSES:', el.className);
+  // console.log('ID:', el.id || '—');
+  // });
 
   function checkHeaderScroll() {
     if ($(window).scrollTop() > 50) {
@@ -250,8 +250,8 @@ $(function () {
       const top = slideRect.top + slideHeight / 2 - navHeight / 2;
 
       $nav.css({
+        transform: `translateY(${top}px)`,
         position: 'fixed',
-        top: `${top}px`,
         left: '0',
         right: '0',
         pointerEvents: 'none',
@@ -299,4 +299,89 @@ $(function () {
     if (!shouldUpdate()) return;
     updateNavPositionViewport($slider);
   });
+
+  // document.querySelectorAll('.product__info-desc').forEach((el) => {
+  //   const maxHeight = 90; // твои 3 строки
+  //   const originalHTML = el.innerHTML;
+
+  //   el.dataset.original = originalHTML;
+
+  //   function clamp() {
+  //     el.innerHTML = el.dataset.original;
+
+  //     if (el.scrollHeight <= maxHeight) return;
+
+  //     let text = el.innerText.trim();
+  //     let left = 0;
+  //     let right = text.length;
+
+  //     while (left < right) {
+  //       const mid = Math.floor((left + right) / 2);
+  //       el.innerText = text.slice(0, mid) + '…';
+
+  //       if (el.scrollHeight > maxHeight) {
+  //         right = mid - 1;
+  //       } else {
+  //         left = mid + 1;
+  //       }
+  //     }
+
+  //     el.innerText = text.slice(0, left - 1) + '…';
+  //   }
+
+  //   clamp();
+
+  //   el.closest('.product__info')
+  //     ?.querySelector('.product__info-desc__btn')
+  //     ?.addEventListener('click', () => {
+  //       const isOpen = el.classList.toggle('is-open');
+
+  //       if (isOpen) {
+  //         el.innerHTML = el.dataset.original;
+  //         el.style.maxHeight = 'none';
+  //       } else {
+  //         el.style.maxHeight = maxHeight + 'px';
+  //         clamp();
+  //       }
+  //     });
+  // });
+
+  // document.querySelectorAll('.product__info-desc').forEach((el) => {
+  //   clampText(el, 66); // твой max-height
+  // });
+  function isIOS() {
+    return (
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && 'ontouchstart' in document.documentElement)
+    );
+  }
+  function isMac() {
+    return /Macintosh/.test(navigator.userAgent);
+  }
+  function isMacChrome() {
+    const ua = navigator.userAgent;
+    const isChrome =
+      ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1 && ua.indexOf('OPR') === -1;
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+
+    return isChrome && isMac;
+  }
+
+  if (isMacChrome()) {
+    // document.body.classList.add('macChrome');
+    // $('.product__info-desc').addClass('ios');
+  }
+  function isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  }
+  if (isMac()) {
+    // $('.product__info-desc').addClass('mac');
+  }
+  if (isSafari()) {
+    // $('body').addClass('safari');
+  }
+
+  if (isIOS() && $(window).width() <= 1024) {
+    $('.product__info-desc').addClass('ios');
+  }
 });
