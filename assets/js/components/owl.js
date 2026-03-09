@@ -140,8 +140,8 @@ $(function () {
       // инициализируем desktop
       if (!$desktopSlider.hasClass('owl-loaded')) {
         $desktopSlider.owlCarousel({
-          loop: true,
-          nav: true,
+          loop: $desktopSlider.children().length > 1,
+          nav: $desktopSlider.children().length > 1,
           navText: [
             '<span class="sr-only">Наступний слайд</span>',
             '<span class="sr-only">Попередній слайд</span>',
@@ -266,7 +266,27 @@ $(function () {
     }
     // $(".product__slider-media .owl-next").click();
   }
-  setTimeout(initMediaCarousel, 300);
+  setTimeout(initMediaCarousel, 20);
+  $('.product__slider .product__slider-media').each(function () {
+    const $this = $(this);
+
+    if ($this.closest('.owl-item').hasClass('active')) {
+      // $this.closest('.owl-item.active').removeClass('cloned')
+      setTimeout(() => {
+        initMediaCarousel(this);
+      }, 20);
+    }
+  });
+  $(document).on('mousedown touchstart pointerdown', '.product__slider-media', function (e) {
+    e.stopPropagation();
+  });
+  $('.product__slider > .owl-nav .owl-prev').on('click', (e) => {
+    e.preventDefault();
+    setTimeout(() => {
+      $(this).parent().find('.product__slider-media').trigger('destroy.owl.carousel');
+      initMediaCarousel(this);
+    }, 100);
+  });
 
   $('.related__slider').owlCarousel({
     loop: true,
@@ -463,7 +483,7 @@ $(function () {
       initTopSliders();
     } else {
       destroyTopSliders();
-      initMainSlider()
+      initMainSlider();
     }
   });
   /* =========================

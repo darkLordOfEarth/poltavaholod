@@ -48,6 +48,21 @@ $(function () {
     }
   });
 
+  // if (window.innerWidth <= 1280) {
+  //   const parents = document.querySelectorAll('.menu-item-has-children > a');
+
+  //   parents.forEach(function (link) {
+  //     link.addEventListener('click', function (e) {
+  //       const parent = this.parentElement;
+
+  //       if (!parent.classList.contains('open')) {
+  //         e.preventDefault();
+  //         parent.classList.add('open');
+  //       }
+  //     });
+  //   });
+  // }
+
   const headerHeight = $('.header').outerHeight();
   // обработчик клика по якорям
 
@@ -132,6 +147,19 @@ $(function () {
     }
   });
 
+  if ($(window).width() > 576) {
+    $('.product__slider-images').each(function () {
+      let imagesBlock = $(this).find('a');
+      // .filter(function () {
+      //   return $(this).css('display') !== 'none';
+      // });
+      console.log(imagesBlock.length);
+      if (imagesBlock.length < 4) {
+        $(this).addClass('little_bit_images');
+      }
+    });
+  }
+
   function setOwlNavToMediaCenter() {
     if ($(window).width() > 1280) {
       const $slider = $('.product__slider');
@@ -151,13 +179,32 @@ $(function () {
     }
   }
   $('.product__slider').on(
+    'initialized.owl.carousel changed.owl.carousel resized.owl.carousel refresh.owl.carousel',
+    function () {
+      requestAnimationFrame(() => {
+        setOwlNavToMediaCenter();
+      });
+    },
+  );
+  $('.product_block_slider_custom .owl-nav button').on('click', function () {
+    setOwlNavToMediaCenter();
+  });
+  // $(window).on('resize load', setOwlNavToMediaCenter);
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(setOwlNavToMediaCenter, 0);
+  });
+  $('.product__slider').on(
     'initialized.owl.carousel changed.owl.carousel resized.owl.carousel',
     function () {
-      setOwlNavToMediaCenter();
+      requestAnimationFrame(setOwlNavToMediaCenter);
     },
   );
 
-  $(window).on('resize load', setOwlNavToMediaCenter);
+  $('.product__slider img').on('load', function () {
+    setOwlNavToMediaCenter();
+  });
+
+  $(window).on('resize', setOwlNavToMediaCenter);
 
   if ($(window).width() <= 576) {
     $('.product__slider-media').each(function () {
@@ -169,14 +216,20 @@ $(function () {
         const $el = $(this);
 
         // если группа картинок
-        if ($el.hasClass('product__slider-images')) {
+        if (
+          $el.hasClass('product__slider-images') ||
+          $el.hasClass('product__slider-image-no-video')
+        ) {
           $el.children().each(function () {
             items.push($(this));
           });
         }
 
         // если видео
-        else if ($el.hasClass('product__slider-video')) {
+        else if (
+          $el.hasClass('product__slider-video') ||
+          $el.hasClass('product__slider-image-no-video')
+        ) {
           items.push($el);
         }
       });
@@ -188,6 +241,32 @@ $(function () {
       items.forEach(($item) => {
         $media.append($item);
       });
+    });
+
+    // $(document).on('click', '.product__slider-media .owl-prev', function (e) {
+    //   e.stopPropagation();
+
+    //   const $slider_inner = $(this).parents('.product__slider-media');
+
+    //   $slider_inner.trigger('prev.owl.carousel');
+    // });
+    // $(document).on('click', '.product__slider-media .owl-next', function (e) {
+    //   e.stopPropagation();
+
+    //   const $slider_inner = $(this).parents('.product__slider-media');
+
+    //   $slider_inner.trigger('next.owl.carousel');
+    // });
+  } else {
+    $('.product__slider-media').each(function () {
+      const $mediaBlock = $(this);
+
+      const hasNeededElement =
+        $mediaBlock.find('.product__slider-video, .product__slider-image-no-video').length > 0;
+
+      if (!hasNeededElement) {
+        $mediaBlock.addClass('grid2column');
+      }
     });
   }
 
@@ -206,12 +285,12 @@ $(function () {
 
     // Зупиняємо спливання подій миші
     $innerSlider.on('mousedown touchstart', function (e) {
-      e.stopPropagation();
+      // e.stopPropagation();
     });
 
     // Зупиняємо спливання подій перетягування
     $innerSlider.on('drag.owl.carousel dragged.owl.carousel', function (e) {
-      e.stopPropagation();
+      // e.stopPropagation();
     });
 
     // Альтернативний метод: Вимкнення зовнішнього слайдера під час взаємодії з внутрішнім

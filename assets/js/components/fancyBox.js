@@ -96,44 +96,90 @@ $(function () {
     const items = [];
     const used = new Set();
 
-    // картинки
-    $sliderItem.find('.gallery-item').each(function () {
-      const src = $(this).attr('href');
+    const $allImages = $sliderItem.find('.gallery-item[data-src]');
+    console.log('getGalleryItems: found images count:', $allImages.length);
+    $allImages.each(function (i) {
+      console.log(
+        i,
+        $(this).attr('data-src'),
+        '| parent owl-item cloned:',
+        $(this).parents('.owl-item').first().hasClass('cloned'),
+      );
+    });
+
+    $allImages.each(function () {
+      const src = $(this).attr('data-src');
       const thumb = $(this).find('img').attr('src');
       if (!src || used.has(src)) return;
       used.add(src);
-
-      items.push({
-        src,
-        type: 'image',
-        thumb,
-      });
+      items.push({ src, type: 'image', thumb });
     });
 
     // видео
-    $sliderItem.find('.product__slider-video').each(function () {
-      const $video = $(this).find('video');
-      const src = $video.find('source').attr('src');
-      const thumb = $video.attr('poster') || '/images/video-thumb.jpg';
+    $sliderItem.find('.product__slider-video video source').each(function () {
+      const src = $(this).attr('src');
+      const thumb = $(this).closest('video').attr('poster') || '';
       if (!src || used.has(src)) return;
       used.add(src);
-
       items.push({
         src,
         type: 'html5video',
         thumb,
         html5video: {
-          autoplay: false, // Отключаем автозапуск
+          autoplay: false,
           muted: false,
-          controls: false, // Убираем нативные контролы
+          controls: false,
           loop: false,
           preload: 'metadata',
         },
       });
     });
 
+    console.log('getGalleryItems result:', items.length, 'items');
     return items;
   }
+  // function getGalleryItems($sliderItem) {
+  //   const items = [];
+  //   const used = new Set();
+
+  //   // картинки
+  //   $sliderItem.find('.gallery-item').each(function () {
+  //     const src = $(this).attr('href');
+  //     const thumb = $(this).find('img').attr('src');
+  //     if (!src || used.has(src)) return;
+  //     used.add(src);
+
+  //     items.push({
+  //       src,
+  //       type: 'image',
+  //       thumb,
+  //     });
+  //   });
+
+  //   // видео
+  //   $sliderItem.find('.product__slider-video').each(function () {
+  //     const $video = $(this).find('video');
+  //     const src = $video.find('source').attr('src');
+  //     const thumb = $video.attr('poster') || '/images/video-thumb.jpg';
+  //     if (!src || used.has(src)) return;
+  //     used.add(src);
+
+  //     items.push({
+  //       src,
+  //       type: 'html5video',
+  //       thumb,
+  //       html5video: {
+  //         autoplay: false, // Отключаем автозапуск
+  //         muted: false,
+  //         controls: false, // Убираем нативные контролы
+  //         loop: false,
+  //         preload: 'metadata',
+  //       },
+  //     });
+  //   });
+
+  //   return items;
+  // }
 
   /* -------------------------------------------------------
       УПРАВЛЕНИЕ ВИДЕО В FANCYBOX
@@ -161,7 +207,7 @@ $(function () {
       const src = $(video).find('source').attr('src');
       if (src && !video.paused) {
         saveVideoState(video, src);
-        video.pause();
+        safeVideoPause(this);
       }
     });
   }
@@ -174,7 +220,7 @@ $(function () {
     const src = $(video).find('source').attr('src');
     video.onplay = null;
     if (video.paused) {
-      video.play();
+      safeVideoPlay(video);
       $slide.removeClass('paused');
     } else {
       saveVideoState(video, src);
@@ -185,6 +231,7 @@ $(function () {
 
   // Следим за событиями play/pause для синхронизации класса
   $(document).on('play', '.fancybox__slide video', function () {
+    $(this).removeAttr('poster');
     $(this).closest('.fancybox__slide').removeClass('paused');
   });
 
@@ -199,80 +246,112 @@ $(function () {
   // -------------------------------------------------------
   // ОТКРЫТЬ ГАЛЕРЕЮ
   // -------------------------------------------------------
+
+  // Утилита для безопасного pause/play
+  function safeVideoPause(video) {
+    if (!video) return;
+    if (video._playPromise) {
+      video._playPromise
+        .then(() => {
+          video.pause();
+          video._playPromise = null;
+        })
+        .catch(() => {
+          video._playPromise = null;
+        });
+    } else {
+      video.pause();
+    }
+  }
+
+  function safeVideoPlay(video) {
+    if (!video) return;
+    if (video._playPromise) return; // ← добавить защиту
+    video._playPromise = video.play();
+    if (video._playPromise) {
+      video._playPromise
+        .then(() => {
+          video._playPromise = null;
+        }) // ← сбрасывать
+        .catch((err) => {
+          if (err.name !== 'AbortError' && err.name !== 'NotAllowedError') {
+            console.warn('video.play() error:', err);
+          }
+          video._playPromise = null;
+        });
+    }
+  }
   function openGallery($sliderItem, startSrc) {
+    if (Fancybox.getInstance()) return;
     const items = getGalleryItems($sliderItem);
+    console.log('openGallery', { items, startSrc, sliderItem: $sliderItem[0] });
+    if (!items || items.length === 0) return;
     const startIndex = items.findIndex((i) => i.src === startSrc);
 
     Fancybox.show(items, {
       startIndex: startIndex >= 0 ? startIndex : 0,
       Thumbs: { autoStart: true },
       on: {
+        // done
         done: (fancybox, slide) => {
           $('.fancybox__html5video').removeAttr('controls');
-
+          $(slide.$el).find('video').removeAttr('poster');
           const $video = $(slide.$el).find('video');
           if ($video.length) {
             const video = $video[0];
             const src = $video.find('source').attr('src');
             restoreVideoState(video, src);
-
-            // 🔥 ИСПРАВЛЕНИЕ: убираем класс paused, если видео играет
             if (!video.paused) {
               $(slide.$el).removeClass('paused');
             }
           }
         },
 
+        // beforeClose
         beforeClose: (fancybox) => {
+          // pauseAllFancyboxVideos тоже должна использовать safeVideoPause внутри
           pauseAllFancyboxVideos();
         },
 
+        // Carousel.change
         'Carousel.change': (fancybox, carousel, to, from) => {
           if (typeof from !== 'undefined') {
             const $fromSlide = $(carousel.slides[from].$el);
             const $video = $fromSlide.find('video');
-
             if ($video.length) {
               const video = $video[0];
               const src = $video.find('source').attr('src');
               saveVideoState(video, src);
-              video.pause();
+              safeVideoPause(video); // ← было video.pause()
             }
           }
 
-          // 🔥 ИСПРАВЛЕНИЕ: при переходе на новый слайд проверяем видео
           if (typeof to !== 'undefined') {
             const $toSlide = $(carousel.slides[to].$el);
             const $video = $toSlide.find('video');
-
             if ($video.length) {
+              $video.removeAttr('poster');
               const video = $video[0];
               const src = $video.find('source').attr('src');
 
-              // Восстанавливаем состояние
               if (fancyboxVideoState[src]) {
                 const state = fancyboxVideoState[src];
                 video.currentTime = state.time || 0;
-
-                // Если видео было на паузе - ставим на паузу и показываем кнопку
                 if (state.paused) {
-                  video.pause();
+                  safeVideoPause(video); // ← было video.pause()
                   $toSlide.removeClass('paused');
-                  console.log("removeClass('paused'); 1");
                 } else {
-                  // Если видео играло - убираем кнопку паузы
+                  safeVideoPlay(video);
                   $toSlide.removeClass('paused');
-                  console.log("removeClass('paused'); 2");
                 }
               } else {
-                // Новое видео - по умолчанию на паузе
                 $toSlide.addClass('paused');
-                console.log("addClass('paused'); 2");
               }
             }
           }
         },
 
+        // Carousel.ready
         'Carousel.ready': (fancybox, carousel) => {
           const currentSlide = carousel.slides[carousel.page];
           if (currentSlide) {
@@ -287,26 +366,22 @@ $(function () {
                 video.autoplay = false;
 
                 if (state.paused) {
-                  video.pause();
-                  video.onplay = function () {
-                    video.pause();
-                  };
+                  // ← убираем video.onplay-хак, используем safeVideoPause
+                  safeVideoPause(video);
+                  video.onplay = null;
                   $(currentSlide.$el).addClass('paused');
-                  console.log(".addClass('paused'); 1");
                 } else {
                   video.onplay = null;
                   $(currentSlide.$el).removeClass('paused');
-                  console.log("removeClass('paused');");
                 }
               } else {
+                safeVideoPause(video);
                 $(currentSlide.$el).addClass('paused');
-                console.log(".addClass('paused'); 2");
               }
             }
           }
         },
 
-        // 🔥 Объединяем оба destroy в один
         destroy: (fancybox) => {
           $('.fancyThumbBtn').remove();
           pauseAllFancyboxVideos();
@@ -335,16 +410,14 @@ $(function () {
     }
   });
 
+  // КЛИК ПО КАРТИНКЕ
+  // КЛИК ПО КАРТИНКЕ
   $(document).on('click touchend', '.product__slider-media .gallery-item', function (e) {
-    // если это был скролл — НИЧЕГО не делаем
-    if (e.type === 'touchend' && isTouchScrolling) {
-      return;
-    }
+    if (e.type === 'touchend' && isTouchScrolling) return;
 
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    // защита от двойного срабатывания
     if (e.type === 'touchend') {
       this._touched = true;
       setTimeout(() => (this._touched = false), 400);
@@ -352,18 +425,21 @@ $(function () {
       return;
     }
 
+    // 🔥 Проверяем через parents() — надёжнее чем closest с составным селектором
+    if ($(this).parents('.owl-item').first().hasClass('cloned')) return;
+
     const $sliderItem = $(this).closest('.product__slider-item');
-    openGallery($sliderItem, $(this).attr('href'));
-    // setTimeout(setFancyThumbsBtn, 500);
+    openGallery($sliderItem, $(this).attr('data-src'));
   });
 
-  // -------------------------------------------------------
   // КЛИК ПО ВИДЕО
-  // -------------------------------------------------------
   $(document).on('click', '.product__slider-video', function (e) {
     if (isDragging) return;
     e.preventDefault();
     e.stopPropagation();
+
+    // 🔥 Проверяем через parents()
+    if ($(this).parents('.owl-item').first().hasClass('cloned')) return;
 
     const $sliderItem = $(this).closest('.product__slider-item');
     const $video = $(this).find('video');
@@ -389,7 +465,8 @@ $(function () {
     video.muted = true;
 
     // если другой код успел поставить pause — снимаем
-    video.play().catch(() => {
+    video.play().catch((err) => {
+      if (err.name !== 'AbortError') console.warn(err);
       delete video.dataset.forcePaused;
     });
   }
@@ -422,9 +499,9 @@ $(function () {
   Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-about-slider"]', {
     infinite: true,
   });
-  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox]', {
-    infinite: true,
-  });
+  // Fancybox.bind('.owl-item:not(.cloned) [data-fancybox]', {
+  //   infinite: true,
+  // });
 
   const fancyGroups = new Set();
 
@@ -439,6 +516,20 @@ $(function () {
       dragToClose: false,
     });
   });
+
+  // const fancyGroups2 = new Set();
+
+  // document.querySelectorAll('[data-fancybox^="gallery-product-"]').forEach((el) => {
+  //   fancyGroups2.add(el.dataset.fancybox);
+  // });
+
+  // // для КАЖДОЙ группы — свой bind
+  // fancyGroups2.forEach((group) => {
+  //   Fancybox.bind(`.owl-item:not(.cloned) [data-fancybox="${group}"]`, {
+  //     infinite: true,
+  //     dragToClose: false,
+  //   });
+  // });
 
   // $(document).on("click", ".carousel__button", function() {
   //     console.log("121212")

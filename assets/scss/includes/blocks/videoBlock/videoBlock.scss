@@ -22,48 +22,38 @@
       }
     }
   }
-  &.temporary-img {
-    position: relative;
-    z-index: 0;
-  }
-  &.temporary-img::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background: rgba(0, 0, 0, 0.5);
-  }
+  // &.temporary-img {
+  //   position: relative;
+  //   z-index: 0;
+  //   pointer-events: none;
+  // }
+  // &.temporary-img::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: 6;
+  //   background: rgba(0, 0, 0, 0.5);
+  // }
 
-  &.temporary-img::after {
-    content: '';
-    background-image: url(../images/temporary_img_new.png);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 200%;
-    font-weight: 700;
-    @include max-md {
-      font-size: 150%;
-    }
-  }
-  &.temporary-img-ua::after {
-    content: 'Незабаром відкриття';
-  }
-  &.temporary-img-ru::after {
-    content: 'Скоро открытие';
-  }
+  // &.temporary-img::after {
+  //   content: '';
+  //   background-image: url(../images/temp_img_desktop.jpg);
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: 5;
+  //   background-size: cover;
+  //   background-position: center;
+  //   @include max-md {
+  //     background-image: url(../images/temp_img_mobile.jpg);
+  //   }
+  // }
+  
 }
 .videoBlock {
   &__close {
