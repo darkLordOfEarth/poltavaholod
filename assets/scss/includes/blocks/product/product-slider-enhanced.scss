@@ -22,7 +22,7 @@
         gap: 0;
       }
       
-      &:has(video) {
+      &:has(video), &:has(.product__slider-image-no-video) {
         grid-template-columns: 1fr 1fr !important; // !important для перезаписи inline стилей
         
         // Дополнительная защита от растягивания
@@ -32,7 +32,8 @@
         }
       }
       
-      &:has(video) .product__slider-images {
+      &:has(video) .product__slider-images,
+      &:has(.product__slider-image-no-video) .product__slider-images {
         grid-template-columns: repeat(2, 1fr);
         
         // Стабилизация размеров
@@ -42,7 +43,7 @@
       
       // Дополнительная стабилизация для iPad
       @media screen and (min-width: 768px) and (max-width: 1024px) {
-        &:has(video) {
+        &:has(video), &:has(.product__slider-image-no-video) {
           display: grid !important;
           grid-template-columns: 1fr 1fr !important;
           
@@ -166,7 +167,8 @@
 // Дополнительный фикс специально для iPad
 @supports (-webkit-touch-callout: none) {
   /* iOS/iPadOS specific */
-  .product__slider-media:has(video) {
+  .product__slider-media:has(video),
+  .product__slider-media:has(.product__slider-image-no-video) {
     grid-template-columns: 1fr 1fr !important;
     
     & > * {

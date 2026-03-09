@@ -163,7 +163,7 @@
   display: block;
   font-size: 24px;
   font-weight: bold;
-  color: grey;
+  color: #CBCBCB;
 }
 .slick-arrow {
   backdrop-filter: blur(10px);
@@ -213,14 +213,14 @@
 
   100% {
     transform: scale(1);
-    color: grey;
+    color: #CBCBCB;
   }
 }
 
 @keyframes grow {
   0% {
     transform: scale(1);
-    color: grey;
+    color: #CBCBCB;
   }
 
   100% {

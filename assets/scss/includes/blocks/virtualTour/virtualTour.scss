@@ -55,6 +55,29 @@
         max-width: 50px;
       }
     }
+    &.temporary-img-ua::after {
+      content: 'Незабаром відкриття';
+    }
+    &.temporary-img-ru::after {
+      content: 'Скоро открытие';
+    }
+    &.temporary-img-ua::after,
+    &.temporary-img-ru::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      color: #fff;
+      font-size: 200%;
+      font-weight: 700;
+      width: max-content;
+      height: max-content;
+      @include max-md {
+        font-size: 150%;
+      }
+    }
   }
   &__content {
     display: flex;

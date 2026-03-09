@@ -81,6 +81,11 @@
       @include max-fullhd {
         gap: 10px;
       }
+      & [data-state='closed'] {
+        max-height: 66px;
+        overflow: hidden;
+        display: block !important;
+      }
     }
     &-top {
       @include max-sm {

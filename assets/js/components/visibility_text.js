@@ -20,7 +20,7 @@ function updateDescVisibility() {
 
     if (windowWidth >= 1024) {
       $btn.hide();
-      $desc.attr('data-state', 'open').addClass('open').css('display', '');
+      $desc.attr('data-state', 'open').addClass('open').show(); // ← было .css('display', '')
       state.userClosed = false;
       setTimeout(() => refreshOwlHeight($descBox), 50);
     } else {
@@ -30,7 +30,7 @@ function updateDescVisibility() {
         $desc.attr('data-state', 'closed').removeClass('open').hide();
         $btn.text('Читати опис');
       } else {
-        $desc.attr('data-state', 'open').addClass('open').css('display', '');
+        $desc.attr('data-state', 'open').addClass('open').show(); // ← было .css('display', '')
         $btn.text('Сховати опис');
       }
       setTimeout(() => refreshOwlHeight($descBox), 50);
@@ -228,65 +228,59 @@ $(document).on('click', '.product__info-desc__btn', function () {
     }
   } else if (isConstructionsPage) {
     function getCollapsedHeight($el) {
-  const lineHeight = parseFloat($el.css('line-height'));
-  return lineHeight * 3;
-}
+      const lineHeight = parseFloat($el.css('line-height'));
+      return lineHeight * 3;
+    }
 
-function openDesc($el) {
-  const currentHeight = $el.outerHeight();
+    function openDesc($el) {
+      const currentHeight = $el.outerHeight();
 
-  $el
-    .css('max-height', currentHeight)
-    .addClass('is-open');
+      $el.css('max-height', currentHeight).addClass('is-open');
 
-  const fullHeight = $el[0].scrollHeight;
+      const fullHeight = $el[0].scrollHeight;
 
-  requestAnimationFrame(() => {
-    $el.css('max-height', fullHeight);
-  });
+      requestAnimationFrame(() => {
+        $el.css('max-height', fullHeight);
+      });
 
-  setTimeout(() => {
-    $el.css('max-height', 'none');
-  }, 300);
-}
+      setTimeout(() => {
+        $el.css('max-height', 'none');
+      }, 300);
+    }
 
-function closeDesc($el) {
-  const fullHeight = $el.outerHeight();
-  const collapsedHeight = getCollapsedHeight($el);
+    function closeDesc($el) {
+      const fullHeight = $el.outerHeight();
+      const collapsedHeight = getCollapsedHeight($el);
 
-  $el
-    .css('max-height', fullHeight)
-    .removeClass('is-open');
+      $el.css('max-height', fullHeight).removeClass('is-open');
 
-  requestAnimationFrame(() => {
-    $el.css('max-height', collapsedHeight);
-  });
-}
+      requestAnimationFrame(() => {
+        $el.css('max-height', collapsedHeight);
+      });
+    }
 
-  const $desc = $btn.next('.product__info-desc');
-  const descId = 'construction-' + $desc.index('.constructionsList .product__info-desc');
+    const $desc = $btn.next('.product__info-desc');
+    const descId = 'construction-' + $desc.index('.constructionsList .product__info-desc');
 
-  const state = descStates.get(descId) || { userClosed: true };
-  const isOpen = $desc.attr('data-state') === 'open';
+    const state = descStates.get(descId) || { userClosed: true };
+    const isOpen = $desc.attr('data-state') === 'open';
 
-  if (isOpen) {
-    // ЗАКРЫВАЕМ
-    closeDesc($desc);
-    $desc.attr('data-state', 'closed');
-    $btn.text('Читати опис');
-    state.userClosed = true;
-  } else {
-    // ОТКРЫВАЕМ
-    openDesc($desc);
-    $desc.attr('data-state', 'open');
-    $btn.text('Сховати опис');
-    state.userClosed = false;
+    if (isOpen) {
+      // ЗАКРЫВАЕМ
+      closeDesc($desc);
+      $desc.attr('data-state', 'closed');
+      $btn.text('Читати опис');
+      state.userClosed = true;
+    } else {
+      // ОТКРЫВАЕМ
+      openDesc($desc);
+      $desc.attr('data-state', 'open');
+      $btn.text('Сховати опис');
+      state.userClosed = false;
+    }
+
+    descStates.set(descId, state);
   }
-
-  descStates.set(descId, state);
-}
-
-
 });
 
 // Початкова ініціалізація

@@ -18,7 +18,8 @@
     display: flex !important;
   }
   @include max-xl {
-    height: 100svh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
   }
   &__box {
     padding: 50px 0;
@@ -291,7 +292,10 @@
       }
     }
   }
-  &RecoveryPass, &InstructionsComplete, &CreatePass, &PassComplete {
+  &RecoveryPass,
+  &InstructionsComplete,
+  &CreatePass,
+  &PassComplete {
     & .popup__notation {
       margin-top: 24px;
       font-weight: 400;

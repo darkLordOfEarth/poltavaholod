@@ -716,7 +716,9 @@ select::-ms-expand {
     height: 100% !important;
   }
 }
-
+.compensate-for-scrollbar {
+  padding-right: 0 !important;
+}
 .owl-nav button {
   border-radius: 50%;
   overflow: hidden;
@@ -962,4 +964,8 @@ video::-moz-media-controls {
     width: 50px;
     height: 50px;
   }
+}
+
+.fancybox__slide.has-html5video .fancybox__html5video {
+  background: #000; /* вместо poster */
 }

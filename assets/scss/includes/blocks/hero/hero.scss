@@ -132,10 +132,13 @@
       @include max-sm {
         display: none;
       }
-      & .hero__title-misc {
+      & .hero__title-misc,
+      .temp-current + .temp-current + .temp-current .hero__title-misc {
         font-size: 24px;
         line-height: 33px;
         padding: 0 36px !important;
+        color: #CBCBCB;
+        transition: 0.5s;
         @include max-fullhd {
           font-size: 16px;
           line-height: 22px;
@@ -143,11 +146,12 @@
       }
       & .slick-current .hero__title-misc,
       .slick-center .hero__title-misc,
-      .slick-current.slick-center .hero__title-misc {
+      .slick-current.slick-center .hero__title-misc,
+      .temp-current + .temp-current .hero__title-misc {
         font-size: 30px;
         line-height: 42px;
-        color: #cbcbcb;
-
+        color: #fff;
+        transition: 0.5s;
         @include max-fullhd {
           font-size: 20px;
           line-height: 28px;
