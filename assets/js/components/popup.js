@@ -115,14 +115,16 @@ $dropZone.on('drop', function (e) {
       isDragging &&
       !isMouseDownInsidePopup &&
       !$popupInner.has(e.target).length &&
-      !$popupInner.is(e.target)
+      !$popupInner.is(e.target) &&
+      !$(e.target).closest('.menu').length
     ) {
       $popup.fadeOut();
       $('.popupPartners').find('.play__btn').fadeIn(200);
       resetPartnersForm();
       $('html, body').removeClass('ovh');
+      
     }
-
+    
     // Сброс флагов
     isDragging = false;
     isMouseDownInsidePopup = false;

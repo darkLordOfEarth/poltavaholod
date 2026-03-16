@@ -10,6 +10,7 @@ $(function () {
   // console.log('CLASSES:', el.className);
   // console.log('ID:', el.id || '—');
   // });
+  $(".menu-item").removeClass("open");
 
   function checkHeaderScroll() {
     if ($(window).scrollTop() > 50) {
@@ -463,4 +464,45 @@ $(function () {
   if (isIOS() && $(window).width() <= 1024) {
     $('.product__info-desc').addClass('ios');
   }
+
+  $('.partners button').on('click', function () {
+    let data_link = $(this).attr('data-src');
+    window.location.href = data_link;
+  });
+  let isDragging = false;
+
+  $('.related__home .related__slider')
+    .on('drag.owl.carousel', function () {
+      isDragging = true;
+    })
+    .on('dragged.owl.carousel', function () {
+      setTimeout(function () {
+        isDragging = false;
+      }, 100);
+    });
+
+  $('.related__home .related__slider').on('click', '.related__slider-item', function (e) {
+    if (isDragging) {
+      e.preventDefault();
+      return false;
+    }
+
+    const link = $(this).data('src');
+    if (link) {
+      window.location.href = link;
+    }
+  });
+  if($(window).width() < 1280) {
+    $("#menu-item-1565, #menu-item-1535, #menu-item-1566").children("a").attr("href", "");
+    $("#menu-item-1698, button[target='#contacts']").on("click", function() {
+      $(".menu__heading-close").click();
+    })
+  }
+
+  $(".areas__content > button").on("click", function() {
+    let path = $(this).data('src');
+    if (path) {
+      window.location.href = path;
+    }
+  })
 });

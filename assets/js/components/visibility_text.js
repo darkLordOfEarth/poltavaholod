@@ -1,6 +1,12 @@
 // Зберігаємо стан для кожного опису
 const descStates = new Map();
 
+// Планшетний діапазон: 576px–1280px
+function isTablet() {
+  const w = $(window).width();
+  return w >= 576 && w <= 1280;
+}
+
 // Функція для оновлення видимості описів
 function updateDescVisibility() {
   const windowWidth = $(window).width();
@@ -20,7 +26,7 @@ function updateDescVisibility() {
 
     if (windowWidth >= 1024) {
       $btn.hide();
-      $desc.attr('data-state', 'open').addClass('open').show(); // ← было .css('display', '')
+      $desc.attr('data-state', 'open').addClass('open').show();
       state.userClosed = false;
       setTimeout(() => refreshOwlHeight($descBox), 50);
     } else {
@@ -30,7 +36,7 @@ function updateDescVisibility() {
         $desc.attr('data-state', 'closed').removeClass('open').hide();
         $btn.text('Читати опис');
       } else {
-        $desc.attr('data-state', 'open').addClass('open').show(); // ← было .css('display', '')
+        $desc.attr('data-state', 'open').addClass('open').show();
         $btn.text('Сховати опис');
       }
       setTimeout(() => refreshOwlHeight($descBox), 50);
@@ -48,24 +54,33 @@ function updateDescVisibility() {
 
     if (!descStates.has(descId)) {
       descStates.set(descId, {
-        userClosed: windowWidth < 1024, // 👈 на мобиле сразу закрыто
+        // На планшеті і десктопі — одразу відкрито, на мобілі — закрито
+        userClosed: windowWidth < 576,
       });
     }
 
     const state = descStates.get(descId);
 
     if (windowWidth >= 1024) {
+      // Десктоп: кнопка прихована, опис завжди відкритий
       $btn.hide();
-      $desc.attr('data-state', 'open').css('display', '');
+      $desc.attr('data-state', 'open').addClass('is-open').css('max-height', 'initial');
+      state.userClosed = false;
+    } else if (isTablet()) {
+      // Планшет: кнопка видима, опис розгорнутий за замовчуванням
+      $btn.show();
+      $btn.text('Сховати опис');
+      $desc.attr('data-state', 'open').addClass('is-open').css('max-height', 'initial');
       state.userClosed = false;
     } else {
+      // Мобіл < 576px: кнопка видима, стан залежить від userClosed
       $btn.show();
 
       if (state.userClosed) {
-        $desc.attr('data-state', 'closed').removeClass('is-open');
+        $desc.attr('data-state', 'closed').removeClass('is-open').css('max-height', '');
         $btn.text('Читати опис');
       } else {
-        $desc.attr('data-state', 'open').addClass('is-open');
+        $desc.attr('data-state', 'open').addClass('is-open').css('max-height', 'initial');
         $btn.text('Сховати опис');
       }
     }
@@ -76,29 +91,19 @@ function updateDescVisibility() {
 function refreshOwlHeight($element) {
   const $mainSlider = $element.closest('.projectAuditExpertise__slider');
 
-  if ($mainSlider.length === 0) {
-    return;
-  }
+  if ($mainSlider.length === 0) return;
 
   const owl = $mainSlider.data('owl.carousel');
-
-  if (!owl) {
-    return;
-  }
+  if (!owl) return;
 
   const $stageOuter = $mainSlider.children('.owl-stage-outer');
-
-  if ($stageOuter.length === 0) {
-    return;
-  }
+  if ($stageOuter.length === 0) return;
 
   const $activeItems = $mainSlider
     .find('> .owl-stage-outer > .owl-stage > .owl-item.active')
     .not('.cloned');
 
-  if ($activeItems.length === 0) {
-    return;
-  }
+  if ($activeItems.length === 0) return;
 
   const $targetSlide = $activeItems.first();
   const $slideContent = $targetSlide.find('.projectAuditExpertise__slide');
@@ -118,13 +123,7 @@ function refreshOwlHeight($element) {
   const newHeight = $measureElement.outerHeight(true);
 
   if (newHeight && newHeight > 0) {
-    // Швидка анімація для слайдера - 150ms
-    $stageOuter.stop(true, false).animate(
-      {
-        height: newHeight,
-      },
-      150,
-    );
+    $stageOuter.stop(true, false).animate({ height: newHeight }, 150);
   }
 }
 
@@ -176,12 +175,10 @@ function initTouchHandlers() {
 $(document).on('click', '.product__info-desc__btn', function () {
   const $btn = $(this);
 
-  // Визначаємо, на якій сторінці ми знаходимося
   const isAuditPage = $btn.closest('.projectAuditExpertise').length > 0;
   const isConstructionsPage = $btn.closest('.constructionsList').length > 0;
 
   if (isAuditPage) {
-    // Логіка для projectAuditExpertise - ШВИДКА анімація 150ms
     const $descBox = $btn.closest('.product__info-desc');
     const $desc = $descBox.find('p');
     const descId = 'audit-' + $descBox.index('.projectAuditExpertise .product__info-desc');
@@ -227,6 +224,9 @@ $(document).on('click', '.product__info-desc__btn', function () {
         });
     }
   } else if (isConstructionsPage) {
+    // На планшеті кнопка прихована, клік не спрацює — але на всяк випадок guard
+    // if (isTablet()) return;
+
     function getCollapsedHeight($el) {
       const lineHeight = parseFloat($el.css('line-height'));
       return lineHeight * 3;
@@ -234,26 +234,20 @@ $(document).on('click', '.product__info-desc__btn', function () {
 
     function openDesc($el) {
       const currentHeight = $el.outerHeight();
-
       $el.css('max-height', currentHeight).addClass('is-open');
-
       const fullHeight = $el[0].scrollHeight;
-
       requestAnimationFrame(() => {
         $el.css('max-height', fullHeight);
       });
-
       setTimeout(() => {
-        $el.css('max-height', 'none');
+        $el.css('max-height', 'initial');
       }, 300);
     }
 
     function closeDesc($el) {
       const fullHeight = $el.outerHeight();
       const collapsedHeight = getCollapsedHeight($el);
-
       $el.css('max-height', fullHeight).removeClass('is-open');
-
       requestAnimationFrame(() => {
         $el.css('max-height', collapsedHeight);
       });
@@ -266,13 +260,11 @@ $(document).on('click', '.product__info-desc__btn', function () {
     const isOpen = $desc.attr('data-state') === 'open';
 
     if (isOpen) {
-      // ЗАКРЫВАЕМ
       closeDesc($desc);
       $desc.attr('data-state', 'closed');
       $btn.text('Читати опис');
       state.userClosed = true;
     } else {
-      // ОТКРЫВАЕМ
       openDesc($desc);
       $desc.attr('data-state', 'open');
       $btn.text('Сховати опис');
@@ -289,11 +281,19 @@ $(document).ready(function () {
   initTouchHandlers();
 });
 
-// Debounce функція для оптимізації resize
+// Debounce для resize
 let resizeTimer;
 $(window).on('resize orientationchange', function () {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function () {
+    // При зміні орієнтації планшета скидаємо userClosed для constructions
+    if (isTablet()) {
+      descStates.forEach((state, key) => {
+        if (key.startsWith('construction-')) {
+          state.userClosed = false;
+        }
+      });
+    }
     updateDescVisibility();
     initTouchHandlers();
   }, 250);

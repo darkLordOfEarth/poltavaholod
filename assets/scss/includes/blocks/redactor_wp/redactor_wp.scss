@@ -1,5 +1,5 @@
 .redactor_wp {
-  p {
+  & p {
     font-weight: 400;
     font-size: 30px;
     line-height: 42px;
@@ -16,10 +16,10 @@
     }
     @include max-lg {
       font-size: 16px;
-      line-height: 22px;
+      line-height: 24px;
     }
   }
-  strong {
+  & strong {
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
@@ -28,21 +28,34 @@
       line-height: 24px;
     }
     @include max-xxl {
-      line-height: 28px;
+      font-size: 18px;
     }
     @include max-sm {
       font-size: 16px;
       line-height: 22px;
     }
   }
-  ul,
-  ol {
+  & ul,
+  & ol {
     padding-left: 30px;
+    & li {
+      font-size: 30px;
+      line-height: normal;
+      @include max-fullhd {
+        font-size: 20px;
+      }
+      @include max-xxl {
+        font-size: 18px;
+      }
+      @include max-xl {
+        font-size: 16px;
+      }
+    }
   }
-  ul {
+  & ul {
     list-style-type: disc;
   }
-  ol {
+  & ol {
     list-style-type: decimal;
   }
 }

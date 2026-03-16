@@ -1,4 +1,5 @@
 .manufacturingImagesSlider {
+  padding-top: 0;
   & .product__slider {
     @include max-l {
       display: none;

@@ -517,6 +517,20 @@ $(function () {
     });
   });
 
+  // Динамический bind для review-gallery-* (уникальная группа на каждый слайд)
+  const reviewFancyGroups = new Set();
+
+  document.querySelectorAll('[data-fancybox^="review-gallery-"]').forEach((el) => {
+    reviewFancyGroups.add(el.dataset.fancybox);
+  });
+
+  reviewFancyGroups.forEach((group) => {
+    Fancybox.bind(`.owl-item:not(.cloned) [data-fancybox="${group}"]`, {
+      infinite: true,
+      dragToClose: false,
+    });
+  });
+
   // const fancyGroups2 = new Set();
 
   // document.querySelectorAll('[data-fancybox^="gallery-product-"]').forEach((el) => {
