@@ -159,3 +159,12 @@
     }
   }
 }
+html[lang='ru-RU'] .areas .custom-button {
+  white-space: nowrap;
+  @include max-fullhd {
+    padding: 18px 10px;
+  }
+  @include max-l {
+    padding: 13px 0;
+  }
+}

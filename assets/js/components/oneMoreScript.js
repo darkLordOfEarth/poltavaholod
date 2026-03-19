@@ -10,7 +10,7 @@ $(function () {
   // console.log('CLASSES:', el.className);
   // console.log('ID:', el.id || '—');
   // });
-  $(".menu-item").removeClass("open");
+  $('.menu-item').removeClass('open');
 
   function checkHeaderScroll() {
     if ($(window).scrollTop() > 50) {
@@ -465,7 +465,7 @@ $(function () {
     $('.product__info-desc').addClass('ios');
   }
 
-  $('.partners button').on('click', function () {
+  $('.partners .custom-button, .reviews__slide-project__logo').on('click', function () {
     let data_link = $(this).attr('data-src');
     window.location.href = data_link;
   });
@@ -492,17 +492,192 @@ $(function () {
       window.location.href = link;
     }
   });
-  if($(window).width() < 1280) {
-    $("#menu-item-1565, #menu-item-1535, #menu-item-1566").children("a").attr("href", "");
-    $("#menu-item-1698, button[target='#contacts']").on("click", function() {
-      $(".menu__heading-close").click();
-    })
+  if ($(window).width() < 1280) {
+    $('#menu-item-1565, #menu-item-1535, #menu-item-1566').children('a').attr('href', '');
+    $("#menu-item-1698, button[target='#contacts']").on('click', function () {
+      $('.menu__heading-close').click();
+    });
   }
 
-  $(".areas__content > button").on("click", function() {
+  $('.areas__content > button').on('click', function () {
     let path = $(this).data('src');
     if (path) {
       window.location.href = path;
     }
-  })
+  });
+
+  $('.partners__list .owl-nav button').on('click', function (e) {
+    e.preventDefault();
+  });
+
+  const reviews = document.querySelector('.reviews');
+
+  let startX = 0;
+  let startY = 0;
+  let isHorizontal = null;
+
+  reviews.addEventListener(
+    'touchstart',
+    (e) => {
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      isHorizontal = null;
+    },
+    { passive: true },
+  );
+
+  reviews.addEventListener(
+    'touchmove',
+    (e) => {
+      const touch = e.touches[0];
+      const dx = Math.abs(touch.clientX - startX);
+      const dy = Math.abs(touch.clientY - startY);
+
+      if (isHorizontal === null) {
+        isHorizontal = dx > dy;
+      }
+
+      if (isHorizontal) {
+        // блокируем вертикальный скролл
+        e.preventDefault();
+      }
+    },
+    { passive: false },
+  ); // 🔥 ВОТ ЭТО КЛЮЧ
+
+
+function initCustomScroll() {
+  var isMatch = window.matchMedia('(max-width: 1280px) and (max-height: 450px)').matches;
+
+  $('.reviews__slide').each(function () {
+    var $slide = $(this);
+
+    // если НЕ подходит под условия — возвращаем всё назад
+    if (!isMatch) {
+      if ($slide.data('original-content')) {
+        $slide.html($slide.data('original-content'));
+        $slide.removeData('original-content');
+      }
+      return;
+    }
+
+    // уже инициализирован
+    if ($slide.find('.custom-scroll-wrapper').length) return;
+
+    // сохраняем оригинал (чтобы потом вернуть)
+    $slide.data('original-content', $slide.html());
+
+    // оборачиваем
+    var content = $slide.html();
+
+    $slide.html(`
+      <div class="custom-scroll-wrapper">
+        <div class="custom-scroll-content">${content}</div>
+        <div class="custom-scrollbar">
+          <div class="custom-scroll-thumb"></div>
+        </div>
+      </div>
+    `);
+
+    var $wrapper = $slide.find('.custom-scroll-wrapper');
+    var $content = $slide.find('.custom-scroll-content');
+    var $thumb = $slide.find('.custom-scroll-thumb');
+
+    function updateThumb() {
+      var contentHeight = $content[0].scrollHeight;
+      var wrapperHeight = $wrapper.height();
+
+      if (contentHeight <= wrapperHeight) {
+        $thumb.hide();
+        return;
+      } else {
+        $thumb.show();
+      }
+
+      var ratio = wrapperHeight / contentHeight;
+      var thumbHeight = wrapperHeight * ratio;
+
+      $thumb.height(Math.max(30, thumbHeight));
+    }
+
+    function syncThumb() {
+      var scrollTop = $content.scrollTop();
+      var contentHeight = $content[0].scrollHeight;
+      var wrapperHeight = $wrapper.height();
+
+      var maxScroll = contentHeight - wrapperHeight;
+      var maxThumbTop = wrapperHeight - $thumb.height();
+
+      var thumbTop = (scrollTop / maxScroll) * maxThumbTop;
+
+      $thumb.css('transform', 'translateY(' + thumbTop + 'px)');
+    }
+
+    // скролл
+    $content.on('scroll', function () {
+      syncThumb();
+    });
+
+    // drag
+    var isDragging = false;
+    var startY = 0;
+    var startTop = 0;
+
+    $thumb.on('mousedown', function (e) {
+      isDragging = true;
+      startY = e.pageY;
+
+      var matrix = $thumb.css('transform');
+      if (matrix !== 'none') {
+        startTop = parseInt(matrix.split(',')[5]);
+      } else {
+        startTop = 0;
+      }
+
+      $('body').addClass('no-select');
+    });
+
+    $(document).on('mousemove.customScroll', function (e) {
+      if (!isDragging) return;
+
+      var delta = e.pageY - startY;
+      var newTop = startTop + delta;
+
+      var maxTop = $wrapper.height() - $thumb.height();
+      newTop = Math.max(0, Math.min(maxTop, newTop));
+
+      var scrollRatio = newTop / maxTop;
+      var scrollTop = scrollRatio * ($content[0].scrollHeight - $wrapper.height());
+
+      $content.scrollTop(scrollTop);
+    });
+
+    $(document).on('mouseup.customScroll', function () {
+      isDragging = false;
+      $('body').removeClass('no-select');
+    });
+
+    // init
+    setTimeout(function () {
+      updateThumb();
+      syncThumb();
+    }, 0);
+
+    // пересчёт при ресайзе
+    $(window).on('resize.customScroll', function () {
+      updateThumb();
+      syncThumb();
+    });
+  });
+}
+
+// init
+  initCustomScroll();
+
+$(window).on('resize', function () {
+  initCustomScroll();
+});
+
+
 });

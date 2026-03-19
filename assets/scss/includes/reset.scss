@@ -193,7 +193,7 @@ button {
 }
 .mobile {
   display: none !important;
-  @include max-sm {
+  @include max-sm { 
     display: block !important;
   }
 }
@@ -621,7 +621,7 @@ select::-ms-expand {
   line-height: normal;
   color: #f46d06;
   cursor: pointer;
-  @include max-l {
+  @include max-sm {
     display: block;
   }
 }

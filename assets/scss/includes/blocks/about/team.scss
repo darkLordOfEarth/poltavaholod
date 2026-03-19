@@ -10,6 +10,15 @@
       gap: 20px;
     }
   }
+  &__images {
+    padding: 0 105px;
+    @include max-fullhd {
+      padding: 0 70px;
+    }
+    @include max-l {
+      padding: 0;
+    }
+  }
   & .videoBlockSimple .pause__btn {
     opacity: 1;
     transition: opacity 0.3s ease;

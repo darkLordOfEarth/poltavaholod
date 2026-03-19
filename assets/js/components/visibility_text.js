@@ -34,10 +34,18 @@ function updateDescVisibility() {
 
       if (state.userClosed) {
         $desc.attr('data-state', 'closed').removeClass('open').hide();
-        $btn.text('Читати опис');
+        if ($('html').attr('lang') == 'uk') {
+          $btn.text('Читати опис');
+        } else {
+          $btn.text('Читать описание');
+        }
       } else {
         $desc.attr('data-state', 'open').addClass('open').show();
-        $btn.text('Сховати опис');
+        if ($('html').attr('lang') == 'uk') {
+          $btn.text('Сховати опис');
+        } else {
+          $btn.text('Спрятать описание');
+        }
       }
       setTimeout(() => refreshOwlHeight($descBox), 50);
     }
@@ -68,8 +76,12 @@ function updateDescVisibility() {
       state.userClosed = false;
     } else if (isTablet()) {
       // Планшет: кнопка видима, опис розгорнутий за замовчуванням
-      $btn.show();
-      $btn.text('Сховати опис');
+      // $btn.show();
+      if ($('html').attr('lang') == 'uk') {
+        $btn.text('Сховати опис');
+      } else {
+        $btn.text('Спрятать описание');
+      }
       $desc.attr('data-state', 'open').addClass('is-open').css('max-height', 'initial');
       state.userClosed = false;
     } else {
@@ -78,10 +90,18 @@ function updateDescVisibility() {
 
       if (state.userClosed) {
         $desc.attr('data-state', 'closed').removeClass('is-open').css('max-height', '');
-        $btn.text('Читати опис');
+        if ($('html').attr('lang') == 'uk') {
+          $btn.text('Читати опис');
+        } else {
+          $btn.text('Читать описание');
+        }
       } else {
         $desc.attr('data-state', 'open').addClass('is-open').css('max-height', 'initial');
-        $btn.text('Сховати опис');
+        if ($('html').attr('lang') == 'uk') {
+          $btn.text('Сховати опис');
+        } else {
+          $btn.text('Спрятать описание');
+        }
       }
     }
   });
@@ -187,7 +207,11 @@ $(document).on('click', '.product__info-desc__btn', function () {
     const currentState = $desc.attr('data-state');
 
     if (currentState === 'open') {
-      $btn.text('Читати опис');
+      if ($('html').attr('lang') == 'uk') {
+          $btn.text('Читати опис');
+        } else {
+          $btn.text('Читать описание');
+        }
       $desc
         .attr('data-state', 'closed')
         .removeClass('open')
@@ -205,7 +229,12 @@ $(document).on('click', '.product__info-desc__btn', function () {
           },
         });
     } else {
-      $btn.text('Сховати опис');
+      if ($('html').attr('lang') == 'uk') {
+        $btn.text('Сховати опис');
+      } else {
+        $btn.text('Спрятать описание');
+      }
+
       $desc
         .attr('data-state', 'open')
         .addClass('open')
@@ -262,12 +291,20 @@ $(document).on('click', '.product__info-desc__btn', function () {
     if (isOpen) {
       closeDesc($desc);
       $desc.attr('data-state', 'closed');
-      $btn.text('Читати опис');
+      if ($('html').attr('lang') == 'uk') {
+          $btn.text('Читати опис');
+        } else {
+          $btn.text('Читать описание');
+        }
       state.userClosed = true;
     } else {
       openDesc($desc);
       $desc.attr('data-state', 'open');
-      $btn.text('Сховати опис');
+      if ($('html').attr('lang') == 'uk') {
+        $btn.text('Сховати опис');
+      } else {
+        $btn.text('Спрятать описание');
+      }
       state.userClosed = false;
     }
 

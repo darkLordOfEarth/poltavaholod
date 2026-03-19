@@ -11,13 +11,13 @@ $(function () {
     $slider.find('.slick-next').click();
   });
   // ------------------- Вспомогательные функции -------------------
-  function updateTexts(index) {
-    const data = slidesData[index];
-    if (!data) return;
-    $productLink.attr('href', data.link);
-    $title.stop(true, true).css('opacity', 0).text(data.title).animate({ opacity: 1 }, 200);
-    $desc.stop(true, true).css('opacity', 0).text(data.desc).animate({ opacity: 1 }, 200);
-  }
+  // function updateTexts(index) {
+  //   const data = slidesData[index];
+  //   if (!data) return;
+  //   $productLink.attr('href', data.link);
+  //   $title.stop(true, true).css('opacity', 0).text(data.title).animate({ opacity: 1 }, 200);
+  //   $desc.stop(true, true).css('opacity', 0).text(data.desc).animate({ opacity: 1 }, 200);
+  // }
 
   function startVerticalProgress(slick) {
     if (!$slider_nav.length) return;
@@ -67,17 +67,17 @@ $(function () {
   }
 
   // ------------------- Сбор данных из главных слайдов -------------------
-  const slidesData = [];
-  if ($slider.length) {
-    $slider.find('.hero__slide').each(function () {
-      const $slide = $(this);
-      slidesData.push({
-        title: $slide.find('img').attr('data-title') || '',
-        desc: $slide.find('img').attr('data-desc') || '',
-        link: $slide.find('img').attr('data-link') || '#',
-      });
-    });
-  }
+  // const slidesData = [];
+  // if ($slider.length) {
+  //   $slider.find('.hero__slide').each(function () {
+  //     const $slide = $(this);
+  //     slidesData.push({
+  //       title: $slide.find('img').attr('data-title') || '',
+  //       desc: $slide.find('img').attr('data-desc') || '',
+  //       link: $slide.find('img').attr('data-link') || '#',
+  //     });
+  //   });
+  // }
 
   // ------------------- Инициализация навигационного слайдера -------------------
   if ($slider_nav.length) {
@@ -166,14 +166,14 @@ $(function () {
 
     // События главного слайдера
     $slider.on('init', function (event, slick) {
-      updateTexts(0);
+      // updateTexts(0);
       startVerticalProgress(slick);
       const autoplaySpeed = slick.options.autoplaySpeed + 'ms';
       document.documentElement.style.setProperty('--slide-progress-time', autoplaySpeed);
     });
 
     $slider.on('beforeChange', function (event, slick, current, next) {
-      updateTexts(next);
+      // updateTexts(next);
       startVerticalProgress(slick);
       // Обратите внимание: observer сам определит центральный слайд после перемещения
       // Ничего дополнительно делать не нужно
