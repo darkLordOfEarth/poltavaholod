@@ -1,4 +1,9 @@
 .aboutSlider {
+  & .container {
+    @include max-l {
+      padding-right: 0;
+    }
+  }
   @include max-l {
       padding-top: 90px;
     }
@@ -15,11 +20,11 @@
       left: 50%;
       margin-left: -50vw;
       position: relative;
-      padding-left: 20px;
+      padding-left: 5px;
     }
     & .owl-stage {
       @include max-xxl {
-        margin-left: -75px;
+        margin-left: 0;
       }
       @include max-l {
         margin-left: -30px;
@@ -28,10 +33,13 @@
         margin-left: -20px;
       }
     }
-    .owl-nav {
+    & .owl-nav {
       @include max-l {
         top: -60px;
         right: 20px;
+      }
+      @include max-sm {
+        right: 30px;
       }
     }
   }

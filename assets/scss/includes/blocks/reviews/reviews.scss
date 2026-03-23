@@ -130,6 +130,9 @@
     @include max-l {
       padding: 40px 20px;
     }
+    @include max-md {
+      height: 80lvh;
+    }
     @include max-sm {
       padding: 20px;
       border-radius: 10px;
@@ -204,7 +207,7 @@
       }
     }
     & .custom-scrollbar {
-      display: none;
+      // display: none;
       @include phoneLandscape {
         display: flex;
         // position: absolute;

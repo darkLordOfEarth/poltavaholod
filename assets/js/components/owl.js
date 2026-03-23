@@ -418,8 +418,8 @@ $(function () {
         margin: 10,
       },
       1024: {
-        items: 3,
-        stagePadding: 75,
+        items: 4,
+        stagePadding: 0,
         margin: 10,
       },
       1440: {
@@ -673,7 +673,7 @@ $(function () {
       768: {
         margin: 15,
         items: 3,
-        stagePadding: 100,
+        stagePadding: 70,
       },
       1024: {
         margin: 35,

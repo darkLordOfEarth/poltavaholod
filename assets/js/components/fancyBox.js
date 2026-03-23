@@ -499,6 +499,12 @@ $(function () {
   Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-about-slider"]', {
     infinite: true,
   });
+  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-item_licenses"]', {
+    infinite: true,
+  });
+  Fancybox.bind('.owl-item:not(.cloned) [data-fancybox="gallery-item_gramoty"]', {
+    infinite: true,
+  });
   // Fancybox.bind('.owl-item:not(.cloned) [data-fancybox]', {
   //   infinite: true,
   // });
@@ -640,4 +646,7 @@ $(function () {
   //     }
   //   }, 300);
   // });
+  // FIX: блокируем открытие fancybox из клонированных слайдов owl carousel
+  // Подключать ПОСЛЕ основного скрипта
+  
 });
