@@ -1,98 +1,66 @@
 <footer class='footer'>
-    <div class="container">
-        <div class="footer__content">
-            <div class="footer__top">
-                <div class="videoBlock footer__video videoBlockSimple">
-                    <a href="/images/footer_video.mp4"
-                    class="video-fancybox-trigger gallery-item"
-                    data-type="video"></a>
-                    <div class="videoBlockWrapper">
-                        {{!-- <img src="/images/close_white.svg" class="videoBlock__close"> --}}
-                        <video class="video-element footer-video-element" playsinline muted poster="/images/footer_video_poster.png">
-                            <source src="/images/footer_video.mp4" type="video/mp4">
-                        </video>
-                        <img loading="lazy"
-                            src="/images/play_btn.svg"
-                            alt="play" 
-                            class="play__btn">
-                    </div>
-                </div>
-                <ul class="footer__menu">
-                    <li class='menu__list-item'>
-                        <a href='manufacturings.html' class='menu__list-link'>Виробництво та проєктування</a>
-                    </li>
-                    <li class='menu__list-item'>
-                        <a href='products.html' class='menu__list-link'>Продукція</a>
-                    </li>
-                    <li class='menu__list-item'>
-                        <a href='constructions.html' class='menu__list-link'>Будівництво споруд</a>
-                    </li>
-                    <li class='menu__list-item'>
-                        <a href='projectAudit.html' class='menu__list-link'>Проєктний аудит</a>
-                    </li>
-                    <li class='menu__list-item'>
-                        <a href='partnership.html' class='menu__list-link'>Партнерство</a>
-                    </li>
-                    <li class='menu__list-item'>
-                        <a href='#' class='menu__list-link'>Контакти</a>
-                    </li>
-                </ul>
-                <div class="footer__contacts">
-                    <div class="footer__contacts-group">
-                        <div class="footer__contacts-title">Головний офіс:</div>
-                        <a href="mailto:karkas@zskua.com" class="footer__contacts-text">karkas@zskua.com</a>
-                        <a href="tel:+380777971111" class="footer__contacts-text">+38(077) 797-11-11</a>
-                    </div>
-                    <div class="footer__contacts-group">
-                        <div class="footer__contacts-title">Відділ закупівель:</div>
-                        <a href="mailto:zakupivli@zskua.com" class="footer__contacts-text">zakupivli@zskua.com</a>
-                        <a href="tel:+380685263085" class="footer__contacts-text">+38(068) 526-30-85</a>
-                    </div>
-                    <div class="footer__contacts-group">
-                        <div class="footer__contacts-title">Наші адреси</div>
-                        <a href="#" class="footer__contacts-text">м. Київ, Київська область, 01013 вул. Будіндустрії, 6</a>
-                        <a href="#" class="footer__contacts-text">м. Запоріжжя, Запорізька область, 69002 вул. Гагаріна, 5</a>
-                    </div>
-                </div> 
-                <div class="footer__column">
-                    <div class="footer__logo">
-                        <a href="/" class="">
-                            <img loading="lazy" src="images/footer_logo.svg" alt="logo">
-                        </a>
-                    </div>
-
-                    <div class="footer__desc">Ми цінуємо відкритий діалог. Підписуйтесь і звертайтеся у будь-який час — завжди будемо на зв’язку.</div>
-                    <div class="socials">
-                        {{> socials }}
-                    </div>
+    <img src="images/footer_eskimo.png" class="footer__eskimo" alt="eskimo">
+    <img src="images/footer_raspberry.png" class="footer__raspberry" alt="eskimo">
+    <img src="images/footer_strawberry.png"class="footer__strawberry"  alt="eskimo">
+  <div class='container-small'>
+    <div class="footer__content">
+        <div class='container-big'>
+            <div class='footer__top'>
+            <a href='/' class='logo footer__logo'>
+                <img src='images/footer_logo.svg' alt='logo' />
+            </a>
+            <div class='footer__top-column'>
+                <div class='footer__top-column__title'>Меню</div>
+                <div class='footer__top-column__list'>
+                <a href='#' class='footer__top-column__link'>Каталог</a>
+                <a href='#' class='footer__top-column__link'>Про нас</a>
+                <a href='#' class='footer__top-column__link'>Партнерам</a>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <div class="text">© 2025 Завод Каркас Україна. Всі права захищені</div>
-                <ul class="footer__bottom-list">
-                    <li class="footer__bottom-list__item">
-                        <a href="#" class="footer__bottom-list__link">Умови використання</a>
+            <div class='footer__top-column'>
+                <div class='footer__top-column__title'>Інформація</div>
+                <div class='footer__top-column__list'>
+                <a href='#' class='footer__top-column__link'>Політика конфіденційності</a>
+                <a href='#' class='footer__top-column__link'>Умови і положення</a>
+                <a href='#' class='footer__top-column__link'>Контакти</a>
+                </div>
+            </div>
+            <div class='footer__top-column'>
+                <div class='footer__top-column__title'>Контакти</div>
+                <div class='footer__top-column__list'>
+                <a href='tel:+0800501772' class='footer__top-column__link'>0 800 50 17 72</a>
+                <a href='mailto:poltavaholod@gmail.com' class='footer__top-column__link'>poltavaholod@gmail.com</a>
+                
+                <ul class="socials">
+                    <li class="socials__item">
+                        <a href="" class="socials__link">
+                            <img src="images/facebook.svg" alt="facebook">
+                        </a>
                     </li>
-                    <li class="footer__bottom-list__item">
-                        <a href="#" class="footer__bottom-list__link">Політика конфіденційності</a>
+                    <li class="socials__item">
+                        <a href="" class="socials__link">
+                            <img src="images/instagram.svg" alt="instagram">
+                        </a>
                     </li>
-                    <li class="footer__bottom-list__item">
-                        <a href="#" class="footer__bottom-list__link">Файли cookie</a>
+                    <li class="socials__item">
+                        <a href="" class="socials__link">
+                            <img src="images/youtube.svg" alt="youtube">
+                        </a>
                     </li>
-                    <li class="footer__bottom-list__item">
-                        <a href="#" class="footer__bottom-list__link">Публічна оферта</a>
+                    <li class="socials__item">
+                        <a href="" class="socials__link">
+                            <img src="images/tiktok.svg" alt="tiktok">
+                        </a>
                     </li>
                 </ul>
+                </div>
+            </div>
+            </div>
+            <div class='footer__bottom'>
+            <div class='footer__bottom-text'>© 2025 Poltava Holod. Всі права захищені</div>
+            <img src="images/footer_img_main.png"class='footer__bottom-img' alt='icecream' />
             </div>
         </div>
     </div>
-    {{> popups / popupRozrahunok }}
-    {{> popups / popupSpasibi }}
-    {{> popups / popupLang }}
-    {{> popups / popupLogin }}
-    {{> popups / popupRecoveryPass }}
-    {{> popups / popupInstructionsComplete }}
-    {{> popups / popupCreatePass }}
-    {{> popups / popupPassComplete }}
-    {{> loader }}
+  </div>
 </footer>

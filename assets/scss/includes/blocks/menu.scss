@@ -1,0 +1,198 @@
+.menu {
+  &__heading {
+    display: none;
+    @include max-xl {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-close {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+    &-logo {
+      width: 60px;
+      @include max-xl {
+        width: 60px;
+      }
+    }
+  }
+  &.header__menu {
+    display: flex;
+    @include max-xl {
+      position: fixed;
+      top: 24px;
+      right: -100%;
+      height: 100dvh;
+      background-color: #dab785;
+      padding: 6px 15px 30px;
+      width: 100%;
+      overflow: auto;
+      transition: 0.5s;
+      z-index: 10;
+      flex-direction: column;
+    }
+    &.open {
+      right: 0;
+      transition: 0.5s;
+    }
+    & .menu-item a {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0%;
+      text-transform: uppercase;
+      color: #4a2c21;
+      &:hover {
+        color: #f8e1ad;
+      }
+      
+      @include max-xl {
+        width: 100%;
+      }
+    }
+    & .submenu {
+      position: absolute;
+      left: 0;
+      top: 30px;
+      background-color: #dab785;
+      border-radius: 16px;
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      width: max-content;
+      border: 1px solid #4a2c21;
+      @include max-xl {
+        position: relative;
+        // display: flex;
+        top: 0;
+        width: 100%;
+        padding: 0;
+        border: none;
+      }
+      &__item a {
+        @include max-xl {
+            margin-left: 12px;
+            font-weight: 500;
+            text-transform: initial;
+        }
+      }
+      &__link {
+        padding: 14px 12px;
+        font-size: 24px;
+        transition: 0.5s;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        display: block;
+        border-radius: 16px;
+        @include max-xl {
+          font-size: 16px;
+          line-height: 22px;
+        }
+        &:hover {
+          background-color: #cd7f23;
+          color: #4a2c21;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    @include max-fullhd {
+      gap: 30px;
+    }
+    @include max-xlmidle {
+      gap: 20px;
+    }
+    @include max-xl {
+      flex-direction: column;
+      margin-top: 0;
+      gap: 10px;
+      height: 100%;
+      justify-content: center;
+    }
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      &.open::after {
+        transform: rotate(180deg) !important;
+      }
+      &:has(.submenu)::after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.35134 8.7516C6.57638 8.52663 6.88155 8.40026 7.19974 8.40026C7.51794 8.40026 7.82311 8.52663 8.04814 8.7516L11.9997 12.7032L15.9513 8.7516C16.062 8.63699 16.1945 8.54557 16.3409 8.48268C16.4873 8.41979 16.6447 8.38668 16.8041 8.3853C16.9634 8.38391 17.1214 8.41428 17.2689 8.47461C17.4164 8.53495 17.5503 8.62405 17.663 8.73673C17.7757 8.8494 17.8648 8.98338 17.9251 9.13085C17.9855 9.27833 18.0158 9.43635 18.0144 9.59568C18.0131 9.75502 17.98 9.91248 17.9171 10.0589C17.8542 10.2053 17.7628 10.3377 17.6481 10.4484L12.8481 15.2484C12.6231 15.4734 12.3179 15.5997 11.9997 15.5997C11.6815 15.5997 11.3764 15.4734 11.1513 15.2484L6.35134 10.4484C6.12638 10.2234 6 9.9182 6 9.6C6 9.2818 6.12638 8.97663 6.35134 8.7516Z' fill='%234A2C21'/%3E%3C/svg%3E");
+        width: 24px;
+        height: 24px;
+        transition: .3s;
+        @include max-xl {
+          transition: 0.5s;
+          position: absolute;
+          top: 13px;
+          right: 0;
+          transform: rotate(180deg);
+        }
+
+      }
+
+      &:has(.submenu):hover::after {
+        transform: rotate(180deg);
+        transition: .3s;
+        @include max-xl {
+          transform: rotate(0);
+        }
+      }
+      &:has(.submenu)::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        @include max-xl {
+          display: none;
+        }
+      }
+      &:has(.submenu):hover .submenu {
+        @media (min-width: 1280px) {
+          display: flex;
+        }
+      }
+      &.open .submenu {
+        @include max-xl {
+          display: flex;
+          padding: 10px;
+        }
+      }
+      @include max-xl {
+        width: 100%;
+        flex-direction: column;
+      }
+    }
+
+    &-link {
+      font-size: 24px;
+      line-height: 30px;
+      color: #ffffff;
+      @include max-bigScreen {
+        font-size: 16px;
+      }
+      @include max-xxxl {
+        font-size: 14px;
+      }
+      @include max-xl {
+        border-radius: 10px;
+        color: #0d0d0d;
+        padding: 14px 10px;
+        display: block;
+        font-size: 16px;
+      }
+    }
+  }
+}

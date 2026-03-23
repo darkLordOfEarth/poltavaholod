@@ -1,0 +1,11 @@
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  &__item {
+  }
+  &__link {
+    display: flex;
+    width: 24px;
+  }
+}

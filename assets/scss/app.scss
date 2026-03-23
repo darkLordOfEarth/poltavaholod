@@ -1,74 +1,13 @@
-@import 'animate.css';
 @import './includes/mixins.scss';
 @import './includes/reset.scss';
 
 //header
 @import './includes/blocks/header/header.scss';
-
-//main
-@import './includes/blocks/main/main.scss';
-@import './includes/blocks/pinnedButtons/pinnedButtons.scss';
-
-
-@import './includes/blocks/templates/template1.scss';
-@import './includes/blocks/templates/template2.scss';
-
-
-@import './includes/blocks/about/about.scss';
-@import './includes/blocks/virtualTour/virtualTour.scss';
-@import './includes/blocks/production/production.scss';
-@import './includes/blocks/logistics/logistics.scss';
-@import './includes/blocks/tracking/tracking.scss';
-@import './includes/blocks/map/map.scss';
-@import './includes/blocks/partners/partners.scss';
-
-@import './includes/blocks/form/form.scss';
-@import './includes/blocks/socials/socials.scss';
-@import './includes/blocks/videoBlock/videoBlock.scss';
-
-@import './includes/blocks/hero/hero.scss';
-@import './includes/blocks/hero/heroTemplate.scss';
-@import './includes/blocks/btnBack/btnBack.scss';
-@import './includes/blocks/pageInfo/pageInfo.scss';
-@import './includes/blocks/owl/owl.scss';
-@import './includes/blocks/slick/slick.scss';
-@import './includes/blocks/product/product.scss';
-@import './includes/blocks/product/product-slider-enhanced.scss';
-@import './includes/blocks/related/related.scss';
-@import './includes/blocks/steps/steps.scss';
-@import './includes/blocks/areas/areas.scss';
-@import './includes/blocks/proZavod/proZavod.scss';
-@import './includes/blocks/departments/departments.scss';
-@import './includes/blocks/manufacturing/manufacturingImagesSlider.scss';
-@import './includes/blocks/manufacturing/manufacturingVideoBlock.scss';
-@import './includes/blocks/constructions/constructionsList.scss';
-@import './includes/blocks/constructions/constructionsAreas.scss';
-@import './includes/blocks/charBox/charBox.scss';
-@import './includes/blocks/partnership/partnershipAdvantages.scss';
-@import './includes/blocks/partnership/partnershipTypes.scss';
-@import './includes/blocks/checkbox/checkbox.scss';
-@import './includes/blocks/checkbox/radio.scss';
-@import './includes/blocks/about/nums.scss';
-@import './includes/blocks/about/slider.scss';
-@import './includes/blocks/about/team.scss';
-@import './includes/blocks/projectAudit/projectAuditWhy.scss';
-@import './includes/blocks/projectAudit/projectAuditHow.scss';
-@import './includes/blocks/projectAudit/projectAuditExpertise.scss';
-@import './includes/blocks/projectAudit/projectAuditOrder.scss';
-@import './includes/blocks/projectAudit/projectAuditRequest.scss';
-@import './includes/blocks/reviews/reviews.scss';
-@import './includes/blocks/quote/quote.scss';
-@import './includes/blocks/notFound/notFound.scss';
-@import './includes/blocks/licenses/licenses.scss';
-@import './includes/blocks/licenses/certificates.scss';
-
-
-
-
-@import './includes/blocks/popup/popup.scss';
-//footer
 @import './includes/blocks/footer/footer.scss';
-@import './includes/blocks/redactor_wp/redactor_wp.scss';
-
-@import './includes/softLaunch.scss';
-@import './includes/blocks/loader/loader.scss';
+@import './includes/blocks/menu.scss';
+@import './includes/blocks/lang.scss';
+@import './includes/blocks/components/button.scss';
+@import './includes/blocks/components/container.scss';
+@import './includes/blocks/components/lang.scss';
+@import './includes/blocks/burger.scss';
+@import './includes/blocks/components/socials.scss';
