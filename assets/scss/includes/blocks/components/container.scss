@@ -1,0 +1,15 @@
+.container-small {
+  padding: 0 40px;
+  @include max-md {
+    padding: 0 14px;
+  }
+}
+.container-big {
+  padding: 0 140px;
+  @include max-xxl {
+    padding: 0 70px;
+  }
+  @include max-xl {
+    padding: 0;
+  }
+}

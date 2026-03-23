@@ -1,329 +1,38 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 6;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-  &.scrolled {
-    background: #f0f0ef;
-    @include max-xl {
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-      // position: relative;
-    }
-    & .menu__list-link {
-      color: #0d0d0d;
-    }
-    & .header__content {
-      @include max-xl {
-        justify-content: flex-end !important;
-      }
-    }
-    & .header__logo {
-      @include max-xl {
-        transform: translateY(-100%);
-        transition: 0.5s;
-      }
-    }
-    & .header__logo img {
-      filter: invert(1);
-      @include max-xl {
-        filter: none;
-      }
-    }
-    & .header__tracking {
-      border: 1px solid #f46d06;
-      background-color: #f0f0ef;
-      &-text {
-        color: #0d0d0d;
-      }
-    }
+  &__top {
+    background-color: #552914;
+    padding: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #f8e1ad;
+    text-align: center;
   }
-  &__content {
+  &__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-     padding: 22px 0;
-    @include max-fullhd {
-      padding: 10px 0;
-    }
-    @include max-xl {
-      justify-content: flex-end;
-    }
   }
   &__logo {
-    height: 60px;
-    @include max-fullhd {
-     height: 40px;
-    }
-    @include max-xxl {
-     height: 30px;
-    }
-    @include max-l {
-     height: 24px;
-    }
+    width: 102px;
+    display: flex;
     @include max-xl {
-      display: none !important;
-    }
-    & img {
-      max-width: 360px;
-      width: 360px;
-      @include max-fullhd {
-        max-width: 240px;
-        width: 240px;
-      }
-      @include max-xxxl {
-        max-width: 182px;
-        width: 182px;
-      }
-    }
-    @include max-xl {
-      // display: none;
-    }
-  }
-  & .menu {
-    &__heading {
-      display: none;
-      @include max-xl {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      &-close {
-        width: 48px;
-        height: 48px;
-        cursor: pointer;
-      }
-      &-logo {
-        width: 143px;
-      }
-    }
-    @include max-xl {
-      position: fixed;
-      right: -100%;
-      top: 0;
-      height: 100dvh;
-      background-color: #f0f0ef;
-      padding: 6px 15px;
-      width: 50%;
-      overflow: auto;
-      transition: 0.5s;
-      z-index: 10;
-    }
-    &.open {
-      right: 0;
-      transition: 0.5s;
-    }
-    @include max-lg {
-      width: 100%;
-    }
-    &__list {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-
-      @include max-bigScreen {
-        gap: 40px;
-      }
-      @include max-xxxl {
-        gap: 30px;
-      }
-      @include max-xlmidle {
-        gap: 20px;
-      }
-      @include max-xl {
-        flex-direction: column;
-        margin-top: 0;
-        gap: 10px;
-        height: 100%;
-        justify-content: center;
-      }
-      &-item {
-        position: relative;
-        &:has(.submenu)::after {
-          content: '';
-          left: 0;
-          top: 27px;
-          width: 100%;
-          height: 25px;
-          position: absolute;
-          z-index: 1;
-          @include max-xl {
-            width: 14px;
-            height: 8px;
-            background-image: url(../images/arrow.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            right: 15px;
-            left: auto;
-            transition: 0.5s;
-          }
-        }
-        &:has(.submenu):hover .submenu {
-          @media (min-width: 1280px) {
-            display: flex;
-          }
-        }
-        &.open .menu__list-link {
-          @include max-xl {
-            padding-bottom: 0;
-            border-radius: 10px 10px 0 0;
-            color: #f46d06;
-          }
-        }
-        &.open::after {
-          @include max-xl {
-            transform: rotate(-180deg);
-            transition: 0.5s;
-          }
-        }
-        &.open .submenu {
-          display: flex;
-          @include max-xl {
-            display: flex;
-            padding: 10px;
-          }
-        }
-        @include max-xl {
-          width: 100%;
-        }
-      }
-      &-link {
-        font-size: 24px;
-        line-height: 30px;
-        color: #ffffff;
-        @include max-bigScreen {
-          font-size: 16px;
-        }
-        @include max-xxxl {
-          font-size: 14px;
-        }
-        @include max-xl {
-          background-color: #fff;
-          border-radius: 10px;
-          color: #0d0d0d;
-          padding: 14px 10px;
-          display: block;
-          font-size: 16px;
-        }
-        &:hover {
-          color: #f46d06;
-        }
-      }
-    }
-  }
-  & .submenu {
-    position: absolute;
-    left: 0;
-    top: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    width: max-content;
-    @include max-xl {
-      position: relative;
-      display: none;
-      top: 0;
-      width: 100%;
-      border-radius: 0 0 10px 10px;
-      padding: 0;
-    }
-    &__item {
-    }
-    &__link {
-      padding: 10px;
-      font-size: 24px;
-      transition: 0.5s;
-      display: block;
-      border-radius: 6px;
-      @include max-bigScreen {
-        font-size: 16px;
-      }
-      &:hover {
-        background-color: #ddd;
-        transition: 0.5s;
-      }
+      width: 60px;
     }
   }
 
-  &__tracking {
+  &__group {
     display: flex;
     align-items: center;
-    background-color: #0d0d0d;
-    border-radius: 55px;
-    cursor: pointer;
-    &:hover {
-      transform: scale(1.05);
-      transition: 0.1s;
-    }
+    gap: 20px;
     @include max-xl {
-      border: 1px solid #f46d06;
-      background-color: transparent;
-      max-width: 265px;
-      justify-content: space-between;
-      margin: 40px auto 0;
-    }
-    &_mobile {
       display: none;
+    }
+    &.mobile {
       @include max-xl {
-        display: flex;
-      }
-    }
-    &_desktop {
-      @include max-xl {
-        display: none;
-      }
-    }
-    & img {
-      width: 75px;
-      height: 75px;
-      @include max-bigScreen {
-        width: 50px;
-        height: 50px;
-      }
-      @include max-xxl {
-        width: 45px;
-        height: 45px;
-      }
-    }
-    &-text {
-      color: #fff;
-      padding: 0 45px;
-      @include max-bigScreen {
-        padding: 0 34px;
-        font-size: 16px;
-        line-height: 22px;
-      }
-      @include max-xxl {
-        padding: 0 12px;
-      }
-      @include max-xl {
-        color: #0d0d0d;
-        padding: 0 45px 0 0px;
-      }
-    }
-  }
-  & .burger {
-    display: none;
-    @include max-xl {
-      display: block;
-      width: max-content;
-      cursor: pointer;
-      position: fixed;
-      right: 20px;
-      top: 6px;
-      width: 48px;
-      height: 48px;
-    }
-    @include max-sm {
-      right: 15px;
-    }
-    & img {
-      @include max-xl {
-        width: 48px;
-        height: 48px;
+        display: flex !important;
+        flex-direction: column-reverse;
       }
     }
   }

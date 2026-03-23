@@ -1,0 +1,23 @@
+.button {
+  border-radius: 20px;
+  background-color: #552914;
+  text-transform: uppercase;
+  padding: 20px 24px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  color: #f8e1ad;
+  white-space: nowrap;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: #cd7f23;
+    transition: 0.3s;
+  }
+  @include max-xl {
+    font-size: 16px;
+    line-height: 22px;
+    padding: 14px;
+  }
+}

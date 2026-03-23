@@ -20,15 +20,15 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-  test: /\.hbs$/,
-  loader: 'handlebars-loader',
-  options: {
-    partialDirs: [
-      path.resolve(__dirname, 'src/hbs') // достаточно одной папки!
-    ],
-  },
-  exclude: /node_modules/,
-},
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        options: {
+          partialDirs: [
+            path.resolve(__dirname, 'assets/templates'), // достаточно одной папки!
+          ],
+        },
+        exclude: /node_modules/,
+      },
 
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
@@ -61,51 +61,6 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/products.hbs',
-      filename: 'products.html',
-    }),
-    new HtmlWebpackPlugin({ template: './assets/templates/product.hbs', filename: 'product.html' }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/manufacturings.hbs',
-      filename: 'manufacturings.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/manufacturing.hbs',
-      filename: 'manufacturing.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/constructions.hbs',
-      filename: 'constructions.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/partnership.hbs',
-      filename: 'partnership.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/about.hbs',
-      filename: 'about.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/projectAudit.hbs',
-      filename: 'projectAudit.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/reviews.hbs',
-      filename: 'reviews.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/notFound.hbs',
-      filename: 'notFound.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/licenses.hbs',
-      filename: 'licenses.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: './assets/templates/rules.hbs',
-      filename: 'rules.html',
-    }),
   ],
 
   output: {
