@@ -19,6 +19,13 @@ h2 {
   font-weight: 700;
   font-size: 40px;
   line-height: 40px;
+  @include max-xxl {
+    font-size: 30px;
+    line-height: 100%;
+  }
+  @include max-lg {
+    font-size: 24px;
+  }
 }
 h3 {
   font-weight: 400;
@@ -37,9 +44,23 @@ h4 {
   font-weight: 500;
   font-size: 24px;
   line-height: 20px;
+  @include max-xl {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 .text-simple {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4A2C21;
+}
+.sectionTitle {
+  text-transform: uppercase;
+  color: #4a2c21;
 }
