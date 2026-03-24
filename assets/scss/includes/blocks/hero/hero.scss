@@ -90,66 +90,158 @@
       top: 0;
       right: 0;
       object-fit: contain;
+      height: max-content;
       &_1 {
         top: 50px;
         left: -20px;
         max-width: 68px;
-        height: 68px;
         transform: rotate(180deg);
+        @include max-xxxl {
+          max-width: 48px;
+          top: 15px;
+        }
+        @include max-md {
+          max-width: 35px;
+          top: 5px;
+          left: -5px;
+        }
       }
       &_2 {
         top: -20px;
         right: 30%;
         max-width: 68px;
-        height: 68px;
         transform: rotate(225deg);
+        @include max-md {
+          max-width: 40px;
+          top: -20px;
+          right: 20%;
+        }
       }
       &_3 {
         top: 0;
         right: 30px;
         max-width: 150px;
-        height: 150px;
         transform: rotate(95deg);
+        @include max-xl {
+          max-width: 100px;
+          top: 5%;
+        }
+        @include max-lg {
+          max-width: 60px;
+          top: 0%;
+        }
+        @include max-md {
+          max-width: 40px;
+          top: 0%;
+          right: 0;
+        }
       }
       &_4 {
         top: 30%;
         right: 40%;
         max-width: 65px;
-        height: 65px;
         transform: rotateY(180deg);
+        @include max-xxxl {
+          max-width: 40px;
+          top: 25%;
+          right: 32%;
+        }
+        @include max-md {
+          max-width: 30px;
+          top: 15%;
+          right: 15%;
+        }
       }
       &_5 {
         top: 40%;
         right: 20%;
         max-width: 55px;
-        height: 55px;
+        @include max-sm {
+          max-width: 40px;
+          top: 45%;
+        }
       }
       &_6 {
-        top: 20%;
+        top: 30%;
         right: -30px;
         max-width: 250px;
-        // height: 55px;
+        @include max-xl {
+          max-width: 100px;
+          top: 65%;
+          right:-30px;
+        }
+        @include max-lg {
+          top: 50%;
+          right: 0px;
+        }
+        @include max-sm {
+          top: 50%;
+          right: -30px;
+        }
       }
       &_7 {
-        top: 30%;
-        right: 20%;
+        top: 50%;
+        right: 17%;
         max-width: 230px;
         transform: rotate(345deg);
+        @include max-xl {
+          max-width: 100px;
+          top: 72%;
+          right: 50px;
+        }
+        @include max-lg {
+          top: 55%;
+          right: 100px;
+        }
+        @include max-sm {
+          top: 65%;
+          right: 50px;
+        }
       }
       &_8 {
         top: 65%;
         right: 65%;
         max-width: 80px;
-        height: 80px;
         transform: rotate(345deg);
+        @include max-xxxl {
+          top: 70%;
+        }
+        @include max-md {
+          max-width: 50px;
+          top: 65%;
+          right: 50%;
+        }
       }
       &_9 {
         top: unset;
         right: 26%;
         bottom: 20px;
         max-width: 150px;
-        height: 150px;
         transform: rotateY(180deg);
+        @include max-xxxl {
+          top: unset;
+          max-width: 110px;
+          right: 28%;
+          bottom: 30px;
+        }
+        @include max-xl {
+          max-width: 70px;
+          right: 20%;
+          bottom: 30px;
+        }
+        @include max-lg {
+          max-width: 60px;
+          right: unset;
+          left: -10px;
+          top: 300px;
+          bottom: unset;
+        }
+        @include max-md {
+          max-width: 60px;
+          right: unset;
+          top: 320px;
+          bottom: unset;
+        }
       }
     }
   }
