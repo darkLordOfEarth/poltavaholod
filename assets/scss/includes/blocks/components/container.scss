@@ -1,7 +1,19 @@
 .container-small {
   padding: 0 40px;
+  @include max-lg {
+    padding: 0 20px;
+  }
   @include max-md {
     padding: 0 14px;
+  }
+}
+.container-footer {
+  padding: 0 140px;
+  @include max-xxl {
+    padding: 0 70px;
+  }
+  @include max-xl {
+    padding: 0;
   }
 }
 .container-big {
@@ -9,7 +21,10 @@
   @include max-xxl {
     padding: 0 70px;
   }
-  @include max-xl {
-    padding: 0;
+  @include max-lg {
+    padding: 0 30px;
+  }
+  @include max-md {
+    padding: 0 14px;
   }
 }

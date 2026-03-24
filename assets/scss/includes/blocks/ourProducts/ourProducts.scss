@@ -1,0 +1,81 @@
+.ourProducts {
+  position: relative;
+  &__content {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    @include max-lg {
+      gap: 20px;
+    }
+  }
+  &__component {
+    position: absolute;
+    right: -30px;
+    bottom: 20%;
+    max-width: 100px;
+    height: max-content;
+    object-fit: contain;
+    display: flex;
+    @include max-lg {
+      right: 20%;
+      bottom: 5%;
+      max-width: 70px;
+    }
+    @include max-md {
+      right: 10%;
+      bottom: 7%;
+      max-width: 50px;
+    }
+    @include max-sm {
+      right: 5%;
+      bottom: 10%;
+    }
+  }
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    @include max-lg {
+      flex-direction: column;
+      gap: 12px;
+    }
+    & .text {
+      max-width: 460px;
+    }
+  }
+  &__list {
+    display: flex;
+    gap: 20px;
+    @include max-lg {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    &-item {
+      @include max-lg {
+        max-width: 47%;
+        
+      }
+      @include max-ip {
+        max-width: 45%;
+        
+      }
+      & h4 {
+        color: #4a2c21;
+        text-align: center;
+      }
+    }
+    &-link {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include max-lg {
+        gap: 10px;
+      }
+    }
+  }
+  & .button {
+    width: max-content;
+    display: block;
+    margin: 0 auto 0;
+  }
+}

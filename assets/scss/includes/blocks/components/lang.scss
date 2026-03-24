@@ -47,6 +47,7 @@
     flex-direction: column;
     width: max-content;
     border: 1px solid #4a2c21;
+    z-index: 1;
     @include max-xl {
       position: relative;
       display: flex;
