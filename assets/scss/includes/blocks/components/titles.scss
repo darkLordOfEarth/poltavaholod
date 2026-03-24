@@ -53,12 +53,16 @@ h4 {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+  @include max-lg {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 .text {
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: #4A2C21;
+  color: #4a2c21;
 }
 .sectionTitle {
   text-transform: uppercase;

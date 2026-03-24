@@ -1,0 +1,77 @@
+.aboutUs {
+    position: relative;
+  &__component {
+    position: absolute;
+    width: 100%;
+    height: max-content;
+    z-index: -1;
+    &_1 {
+        top: -30px;
+        left: 0;
+        max-width: 250px;
+    }
+    &_2 {
+        top: -110px;
+        right: 20%;
+        max-width: 220px;
+    }
+    &_3 {
+        max-width: 100px;
+        bottom: 60px;
+        left: 120px;
+        z-index: 1;
+    }
+    &_4 {
+        max-width: 100px;
+        bottom: -20px;
+        left: 50px;
+        z-index: 1;
+        transform: rotateY(180deg);
+    }
+  }
+  &__content {
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    gap: 40px;
+    @include max-lg {
+      flex-direction: column-reverse;
+    }
+    & > * {
+      width: 50%;
+      @include max-lg {
+        width: 100%;
+      }
+    }
+    & > img {
+      border-radius: 30px;
+      object-fit: cover;
+      max-height: 600px;
+      @include max-lg {
+        max-height: 500px;
+      }
+      @include max-sm {
+        max-height: 320px;
+      }
+    }
+  }
+  &__info {
+    & h2 {
+      margin-bottom: 24px;
+      @include max-lg {
+        margin-bottom: 12px;
+      }
+    }
+    & .button {
+      margin-top: 40px;
+      display: flex;
+      width: max-content;
+      @include max-lg {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    }
+  }
+}
