@@ -1,0 +1,45 @@
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 55px;
+  @include max-xxxl {
+    font-size: 36px;
+    line-height: 46px;
+  }
+  @include max-xl {
+    font-size: 28px;
+    line-height: 38px;
+  }
+  @include max-lg {
+    font-size: 24px;
+    line-height: 34px;
+  }
+}
+h2 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+}
+h3 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 100%;
+  @include max-xxxl {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  @include max-xl {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+}
+.text-simple {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
