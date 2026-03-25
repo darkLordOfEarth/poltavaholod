@@ -61,6 +61,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({ template: './assets/templates/index.hbs', filename: 'index.html' }),
+    new HtmlWebpackPlugin({ template: './assets/templates/catalog.hbs', filename: 'catalog.html' }),
   ],
 
   output: {
