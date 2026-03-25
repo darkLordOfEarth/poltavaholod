@@ -2,7 +2,7 @@
   position: relative;
   &__component {
     position: absolute;
-    height: max-content;
+    height: initial;
     z-index: -1;
     &_1 {
       top: 0;
