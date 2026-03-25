@@ -1,0 +1,121 @@
+.main-layout {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.products-section {
+  flex: 1;
+  min-width: 0;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  position: relative;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product-card {
+  background: transparent;
+  border-radius: 16px;
+  padding: 16px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.18s,
+    box-shadow 0.18s;
+  position: relative;
+  animation: fadeInUp 0.35s ease both;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card:hover .product-img-wrap {
+  box-shadow: 0 10px 30px rgba(100, 60, 10, 0.18);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-img-wrap {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #e8d5a8;
+  margin-bottom: 10px;
+  transition: box-shadow 0.18s;
+  box-shadow: 0 4px 20px rgba(100,60,10,0.13);
+  position: relative;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+.product-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #F8E1AD;
+  color: #4A2C21;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  border-radius: 54px;
+  padding: 4px 8px;
+  z-index: 2;
+}
+.product-badge.lactose {
+  background: #F8E1AD;
+}
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #4A2C21;
+  text-transform: uppercase;
+  line-height: 22px;
+}
+
+/* Placeholder images using colored divs */
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+

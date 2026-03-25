@@ -6,4 +6,5 @@ const owl = require('./components/owl.js');
 const slick = require('./components/slick.js');
 const burger = require('./components/burger.js');
 const form = require('./components/form.js');
+const searchFilter = require('./components/searchFilter.js');
 const oneMoreScript = require('./components/oneMoreScript.js');
