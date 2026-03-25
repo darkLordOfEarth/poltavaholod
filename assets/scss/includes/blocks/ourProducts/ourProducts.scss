@@ -52,19 +52,16 @@
     &-item {
       @include max-lg {
         max-width: 47%;
-        
       }
       @include max-ip {
         max-width: 45%;
-        
       }
       & h4 {
         color: #4a2c21;
         text-align: center;
         @include max-ip {
-        font-size: 16px;
-        
-      }
+          font-size: 16px;
+        }
       }
     }
     &-link {
