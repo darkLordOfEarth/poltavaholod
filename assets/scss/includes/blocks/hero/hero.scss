@@ -24,6 +24,7 @@
   }
   &__slider-wrapper {
     overflow: hidden;
+    border-radius: 32px;
     height: 100%;
     position: relative;
   }
@@ -59,7 +60,7 @@
         border: 1px solid transparent;
         border-radius: 50%;
         @include max-lg {
-          width: 48px;
+          min-width: 48px;
         }
         &:hover {
           border-color: #cd7f23;
@@ -263,6 +264,8 @@
     }
     @include max-sm {
       padding: 24px 48px 192px 14px;
+      min-height: 425px;
+      max-height: 425px;
     }
 
     &-content {
