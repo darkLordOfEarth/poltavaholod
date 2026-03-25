@@ -54,6 +54,9 @@
         left: 14px;
         bottom: 24px;
       }
+      @include max-sm {
+        bottom: 14px;
+      }
       & svg {
         cursor: pointer;
         box-sizing: border-box;
@@ -61,6 +64,7 @@
         border-radius: 50%;
         @include max-lg {
           min-width: 48px;
+          width: 48px;
         }
         &:hover {
           border-color: #cd7f23;
@@ -161,8 +165,8 @@
         right: 20%;
         max-width: 55px;
         @include max-sm {
-          max-width: 40px;
-          top: 45%;
+          max-width: 30px;
+          top: 55%;
         }
       }
       &_6 {
@@ -172,15 +176,16 @@
         @include max-xl {
           max-width: 100px;
           top: 65%;
-          right:-30px;
+          right: -30px;
         }
         @include max-lg {
           top: 50%;
           right: 0px;
         }
         @include max-sm {
-          top: 50%;
-          right: -30px;
+          max-width: 80px;
+          top: 60%;
+          right: -20px;
         }
       }
       &_7 {
@@ -198,8 +203,9 @@
           right: 100px;
         }
         @include max-sm {
-          top: 65%;
-          right: 50px;
+          max-width: 75px;
+          top: 70%;
+          right: 45px;
         }
       }
       &_8 {
@@ -213,6 +219,11 @@
         @include max-md {
           max-width: 50px;
           top: 65%;
+          right: 50%;
+        }
+        @include max-sm {
+          max-width: 30px;
+          top: 75%;
           right: 50%;
         }
       }
@@ -242,6 +253,12 @@
         }
         @include max-md {
           max-width: 60px;
+          right: unset;
+          top: 320px;
+          bottom: unset;
+        }
+        @include max-sm {
+          max-width: 40px;
           right: unset;
           top: 320px;
           bottom: unset;
@@ -284,6 +301,9 @@
       margin-top: 40px;
       display: flex;
       width: max-content;
+      @include max-lg {
+      margin-top: 20px;
+    }
     }
   }
 }
