@@ -1,0 +1,92 @@
+.ourPartners {
+  position: relative;
+  &__component {
+    position: absolute;
+    height: max-content;
+    z-index: -1;
+    &_1 {
+      top: 0;
+      right: 50px;
+      max-width: 200px;
+      @include max-xxxl {
+        max-width: 150px;
+      }
+      @include max-xxl {
+        right: 0;
+      }
+      @include max-lg {
+        max-width: 100px;
+        right: 30px;
+        top: 0;
+      }
+    }
+    &_2 {
+      bottom: -50px;
+      left: 0;
+      max-width: 200px;
+      z-index: 1;
+      @include max-xxxl {
+        max-width: 150px;
+      }
+      @include max-lg {
+        max-width: 100px;
+        bottom: -30px;
+      }
+      @include max-sm {
+        max-width: 70px;
+        bottom: -10px;
+      }
+    }
+    &_3 {
+      bottom: 50px;
+      right: 75px;
+      max-width: 100px;
+      z-index: 1;
+      @include max-lg {
+        max-width: 50px;
+        bottom: 40px;
+        right: 20px;
+      }
+    }
+  }
+  &__content {
+    border-radius: 32px;
+    background-color: #cd7f23;
+    padding: 32px;
+    @include max-lg {
+        padding: 14px;
+      }
+  }
+  &__info {
+    & h2 {
+      margin-bottom: 24px;
+      @include max-lg {
+        margin-bottom: 12px;;
+      }
+    }
+  }
+  &__logos {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    @include max-lg {
+      margin-top: 20px;
+    }
+    &-link {
+      @include max-md {
+        flex: 30%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    &-img {
+      max-width: 150px;
+      object-fit: contain;
+      @include max-lg {
+        max-width: 80px;
+      }
+    }
+  }
+}
