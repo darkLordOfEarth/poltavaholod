@@ -1,3 +1,6 @@
 section {
     padding: 80px 0;
+    @include max-lg {
+      padding: 40px 0;
+    }
 }

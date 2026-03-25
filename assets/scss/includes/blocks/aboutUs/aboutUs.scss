@@ -9,24 +9,65 @@
         top: -30px;
         left: 0;
         max-width: 250px;
+        @include max-xxxl {
+          max-width: 150px;
+          top: 30px;
+        }
+        @include max-lg {
+          max-width: 100px;
+          top: 40%;
+          left: -20px;
+        }
+        @include max-md {
+          top: 50%;
+        }
+        @include max-sm {
+          top: 65%;
+        }
     }
     &_2 {
         top: -110px;
         right: 20%;
         max-width: 220px;
+         @include max-xxxl {
+          max-width: 150px;
+          top: 0;
+          right: 10%;
+         }
+         @include max-lg {
+          max-width: 120px;
+          top: -20px;
+          right: 10%;
+         }
     }
     &_3 {
-        max-width: 100px;
+        max-width: 80px;
         bottom: 60px;
         left: 120px;
         z-index: 1;
+        @include max-xxxl {
+          bottom: 100px;
+          left: 5%;
+         }
+        @include max-lg {
+          bottom: 50px;
+          left: 5%;
+         }
     }
     &_4 {
-        max-width: 100px;
-        bottom: -20px;
-        left: 50px;
+        max-width: 80px;
+        bottom: -10px;
+        left: 60px;
         z-index: 1;
         transform: rotateY(180deg);
+        @include max-xxxl {
+          bottom: 50px;
+          left: 0%;
+         }
+        @include max-lg {
+          bottom: 0;
+          left: -20px;
+         }
     }
   }
   &__content {

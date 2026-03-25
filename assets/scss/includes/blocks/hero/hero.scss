@@ -1,4 +1,7 @@
 .hero {
+  @include max-lg {
+    padding-bottom: 40px;
+  }
   &__banners {
     display: grid;
     grid-template-columns: 0.75fr 1fr;
