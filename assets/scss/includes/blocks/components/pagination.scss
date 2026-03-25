@@ -1,0 +1,68 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+//   position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-shrink: 0;
+}
+.page-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  color: #3a2010;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    transform 0.1s;
+  outline: none;
+}
+
+.page-btn.active {
+  background: #552914;
+  color: #f8e1ad;
+  border-radius: 8px;
+}
+.page-arrow {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 50%;
+    margin: 0 20px;
+  &:hover {
+    border-color: #cd7f23;
+    & rect {
+      fill: #552914;
+    }
+    & path {
+      fill: #cd7f23;
+    }
+  }
+  & svg {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    @include max-lg {
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+  }
+  }
+  &-prev {
+  }
+  &-next {
+  }
+}

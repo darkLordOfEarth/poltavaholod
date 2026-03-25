@@ -12,6 +12,7 @@
     align-items: center;
     &:last-child .breadcrumbs__item-link {
       font-weight: 700;
+      pointer-events: none;
     }
     &:not(:last-child)::after {
       content: '';

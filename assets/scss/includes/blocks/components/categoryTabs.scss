@@ -1,0 +1,33 @@
+.category__tabs {
+  display: flex;
+  gap: 20px;
+  padding: 40px 0 0;
+  flex-wrap: wrap;
+   @include max-lg {
+    gap: 5px;
+    padding: 20px 0 0;
+  }
+}
+.cat__tab {
+  padding: 14px 24px;
+  border-radius: 20px;
+  background: #be9360;
+  color: #4a2c21;
+  cursor: pointer;
+  text-transform: initial;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  &:hover {
+    background: #552914;
+    color: #f8e1ad;
+  }
+  @include max-lg {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+}
+.cat__tab.active {
+  background: #552914;
+  color: #f8e1ad;
+}
