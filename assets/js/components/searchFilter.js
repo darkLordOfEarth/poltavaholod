@@ -303,6 +303,7 @@ function renderGrid() {
     const badgeHtml = p.badge ? `<span class="product-badge lactose">${p.badge}</span>` : '';
     const card = $(`
       <div class="product-card" style="animation-delay:${i * 0.04}s">
+        <a class="product-link" href="/product.html"></a>
         <div class="product-img-wrap">
           ${badgeHtml}
           <div class="img-placeholder">
