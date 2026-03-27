@@ -9,6 +9,7 @@ $xl: 1280px;
 $xlmidle: 1350px;
 $xxl: 1440px;
 $xxxl: 1650px;
+$preFullhd: 1850px;
 $fullhd: 1920px;
 $preBigScreen: 2300px;
 $bigScreen: 2600px;
@@ -105,6 +106,11 @@ $bigScreen: 2600px;
     @content;
   }
 }
+@mixin preFullhd {
+  @media (min-width: #{$preFullhd}) {
+    @content;
+  }
+}
 @mixin fullhd {
   @media (min-width: #{$fullhd}) {
     @content;
@@ -184,6 +190,11 @@ $bigScreen: 2600px;
 }
 @mixin max-xxxl {
   @media (max-width: #{$xxxl}) {
+    @content;
+  }
+}
+@mixin max-preFullhd {
+  @media (max-width: #{$preFullhd}) {
     @content;
   }
 }
