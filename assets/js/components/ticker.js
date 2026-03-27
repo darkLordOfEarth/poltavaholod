@@ -50,8 +50,8 @@ const items = [
  
       // Пауза при наведении
       let paused = false;
-      $('.ticker-wrap').on('mouseenter', function() { paused = true; });
-      $('.ticker-wrap').on('mouseleave', function() { paused = false; });
+      // $('.ticker-wrap').on('mouseenter', function() { paused = true; });
+      // $('.ticker-wrap').on('mouseleave', function() { paused = false; });
  
       function animatePausable() {
         if (!paused) {

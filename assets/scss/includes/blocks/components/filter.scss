@@ -4,6 +4,12 @@
   min-width: 160px;
   flex-shrink: 0;
   padding-right: 18px;
+  @include max-xl {
+    width: 200px;
+  }
+  @include max-lg {
+    display: none;
+  }
 }
 .filters-title {
   font-weight: 700;
