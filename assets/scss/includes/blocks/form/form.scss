@@ -89,7 +89,7 @@
     display: flex;
     position: relative;
     background-color: #f8e1ad;
-    border-radius: 46px;
+    border-radius: 32px;
     gap: 40px;
     padding: 32px;
     overflow: hidden;
@@ -97,6 +97,7 @@
       gap: 24px;
       flex-direction: column-reverse;
       padding: 14px;
+      border-radius: 24px;
     }
   }
   &__main-img {
@@ -104,6 +105,15 @@
     width: 100%;
     object-fit: cover;
     border-radius: 40px;
+    @include max-lg {
+        max-height: 400px
+    }
+    @include max-md {
+        max-height: 300px
+    }
+    @include max-sm {
+        max-height: 240px
+    }
     &__wrapper {
       position: relative;
     }
@@ -126,6 +136,9 @@
       display: flex;
       justify-content: space-between;
       gap: 24px;
+      @include max-lg {
+        flex-direction: column;
+      }
     }
     &-label {
       font-weight: 600;
