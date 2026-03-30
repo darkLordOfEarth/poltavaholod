@@ -1,0 +1,160 @@
+.form {
+  &__component {
+    position: absolute;
+    height: max-content;
+    &_1 {
+      top: 130px;
+      left: 0;
+      max-width: 200px;
+    }
+    &_2 {
+      top: 50px;
+      left: -10px;
+      max-width: 120px;
+      transform: rotate(100deg);
+      @include max-xxxl {
+        top: 150px;
+      }
+      @include max-lg {
+        top: 50px;
+      }
+      @include max-md {
+        max-width: 100px;
+      }
+      @include max-sm {
+        max-width: 80px;
+        top: 20px;
+      }
+    }
+    &_3 {
+      bottom: -50px;
+      left: 20px;
+      max-width: 230px;
+      transform: rotate(45deg);
+      @include max-xxxl {
+        max-width: 170px;
+      }
+      @include max-md {
+        max-width: 130px;
+      }
+      @include max-sm {
+        max-width: 100px;
+        left: 0;
+        bottom: -40px;
+      }
+    }
+    &_4 {
+      bottom: -50px;
+      left: 30%;
+      max-width: 300px;
+      transform: rotate(-15deg);
+      @include max-xl {
+        bottom: unset;
+        top: -100px;
+        transform: rotate(-145deg);
+      }
+      @include max-lg {
+        top: unset;
+        bottom: -50px;
+        left: 30%;
+        max-width: 300px;
+        transform: rotate(-15deg);
+      }
+      @include max-md {
+        max-width: 250px;
+      }
+      @include max-sm {
+        max-width: 170px;
+        bottom: -30px;
+        left: 25%;
+      }
+    }
+    &_5 {
+      bottom: -50px;
+      right: -10px;
+      max-width: 230px;
+      @include max-xxxl {
+        max-width: 170px;
+      }
+      @include max-md {
+        max-width: 130px;
+      }
+      @include max-sm {
+        max-width: 110px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    position: relative;
+    background-color: #f8e1ad;
+    border-radius: 46px;
+    gap: 40px;
+    padding: 32px;
+    overflow: hidden;
+    @include max-lg {
+      gap: 24px;
+      flex-direction: column-reverse;
+      padding: 14px;
+    }
+  }
+  &__main-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+    &__wrapper {
+      position: relative;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    &-label {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    &-input {
+      background: none;
+      border-radius: 20px;
+      border: 1px solid #cd7f23;
+      padding: 18px 16px;
+      outline: none;
+      @include max-lg {
+        padding: 11px 12px;
+        border-radius: 16px;
+      }
+      &::placeholder {
+        color: #4a2c21;
+      }
+    }
+    & textarea {
+      resize: none;
+    }
+    &-count {
+      text-align: right;
+      &__value {
+      }
+    }
+  }
+
+  & .button {
+  }
+}

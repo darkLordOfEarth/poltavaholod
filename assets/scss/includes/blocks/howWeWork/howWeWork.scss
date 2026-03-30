@@ -1,0 +1,90 @@
+.howWeWork {
+  &_content {
+  }
+  &__title {
+    text-align: center;
+    margin-bottom: 24px;
+    @include max-lg {
+      margin-bottom: 12px;
+    }
+  }
+  &__desc {
+    text-align: center;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    counter-reset: item;
+    @include max-xxl {
+      gap: 20px;
+    }
+    @include max-lg {
+      margin-top: 20px;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #552914;
+    padding: 24px;
+    border-radius: 16px;
+    width: calc(33.33% - 16px);
+    counter-increment: item;
+    @include max-xl {
+      width: calc(50% - 10px);
+    }
+    @include max-lg {
+      gap: 8px;
+    }
+    @include max-md {
+      width: 100%;
+      padding: 14px;
+    }
+
+    &-head {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    &-count {
+      &::before {
+        content: counter(item, decimal-leading-zero);
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 55px;
+        color: #cd7f23;
+        @include max-md {
+          font-size: 24px;
+          line-height: 48px;
+        }
+      }
+    }
+    &-icon {
+      & img {
+        width: 56px;
+        height: 56px;
+        @include max-md {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+    &-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 100%;
+      color: #f8e1ad;
+      @include max-lg {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+    &-desc {
+      color: #f8e1ad;
+    }
+  }
+}

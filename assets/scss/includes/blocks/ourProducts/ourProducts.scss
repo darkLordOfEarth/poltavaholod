@@ -49,6 +49,38 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    &-tovar {
+      display: flex;
+      overflow: hidden;
+      list-style: none;
+      margin: 40px 0;
+      padding: 0;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+      );
+
+      & h4 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        @include max-lg {
+          -webkit-line-clamp: 2;
+        }
+      }
+      & .ourProducts__list-item {
+        min-width: 228px;
+        @include max-lg {
+          min-width: 168px;
+        }
+      }
+    }
     &-item {
       @include max-lg {
         max-width: 47%;
@@ -64,6 +96,7 @@
         }
       }
     }
+
     &-link {
       display: flex;
       flex-direction: column;
@@ -73,9 +106,26 @@
       }
     }
   }
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+    gap: 10px;
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
   & .button {
     width: max-content;
     display: block;
     margin: 0 auto 0;
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
