@@ -1,0 +1,15 @@
+.ourHistory {
+  &__content {
+  }
+  & .sectionTitle {
+    text-align: center;
+    margin-bottom: 24px;
+    @include max-lg {
+        margin-bottom: 12px;
+      }
+  }
+  &__desc {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}

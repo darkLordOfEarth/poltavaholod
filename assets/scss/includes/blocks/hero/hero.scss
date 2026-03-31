@@ -105,6 +105,20 @@
         left: -20px;
         max-width: 68px;
         transform: rotate(180deg);
+        @keyframes floatRotate {
+          0% {
+            transform: translateY(0) rotate(180deg);
+          }
+
+          50% {
+            transform: translateY(-30px) rotate(200deg);
+          }
+
+          100% {
+            transform: translateY(0) rotate(180deg);
+          }
+        }
+        animation: floatRotate 6s ease-in-out infinite;
         @include max-xxxl {
           max-width: 48px;
           top: 15px;
@@ -120,6 +134,20 @@
         right: 30%;
         max-width: 68px;
         transform: rotate(225deg);
+        @keyframes floatRotate2 {
+          0% {
+            transform: translateX(0) rotate(225deg) scale(1);
+          }
+
+          50% {
+            transform: translateX(-30px) rotate(210deg) scale(0.95);
+          }
+
+          100% {
+            transform: translateX(0) rotate(225deg) scale(1);
+          }
+        }
+        animation: floatRotate2 6s ease-in-out .5s infinite;
         @include max-md {
           max-width: 40px;
           top: -20px;
@@ -131,6 +159,20 @@
         right: 30px;
         max-width: 150px;
         transform: rotate(95deg);
+        @keyframes floatRotate3 {
+          0% {
+            transform: translateY(0) rotate(95deg) scale(1);
+          }
+
+          50% {
+            transform: translateY(-10px) rotate(115deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(95deg) scale(1);
+          }
+        }
+        animation: floatRotate3 6s ease-in-out infinite;
         @include max-xl {
           max-width: 100px;
           top: 5%;
@@ -150,6 +192,20 @@
         right: 40%;
         max-width: 65px;
         transform: rotateY(180deg);
+        @keyframes floatRotate4 {
+          0% {
+            transform: translateX(0) rotate(0deg) scale(1);
+          }
+
+          50% {
+            transform: translateX(30px) rotate(15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateX(0) rotate(0deg) scale(1);
+          }
+        }
+        animation: floatRotate4 6s ease-in-out infinite;
         @include max-xxxl {
           max-width: 40px;
           top: 25%;
@@ -165,6 +221,20 @@
         top: 40%;
         right: 20%;
         max-width: 55px;
+        @keyframes floatRotate5 {
+          0% {
+            transform: translateY(0) rotate(0deg) scale(1);
+          }
+
+          50% {
+            transform: translateY(15px) rotate(15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0deg) scale(1);
+          }
+        }
+        animation: floatRotate5 6s ease-in-out .5s infinite;
         @include max-sm {
           max-width: 30px;
           top: 55%;
@@ -174,6 +244,20 @@
         top: 30%;
         right: -30px;
         max-width: 250px;
+        @keyframes floatRotate6 {
+          0% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(0) rotate(5deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate6 6s ease-in-out .5s infinite;
         @include max-xl {
           max-width: 100px;
           top: 65%;
@@ -194,6 +278,20 @@
         right: 17%;
         max-width: 230px;
         transform: rotate(345deg);
+        @keyframes floatRotate7 {
+          0% {
+            transform: translateY(0) rotate(345deg) scale(1);
+          }
+
+          50% {
+            transform: translateY(0) rotate(340deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotate(345deg) scale(1);
+          }
+        }
+        animation: floatRotate7 6s ease-in-out 1s infinite;
         @include max-xl {
           max-width: 100px;
           top: 72%;
@@ -214,6 +312,20 @@
         right: 65%;
         max-width: 80px;
         transform: rotate(345deg);
+        @keyframes floatRotate8 {
+          0% {
+            transform: translateY(0) rotate(345deg) scale(1);
+          }
+
+          50% {
+            transform: translateY(25px) rotate(360deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(345deg) scale(1);
+          }
+        }
+        animation: floatRotate8 8s ease-in-out 1s infinite;
         @include max-xxxl {
           top: 70%;
         }
@@ -234,6 +346,20 @@
         bottom: 20px;
         max-width: 150px;
         transform: rotateY(180deg);
+        @keyframes floatRotate9 {
+          0% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-15px) rotateY(180deg) rotate(-15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate9 6s ease-in-out 1s infinite;
         @include max-xxxl {
           top: unset;
           max-width: 110px;
@@ -303,8 +429,8 @@
       display: flex;
       width: max-content;
       @include max-lg {
-      margin-top: 20px;
-    }
+        margin-top: 20px;
+      }
     }
   }
 }

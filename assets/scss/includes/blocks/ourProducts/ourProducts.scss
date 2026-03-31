@@ -16,6 +16,20 @@
     height: initial;
     object-fit: contain;
     display: flex;
+    @keyframes floatRotate_3 {
+          0% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-20px) rotate(15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_3 6s ease-in-out infinite;
     @include max-lg {
       right: 20%;
       bottom: 5%;

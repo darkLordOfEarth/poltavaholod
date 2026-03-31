@@ -45,6 +45,9 @@ module.exports = {
       patterns: [
         { from: 'assets/images', to: 'images', noErrorOnMissing: true },
         { from: 'assets/libs/jquery.min.js', to: 'js/jquery.min.js', noErrorOnMissing: true },
+        { from: 'assets/libs/jquery.validate.min.js', to: 'js/jquery.validate.min.js', noErrorOnMissing: true },
+        { from: 'assets/libs/additional-methods.min.js', to: 'js/additional-methods.min.js', noErrorOnMissing: true },
+        { from: 'assets/libs/messages_uk.min.js', to: 'js/messages_uk.min.js', noErrorOnMissing: true },
         {
           from: 'assets/libs/owlcarousel/*.js',
           to: 'js/owlcarousel/[name][ext]',

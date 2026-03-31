@@ -1,0 +1,16 @@
+.about-page {
+  & .aboutUs .aboutUs__component_1 {
+    display: none;
+  }
+  & .aboutUs {
+    padding: 0;
+    & .aboutUs__component_2 {
+      top: 25%;
+      right: -75px;
+      @include max-lg {
+        top: -30px;
+        right: 0;
+      }
+    }
+  }
+}

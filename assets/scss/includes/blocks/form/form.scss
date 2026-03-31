@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   &__component {
     position: absolute;
     height: max-content;
@@ -6,6 +7,7 @@
       top: 130px;
       left: 0;
       max-width: 200px;
+      animation: floatRotate_aboutus_1 8s 1s ease-in-out infinite;
     }
     &_2 {
       top: 50px;
@@ -106,13 +108,13 @@
     object-fit: cover;
     border-radius: 40px;
     @include max-lg {
-        max-height: 400px
+      max-height: 400px;
     }
     @include max-md {
-        max-height: 300px
+      max-height: 300px;
     }
     @include max-sm {
-        max-height: 240px
+      max-height: 240px;
     }
     &__wrapper {
       position: relative;
@@ -122,6 +124,12 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    & label.error {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: #e61a08;
+    }
   }
   &__title {
     text-transform: uppercase;
@@ -132,6 +140,7 @@
     flex-direction: column;
     gap: 6px;
     width: 100%;
+    flex: 1;
     &-wrapper {
       display: flex;
       justify-content: space-between;
@@ -157,9 +166,13 @@
       &::placeholder {
         color: #4a2c21;
       }
+      &.error {
+        border-color: #E61A08;
+      }
     }
     & textarea {
       resize: none;
+      height: 100%;
     }
     &-count {
       text-align: right;
