@@ -1,88 +1,137 @@
-// $(function () {
-//   $('.popup .form').each(function () {
-//     const $form = $(this);
-//     const $popupInner = $form.closest('.popup').find('.popup__inner');
+$(function () {
+  $('.form__form').validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 2,
+      },
+      phone: {
+        required: true,
+        minlength: 5,
+        pattern: /^\+?\d{10,15}$/,
+      },
+      question: {
+        required: true,
+        maxlength: 300,
+      },
+    },
+    messages: {
+        phone: {
+          pattern: 'Недійсний формат номера телефону.',
+        },
+      },
+    // submitHandler: function (form) {
+    //   $.ajax({
+    //     url: '/send.php', // или твой бек
+    //     type: 'POST',
+    //     data: $(form).serialize(),
+    //     success: function () {
+    //       alert('Отправлено');
+    //     },
+    //   });
 
-//     let hideTimeout;
+    //   return false;
+    // },
+    submitHandler: function (form) {
+      // тут твоя логика (AJAX или просто лог)
+      console.log('Форма валидна');
 
-//     function updateScrollbar() {
-//       const el = $form[0];
-//       const popupInnerEl = $popupInner[0];
+      return false; // 🚀 блокируем реальную отправку
+    },
+  });
+  $('.form__group-input[name="question"]').on('input', function () {
+    var max = 300;
+    var text = $(this).val();
 
-//       if (!el || !popupInnerEl) return;
+    if (text.length > max) {
+      $(this).val(text.substring(0, max));
+    }
 
-//       const scrollHeight = el.scrollHeight;
-//       const clientHeight = el.clientHeight; // Высота видимой части формы
-//       const scrollTop = el.scrollTop;
+    var length = $(this).val().length;
 
-//       // Устанавливаем высоту трека = высоте видимой части формы
-//       popupInnerEl.style.setProperty('--track-height', `${clientHeight}px`);
+    $(this).closest('.form__group').find('.form__group-count__value').text(length);
+  });
+  //   $('.popup .form').each(function () {
+  //     const $form = $(this);
+  //     const $popupInner = $form.closest('.popup').find('.popup__inner');
 
-//       // Проверяем, нужен ли скроллбар
-//       if (scrollHeight <= clientHeight) {
-//         $form.removeClass('scrolling');
-//         popupInnerEl.style.setProperty('--thumb-height', '0px');
-//         return;
-//       }
+  //     let hideTimeout;
 
-//       // Высота ползунка (пропорционально видимой области)
-//       const thumbHeight = Math.max((clientHeight / scrollHeight) * clientHeight, 30);
+  //     function updateScrollbar() {
+  //       const el = $form[0];
+  //       const popupInnerEl = $popupInner[0];
 
-//       // Максимальная позиция для ползунка
-//       const maxScrollTop = scrollHeight - clientHeight;
-//       const maxThumbTop = clientHeight - thumbHeight;
+  //       if (!el || !popupInnerEl) return;
 
-//       // Позиция ползунка (от низа, поэтому инвертируем)
-//       const thumbTop = maxScrollTop > 0 ? (scrollTop / maxScrollTop) * maxThumbTop : 0;
+  //       const scrollHeight = el.scrollHeight;
+  //       const clientHeight = el.clientHeight; // Высота видимой части формы
+  //       const scrollTop = el.scrollTop;
 
-//       // Применяем CSS переменные
-//       popupInnerEl.style.setProperty('--thumb-height', `${thumbHeight}px`);
-//       popupInnerEl.style.setProperty('--thumb-top', `${thumbTop}px`);
-//     }
+  //       // Устанавливаем высоту трека = высоте видимой части формы
+  //       popupInnerEl.style.setProperty('--track-height', `${clientHeight}px`);
 
-//     // Обработчик прокрутки
-//     $form.on('scroll', function () {
-//       $form.addClass('scrolling');
-//       updateScrollbar();
+  //       // Проверяем, нужен ли скроллбар
+  //       if (scrollHeight <= clientHeight) {
+  //         $form.removeClass('scrolling');
+  //         popupInnerEl.style.setProperty('--thumb-height', '0px');
+  //         return;
+  //       }
 
-//       // Скрываем скроллбар через 1 секунду
-//       clearTimeout(hideTimeout);
-//       hideTimeout = setTimeout(() => {
-//         $form.removeClass('scrolling');
-//       }, 1000);
-//     });
+  //       // Высота ползунка (пропорционально видимой области)
+  //       const thumbHeight = Math.max((clientHeight / scrollHeight) * clientHeight, 30);
 
-//     // Инициализация
-//     updateScrollbar();
+  //       // Максимальная позиция для ползунка
+  //       const maxScrollTop = scrollHeight - clientHeight;
+  //       const maxThumbTop = clientHeight - thumbHeight;
 
-//     // Обновление при ресайзе
-//     $(window).on('resize', updateScrollbar);
+  //       // Позиция ползунка (от низа, поэтому инвертируем)
+  //       const thumbTop = maxScrollTop > 0 ? (scrollTop / maxScrollTop) * maxThumbTop : 0;
 
-//     // Обновление при изменении DOM
-//     const observer = new MutationObserver(updateScrollbar);
-//     if ($form[0]) {
-//       observer.observe($form[0], { childList: true, subtree: true });
-//     }
+  //       // Применяем CSS переменные
+  //       popupInnerEl.style.setProperty('--thumb-height', `${thumbHeight}px`);
+  //       popupInnerEl.style.setProperty('--thumb-top', `${thumbTop}px`);
+  //     }
 
-//     // Обновление при открытии попапа
-//     const popupObserver = new MutationObserver((mutations) => {
-//       mutations.forEach((mutation) => {
-//         if (mutation.attributeName === 'style') {
-//           const popup = mutation.target;
-//           if (popup.style.display === 'block') {
-//             // Небольшая задержка для корректного расчета после открытия
-//             setTimeout(updateScrollbar, 50);
-//           }
-//         }
-//       });
-//     });
+  //     // Обработчик прокрутки
+  //     $form.on('scroll', function () {
+  //       $form.addClass('scrolling');
+  //       updateScrollbar();
 
-//     const popup = document.getElementById('popup-rozrahunok');
-//     if (popup) {
-//       popupObserver.observe(popup, { attributes: true });
-//     }
-//   });
+  //       // Скрываем скроллбар через 1 секунду
+  //       clearTimeout(hideTimeout);
+  //       hideTimeout = setTimeout(() => {
+  //         $form.removeClass('scrolling');
+  //       }, 1000);
+  //     });
 
+  //     // Инициализация
+  //     updateScrollbar();
 
-  
-// });
+  //     // Обновление при ресайзе
+  //     $(window).on('resize', updateScrollbar);
+
+  //     // Обновление при изменении DOM
+  //     const observer = new MutationObserver(updateScrollbar);
+  //     if ($form[0]) {
+  //       observer.observe($form[0], { childList: true, subtree: true });
+  //     }
+
+  //     // Обновление при открытии попапа
+  //     const popupObserver = new MutationObserver((mutations) => {
+  //       mutations.forEach((mutation) => {
+  //         if (mutation.attributeName === 'style') {
+  //           const popup = mutation.target;
+  //           if (popup.style.display === 'block') {
+  //             // Небольшая задержка для корректного расчета после открытия
+  //             setTimeout(updateScrollbar, 50);
+  //           }
+  //         }
+  //       });
+  //     });
+
+  //     const popup = document.getElementById('popup-rozrahunok');
+  //     if (popup) {
+  //       popupObserver.observe(popup, { attributes: true });
+  //     }
+  //   });
+});

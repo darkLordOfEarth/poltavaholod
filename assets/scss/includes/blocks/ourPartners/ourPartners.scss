@@ -8,6 +8,20 @@
       top: 0;
       right: 50px;
       max-width: 200px;
+      @keyframes floatRotate_aboutus_4 {
+          0% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-30px) rotateY(180deg) rotate(-10deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_4 8s ease-in-out infinite;
       @include max-xxxl {
         max-width: 150px;
       }
@@ -25,6 +39,20 @@
       left: 0;
       max-width: 200px;
       z-index: 1;
+      @keyframes floatRotate_aboutus_4 {
+          0% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-30px) rotateY(180deg) rotate(-10deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_4 8s ease-in-out infinite;
       @include max-xxxl {
         max-width: 150px;
       }
@@ -42,6 +70,20 @@
       right: 75px;
       max-width: 100px;
       z-index: 1;
+      @keyframes floatRotate_aboutus_4 {
+          0% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-30px) rotateY(180deg) rotate(-10deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_4 6s ease-in-out 1.5s infinite;
       @include max-lg {
         max-width: 50px;
         bottom: 40px;

@@ -9,26 +9,26 @@
                 <img class="form__component form__component_4" src="images/mango_boom_2.png">
                 <img class="form__component form__component_5" src="images/hero_slider_component_6.png">
             </div>
-            <div class="form__form">
+            <form class="form__form" name="form" method="post" action="">
                 <h2 class="form__title">Залишились запитання?</h2>
                 <div class="form__desc text-simple">Наша команда експертів готова надати детальну консультацію та допомогти вам у найкоротший термін. Просто залиште заявку, і ми підберемо рішення, що підходить саме вам.</div>
                 <div class="form__group-wrapper">
                     <div class="form__group">
                         <span class="form__group-label text">Ваше ім’я</span>
-                        <input class="form__group-input text" type="text" placeholder="Марго">
+                        <input class="form__group-input text" type="text" name="name" placeholder="Марго">
                     </div>
                     <div class="form__group">
                         <span class="form__group-label text">Ваш номер телефону</span>
-                        <input class="form__group-input text" type="text" placeholder="+380">
+                        <input class="form__group-input text" type="text" name="phone" placeholder="+380">
                     </div>
                 </div>
                 <div class="form__group">
                     <span class="form__group-label text">Ваше питання</span>
-                    <textarea class="form__group-input text" name="form-textarea" rows="4" placeholder="Запитайте нас про що завгодно"></textarea>
+                    <textarea class="form__group-input text" name="question" maxlength="300" rows="4" placeholder="Запитайте нас про що завгодно"></textarea>
                     <div class="form__group-count"><span class="form__group-count__value">0</span>/300</div>
                 </div>
-                <button class="button" type="button">Надіслати заявку</button>
-            </div>
+                <button class="button" type="submit">Надіслати заявку</button>
+            </form>
         </div>
     </div>
 </section>

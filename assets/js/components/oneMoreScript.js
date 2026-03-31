@@ -1,17 +1,18 @@
 $(function () {
     // бегущая строка товаров начало
         const list = document.querySelector('.ourProducts__list-tovar');
-        const items = Array.from(list.children);
+        if(list) {
+            const items = Array.from(list.children);
+            // Оборачиваем оригинальные элементы в трек
+            const track = document.createElement('div');
+            track.className = 'ourProducts__track';
+            items.forEach((item) => track.appendChild(item));
 
-        // Оборачиваем оригинальные элементы в трек
-        const track = document.createElement('div');
-        track.className = 'ourProducts__track';
-        items.forEach((item) => track.appendChild(item));
+            // Клонируем для бесшовного зацикливания
+            items.forEach((item) => track.appendChild(item.cloneNode(true)));
 
-        // Клонируем для бесшовного зацикливания
-        items.forEach((item) => track.appendChild(item.cloneNode(true)));
-
-        list.appendChild(track);
+            list.appendChild(track);
+        }
      // бегущая строка товаров конец
 
 

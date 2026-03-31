@@ -9,6 +9,20 @@
         top: -30px;
         left: 0;
         max-width: 250px;
+        @keyframes floatRotate_aboutus_1 {
+          0% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-10px) rotate(-15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_1 8s 1s ease-in-out infinite;
         @include max-xxxl {
           max-width: 150px;
           top: 30px;
@@ -29,6 +43,20 @@
         top: -110px;
         right: 20%;
         max-width: 220px;
+        @keyframes floatRotate_aboutus_2 {
+          0% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-20px) rotate(15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_2 8s ease-in-out infinite;
          @include max-xxxl {
           max-width: 150px;
           top: 0;
@@ -45,6 +73,20 @@
         bottom: 60px;
         left: 120px;
         z-index: 1;
+         @keyframes floatRotate_aboutus_3 {
+          0% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-10px) rotate(15deg) scale(0.8);
+          }
+
+          100% {
+            transform: translateY(0) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_3 8s ease-in-out infinite;
         @include max-xxxl {
           bottom: 100px;
           left: 5%;
@@ -56,10 +98,24 @@
     }
     &_4 {
         max-width: 80px;
-        bottom: -10px;
-        left: 60px;
+        bottom: 20px;
+        left: 80px;
         z-index: 1;
         transform: rotateY(180deg);
+        @keyframes floatRotate_aboutus_4 {
+          0% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+
+          50% {
+            transform: translateY(-30px) rotateY(180deg) rotate(-10deg) scale(0.9);
+          }
+
+          100% {
+            transform: translateY(0) rotateY(180deg) rotate(0) scale(1);
+          }
+        }
+        animation: floatRotate_aboutus_4 8s ease-in-out 1s infinite;
         @include max-xxxl {
           bottom: 50px;
           left: 0%;
