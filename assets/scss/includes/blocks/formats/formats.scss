@@ -1,0 +1,75 @@
+.formats {
+  &__content {
+    position: relative;
+  }
+  &__component {
+    position: absolute;
+    height: max-content;
+    &_1 {
+      max-width: 100px;
+      right: 0;
+      bottom: -30px;
+      animation: floatRotate_aboutus_4 6s ease-in-out infinite;
+      @include max-lg {
+        max-width: 70px;
+      }
+    }
+  }
+  & .sectionTitle {
+    text-align: center;
+    margin-bottom: 24px;
+    @include max-lg {
+      margin-bottom: 12px;
+    }
+  }
+  &__desc {
+    text-align: center;
+  }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 40px;
+    @include max-lg {
+      margin-top: 20px;
+      gap: 20px;
+    }
+  }
+  &__item {
+    width: 100%;
+    max-width: calc(50% - 20px);
+    border-radius: 16px;
+    background-color: #cd7f23;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @include max-lg {
+      padding: 14px;
+      gap: 12px;
+    }
+    @include max-md {
+      max-width: 100%;
+    }
+    &-icon {
+      width: 64px;
+      height: 64px;
+      @include max-lg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    &-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 100%;
+      color: #4a2c21;
+      @include max-lg {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+    &-desc {
+    }
+  }
+}

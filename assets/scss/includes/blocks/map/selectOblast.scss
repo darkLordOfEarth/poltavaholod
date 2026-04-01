@@ -1,0 +1,70 @@
+.selectOblast {
+  display: none;
+  position: relative;
+  @include max-lg {
+    display: block;
+  }
+  &__current {
+    border: 1px solid #552914;
+    padding: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4a2c21;
+    border-radius: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: .5s;
+    &::after {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.35134 8.7516C6.57638 8.52663 6.88155 8.40026 7.19974 8.40026C7.51794 8.40026 7.82311 8.52663 8.04814 8.7516L11.9997 12.7032L15.9513 8.7516C16.062 8.63699 16.1945 8.54557 16.3409 8.48268C16.4873 8.41979 16.6447 8.38668 16.8041 8.3853C16.9634 8.38391 17.1214 8.41428 17.2689 8.47461C17.4164 8.53495 17.5503 8.62405 17.663 8.73673C17.7757 8.8494 17.8648 8.98338 17.9251 9.13085C17.9855 9.27833 18.0158 9.43635 18.0144 9.59568C18.0131 9.75502 17.98 9.91248 17.9171 10.0589C17.8542 10.2053 17.7628 10.3377 17.6481 10.4484L12.8481 15.2484C12.6231 15.4734 12.3179 15.5997 11.9997 15.5997C11.6815 15.5997 11.3764 15.4734 11.1513 15.2484L6.35134 10.4484C6.12638 10.2234 6 9.9182 6 9.6C6 9.2818 6.12638 8.97663 6.35134 8.7516Z' fill='%234A2C21'/%3E%3C/svg%3E");
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 12px;
+      margin: auto;
+      
+    }
+    &.open {
+      border-radius: 16px 16px 0 0;
+      transition: 0s;
+      border-bottom: none;
+    }
+  }
+  &__list {
+    overflow: hidden;
+    padding: 0 18px 12px 12px;
+    border: 1px solid #552914;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    position: absolute;
+    width: 100%;
+    background-color: #dab785;
+    display: none;
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      border-top: none;
+      height: 300px;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        background-color: #dab78550;
+        border-radius: 12px;
+        width: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #4a2c21;
+        border-radius: 12px;
+        cursor: grab;
+      }
+    }
+    & span {
+      padding: 12px 0;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
