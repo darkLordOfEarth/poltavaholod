@@ -1,0 +1,21 @@
+.map {
+  position: relative;
+  &__svg {
+    width: 100%;
+    height: auto;
+    @include max-lg {
+      margin-top: 20px;
+    }
+    &_ua {
+    }
+    & path {
+      cursor: pointer;
+      &:hover {
+        fill: #cd7f23;
+      }
+      &.active {
+        fill: #cd7f23;
+      }
+    }
+  }
+}

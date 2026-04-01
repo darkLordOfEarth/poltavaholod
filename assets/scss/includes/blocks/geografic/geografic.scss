@@ -1,0 +1,47 @@
+.geografic {
+  position: relative;
+  &__component {
+    position: absolute;
+    height: max-content;
+    &_1 {
+      top: 0;
+      left: 0;
+      max-width: 170px;
+      z-index: 1;
+      animation: floatRotate_aboutus_4 8s ease-in-out infinite;
+      @include max-lg {
+        max-width: 80px;
+      }
+    }
+    &_2 {
+      right: 50px;
+      bottom: 0;
+      max-width: 200px;
+      animation: floatRotate_aboutus_4 8s ease-in-out infinite;
+      @include max-lg {
+        max-width: 100px;
+        bottom: 20%;
+        right: -30px;
+      }
+    }
+  }
+  & h2.sectionTitle {
+    text-align: center;
+    margin-bottom: 24px;
+    @include max-lg {
+      margin-bottom: 20px;
+    }
+  }
+  &__desc {
+    text-align: center;
+    @include max-lg {
+      margin-bottom: 20px;
+    }
+  }
+  &__map {
+    margin-top: 40px;
+    @include max-lg {
+      margin-top: 20px;
+    }
+  }
+}

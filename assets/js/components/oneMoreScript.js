@@ -12,8 +12,36 @@ $(function () {
             items.forEach((item) => track.appendChild(item.cloneNode(true)));
 
             list.appendChild(track);
-        }
+        };
      // бегущая строка товаров конец
+
+     // список областей
+        $(".selectOblast__current").on("click", function() {
+            $(this).toggleClass("open");
+            $(this).parent().find(".selectOblast__list").slideToggle();
+        });
+     // список областей конец
+
+     // карта
+     $(".map__svg path").on("click", function() {
+        $(".map__svg path").removeClass("active");
+        $(this).addClass("active");
+        let obl_id = $(this).attr("data-id");
+        let obl_name = $(".selectOblast__list-inner ").find('[id="' + obl_id + '"]').text();
+        $(".selectOblast__current, .oblastResult__title span").text(obl_name);
+     });
+
+     $(".selectOblast__list-inner span").on("click", function() {
+        $(this).parents(".selectOblast").find(".selectOblast__list").slideToggle();
+        $(this).parents(".selectOblast").find(".selectOblast__current").toggleClass("open");
+        let obl_name = $(this).text();
+        let obl_id = $(this).attr("id");
+        $(this).parents(".selectOblast").find(".selectOblast__current").text(obl_name);
+        $(".map__svg path").removeClass("active");
+        $(".map__svg").find('[data-id="' + obl_id + '"]').addClass("active");
+        $(".oblastResult__title span").text(obl_name);
+     })
+     // карта конец
 
 
 
