@@ -1,0 +1,39 @@
+[33mcommit 971c7af94adb151c6cb68714a1dd5fcaa76512cf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Thu Apr 2 11:54:06 2026 +0300
+
+    rtrtrttrt
+
+ assets/scss/includes/blocks/contacts/contacts.scss | 2 [32m+[m[31m-[m
+ assets/templates/blocks/contacts.hbs               | 2 [32m+[m[31m-[m
+ dist/contacts.html                                 | 2 [32m+[m[31m-[m
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+[33mcommit 45ecffb121c4aefc87d64caca53e05c79cfd5ae9[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Thu Apr 2 11:49:27 2026 +0300
+
+    34r43r43rt4
+
+ assets/images/FileZilla_3.69.6_win64-setup.exe | Bin [31m12742752[m -> [32m0[m bytes
+ dist/images/FileZilla_3.69.6_win64-setup.exe   | Bin [31m12742752[m -> [32m0[m bytes
+ dist/images/Zenflow-Setup.exe                  | Bin [31m150541320[m -> [32m0[m bytes
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+[33mcommit c65aeb5d10fa31c145aeb5fe8dfadc5e7a6032be[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Thu Apr 2 11:46:31 2026 +0300
+
+    remove large file
+
+ .gitignore | 3 [32m++[m[31m-[m
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+[33mcommit 32d6f8ec62333b63bc2b54309ea545f3668e768b[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Thu Apr 2 11:33:09 2026 +0300
+
+    1213224
+
+ assets/scss/includes/blocks/contacts/contacts.scss | 2 [32m+[m[31m-[m
+ 1 file changed, 1 insertion(+), 1 deletion(-)
