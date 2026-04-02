@@ -181,6 +181,20 @@
     }
   }
 
-  & .button {
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    @include max-lg {
+        gap: 12px;
+      }
+      & .button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      & .button-reverse {
+        margin-top: 0;
+      }
   }
 }

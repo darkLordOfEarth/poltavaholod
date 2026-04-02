@@ -1,5 +1,7 @@
 $(function () {
-  $('.form__form').validate({
+  // Проходим по каждой форме отдельно
+$('.form__form').each(function() {
+  $(this).validate({
     rules: {
       name: {
         required: true,
@@ -10,47 +12,41 @@ $(function () {
         minlength: 5,
         pattern: /^\+?\d{10,15}$/,
       },
+      mail: {
+        required: true,
+        email: true,
+      },
       question: {
         required: true,
         maxlength: 300,
       },
     },
     messages: {
-        phone: {
-          pattern: 'Недійсний формат номера телефону.',
-        },
+      phone: {
+        pattern: 'Недійсний формат номера телефону.',
       },
-    // submitHandler: function (form) {
-    //   $.ajax({
-    //     url: '/send.php', // или твой бек
-    //     type: 'POST',
-    //     data: $(form).serialize(),
-    //     success: function () {
-    //       alert('Отправлено');
-    //     },
-    //   });
+    },
+    submitHandler: function(form) {
+      console.log('Форма валидна:', form);
 
-    //   return false;
-    // },
-    submitHandler: function (form) {
-      // тут твоя логика (AJAX или просто лог)
-      console.log('Форма валидна');
-
-      return false; // 🚀 блокируем реальную отправку
+      return false; // блокируем реальную отправку
     },
   });
-  $('.form__group-input[name="question"]').on('input', function () {
-    var max = 300;
-    var text = $(this).val();
+});
 
-    if (text.length > max) {
-      $(this).val(text.substring(0, max));
-    }
+// Ограничение символов для каждого поля "question" отдельно
+$('.form__group-input[name="question"]').on('input', function () {
+  var max = 300;
+  var text = $(this).val();
 
-    var length = $(this).val().length;
+  if (text.length > max) {
+    $(this).val(text.substring(0, max));
+  }
 
-    $(this).closest('.form__group').find('.form__group-count__value').text(length);
-  });
+  var length = $(this).val().length;
+
+  $(this).closest('.form__group').find('.form__group-count__value').text(length);
+});
   //   $('.popup .form').each(function () {
   //     const $form = $(this);
   //     const $popupInner = $form.closest('.popup').find('.popup__inner');
