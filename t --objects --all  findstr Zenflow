@@ -37,3 +37,109 @@ Date:   Thu Apr 2 11:33:09 2026 +0300
 
  assets/scss/includes/blocks/contacts/contacts.scss | 2 [32m+[m[31m-[m
  1 file changed, 1 insertion(+), 1 deletion(-)
+
+[33mcommit 4ac802cf87f6bc50f8af6cc0042f711426a906bc[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Thu Apr 2 11:29:13 2026 +0300
+
+    54trggryy
+
+ assets/images/FileZilla_3.69.6_win64-setup.exe     | Bin [31m0[m -> [32m12742752[m bytes
+ assets/images/contacts_icon_1.svg                  |   3 [32m+[m
+ assets/images/contacts_icon_2.svg                  |   3 [32m+[m
+ assets/images/contacts_icon_3.svg                  |   3 [32m+[m
+ assets/scss/app.scss                               |   1 [32m+[m
+ assets/scss/includes/blocks/contacts/contacts.scss |  94 [32m+++++++++++++++++++++[m
+ assets/templates/blocks/contacts.hbs               |  25 [32m++++++[m
+ assets/templates/blocks/footer.hbs                 |   2 [32m+[m[31m-[m
+ assets/templates/blocks/header.hbs                 |   2 [32m+[m[31m-[m
+ assets/templates/contacts.hbs                      |  52 [32m++++++++++++[m
+ dist/about.html                                    |   2 [32m+[m[31m-[m
+ dist/catalog.html                                  |   2 [32m+[m[31m-[m
+ dist/contacts.html                                 |   1 [32m+[m
+ dist/css/app.min.css                               |   2 [32m+[m[31m-[m
+ dist/images/FileZilla_3.69.6_win64-setup.exe       | Bin [31m0[m -> [32m12742752[m bytes
+ dist/images/Zenflow-Setup.exe                      | Bin [31m0[m -> [32m150541320[m bytes
+ dist/images/contacts_icon_1.svg                    |   3 [32m+[m
+ dist/images/contacts_icon_2.svg                    |   3 [32m+[m
+ dist/images/contacts_icon_3.svg                    |   3 [32m+[m
+ dist/index.html                                    |   2 [32m+[m[31m-[m
+ dist/partners.html                                 |   2 [32m+[m[31m-[m
+ dist/private.html                                  |   2 [32m+[m[31m-[m
+ dist/product.html                                  |   2 [32m+[m[31m-[m
+ dist/products.html                                 |   2 [32m+[m[31m-[m
+ webpack.common.js                                  |   1 [32m+[m
+ 25 files changed, 202 insertions(+), 10 deletions(-)
+
+[33mcommit 8aee4ea4e9c07b31dd937e9c0d6f55d3c4e07e54[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Wed Apr 1 18:46:23 2026 +0300
+
+    34rfret5tt5
+
+ assets/images/formats_icon_1.svg                   |  10 [32m++[m
+ assets/images/formats_icon_2.svg                   |   8 [32m++[m
+ assets/images/formats_icon_3.svg                   |   7 [32m++[m
+ assets/images/formats_icon_4.svg                   |   7 [32m++[m
+ assets/images/map_logo_1.svg                       |   9 [32m++[m
+ assets/images/map_logo_2.svg                       |   9 [32m++[m
+ assets/images/map_logo_3.svg                       |   9 [32m++[m
+ assets/images/map_logo_4.svg                       |  75 [32m++++++++++++++[m
+ assets/images/ourAdvantages_icon_1.svg             |   7 [32m++[m
+ assets/images/ourAdvantages_icon_2.svg             |   8 [32m++[m
+ assets/images/ourAdvantages_icon_3.svg             |   7 [32m++[m
+ assets/images/ourAdvantages_icon_4.svg             |   5 [32m+[m
+ assets/js/components/oneMoreScript.js              |  30 [32m+++++[m[31m-[m
+ assets/scss/app.scss                               |   7 [32m++[m
+ assets/scss/includes/blocks/formats/formats.scss   |  75 [32m++++++++++++++[m
+ .../scss/includes/blocks/geografic/geografic.scss  |  47 [32m+++++++++[m
+ assets/scss/includes/blocks/map/map.scss           |  21 [32m++++[m
+ assets/scss/includes/blocks/map/oblastResult.scss  |  65 [32m++++++++++++[m
+ assets/scss/includes/blocks/map/selectOblast.scss  |  70 [32m+++++++++++++[m
+ .../blocks/ourAdvantages/ourAdvantages.scss        |  65 [32m++++++++++++[m
+ assets/scss/includes/blocks/partners/partners.scss |   0
+ assets/templates/blocks/components/map.hbs         | 114 [32m+++++++++++++++++++++[m
+ .../templates/blocks/components/oblastResult.hbs   |  29 [32m++++++[m
+ .../templates/blocks/components/selectOblast.hbs   |  32 [32m++++++[m
+ assets/templates/blocks/cta-banner-partners.hbs    |   9 [32m++[m
+ assets/templates/blocks/cta-banner.hbs             |   2 [32m+[m[31m-[m
+ assets/templates/blocks/footer.hbs                 |   4 [32m+[m[31m-[m
+ assets/templates/blocks/formats.hbs                |  31 [32m++++++[m
+ assets/templates/blocks/geografic.hbs              |  15 [32m+++[m
+ assets/templates/blocks/header.hbs                 |   2 [32m+[m[31m-[m
+ assets/templates/blocks/ourAdvantages.hbs          |  30 [32m++++++[m
+ assets/templates/partners.hbs                      |  55 [32m++++++++++[m
+ dist/about.html                                    |   2 [32m+[m[31m-[m
+ dist/catalog.html                                  |   2 [32m+[m[31m-[m
+ dist/css/app.min.css                               |   2 [32m+[m[31m-[m
+ dist/images/formats_icon_1.svg                     |  10 [32m++[m
+ dist/images/formats_icon_2.svg                     |   8 [32m++[m
+ dist/images/formats_icon_3.svg                     |   7 [32m++[m
+ dist/images/formats_icon_4.svg                     |   7 [32m++[m
+ dist/images/map_logo_1.svg                         |   9 [32m++[m
+ dist/images/map_logo_2.svg                         |   9 [32m++[m
+ dist/images/map_logo_3.svg                         |   9 [32m++[m
+ dist/images/map_logo_4.svg                         |  75 [32m++++++++++++++[m
+ dist/images/ourAdvantages_icon_1.svg               |   7 [32m++[m
+ dist/images/ourAdvantages_icon_2.svg               |   8 [32m++[m
+ dist/images/ourAdvantages_icon_3.svg               |   7 [32m++[m
+ dist/images/ourAdvantages_icon_4.svg               |   5 [32m+[m
+ dist/index.html                                    |   2 [32m+[m[31m-[m
+ dist/js/app.min.js                                 |   2 [32m+[m[31m-[m
+ dist/partners.html                                 |   1 [32m+[m
+ dist/private.html                                  |   2 [32m+[m[31m-[m
+ dist/product.html                                  |   2 [32m+[m[31m-[m
+ dist/products.html                                 |   2 [32m+[m[31m-[m
+ webpack.common.js                                  |   1 [32m+[m
+ 54 files changed, 1030 insertions(+), 13 deletions(-)
+
+[33mcommit ea1a552e612a63b6c4874525f6b9c61a080884af[m
+Author: Leliksey <captainfroody@gmail.com>
+Date:   Tue Mar 31 20:27:37 2026 +0300
+
+    456erterte54
+
+ assets/images/ourHistory__component_1.png          | Bin [31m0[m -> [32m127568[m bytes
+ assets/images/ourValues_icon_1.svg                 |  10 [32m+[m
+ assets/images/ourValues_icon_2.svg                 |   5 [32m+[m
+ assets/images/ourValues_ic
