@@ -1,0 +1,9 @@
+.policy {
+  padding-top: 0;
+  & h2 {
+    margin-bottom: 40px;
+    @include max-lg {
+      margin-bottom: 20px;
+    }
+  }
+}
